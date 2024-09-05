@@ -3,23 +3,23 @@
 namespace App\Contracts\Repositories;
 
 use App\Contracts\Interfaces\AboutInterface;
-use App\Contracts\Interfaces\CategoryInterface;
+use App\Contracts\Interfaces\ProjectInterface;
 use App\Models\About;
-use App\Models\Category;
+use App\Models\Project;
 use Illuminate\Http\Request;
 
-class CategoryRepository extends BaseRepository implements CategoryInterface
+class ProjectRepository extends BaseRepository implements ProjectInterface
 {
     /**
      * Method __construct
      *
-     * @param Category $category [explicite description]
+     * @param Project $project [explicite description]
      *
      * @return void
      */
-    public function __construct(Category $category)
+    public function __construct(Project $project)
     {
-        $this->model = $category;
+        $this->model = $project;
     }
     /**
      * Method search
