@@ -9,6 +9,4 @@ use App\Contracts\Interfaces\Eloquent\ShowInterface;
 use App\Contracts\Interfaces\Eloquent\StoreInterface;
 use App\Contracts\Interfaces\Eloquent\UpdateInterface;
 
-interface CategoryInterface extends SearchInterface,StoreInterface,ShowInterface,DeleteInterface,UpdateInterface
-{
-}
+interface ProjectInterface extends SearchInterface, StoreInterface, ShowInterface, DeleteInterface, UpdateInterface {}
