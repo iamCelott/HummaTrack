@@ -5,6 +5,7 @@ namespace App\Helpers;
 use App\Enums\UserRoleEnum;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class UserHelper
 {
@@ -16,8 +17,8 @@ class UserHelper
 
     public static function getUserRole(): string
     {
-        if (auth()->user()) {
-            return auth()->user()->roles->pluck('name')[0];
+        if (Auth::check()) {
+            return Auth::user()->roles->pluck('name')[0];
         } else {
             return 'Anda belum login';
         }
@@ -31,7 +32,7 @@ class UserHelper
 
     public static function getUserName(): string
     {
-        return auth()->user()->name;
+        return Auth::user()->name;
     }
 
     /**
@@ -42,7 +43,7 @@ class UserHelper
 
     public static function getUserEmail(): string
     {
-        return auth()->user()->email;
+        return Auth::user()->email;
     }
 
     /**
@@ -53,7 +54,7 @@ class UserHelper
 
     public static function getUserPhone(): string
     {
-        return auth()->user()->phone_number ?? 'Nomor belum terdaftar';
+        return Auth::user()->phone_number ?? 'Nomor belum terdaftar';
     }
 
     /**
@@ -64,9 +65,7 @@ class UserHelper
 
     public static function getUserPhoto(): string|null
     {
-        return auth()->user()->photo;
+        return Auth::user()->photo;
     }
-
-
 
 }
