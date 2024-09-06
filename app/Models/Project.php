@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use App\Enums\ProjectLevelRequirement;
-use App\ProjectStatus;
+use App\Enums\ProjectStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
