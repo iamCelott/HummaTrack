@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests;
 
+use App\Enums\ProjectLevelRequirement;
+use App\Enums\ProjectStatus;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -25,8 +27,8 @@ class ProjectRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'max:255', Rule::unique('projects', 'name')->ignore($this->route('project'))],
             'start_date' => 'required|date',
-            'level_requirement' => 'required|in:junior,mid,senior,specialist',
-            'status' => 'required|in:not_started,in_progress,completed,on_hold',
+            'level_requirement' => ['required', Rule::in([ProjectLevelRequirement::Junior->value, ProjectLevelRequirement::Mid->value, ProjectLevelRequirement::Senior->value, ProjectLevelRequirement::Specialist->value])],
+            'status' => ['required', Rule::in(ProjectStatus::NotStarted->value, ProjectStatus::InProgress->value, ProjectStatus::Completed->value, ProjectStatus::OnHold->value)],
             'description' => 'nullable|string',
         ];
     }
@@ -41,9 +43,9 @@ class ProjectRequest extends FormRequest
             'start_date.required' => 'Tanggal mulai harus diisi.',
             'start_date.date' => 'Tanggal mulai harus berupa tanggal yang valid.',
             'level_requirement.required' => 'Tingkatan yang diperlukan harus dipilih.',
-            'level_requirement.in' => 'Tingkatan yang diperlukan harus salah satu dari: junior, mid, senior, specialist.',
+            'level_requirement.in' => 'Tingkatan yang dipilih tidak valid. Harus salah satu dari: junior, mid, senior, atau specialist.',
             'status.required' => 'Status proyek harus dipilih.',
-            'status.in' => 'Status proyek harus salah satu dari: belum dimulai, sedang berlangsung, selesai, atau ditunda.',
+            'status.in' => 'Status proyek yang dipilih tidak valid. Harus salah satu dari: belum dimulai, sedang berlangsung, selesai, atau ditunda.',
             'description.string' => 'Deskripsi proyek harus berupa teks.',
         ];
     }
