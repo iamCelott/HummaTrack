@@ -19,12 +19,11 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'photo_profile',
         'name',
         'email',
         'password',
         'phone_number',
-        'team_id',
-        'level',
     ];
 
     /**
@@ -48,9 +47,5 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
-    }
-
-    public function team(): BelongsTo {
-        return $this->belongsTo(Team::class, 'team_id');
     }
 }

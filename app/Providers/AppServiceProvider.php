@@ -17,7 +17,6 @@ class AppServiceProvider extends ServiceProvider
     private array $register = [
         ProjectInterface::class => ProjectRepository::class,
         UserInterface::class => UserRepository::class,
-        TeamInterface::class => TeamRepository::class,
         KanbanInterface::class => KanbanRepository::class,
     ];
     /**
