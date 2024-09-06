@@ -2,16 +2,26 @@
 
 namespace App\Providers;
 
+use App\Contracts\Interfaces\ProjectInterface;
+use App\Contracts\Interfaces\UserInterface;
+use App\Contracts\Repositories\ProjectRepository;
+use App\Contracts\Repositories\UserRepository;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
+    private array $register = [
+        ProjectInterface::class => ProjectRepository::class,
+        UserInterface::class => UserRepository::class,
+    ];
     /**
      * Register any application services.
      */
     public function register(): void
     {
-        //
+        foreach ($this->register as $index => $value) {
+            $this->app->bind($index, $value);
+        }
     }
 
     /**
