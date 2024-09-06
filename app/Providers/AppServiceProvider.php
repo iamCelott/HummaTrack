@@ -4,8 +4,10 @@ namespace App\Providers;
 
 use App\Contracts\Interfaces\ProjectInterface;
 use App\Contracts\Interfaces\UserInterface;
+use App\Contracts\Interfaces\TeamInterface;
 use App\Contracts\Repositories\ProjectRepository;
 use App\Contracts\Repositories\UserRepository;
+use App\Contracts\Repositories\TeamRepository;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,6 +15,7 @@ class AppServiceProvider extends ServiceProvider
     private array $register = [
         ProjectInterface::class => ProjectRepository::class,
         UserInterface::class => UserRepository::class,
+        TeamInterface::class => TeamRepository::class,
     ];
     /**
      * Register any application services.
