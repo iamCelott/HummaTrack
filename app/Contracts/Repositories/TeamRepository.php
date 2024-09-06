@@ -23,7 +23,7 @@ class TeamRepository extends BaseRepository implements TeamInterface
     public function __construct(Team $team, TeamService $service)
     {
         $this->model = $team;
-        $this->service = $team;
+        $this->service = $service;
     }
     /**
      * Method search
