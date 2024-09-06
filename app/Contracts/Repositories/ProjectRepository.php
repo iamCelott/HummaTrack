@@ -6,20 +6,24 @@ use App\Contracts\Interfaces\AboutInterface;
 use App\Contracts\Interfaces\ProjectInterface;
 use App\Models\About;
 use App\Models\Project;
+use App\Services\ProjectService;
 use Illuminate\Http\Request;
 
 class ProjectRepository extends BaseRepository implements ProjectInterface
 {
+    protected $service;
     /**
      * Method __construct
      *
      * @param Project $project [explicite description]
+     * @param ProjectService $service
      *
      * @return void
      */
-    public function __construct(Project $project)
+    public function __construct(Project $project, ProjectService $service)
     {
         $this->model = $project;
+        $this->service = $project;
     }
     /**
      * Method search
@@ -30,7 +34,10 @@ class ProjectRepository extends BaseRepository implements ProjectInterface
      */
     public function search(Request $request): mixed
     {
-        return $this->model->query()->get();
+        $search = $request->search;
+        return $this->model->query()->when($search, function ($query) use ($search) {
+            $query->whereLike('name', '%' . $search . '%');
+        })->get();
     }
     /**
      * Method store
@@ -77,5 +84,4 @@ class ProjectRepository extends BaseRepository implements ProjectInterface
     {
         return $this->show($id)->delete();
     }
-
 }

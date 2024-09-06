@@ -4,16 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Contracts\Interfaces\ProjectInterface;
 use App\Models\Project;
+use App\Services\ProjectService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
     private ProjectInterface $project;
+    private ProjectService $service;
 
-    public function __construct(ProjectInterface $project)
+    public function __construct(ProjectInterface $project, ProjectService $service)
     {
         $this->project = $project;
+        $this->service = $service;
     }
     /**
      * Display a listing of the resource.
