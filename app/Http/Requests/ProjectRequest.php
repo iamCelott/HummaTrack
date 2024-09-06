@@ -25,9 +25,9 @@ class ProjectRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'name' => ['required', 'string', 'max:255', Rule::unique('projects', 'name')->ignore($this->route('project'))],
             'start_date' => 'required|date',
-            'level_requirement' => ['required', Rule::in([ProjectLevelRequirement::Junior->value, ProjectLevelRequirement::Mid->value, ProjectLevelRequirement::Senior->value, ProjectLevelRequirement::Specialist->value])],
             'status' => ['required', Rule::in(ProjectStatus::NotStarted->value, ProjectStatus::InProgress->value, ProjectStatus::Completed->value, ProjectStatus::OnHold->value)],
             'description' => 'nullable|string',
         ];
@@ -42,11 +42,12 @@ class ProjectRequest extends FormRequest
             'name.unique' => 'Nama proyek ini sudah digunakan. Silakan pilih nama lain.',
             'start_date.required' => 'Tanggal mulai harus diisi.',
             'start_date.date' => 'Tanggal mulai harus berupa tanggal yang valid.',
-            'level_requirement.required' => 'Tingkatan yang diperlukan harus dipilih.',
-            'level_requirement.in' => 'Tingkatan yang dipilih tidak valid. Harus salah satu dari: junior, mid, senior, atau specialist.',
             'status.required' => 'Status proyek harus dipilih.',
             'status.in' => 'Status proyek yang dipilih tidak valid. Harus salah satu dari: belum dimulai, sedang berlangsung, selesai, atau ditunda.',
             'description.string' => 'Deskripsi proyek harus berupa teks.',
+            'image.image' => 'File yang diunggah harus berupa gambar.',
+            'image.mimes' => 'Format gambar harus jpeg, png, jpg, atau gif.',
+            'image.max' => 'Ukuran gambar tidak boleh lebih dari 2MB.',
         ];
     }
 }

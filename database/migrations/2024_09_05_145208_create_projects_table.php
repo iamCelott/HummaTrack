@@ -15,14 +15,9 @@ return new class extends Migration
     {
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
+            $table->string('image');
             $table->string('name')->unique();
             $table->date('start_date');
-            $table->enum('level_requirement', [
-                ProjectLevelRequirement::Junior->value,
-                ProjectLevelRequirement::Mid->value,
-                ProjectLevelRequirement::Senior->value,
-                ProjectLevelRequirement::Specialist->value,
-            ]);
             $table->enum('status', [
                 ProjectStatus::NotStarted->value,
                 ProjectStatus::InProgress->value,

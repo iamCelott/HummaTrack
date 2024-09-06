@@ -14,15 +14,14 @@ class Project extends Model
 
     protected $casts = [
         'status' => ProjectStatus::class,
-        'level_requirement' => ProjectLevelRequirement::class,
     ];
 
     protected $fillable = [
+        'image',
         'name',
         'start_date',
-        'level_requirement',
         'status',
-        'description'
+        'description',
     ];
 
     public function kanban():HasOne{
