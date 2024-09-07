@@ -4,7 +4,7 @@ namespace App\Services;
 
 use Illuminate\Http\Request;
 
-class TeamService
+class KanbanService
 {
     //
 }

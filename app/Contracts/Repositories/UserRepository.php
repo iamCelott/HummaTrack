@@ -16,12 +16,14 @@ class UserRepository extends BaseRepository implements UserInterface
      * Method __construct
      *
      * @param User $user [explicite description]
+     * @param UserService $service
      *
      * @return void
      */
-    public function __construct(User $user)
+    public function __construct(User $user, UserService $service)
     {
         $this->model = $user;
+        $this->service = $service;
     }
     /**
      * Method search

@@ -23,7 +23,7 @@ class ProjectRepository extends BaseRepository implements ProjectInterface
     public function __construct(Project $project, ProjectService $service)
     {
         $this->model = $project;
-        $this->service = $project;
+        $this->service = $service;
     }
     /**
      * Method search

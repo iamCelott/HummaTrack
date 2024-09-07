@@ -9,4 +9,4 @@ use App\Contracts\Interfaces\Eloquent\ShowInterface;
 use App\Contracts\Interfaces\Eloquent\StoreInterface;
 use App\Contracts\Interfaces\Eloquent\UpdateInterface;
 
-interface TeamInterface extends SearchInterface, StoreInterface, ShowInterface, DeleteInterface, UpdateInterface {}
+interface KanbanInterface extends SearchInterface, StoreInterface, ShowInterface, DeleteInterface, UpdateInterface {}

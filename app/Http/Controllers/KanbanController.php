@@ -2,25 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use App\Contracts\Interfaces\TeamInterface;
-use App\Models\Team;
-use App\Services\TeamService;
+use App\Contracts\Interfaces\KanbanInterface;
+use App\Models\Kanban;
+use App\Services\KanbanService;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
-class TeamController extends Controller
+class KanbanController extends Controller
 {
-    private TeamInterface $team;
-    private TeamService $service;
 
-    public function __construct(TeamInterface $team, TeamService $service)
+    private KanbanInterface $kanban;
+    private KanbanService $service;
+
+    public function __construct(KanbanInterface $kanban, KanbanService $service)
     {
-        $this->team = $team;
+        $this->kanban = $kanban;
         $this->service = $service;
     }
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         //
     }
@@ -44,7 +46,7 @@ class TeamController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Team $team)
+    public function show(Kanban $kanban)
     {
         //
     }
@@ -52,7 +54,7 @@ class TeamController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Team $team)
+    public function edit(Kanban $kanban)
     {
         //
     }
@@ -60,7 +62,7 @@ class TeamController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Team $team)
+    public function update(Request $request, Kanban $kanban)
     {
         //
     }
@@ -68,7 +70,7 @@ class TeamController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Team $team)
+    public function destroy(Kanban $kanban)
     {
         //
     }

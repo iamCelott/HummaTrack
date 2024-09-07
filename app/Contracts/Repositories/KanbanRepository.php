@@ -3,27 +3,27 @@
 namespace App\Contracts\Repositories;
 
 use App\Contracts\Interfaces\AboutInterface;
-use App\Contracts\Interfaces\TeamInterface;
+use App\Contracts\Interfaces\KanbanInterface;
 use App\Models\About;
-use App\Models\Team;
-use App\Services\TeamService;
+use App\Models\Kanban;
+use App\Services\KanbanService;
 use Illuminate\Http\Request;
 
-class TeamRepository extends BaseRepository implements TeamInterface
+class KanbanRepository extends BaseRepository implements KanbanInterface
 {
     protected $service;
     /**
      * Method __construct
      *
-     * @param Team $team [explicite description]
-     * @param TeamService $service
+     * @param Kanban $kanban [explicite description]
+     * @param KanbanService $service
      *
      * @return void
      */
-    public function __construct(Team $team, TeamService $service)
+    public function __construct(Kanban $kanban, KanbanService $service)
     {
-        $this->model = $team;
-        $this->service = $team;
+        $this->model = $kanban;
+        $this->service = $service;
     }
     /**
      * Method search
@@ -34,12 +34,10 @@ class TeamRepository extends BaseRepository implements TeamInterface
      */
     public function search(Request $request): mixed
     {
-        // $search = $request->search;
-        // return $this->model->query()->when($search, function ($query) use ($search) {
-        //     $query->whereLike('name', '%' . $search . '%');
-        // })->get();
-
-        return $this->model->query()->get();
+        $search = $request->search;
+        return $this->model->query()->when($search, function ($query) use ($search) {
+            $query->whereLike('name', '%' . $search . '%');
+        })->get();
     }
     /**
      * Method store

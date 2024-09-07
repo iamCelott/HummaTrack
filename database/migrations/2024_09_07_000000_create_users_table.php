@@ -19,13 +19,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('phone_number')->unique();
-            $table->foreignId('team_id')->constrained()->onDelete('restrict')->onUpdate('cascade');
-            $table->enum('level', [
-                UserLevel::Junior->value,
-                UserLevel::Mid->value,
-                UserLevel::Senior->value,
-                UserLevel::Specialist->value,
-            ])->default(UserLevel::Junior->value);
+            $table->string('photo_profile');
             $table->rememberToken();
             $table->timestamps();
         });

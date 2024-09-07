@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class TeamRequest extends FormRequest
+class KanbanRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,18 +23,20 @@ class TeamRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'string', 'max:255', Rule::unique('teams', 'name')->ignore($this->route('user'))],
+            'name' => ['required', 'string', 'max:255', Rule::unique('kanbans', 'name')->ignore($this->route('kanban'))],
+            'project_id' => 'required|exists:projects,id',
             'description' => 'nullable|string',
         ];
     }
 
-    public function messages(): array
+    public function messages()
     {
         return [
-            'name.required' => 'Nama tim wajib diisi.',
-            'name.string' => 'Nama tim harus berupa teks.',
-            'name.max' => 'Nama tim tidak boleh lebih dari 255 karakter.',
-            'name.unique' => 'Nama tim ini sudah terdaftar, silakan gunakan nama yang lain.',
+            'name.required' => 'Nama kanban wajib diisi.',
+            'name.unique' => 'Nama kanban sudah digunakan, silakan pilih nama lain.',
+            'name.max' => 'Nama kanban tidak boleh lebih dari 255 karakter.',
+            'project_id.required' => 'Proyek wajib diisi.',
+            'project_id.exists' => 'Proyek tidak valid.',
             'description.string' => 'Deskripsi harus berupa teks.',
         ];
     }

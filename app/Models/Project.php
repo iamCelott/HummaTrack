@@ -3,9 +3,10 @@
 namespace App\Models;
 
 use App\Enums\ProjectLevelRequirement;
-use App\ProjectStatus;
+use App\Enums\ProjectStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Project extends Model
 {
@@ -13,14 +14,17 @@ class Project extends Model
 
     protected $casts = [
         'status' => ProjectStatus::class,
-        'level_requirement' => ProjectLevelRequirement::class,
     ];
 
     protected $fillable = [
+        'image',
         'name',
         'start_date',
-        'level_requirement',
         'status',
-        'description'
+        'description',
     ];
+
+    public function kanban():HasOne{
+        return $this->hasOne(Kanban::class);
+    }
 }

@@ -24,12 +24,11 @@ class UserRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'photo_profile' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'name' => 'required|string|max:255',
             'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users', 'email')->ignore($this->route('user'))],
             'phone_number' => ['required', 'string', 'max:15', Rule::unique('users', 'phone_number')->ignore($this->route('user'))],
             'password' => 'required|string|min:8|confirmed',
-            'level' => ['required', Rule::in([UserLevel::Junior->value, UserLevel::Mid->value, UserLevel::Senior->value, UserLevel::Specialist->value])],
-            'team_id' => 'required|exists:teams,id',
         ];
     }
 
@@ -48,10 +47,9 @@ class UserRequest extends FormRequest
             'password.required' => 'Kata sandi wajib diisi.',
             'password.min' => 'Kata sandi minimal harus 8 karakter.',
             'password.confirmed' => 'Konfirmasi kata sandi tidak cocok.',
-            'level.required' => 'Level pengguna wajib dipilih.',
-            'level.in' => 'Level yang dipilih tidak valid.',
-            'team_id.required' => 'Tim wajib dipilih.',
-            'team_id.exists' => 'Tim yang dipilih tidak valid.',
+            'photo_profile.image' => 'File yang diunggah harus berupa gambar.',
+            'photo_profile.mimes' => 'Format gambar harus jpeg, png, jpg, atau gif.',
+            'photo_profile.max' => 'Ukuran gambar tidak boleh lebih dari 2MB.',
         ];
     }
 }
