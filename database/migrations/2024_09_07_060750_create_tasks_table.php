@@ -14,15 +14,16 @@ return new class extends Migration
     {
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 255);
+            $table->string('name')->unique();
             $table->foreignId('kanban_id')->constrained()->onDelete('restrict')->onUpdate('cascade');
             $table->foreignId('user_id')->constrained()->onDelete('restrict')->onUpdate('cascade');
-            $table->enum('status',[
-            StatusTask::To_do->value,
-            StatusTask::In_progres->value,
-            StatusTask::Done->value,
+            $table->enum('status', [
+                StatusTask::To_do->value,
+                StatusTask::In_progres->value,
+                StatusTask::Review->value,
+                StatusTask::Done->value,
             ])->default(StatusTask::To_do->value);
-            $table->text('deskription')->nullable();
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }
