@@ -58,15 +58,15 @@
             @include('layouts.topbar')
             <!-- Topbar End -->
 
-                {{-- <main class="p-6">
+                <main class="p-6">
 
                     <!-- Page Title Start -->
                     <div class="flex justify-between items-center mb-6">
-                        <h4 class="text-slate-900 dark:text-slate-200 text-lg font-medium">File Manager</h4>
+                        <h4 class="text-slate-900 dark:text-slate-200 text-lg font-medium">Dashboard</h4>
 
                         <div class="md:flex hidden items-center gap-2.5 font-semibold">
                             <div class="flex items-center gap-2">
-                                <a href="#" class="text-sm font-medium text-slate-700 dark:text-slate-400">Attex</a>
+                                <a href="#" class="text-sm font-medium text-slate-700 dark:text-slate-400">Dashboard</a>
                             </div>
 
                             <div class="flex items-center gap-2">
@@ -82,7 +82,7 @@
                     </div>
                     <!-- Page Title End -->
 
-                    <div class="lg:flex gap-2">
+                    {{-- <div class="lg:flex gap-2">
                         <div id="default-offcanvas" class="lg:block hidden inset-y-0 start-0 transform h-ful min-h-full min-w-72 fc-offcanvas-open:translate-x-0 lg:z-0 z-50 fixed lg:static lg:translate-x-0 -translate-x-full transition-all duration-300 lg:rtl:-translate-x-0 rtl:translate-x-full" tabindex="-1">
                             <div class="card p-6 h-full min-h-full lg:rounded-md rounded-none">
                                 <div class="relative">
@@ -663,10 +663,10 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     <!-- Card End -->
 
-                </main> --}}
+                </main>
 
                 <!-- Footer Start -->
                 {{-- <footer class="footer h-16 flex items-center px-6 bg-white shadow dark:bg-gray-800 mt-auto">
