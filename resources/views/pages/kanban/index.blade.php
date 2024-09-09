@@ -33,9 +33,53 @@
                     <div
                         class="flex flex-col flex-shrink-0 w-80 border rounded-md border-gray-200 dark:border-gray-700 p-4">
 
-                        <h5 class=" mb-4">TODO (3) <a href="" type="button" class="relative top-4 right-4 bg-success text-white px-3 py-1 rounded-md hover:bg-success" style="margin-left: 140px;">
-                            Task <i class="ri-add-line"></i>
-                        </a>
+                        
+                        <div>
+                            <h5 class=" mb-4">TODO (3) <button href="" type="button" data-fc-type="modal" class="relative top-4 right-4 bg-success text-white px-3 py-1 rounded-md hover:bg-success" style="margin-left: 140px;">
+                                Task <i class="ri-add-line"></i>
+                            </button>
+                            {{-- <button class="btn bg-success relative top-4 right-4 bg-success text-white px-3 py-1 rounded-md hover:bg-success" data-fc-type="modal" type="button"> Sign Up Modal </button> --}}
+
+                            <div class="w-full h-full fixed top-0 left-0 z-50 transition-all duration-500 hidden overflow-y-auto">
+                                <div class="-translate-y-5 fc-modal-open:translate-y-0 fc-modal-open:opacity-100 opacity-0 duration-300 ease-in-out transition-all sm:max-w-lg sm:w-full m-3 sm:mx-auto flex flex-col bg-white shadow-sm rounded dark:bg-gray-800">
+                                    <div class="p-4 overflow-y-auto">
+                                        <div class="p-9">
+                                            <h2 class="text-lg font-semibold text-gray-900 dark:text-slate-200">Tambah Tugas Baru</h2>
+                                        </div>
+
+                                        <form class="px-6" action="#">
+
+                                            <div class="space-y-1 mb-6">
+                                                <label for="username" class="font-semibold text-gray-500">Name</label>
+                                                <input class="form-input" type="email" id="username" required="" placeholder="Michael Zenaty">
+                                            </div>
+
+                                            <div class="space-y-1 mb-6">
+                                                <label for="emailaddress" class="font-semibold text-gray-500">Email address</label>
+                                                <input class="form-input" type="email" id="emailaddress" required="" placeholder="john@deo.com">
+                                            </div>
+
+                                            <div class="space-y-1 mb-6">
+                                                <label for="password" class="font-semibold text-gray-500">Password</label>
+                                                <input class="form-input" type="password" required="" id="password" placeholder="Enter your password">
+                                            </div>
+
+                                            <div class="mb-6">
+                                                <div class="flex items-center">
+                                                    <input type="checkbox" class="form-checkbox rounded text-primary" id="checkbox-signin">
+                                                    <label class="ms-2 text-sm font-medium text-gray-500" for="checkbox-signin">I accept <a href="#">Terms and Conditions</a></label>
+                                                </div>
+                                            </div>
+
+                                            <div class="mb-6 text-center">
+                                                <button class="btn bg-danger text-white" type="submit">Cancel</button>
+                                                <button class="btn bg-primary text-white" type="submit">Tambah Tugas</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         </h5>
 
                         
