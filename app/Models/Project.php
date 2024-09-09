@@ -20,6 +20,7 @@ class Project extends Model
         'image',
         'name',
         'start_date',
+        'end_date',
         'status',
         'description',
     ];

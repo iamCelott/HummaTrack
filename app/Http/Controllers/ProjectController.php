@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Contracts\Interfaces\ProjectInterface;
+use App\Http\Requests\ProjectRequest;
 use App\Models\Project;
 use App\Services\ProjectService;
 use Illuminate\Contracts\View\View;
@@ -38,9 +39,10 @@ class ProjectController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ProjectRequest $request)
     {
-        //
+        $this->project->store($request->validated());
+        return redirect()->back()->with('success', 'Berhasil menambah proyek baru.');
     }
 
     /**

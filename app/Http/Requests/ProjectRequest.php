@@ -28,7 +28,8 @@ class ProjectRequest extends FormRequest
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'name' => ['required', 'string', 'max:255', Rule::unique('projects', 'name')->ignore($this->route('project'))],
             'start_date' => 'required|date',
-            'status' => ['required', Rule::in(ProjectStatus::NotStarted->value, ProjectStatus::InProgress->value, ProjectStatus::Completed->value, ProjectStatus::OnHold->value)],
+            'end_date' => 'required|date|after:start_date',
+            'status' => ['nullable', Rule::in(ProjectStatus::NotStarted->value, ProjectStatus::InProgress->value, ProjectStatus::Completed->value, ProjectStatus::OnHold->value)],
             'description' => 'nullable|string',
         ];
     }
@@ -42,6 +43,9 @@ class ProjectRequest extends FormRequest
             'name.unique' => 'Nama proyek ini sudah digunakan. Silakan pilih nama lain.',
             'start_date.required' => 'Tanggal mulai harus diisi.',
             'start_date.date' => 'Tanggal mulai harus berupa tanggal yang valid.',
+            'end_date.required' => 'Tanggal akhir harus diisi.',
+            'end_date.date' => 'Tanggal akhir harus berupa tanggal yang valid.',
+            'end_date.after' => 'Tanggal akhir harus setelah tanggal mulai.',
             'status.required' => 'Status proyek harus dipilih.',
             'status.in' => 'Status proyek yang dipilih tidak valid. Harus salah satu dari: belum dimulai, sedang berlangsung, selesai, atau ditunda.',
             'description.string' => 'Deskripsi proyek harus berupa teks.',
