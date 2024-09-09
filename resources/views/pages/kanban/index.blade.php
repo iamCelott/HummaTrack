@@ -33,8 +33,8 @@
                     <div
                         class="flex flex-col flex-shrink-0 w-80 border rounded-md border-gray-200 dark:border-gray-700 p-4">
 
-                        <h5 class=" mb-4">TODO (3) <a href="" type="button" class="relative top-4 right-4 bg-success text-white px-3 py-1 rounded-md hover:bg-success" style="margin-left: 110px;">
-                            Tambah Task
+                        <h5 class=" mb-4">TODO (3) <a href="" type="button" class="relative top-4 right-4 bg-success text-white px-3 py-1 rounded-md hover:bg-success" style="margin-left: 140px;">
+                            Task <i class="ri-add-line"></i>
                         </a>
                         </h5>
 
