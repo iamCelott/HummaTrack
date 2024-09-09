@@ -1,3 +1,6 @@
+@php
+    use App\Helpers\UserHelper;
+@endphp
 <header class="app-header flex items-center px-4 gap-3.5">
 
     <!-- App Logo -->
@@ -31,25 +34,30 @@
             <span class="ri-search-line text-base z-10 absolute start-2 top-1/2 -translate-y-1/2"></span>
         </form>
 
-        <div class="fc-dropdown fc-dropdown-open:opacity-100 hidden opacity-0 w-80 z-50 mt-3.5 transition-all duration-300 bg-white shadow-lg border rounded-lg py-2 border-gray-200 dark:border-gray-700 dark:bg-gray-800">
+        <div
+            class="fc-dropdown fc-dropdown-open:opacity-100 hidden opacity-0 w-80 z-50 mt-3.5 transition-all duration-300 bg-white shadow-lg border rounded-lg py-2 border-gray-200 dark:border-gray-700 dark:bg-gray-800">
 
             <!-- item-->
-            <h5 class="flex items-center py-2 px-3 text-sm text-gray-800 dark:text-gray-400 uppercase">Found <b class="text-decoration-underline">08</b> results</h5>
+            <h5 class="flex items-center py-2 px-3 text-sm text-gray-800 dark:text-gray-400 uppercase">Found <b
+                    class="text-decoration-underline">08</b> results</h5>
 
             <!-- item-->
-            <a href="javascript:void(0);" class="flex items-center py-2 px-3 text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300">
+            <a href="javascript:void(0);"
+                class="flex items-center py-2 px-3 text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300">
                 <i class="ri-file-chart-line text-base me-1"></i>
                 <span>Analytics Report</span>
             </a>
 
             <!-- item-->
-            <a href="javascript:void(0);" class="flex items-center py-2 px-3 text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300">
+            <a href="javascript:void(0);"
+                class="flex items-center py-2 px-3 text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300">
                 <i class="ri-lifebuoy-line text-base me-1"></i>
                 <span>How can I help you?</span>
             </a>
 
             <!-- item-->
-            <a href="javascript:void(0);" class="flex items-center py-2 px-3 text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300">
+            <a href="javascript:void(0);"
+                class="flex items-center py-2 px-3 text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300">
                 <i class="ri-user-settings-line text-base me-1"></i>
                 <span>User profile settings</span>
             </a>
@@ -58,8 +66,10 @@
             <h6 class="flex items-center py-2 px-3 text-sm text-gray-800 dark:text-gray-400 uppercase">Users</h6>
 
             <!-- item-->
-            <a href="javascript:void(0);" class="flex items-center py-2 px-3 text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300">
-                <img class="me-2 rounded-full h-8" src="assets/images/users/avatar-2.jpg" alt="Generic placeholder image">
+            <a href="javascript:void(0);"
+                class="flex items-center py-2 px-3 text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300">
+                <img class="me-2 rounded-full h-8" src="assets/images/users/avatar-2.jpg"
+                    alt="Generic placeholder image">
                 <div class="flex-grow">
                     <h5 class="m-0 fs-14">Erwin Brown</h5>
                     <span class="fs-12 ">UI Designer</span>
@@ -67,8 +77,10 @@
             </a>
 
             <!-- item-->
-            <a href="javascript:void(0);" class="flex items-center py-2 px-3 text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300">
-                <img class="me-2 rounded-full h-8" src="assets/images/users/avatar-5.jpg" alt="Generic placeholder image">
+            <a href="javascript:void(0);"
+                class="flex items-center py-2 px-3 text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300">
+                <img class="me-2 rounded-full h-8" src="assets/images/users/avatar-5.jpg"
+                    alt="Generic placeholder image">
                 <div class="flex-grow">
                     <h5 class="m-0 fs-14">Jacob Deo</h5>
                     <span class="fs-12 ">Developer</span>
@@ -302,44 +314,51 @@
 
     <!-- Profile Dropdown Button -->
     <div class="relative">
-        <button data-fc-type="dropdown" data-fc-placement="bottom-end" type="button" class="nav-link flex items-center gap-2.5 px-3 bg-black/5 border-x border-black/10">
-            <img src="assets/images/users/avatar-1.jpg" alt="user-image" class="rounded-full h-8">
+        <button data-fc-type="dropdown" data-fc-placement="bottom-end" type="button"
+            class="nav-link flex items-center gap-2.5 px-3 bg-black/5 border-x border-black/10">
+            <img src="{{ Auth::user()->photo_profile }}" alt="{{ UserHelper::getUserName() }}" class="rounded-full h-8">
             <span class="md:flex flex-col gap-0.5 text-start hidden">
-                <h5 class="text-sm">Tosha Minner</h5>
-                <span class="text-xs">Founder</span>
+                <h5 class="text-sm">{{ UserHelper::getUserName() }}</h5>
+                <span class="text-xs">{{ UserHelper::getUserRole() }}</span>
             </span>
         </button>
 
-        <div class="fc-dropdown fc-dropdown-open:opacity-100 hidden opacity-0 w-44 z-50 transition-all duration-300 bg-white shadow-lg border rounded-lg py-2 border-gray-200 dark:border-gray-700 dark:bg-gray-800">
+        <div
+            class="fc-dropdown fc-dropdown-open:opacity-100 hidden opacity-0 w-44 z-50 transition-all duration-300 bg-white shadow-lg border rounded-lg py-2 border-gray-200 dark:border-gray-700 dark:bg-gray-800">
             <!-- item-->
             <h6 class="flex items-center py-2 px-3 text-xs text-gray-800 dark:text-gray-400">Welcome !</h6>
 
             <!-- item-->
-            <a href="pages-profile.html" class="flex items-center gap-2 py-1.5 px-4 text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300">
+            <a href="pages-profile.html"
+                class="flex items-center gap-2 py-1.5 px-4 text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300">
                 <i class="ri-account-circle-line text-lg align-middle"></i>
                 <span>My Account</span>
             </a>
 
             <!-- item-->
-            <a href="pages-profile.html" class="flex items-center gap-2 py-1.5 px-4 text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300">
+            <a href="pages-profile.html"
+                class="flex items-center gap-2 py-1.5 px-4 text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300">
                 <i class="ri-settings-4-line text-lg align-middle"></i>
                 <span>Settings</span>
             </a>
 
             <!-- item-->
-            <a href="pages-faqs.html" class="flex items-center gap-2 py-1.5 px-4 text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300">
+            <a href="pages-faqs.html"
+                class="flex items-center gap-2 py-1.5 px-4 text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300">
                 <i class="ri-customer-service-2-line text-lg align-middle"></i>
                 <span>Support</span>
             </a>
 
             <!-- item-->
-            <a href="auth-lock-screen.html" class="flex items-center gap-2 py-1.5 px-4 text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300">
+            <a href="auth-lock-screen.html"
+                class="flex items-center gap-2 py-1.5 px-4 text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300">
                 <i class="ri-lock-password-line text-lg align-middle"></i>
                 <span>Lock Screen</span>
             </a>
 
             <!-- item-->
-            <a href="auth-logout-2.html" class="flex items-center gap-2 py-1.5 px-4 text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300">
+            <a href="auth-logout-2.html"
+                class="flex items-center gap-2 py-1.5 px-4 text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300">
                 <i class="ri-logout-box-line text-lg align-middle"></i>
                 <span>Logout</span>
             </a>

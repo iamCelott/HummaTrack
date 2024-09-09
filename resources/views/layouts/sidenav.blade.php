@@ -54,6 +54,15 @@
             <li class="menu-title">Apps</li>
 
             <li class="menu-item">
+                <a href="{{ route('projects.index') }}" class="menu-link">
+                    <span class="menu-icon">
+                        <i class="ri-suitcase-line"></i>
+                    </span>
+                    <span class="menu-text">Proyek</span>
+                </a>
+            </li>
+
+            <li class="menu-item">
                 <a href="apps-calendar.html" class="menu-link">
                     <span class="menu-icon">
                         <i class="ri-calendar-event-line"></i>

@@ -48,6 +48,10 @@ class ProjectRepository extends BaseRepository implements ProjectInterface
      */
     public function store(array $data): mixed
     {
+        if (isset($data['image'])) {
+            $data['image'] = $this->service->handleImageUpload($data['image']);
+        }
+
         return $this->model->query()->create($data);
     }
     /**
