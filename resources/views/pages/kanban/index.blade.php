@@ -34,7 +34,7 @@
                         class="flex flex-col flex-shrink-0 w-80 border rounded-md border-gray-200 dark:border-gray-700 p-4">
 
                         
-                        <div>
+                        <div class="rounded-md">
                             <h5 class=" mb-4">TODO (3) <button href="" type="button" data-fc-type="modal" class="relative top-4 right-4 bg-success text-white px-3 py-1 rounded-md hover:bg-success" style="margin-left: 140px;">
                                 Task <i class="ri-add-line"></i>
                             </button>
@@ -72,7 +72,7 @@
                                             </div>
 
                                             <div class="mb-6 text-center">
-                                                <button class="btn bg-danger text-white" type="submit">Cancel</button>
+                                                <a href="{{  route('kanban.index') }}" class="btn bg-danger text-white" type="button">Cancel</a>
                                                 <button class="btn bg-primary text-white" type="submit">Tambah Tugas</button>
                                             </div>
                                         </form>
