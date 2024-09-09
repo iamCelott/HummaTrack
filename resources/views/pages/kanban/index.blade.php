@@ -5,23 +5,23 @@
 
         <!-- Page Title Start -->
         <div class="flex justify-between items-center mb-6">
-            <h4 class="text-slate-900 dark:text-slate-200 text-lg font-medium">Kanban</h4>
+            <h4 class="text-slate-900 dark:text-slate-200 text-lg font-medium">List Kanban</h4>
 
             <div class="md:flex hidden items-center gap-2.5 font-semibold">
                 <div class="flex items-center gap-2">
-                    <a href="#" class="text-sm font-medium text-slate-700 dark:text-slate-400">Attex</a>
+                    <a href="#" class="text-sm font-medium text-slate-700 dark:text-slate-400">Proyek</a>
                 </div>
 
                 <div class="flex items-center gap-2">
                     <i class="ri-arrow-right-s-line text-base text-slate-400 rtl:rotate-180"></i>
-                    <a href="#" class="text-sm font-medium text-slate-700 dark:text-slate-400">Apps</a>
+                    <a href="#" class="text-sm font-medium text-slate-700 dark:text-slate-400">Kanban</a>
                 </div>
-
+{{-- 
                 <div class="flex items-center gap-2">
                     <i class="ri-arrow-right-s-line text-base text-slate-400 rtl:rotate-180"></i>
                     <a href="#" class="text-sm font-medium text-slate-700 dark:text-slate-400"
                         aria-current="page">Kanban</a>
-                </div>
+                </div> --}}
             </div>
         </div>
         <!-- Page Title End -->
@@ -33,9 +33,16 @@
                     <div
                         class="flex flex-col flex-shrink-0 w-80 border rounded-md border-gray-200 dark:border-gray-700 p-4">
 
-                        <h5 class="uppercase mb-4">ToDo (3)</h5>
+                        <h5 class=" mb-4">TODO (3) <a href="" type="button" class="relative top-4 right-4 bg-success text-white px-3 py-1 rounded-md hover:bg-success" style="margin-left: 110px;">
+                            Tambah Task
+                        </a>
+                        </h5>
+
+                        
+                        
                         <div class="flex flex-col gap-4 kanban-board custom-scroll overflow-x-hidden overflow-y-auto px-1 h-full"
                             id="kanbanborad-one">
+
 
                             <!-- Task Item -->
                             <div class="card cursor-pointer">
@@ -1106,5 +1113,4 @@
 
     <!-- Dragula Demo Component js -->
     <script src="assets/js/pages/apps-kanban.js"></script>
-    
 @endsection
