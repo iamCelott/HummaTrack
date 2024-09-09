@@ -3,26 +3,27 @@
 namespace App\Contracts\Repositories;
 
 use App\Contracts\Interfaces\AboutInterface;
-use App\Contracts\Interfaces\TaskInterface;
+use App\Contracts\Interfaces\TaskDetailInterface;
 use App\Models\About;
 use App\Models\Task;
-use App\Services\TaskService;
+use App\Models\TaskDetail;
+use App\Services\TaskDetailService;
 use Illuminate\Http\Request;
 
-class TaskRepository extends BaseRepository implements TaskInterface
+class TaskDetailRepository extends BaseRepository implements TaskDetailInterface
 {
     protected $service;
     /**
      * Method __construct
      *
-     * @param Task $task [explicite description]
-     * @param Taskservice $service
+     * @param TaskDetail $taskDetail [explicite description]
+     * @param TaskDetailservice $service
      *
      * @return void
      */
-    public function __construct(Task $task, TaskService $service)
+    public function __construct(TaskDetail $taskDetail, TaskDetailService $service)
     {
-        $this->model = $task;
+        $this->model = $taskDetail;
         $this->service = $service;
     }
     /**

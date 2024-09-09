@@ -2,15 +2,19 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\ServiceProvider;
+use App\Contracts\Interfaces\TaskInterface;
+use App\Contracts\Interfaces\TeamInterface;
+use App\Contracts\Interfaces\UserInterface;
 use App\Contracts\Interfaces\KanbanInterface;
 use App\Contracts\Interfaces\ProjectInterface;
-use App\Contracts\Interfaces\UserInterface;
-use App\Contracts\Interfaces\TeamInterface;
-use App\Contracts\Repositories\KanbanRepository;
-use App\Contracts\Repositories\ProjectRepository;
-use App\Contracts\Repositories\UserRepository;
+use App\Contracts\Repositories\TaskRepository;
 use App\Contracts\Repositories\TeamRepository;
-use Illuminate\Support\ServiceProvider;
+use App\Contracts\Repositories\UserRepository;
+use App\Contracts\Repositories\KanbanRepository;
+use App\Contracts\Interfaces\TaskDetailInterface;
+use App\Contracts\Repositories\ProjectRepository;
+use App\Contracts\Repositories\TaskDetailRepository;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -18,6 +22,8 @@ class AppServiceProvider extends ServiceProvider
         ProjectInterface::class => ProjectRepository::class,
         UserInterface::class => UserRepository::class,
         KanbanInterface::class => KanbanRepository::class,
+        TaskInterface::class => TaskRepository::class,
+        TaskDetailInterface::class => TaskDetailRepository::class,
     ];
     /**
      * Register any application services.
