@@ -67,16 +67,22 @@
     <meta content="coderthemes" name="author">
 
     <!-- App favicon -->
-    <link rel="shortcut icon" href="assets/images/favicon.ico">
+    <link rel="shortcut icon" href="{{ asset('assets/icon.ico') }}">
 
     <!-- App css -->
-    <link href="assets/css/app.min.css" rel="stylesheet" type="text/css">
+    <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet" type="text/css">
 
     <!-- Icons css -->
-    <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css">
+    <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css">
+    
+    <!-- Dropzone -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.css" />
 
     <!-- Theme Config Js -->
-    <script src="assets/js/config.js"></script>
+    <script src="{{ asset('assets/js/config.js') }}"></script>
+    {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <script src="{{ asset('js/app.js') }}" defer></script> --}}
+
 </head>
 
 <body>
@@ -309,12 +315,17 @@
     </div>
 
     <!-- Plugin Js -->
-    <script src="assets/libs/simplebar/simplebar.min.js"></script>
-    <script src="assets/libs/lucide/umd/lucide.min.js"></script>
-    <script src="assets/libs/%40frostui/tailwindcss/frostui.js"></script>
+    <script src="{{ asset('assets/libs/simplebar/simplebar.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/lucide/umd/lucide.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/%40frostui/tailwindcss/frostui.js') }}"></script>
+
 
     <!-- App Js -->
-    <script src="assets/js/app.js"></script>
+    <script src="{{ asset('assets/js/app.js') }}"></script>
+    
+    <!-- Dropzone -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.js"></script>
+
 
 </body>
 
