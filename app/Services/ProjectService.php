@@ -19,8 +19,18 @@ class ProjectService
         return $this->statusMapping[$status] ?? null;
     }
 
-    public function handleImageUpload($file)
+    public function handleImageImage($file, $directory)
     {
-        return $this->upload_image($file, 'project_images');
+        return $this->upload_image($file, $directory);
+    }
+
+    public function handleUpdateImage($file, $path, $directory)
+    {
+        return $this->update_image($file, $path, $directory);
+    }
+
+    public function handleDeleteImage($path)
+    {
+        return $this->delete_image($path);
     }
 }

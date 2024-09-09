@@ -64,9 +64,10 @@ class ProjectController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Project $project)
+    public function update(ProjectRequest $request, Project $project)
     {
-        //
+        $this->project->update($project->id, $request->validated());
+        return redirect()->back()->with('success', 'Berhasil mengubah proyek.');
     }
 
     /**
@@ -74,6 +75,7 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        //
+        $this->project->delete($project->id);
+        return redirect()->back()->with('success', 'Berhasil menghapus proyek.');
     }
 }
