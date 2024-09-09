@@ -25,15 +25,15 @@ class ProjectController extends Controller
     public function index(Request $request): View
     {
         $projects = $this->project->search($request);
-        return view('pages.project', compact('projects'));
+        return view('pages.project.index', compact('projects'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request): View
     {
-        //
+        return view('pages.project.create');
     }
 
     /**

@@ -5,14 +5,14 @@
     <a href="{{ route('dashboard') }}" class="logo-box">
         <!-- Light Logo -->
         <div class="logo-light">
-            <img src="assets/images/logo.png" class="logo-lg h-[22px]" alt="Light logo">
-            <img src="assets/images/logo-sm.png" class="logo-sm h-[22px]" alt="Small logo">
+            <img src="{{ asset('assets/images/logo.png') }}" class="logo-lg h-[22px]" alt="Light logo">
+            <img src="{{ asset('assets/images/logo-sm.png') }}" class="logo-sm h-[22px]" alt="Small logo">
         </div>
 
         <!-- Dark Logo -->
         <div class="logo-dark">
-            <img src="assets/images/logo-dark.png" class="logo-lg h-[22px]" alt="Dark logo">
-            <img src="assets/images/logo-sm.png" class="logo-sm h-[22px]" alt="Small logo">
+            <img src="{{ asset('assets/images/logo-dark.png') }}" class="logo-lg h-[22px]" alt="Dark logo">
+            <img src="{{ asset('assets/images/logo-sm.png') }}" class="logo-sm h-[22px]" alt="Small logo">
         </div>
     </a>
 
@@ -29,7 +29,7 @@
 
             <li class="menu-item">
                 {{-- href="javascript:void(0)" data-fc-type="collapse" --}}
-                <a href="{{  route('dashboard') }}" class="menu-link">
+                <a href="{{ route('dashboard') }}" class="menu-link">
                     <span class="menu-icon">
                         <i class="ri-home-4-line"></i>
                     </span>
@@ -53,14 +53,46 @@
 
             <li class="menu-title">Apps</li>
 
-            <li class="menu-item">
-                <a href="{{ route('projects.index') }}" class="menu-link">
+            <li class="menu-item flex items-center justify-between w-full group">
+                <a href="{{ route('projects.index') }}" class="menu-link flex items-center">
                     <span class="menu-icon">
                         <i class="ri-suitcase-line"></i>
                     </span>
                     <span class="menu-text">Proyek</span>
                 </a>
+                <a href="{{ route('projects.create') }}"
+                    class="inline-flex items-center bg-secondary light:bg-[#3e60d5] text-white font-semibold py-1 px-2 rounded group-hover:opacity-100 transition-opacity duration-300 ease-in-out">
+                    <i class="ri-add-line"></i>
+                </a>
             </li>
+
+            <style>
+                .menu-item {
+                    position: relative;
+                    /* Untuk kontrol posisi */
+                }
+
+                .menu-item .inline-flex {
+                    position: absolute;
+                    top: 50%;
+                    right: 0;
+                    margin-right: 8px;
+                    transform: translateY(-50%);
+                    /* Mentransformasi untuk menempatkan di tengah vertikal */
+                    opacity: 0;
+                    /* Awalnya tidak terlihat */
+                    transition: opacity 0.3s ease;
+                    /* Transisi untuk efek opacity */
+                }
+
+                .menu-item:hover .inline-flex {
+                    opacity: 1;
+                    /* Menampilkan tombol saat hover */
+                }
+            </style>
+
+
+
 
             <li class="menu-item">
                 <a href="apps-calendar.html" class="menu-link">
@@ -103,36 +135,14 @@
                 </ul>
             </li> --}}
 
-            <li class="menu-item">
-                <a href="javascript:void(0)" data-fc-type="collapse" class="menu-link">
-                    <span class="menu-icon">
-                        <i class="ri-task-line"></i>
-                    </span>
-                    <span class="menu-text"> Tasks </span>
-                    <span class="menu-arrow"></span>
-                </a>
-                <ul class="sub-menu hidden">
-                    <li class="menu-item">
-                        <a href="apps-tasks-list.html" class="menu-link">
-                            <span class="menu-text">List</span>
-                        </a>
-                    </li>
-                    <li class="menu-item">
-                        <a href="apps-tasks-details.html" class="menu-link">
-                            <span class="menu-text">Details</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-
-            <li class="menu-item">
+            {{-- <li class="menu-item">
                 <a href="apps-kanban.html" class="menu-link">
                     <span class="menu-icon">
                         <i class="ri-list-check-3"></i>
                     </span>
                     <span class="menu-text">Kanban Board</span>
                 </a>
-            </li>
+            </li> --}}
 
             {{-- <li class="menu-item">
                 <a href="apps-file-manager.html" class="menu-link">
