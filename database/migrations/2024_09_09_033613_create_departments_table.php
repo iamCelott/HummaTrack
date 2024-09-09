@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('address', 255)->nullable();
             $table->string('phone_number', 20)->nullable();
             $table->decimal('latitude', 10, 8)->nullable();
-            $table->decimal('longitude ', 11, 8)->nullable();
+            $table->decimal('longitude', 11, 8)->nullable();
             $table->timestamps();
         });
     }
