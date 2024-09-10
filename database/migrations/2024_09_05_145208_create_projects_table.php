@@ -15,10 +15,12 @@ return new class extends Migration
     {
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
-            $table->string('image');
             $table->string('name')->unique();
             $table->date('start_date');
             $table->date('end_date');
+            $table->enum('type', [
+
+            ]);
             $table->enum('status', [
                 ProjectStatus::NotStarted->value,
                 ProjectStatus::InProgress->value,
