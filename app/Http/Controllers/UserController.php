@@ -20,11 +20,11 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        
-        $users =  User::all();
-        return view('pages.user.index', compact('users')); 
+
+        $users =  $this->user->search($request);
+        return view('pages.user.index', compact('users'));
     }
 
     /**

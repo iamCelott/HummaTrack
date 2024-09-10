@@ -5,7 +5,7 @@
 
         <!-- Page Title Start -->
         <div class="flex justify-between items-center mb-6">
-            <h4 class="text-slate-900 dark:text-slate-200 text-lg font-medium">List Kanban</h4>
+            <h4 class="text-slate-900 dark:text-slate-200 text-lg font-medium">{{ $kanban->name }}</h4>
 
             <div class="md:flex hidden items-center gap-2.5 font-semibold">
                 <div class="flex items-center gap-2">
@@ -35,7 +35,6 @@
 
 
                         <div class="rounded-md">
-                            <p>{{ $kanban->name }}</p>
                             <h5 class=" mb-4">TODO (3) <button href="" type="button" data-fc-type="modal"
                                     class="relative top-4 right-4 bg-success text-white px-3 py-1 rounded-md hover:bg-success"
                                     style="margin-left: 140px;">
@@ -53,27 +52,45 @@
                                                     Tugas Baru</h2>
                                             </div>
 
-                                            <form class="px-6" action="#">
-
+                                            <form class="px-6" action="{{ route('tasks.store') }}" method="POST">
+                                                @csrf
                                                 <div class="space-y-1 mb-6">
-                                                    <label for="username" class="font-semibold text-gray-500">Name</label>
-                                                    <input class="form-input" type="email" id="username" required=""
-                                                        placeholder="Michael Zenaty">
+                                                    <label for="name" class="font-semibold text-gray-500">Name</label>
+                                                    <input class="form-input" type="text" id="name" name="name"
+                                                        placeholder="Name">
                                                 </div>
 
                                                 <div class="space-y-1 mb-6">
-                                                    <label for="emailaddress" class="font-semibold text-gray-500">Email
-                                                        address</label>
-                                                    <input class="form-input" type="email" id="emailaddress"
-                                                        required="" placeholder="john@deo.com">
+                                                    <label for="kanban_id" class="font-semibold text-gray-500">
+                                                        Project
+                                                    </label>
+                                                    <input class="form-input" name="kanban_id" type="hidden" id="kanban_id"
+                                                        placeholder="{{ $kanban->name }}" value="{{ $kanban->id }}">
+                                                    <input class="form-input" type="text" id="kanban_id"
+                                                        placeholder="{{ $kanban->name }}" value="{{ $kanban->name }}"
+                                                        disabled>
                                                 </div>
 
                                                 <div class="space-y-1 mb-6">
-                                                    <label for="password"
-                                                        class="font-semibold text-gray-500">Password</label>
-                                                    <input class="form-input" type="password" required="" id="password"
-                                                        placeholder="Enter your password">
+                                                    <label for="user_id" class="font-semibold text-gray-500">Nama
+                                                        User</label>
+                                                    <select class="form-select" id="user_id" name="user_id">
+                                                        <option value="">Pilih Nama User</option>
+
+                                                        @forelse($users as $user)
+                                                            <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                                        @empty
+                                                            <option value="">Tidak ada pengguna tersedia</option>
+                                                        @endforelse
+                                                    </select>
                                                 </div>
+
+                                                <div class="space-y-1 mb-6">
+                                                    <label for="description"
+                                                        class="font-semibold text-gray-500">Deskripsi</label>
+                                                    <textarea class="form-input" id="description" name="description" rows="4" placeholder="Deskripsi tugas"></textarea>
+                                                </div>
+
 
                                                 <div class="mb-6">
                                                     <div class="flex items-center">
@@ -86,11 +103,12 @@
                                                 </div>
 
                                                 <div class="mb-6 text-center">
-                                                    <a href="{{ route('kanban.index') }}" class="btn bg-danger text-white"
-                                                        type="button">Cancel</a>
+                                                    <button class="btn bg-danger text-white" data-fc-dismiss type="button"
+                                                        data-bs-dismiss="modal">Cancel</button>
                                                     <button class="btn bg-primary text-white" type="submit">Tambah
                                                         Tugas</button>
                                                 </div>
+
                                             </form>
                                         </div>
                                     </div>
@@ -117,7 +135,6 @@
                                     <div class="p-6">
 
                                         <div class="flex justify-between items-center">
-                                            <small>18 Jul 2023</small>
                                             <span
                                                 class="inline-flex items-center gap-1.5 px-1 rounded-md text-xs font-medium bg-danger/10 text-danger">High</span>
                                         </div>
@@ -126,18 +143,21 @@
                                         <h5 class="my-2">
                                             <a href="#" data-fc-type="modal" data-fc-target="task-detail-modal"
                                                 type="button"
-                                                class="text-base text-gray-700 dark:text-slate-400 font-medium">iOS App home
-                                                page</a>
+                                                class="text-base text-gray-700 dark:text-slate-400 font-medium">
+                                                {{ $task->name }}
+                                            </a>
                                         </h5>
 
                                         <p class="space-x-3">
                                             <span class="text-nowrap mb-2">
-                                                <i class="ri-briefcase-2-line text-gray-500 dark:text-gray-400"></i> iOS
+                                                <i class="ri-briefcase-2-line text-gray-500 dark:text-gray-400"></i>
+                                                {{ $task->kanban->project->name }}
                                             </span>
-                                            <span class="text-nowrap mb-2">
+                                            {{-- <span class="text-nowrap mb-2">
                                                 <i class="ri-discuss-line text-gray-500 dark:text-gray-400"></i>
-                                                <b class="text-gray-500 dark:text-gray-400">74</b> Comments
-                                            </span>
+                                                <b class="text-gray-500 dark:text-gray-400">Deskripsi :</b>
+                                                {{ $task->description }}
+                                            </span> --}}
                                         </p> <!-- space end -->
 
                                         <div class="mt-5">
@@ -145,66 +165,19 @@
                                                 <div class="-me-3">
                                                     <a href="javascript: void(0);" data-fc-type="tooltip"
                                                         data-fc-placement="top">
-                                                        <img src="assets/images/users/avatar-1.jpg" alt=""
+                                                        <img src="{{ $task->user->photo_profile }}"
                                                             class="rounded-full h-8 w-8 hover:-translate-y-0.5 transition-all duration-200">
                                                     </a>
                                                     <div class="bg-slate-700 hidden px-2 py-1 rounded transition-all text-white opacity-0 z-50"
                                                         role="tooltip">
-                                                        Tosha
+                                                        {{ $task->user->name }}
                                                         <div data-fc-arrow
                                                             class="bg-slate-700 w-2.5 h-2.5 rotate-45 -z-10 rounded-[1px]">
                                                         </div>
                                                     </div>
                                                 </div> <!-- avatar-icon end -->
 
-                                                <div class="-me-3">
-                                                    <a href="javascript: void(0);" data-fc-type="tooltip"
-                                                        data-fc-placement="top">
-                                                        <img src="assets/images/users/avatar-5.jpg" alt=""
-                                                            class="rounded-full h-8 w-8 hover:-translate-y-0.5 transition-all duration-200">
-                                                    </a>
-                                                    <div class="bg-slate-700 hidden px-2 py-1 rounded transition-all text-white opacity-0 z-50"
-                                                        role="tooltip">
-                                                        Brain
-                                                        <div data-fc-arrow
-                                                            class="bg-slate-700 w-2.5 h-2.5 rotate-45 -z-10 rounded-[1px]">
-                                                        </div>
-                                                    </div>
-                                                </div> <!-- avatar-icon end -->
 
-                                                <div class="-me-3">
-                                                    <a href="javascript: void(0);" data-fc-type="tooltip"
-                                                        data-fc-placement="top">
-                                                        <div
-                                                            class="bg-success text-white font-medium flex items-center justify-center rounded-full h-8 w-8 hover:-translate-y-0.5 transition-all duration-200">
-                                                            K
-                                                        </div>
-                                                    </a>
-                                                    <div class="bg-slate-700 hidden px-2 py-1 rounded transition-all text-white opacity-0 z-50"
-                                                        role="tooltip">
-                                                        Hooker
-                                                        <div data-fc-arrow
-                                                            class="bg-slate-700 w-2.5 h-2.5 rotate-45 -z-10 rounded-[1px]">
-                                                        </div>
-                                                    </div>
-                                                </div> <!-- avatar-icon end -->
-
-                                                <div class="-me-3">
-                                                    <a href="javascript: void(0);" data-fc-type="tooltip"
-                                                        data-fc-placement="top">
-                                                        <div
-                                                            class="bg-primary text-white font-medium flex items-center justify-center rounded-full h-8 w-8 hover:-translate-y-0.5 transition-all duration-200">
-                                                            9+
-                                                        </div>
-                                                    </a>
-                                                    <div class="bg-slate-700 hidden px-2 py-1 rounded transition-all text-white opacity-0 z-50"
-                                                        role="tooltip">
-                                                        More +
-                                                        <div data-fc-arrow
-                                                            class="bg-slate-700 w-2.5 h-2.5 rotate-45 -z-10 rounded-[1px]">
-                                                        </div>
-                                                    </div>
-                                                </div> <!-- avatar-icon end -->
                                             </div> <!-- flex end -->
                                         </div>
 
@@ -214,6 +187,7 @@
                                 {{-- {{ dd($todo) }} --}}
                                 Kosong
                             @endforelse
+                            <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>
 
 
                         </div> <!-- end company-list-1-->

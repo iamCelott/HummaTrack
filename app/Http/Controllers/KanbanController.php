@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Contracts\Interfaces\KanbanInterface;
+use App\Contracts\Interfaces\TaskInterface;
+use App\Contracts\Interfaces\UserInterface;
 use App\Models\Kanban;
 use App\Services\KanbanService;
 use Illuminate\Contracts\View\View;
@@ -13,11 +15,13 @@ class KanbanController extends Controller
 
     private KanbanInterface $kanban;
     private KanbanService $service;
+    private UserInterface $user;
 
-    public function __construct(KanbanInterface $kanban, KanbanService $service)
+    public function __construct(KanbanInterface $kanban, KanbanService $service, UserInterface $user)
     {
         $this->kanban = $kanban;
         $this->service = $service;
+        $this->user = $user;
     }
     /**
      * Display a listing of the resource.
@@ -49,8 +53,9 @@ class KanbanController extends Controller
      * Display the specified resource.
      */
     public function show(Kanban $kanban)
-    {   
-        return view('pages.kanban.index', compact('kanban'));
+    {
+        $users = $this->user->get();
+        return view('pages.kanban.index', compact('kanban', 'users'));
     }
 
     /**

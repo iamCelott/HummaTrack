@@ -25,6 +25,11 @@ class UserRepository extends BaseRepository implements UserInterface
         $this->model = $user;
         $this->service = $service;
     }
+
+    public function get(): mixed
+    {
+        return $this->model->query()->get();
+    }
     /**
      * Method search
      *
@@ -34,10 +39,10 @@ class UserRepository extends BaseRepository implements UserInterface
      */
     public function search(Request $request): mixed
     {
-        // $search = $request->search;
-        // return $this->model->query()->when($search, function ($query) use ($search) {
-        //     $query->whereLike('name', '%' . $search . '%');
-        // })->get();
+        $search = $request->search;
+        return $this->model->query()->when($search, function ($query) use ($search) {
+            $query->whereLike('name', '%' . $search . '%');
+        })->get();
         return $this->model->query()->search($request);
     }
     /**
