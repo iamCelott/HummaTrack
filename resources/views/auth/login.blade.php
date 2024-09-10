@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Login | Attex - Responsive Tailwind CSS 3 Admin Dashboard</title>
+    <title>HummaTrack - Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta
         content="A fully featured admin theme which can be used to build CRM, CMS, etc., Tailwind, TailwindCSS, Tailwind CSS 3"
