@@ -88,7 +88,19 @@
                         <div class="">
                             <label for="description" class="mb-2 block">Project Description <span
                                     class="text-red-500">*</span></label>
-                            <textarea name="description" id="project-description" class="form-input rounded-md" rows="8" required></textarea>
+                            {{-- <textarea name="description" id="project-description" class="form-input rounded-md" rows="8" required></textarea> --}}
+                            <textarea name="description" id="description" class="ckeditor" rows="8"></textarea>
+
+                            <script src="https://cdn.ckeditor.com/ckeditor5/35.0.1/classic/ckeditor.js"></script>
+                            <script>
+                                document.addEventListener("DOMContentLoaded", function() {
+                                    ClassicEditor
+                                        .create(document.querySelector('.ckeditor'))
+                                        .catch(error => {
+                                            console.error(error);
+                                        });
+                                });
+                            </script>
                         </div>
 
                         <div class="grid md:grid-cols-2 gap-3">
