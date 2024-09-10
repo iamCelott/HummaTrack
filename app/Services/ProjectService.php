@@ -20,20 +20,20 @@ class ProjectService
         return $this->statusMapping[$status] ?? null;
     }
 
-    public function handleImageImage($file, $directory)
-    {
-        return $this->upload_image($file, $directory);
-    }
+    // public function handleImageImage($file, $directory)
+    // {
+    //     return $this->upload_image($file, $directory);
+    // }
 
-    public function handleUpdateImage($file, $path, $directory)
-    {
-        return $this->update_image($file, $path, $directory);
-    }
+    // public function handleUpdateImage($file, $path, $directory)
+    // {
+    //     return $this->update_image($file, $path, $directory);
+    // }
 
-    public function handleDeleteImage($path)
-    {
-        return $this->delete_image($path);
-    }
+    // public function handleDeleteImage($path)
+    // {
+    //     return $this->delete_image($path);
+    // }
 
     public function create_kanban($name, $project_id, $description)
     {

@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use App\Enums\ProjectLevelRequirement;
 use App\Enums\ProjectStatus;
+use App\Enums\ProjectType;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -25,10 +26,11 @@ class ProjectRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            // 'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'name' => ['required', 'string', 'max:255', Rule::unique('projects', 'name')->ignore($this->route('project'))],
             'start_date' => 'required|date',
             'end_date' => 'required|date|after:start_date',
+            'type' => ['required', Rule::in(ProjectType::Individual->value, ProjectType::Team->value)],
             'status' => ['nullable', Rule::in(ProjectStatus::NotStarted->value, ProjectStatus::InProgress->value, ProjectStatus::Completed->value, ProjectStatus::OnHold->value)],
             'description' => 'nullable|string',
         ];

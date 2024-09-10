@@ -1,9 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-
     <div class="grid lg:grid-cols-4 gap-6">
-        <div class="col-span-1 flex flex-col gap-6">
+        {{-- <div class="col-span-1 flex flex-col gap-6">
             <div class="card p-6">
                 <div class="flex justify-between items-center mb-4">
                     <h4 class="card-title">Add Avatar Images</h4>
@@ -11,52 +10,52 @@
                         <i class="ri-add-line"></i>
                     </div>
                 </div>
-        
+
                 <!-- Input gambar -->
                 <form action="" method="post"></form>
                 <div class="mb-4">
-                    <input id="imageInput" name="image" type="file" multiple="multiple" 
-                           class="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-slate-100 file:text-slate-700 hover:file:bg-slate-200" 
+                    <input id="imageInput" name="image" type="file" multiple="multiple"
+                           class="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-slate-100 file:text-slate-700 hover:file:bg-slate-200"
                            onchange="previewImages(event)">
                 </div>
-        
+
                 <!-- Penampung untuk pratinjau gambar -->
                 <div id="imagePreview" class="grid grid-cols-2 md:grid-cols-3 gap-4 mt-4">
                     <!-- Gambar akan ditampilkan di sini -->
                 </div>
             </div>
         </div>
-        
+
         <script>
             function previewImages(event) {
                 const files = event.target.files;
                 const previewContainer = document.getElementById('imagePreview');
                 previewContainer.innerHTML = ''; // Kosongkan kontainer preview sebelum menambahkan gambar baru
-        
+
                 for (let i = 0; i < files.length; i++) {
                     const file = files[i];
-        
+
                     // Hanya lakukan pratinjau untuk file yang bertipe gambar
                     if (file.type.startsWith('image/')) {
                         const reader = new FileReader();
-        
+
                         reader.onload = function(e) {
                             const imgElement = document.createElement('div');
                             imgElement.className = "relative";
                             imgElement.innerHTML = `
                                 <img src="${e.target.result}" class="image-preview object-cover rounded-lg shadow-lg">
                             `;
-        
+
                             // Tambahkan gambar ke penampung
                             previewContainer.appendChild(imgElement);
                         };
-        
+
                         reader.readAsDataURL(file);
                     }
                 }
             }
-        </script>
-        
+        </script> --}}
+
         <style>
             .image-preview {
                 max-width: 260px;
@@ -65,8 +64,8 @@
                 height: auto;
             }
         </style>
-              
-        
+
+
 
         <div class="lg:col-span-3 space-y-6">
             <div class="card p-6">

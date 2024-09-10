@@ -2,6 +2,7 @@
 
 use App\Enums\ProjectLevelRequirement;
 use App\Enums\ProjectStatus;
+use App\Enums\ProjectType;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -18,6 +19,10 @@ return new class extends Migration
             $table->string('name')->unique();
             $table->date('start_date');
             $table->date('end_date');
+            $table->enum('type', [
+                ProjectType::Individual->value,
+                ProjectType::Team->value
+            ]);
             $table->enum('status', [
                 ProjectStatus::NotStarted->value,
                 ProjectStatus::InProgress->value,
