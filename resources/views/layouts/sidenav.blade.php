@@ -102,6 +102,16 @@
                     <i class="ri-add-line"></i>
                 </a>
             </li>
+
+            <li class="menu-item">
+                {{-- href="javascript:void(0)" data-fc-type="collapse" --}}
+                <a href="{{ route('users.index') }}" class="menu-link">
+                    <span class="menu-icon">
+                        <i class="ri-user-line"></i>
+                    </span>
+                    <span class="menu-text"> Pengguna </span>
+                </a>
+            </li>
             {{-- <li class="menu-item">
                 <a href="javascript:void(0)" data-fc-type="collapse" class="menu-link">
                     <span class="menu-icon">
@@ -131,7 +141,7 @@
             </li> --}}
 
             <li class="menu-item">
-                <a href="" class="menu-link">
+                <a class="menu-link">
                     <span class="menu-icon">
                         <i class="ri-calendar-event-line"></i>
                     </span>
