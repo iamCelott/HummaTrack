@@ -39,7 +39,7 @@ class TaskController extends Controller
      */
     public function store(TaskRequest $request)
     {
-        $this->task->store($request->validate());
+        $this->task->store($request->all());
         return redirect()->back()->with('success', 'Berhasil Menambah Tugas');
     }
 
