@@ -82,7 +82,7 @@
                         <i class="ri-home-4-line"></i>
                     </span>
                     <span class="menu-text"> Dashboard </span>
-                    <span class="badge bg-success rounded-full">2</span>
+                    {{-- <span class="badge bg-success rounded-full">2</span> --}}
                 </a>
             </li>
 
@@ -117,11 +117,11 @@
             </li>
 
             <li class="menu-item">
-                <a href="apps-calendar.html" class="menu-link">
+                <a href="" class="menu-link">
                     <span class="menu-icon">
                         <i class="ri-calendar-event-line"></i>
                     </span>
-                    <span class="menu-text"> Calendar </span>
+                    <span class="menu-text"> Timeline </span>
                 </a>
             </li>
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Contracts\Interfaces\UserInterface;
+use App\Models\User;
 use App\Services\UserService;
 use Illuminate\Http\Request;
 
@@ -21,7 +22,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        
+        $users =  User::all();
+        return view('pages.user.index', compact('users')); 
     }
 
     /**
