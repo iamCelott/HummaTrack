@@ -2,9 +2,14 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\ProjectController;
+use App\Http\Controllers\Api\Auth\AuthController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-Route::apiResource('/projects', App\Http\Controllers\Api\ProjectController::class);
+Route::apiResource('/projects', ProjectController::class);
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
+// Route::apiResource('/login', App\Http\Controllers\Api\Auth\LoginController::class);
