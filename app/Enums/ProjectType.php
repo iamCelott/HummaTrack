@@ -4,6 +4,6 @@ namespace App\Enums;
 
 enum ProjectType: string
 {
-    case Solo = 'solo';
+    case Individual = 'individual';
     case Team = 'team';
 }

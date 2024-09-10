@@ -5489,7 +5489,6 @@ input[data-switch="info"]:checked + label {
     position: relative;
 }
 .kanban-board:before {
-    content: "No Tasks";
     position: absolute;
     inset-inline-start: 50%;
     z-index: -10;

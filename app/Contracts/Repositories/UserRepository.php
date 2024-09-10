@@ -8,6 +8,7 @@ use App\Models\About;
 use App\Models\User;
 use App\Services\UserService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserRepository extends BaseRepository implements UserInterface
 {
@@ -42,8 +43,7 @@ class UserRepository extends BaseRepository implements UserInterface
         $search = $request->search;
         return $this->model->query()->when($search, function ($query) use ($search) {
             $query->whereLike('name', '%' . $search . '%');
-        })->get();
-        return $this->model->query()->search($request);
+        })->where('id', '!=', Auth::user()->id)->get();
     }
     /**
      * Method store

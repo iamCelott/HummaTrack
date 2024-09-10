@@ -35,13 +35,14 @@ class ProjectController extends Controller
         try {
             $request->validated();
 
-            $imagePath = $request->image->store('project_images', 'public');
+            // $imagePath = $request->image->store('project_images', 'public');
 
             $data = Project::create([
-                'image' => $imagePath,
+                // 'image' => $imagePath,
                 'name' => $request->name,
                 'start_date' => $request->start_date,
                 'end_date' => $request->end_date,
+                'type' => $request->type,
                 'description' => $request->description,
             ]);
 
@@ -88,15 +89,16 @@ class ProjectController extends Controller
         try {
             $request->validated();
 
-            $imagePath = $request->image->store('project_images', 'public');
+            // $imagePath = $request->image->store('project_images', 'public');
 
             $project = Project::find($id);
 
             $data = $project->update([
-                'image' => "",
+                // 'image' => "",
                 'name' => $request->name,
                 'start_date' => $request->start_date,
                 'end_date' => $request->end_date,
+                'type' => $request->type,
                 'description' => $request->description,
             ]);
 

@@ -48,9 +48,9 @@ class ProjectRepository extends BaseRepository implements ProjectInterface
      */
     public function store(array $data): mixed
     {
-        if (isset($data['image'])) {
-            $data['image'] = $this->service->handleImageImage($data['image'], 'project_images');
-        }
+        // if (isset($data['image'])) {
+        //     $data['image'] = $this->service->handleImageImage($data['image'], 'project_images');
+        // }
 
         $project = $this->model->query()->create($data);
 
@@ -79,10 +79,10 @@ class ProjectRepository extends BaseRepository implements ProjectInterface
      */
     public function update(mixed $id, array $data): mixed
     {
-        $project = Project::find($id);
-        if (isset($data['image'])) {
-            $data['image'] = $this->service->handleUpdateImage($data['image'], $project->image, 'project_images');
-        }
+        // $project = Project::find($id);
+        // if (isset($data['image'])) {
+        //     $data['image'] = $this->service->handleUpdateImage($data['image'], $project->image, 'project_images');
+        // }
         return $this->show($id)->update($data);
     }
     /**
@@ -94,8 +94,8 @@ class ProjectRepository extends BaseRepository implements ProjectInterface
      */
     public function delete(mixed $id): mixed
     {
-        $project = $this->show($id);
-        $this->service->handleDeleteImage($project->image);
+        // $project = $this->show($id);
+        // $this->service->handleDeleteImage($project->image);
         return $this->show($id)->delete();
     }
 }
