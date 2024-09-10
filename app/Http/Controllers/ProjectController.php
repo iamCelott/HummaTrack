@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Contracts\Interfaces\KanbanInterface;
 use App\Contracts\Interfaces\ProjectInterface;
 use App\Http\Requests\ProjectRequest;
 use App\Models\Project;
@@ -13,10 +14,12 @@ class ProjectController extends Controller
 {
     private ProjectInterface $project;
     private ProjectService $service;
+    private KanbanInterface $kanban;
 
-    public function __construct(ProjectInterface $project, ProjectService $service)
+    public function __construct(ProjectInterface $project, ProjectService $service, KanbanInterface $kanban)
     {
         $this->project = $project;
+        $this->kanban = $kanban;
         $this->service = $service;
     }
     /**
@@ -25,24 +28,24 @@ class ProjectController extends Controller
     public function index(Request $request): View
     {
         $projects = $this->project->search($request);
-        return view('pages.project', compact('projects'));
+        return view('pages.project.index', compact('projects'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request): View
     {
-        //
+        return view('pages.project.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(ProjectRequest $request)
+    public function store(ProjectRequest $request, Project $project)
     {
         $this->project->store($request->validated());
-        return redirect()->back()->with('success', 'Berhasil menambah proyek baru.');
+        return redirect()->route('projects.index')->with('success', 'Berhasil menambah proyek baru.');
     }
 
     /**

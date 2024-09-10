@@ -2,29 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use App\Contracts\Interfaces\UserInterface;
-use App\Models\User;
-use App\Services\UserService;
+use App\Contracts\Interfaces\TeamProjectInterface;
+use App\Models\TeamProject;
+use App\Services\TeamProjectService;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class TeamProjectController extends Controller
 {
-    private UserInterface $user;
-    private UserService $service;
+    private TeamProjectInterface $TeamProject;
+    private TeamProjectService $TeamProjectService;
 
-    public function __construct(UserInterface $user, UserService $service)
+    public function __construct(TeamProjectInterface $TeamProject, TeamProjectService $TeamProjectService)
     {
-        $this->user = $user;
-        $this->service = $service;
+        $this->TeamProject = $TeamProject;
+        $this->TeamProjectService = $TeamProjectService;
     }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        
-        $users =  User::all();
-        return view('pages.user.index', compact('users')); 
+        //
     }
 
     /**
@@ -46,7 +44,7 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(TeamProject $teamProject)
     {
         //
     }
@@ -54,7 +52,7 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(TeamProject $teamProject)
     {
         //
     }
@@ -62,7 +60,7 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, TeamProject $teamProject)
     {
         //
     }
@@ -70,7 +68,7 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(TeamProject $teamProject)
     {
         //
     }

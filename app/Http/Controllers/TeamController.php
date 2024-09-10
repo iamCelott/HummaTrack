@@ -2,21 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Contracts\Interfaces\TaskInterface;
-use App\Http\Requests\TaskRequest;
-use App\Models\task;
-use App\Services\TaskService;
+use App\Contracts\Interfaces\TeamInterface;
+use App\Models\Team;
+use App\Services\TeamService;
 use Illuminate\Http\Request;
 
-class TaskController extends Controller
+class TeamController extends Controller
 {
-    private TaskInterface $task;
-    private TaskService $service;
+    private TeamInterface $team;
+    private TeamService $TeamService;
 
-    public function __construct(TaskInterface $task, TaskService $service)
+    public function __construct(TeamInterface $team, TeamService $TeamService)
     {
-        $this->task = $task;
-        $this->service = $service;
+        $this->team = $team;
+        $this->TeamService = $TeamService;
     }
     /**
      * Display a listing of the resource.
@@ -37,16 +36,15 @@ class TaskController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(TaskRequest $request)
+    public function store(Request $request)
     {
-        $this->task->store($request->validate());
-        return redirect()->back()->with('success', 'Berhasil Menambah Tugas');
+        //
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(task $task)
+    public function show(Team $team)
     {
         //
     }
@@ -54,7 +52,7 @@ class TaskController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(task $task)
+    public function edit(Team $team)
     {
         //
     }
@@ -62,7 +60,7 @@ class TaskController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, task $task)
+    public function update(Request $request, Team $team)
     {
         //
     }
@@ -70,7 +68,7 @@ class TaskController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(task $task)
+    public function destroy(Team $team)
     {
         //
     }

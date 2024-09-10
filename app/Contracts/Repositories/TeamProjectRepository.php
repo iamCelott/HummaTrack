@@ -3,26 +3,26 @@
 namespace App\Contracts\Repositories;
 
 use App\Contracts\Interfaces\AboutInterface;
-use App\Contracts\Interfaces\TaskInterface;
+use App\Contracts\Interfaces\UserInterface;
 use App\Models\About;
-use App\Models\Task;
-use App\Services\TaskService;
+use App\Models\User;
+use App\Services\UserService;
 use Illuminate\Http\Request;
 
-class TaskRepository extends BaseRepository implements TaskInterface
+class TeamProjectRepository extends BaseRepository implements UserInterface
 {
     protected $service;
     /**
      * Method __construct
      *
-     * @param Task $task [explicite description]
-     * @param Taskservice $service
+     * @param User $user [explicite description]
+     * @param UserService $service
      *
      * @return void
      */
-    public function __construct(Task $task, TaskService $service)
+    public function __construct(User $user, UserService $service)
     {
-        $this->model = $task;
+        $this->model = $user;
         $this->service = $service;
     }
     /**
@@ -32,14 +32,13 @@ class TaskRepository extends BaseRepository implements TaskInterface
      *
      * @return mixed
      */
-    public function get(Request $request): mixed
+    public function search(Request $request): mixed
     {
         // $search = $request->search;
         // return $this->model->query()->when($search, function ($query) use ($search) {
         //     $query->whereLike('name', '%' . $search . '%');
         // })->get();
-
-        return $this->model->query()->get();
+        return $this->model->query()->search($request);
     }
     /**
      * Method store

@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Kanban;
 use App\Traits\StoreImageTrait;
 
 class ProjectService
@@ -32,5 +33,14 @@ class ProjectService
     public function handleDeleteImage($path)
     {
         return $this->delete_image($path);
+    }
+
+    public function create_kanban($name, $project_id, $description)
+    {
+        return Kanban::create([
+            "name" => $name,
+            "project_id" => $project_id,
+            "description" => $description,
+        ]);
     }
 }

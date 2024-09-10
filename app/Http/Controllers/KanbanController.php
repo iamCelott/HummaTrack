@@ -24,7 +24,9 @@ class KanbanController extends Controller
      */
     public function index(Request $request)
     {
-        //
+
+        $kanbans = $this->kanban->get();
+        return view('pages.kanban.index');
     }
 
     /**
@@ -47,8 +49,8 @@ class KanbanController extends Controller
      * Display the specified resource.
      */
     public function show(Kanban $kanban)
-    {
-        //
+    {   
+        return view('pages.kanban.index', compact('kanban'));
     }
 
     /**

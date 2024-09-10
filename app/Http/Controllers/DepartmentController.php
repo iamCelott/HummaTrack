@@ -2,22 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Contracts\Interfaces\TaskInterface;
-use App\Http\Requests\TaskRequest;
-use App\Models\task;
-use App\Services\TaskService;
+use App\Models\Department;
 use Illuminate\Http\Request;
 
-class TaskController extends Controller
+class DepartmentController extends Controller
 {
-    private TaskInterface $task;
-    private TaskService $service;
-
-    public function __construct(TaskInterface $task, TaskService $service)
-    {
-        $this->task = $task;
-        $this->service = $service;
-    }
     /**
      * Display a listing of the resource.
      */
@@ -37,16 +26,15 @@ class TaskController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(TaskRequest $request)
+    public function store(Request $request)
     {
-        $this->task->store($request->validate());
-        return redirect()->back()->with('success', 'Berhasil Menambah Tugas');
+        //
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(task $task)
+    public function show(Department $department)
     {
         //
     }
@@ -54,7 +42,7 @@ class TaskController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(task $task)
+    public function edit(Department $department)
     {
         //
     }
@@ -62,7 +50,7 @@ class TaskController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, task $task)
+    public function update(Request $request, Department $department)
     {
         //
     }
@@ -70,7 +58,7 @@ class TaskController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(task $task)
+    public function destroy(Department $department)
     {
         //
     }
