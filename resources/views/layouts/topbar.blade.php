@@ -334,28 +334,7 @@
                 <i class="ri-account-circle-line text-lg align-middle"></i>
                 <span>My Account</span>
             </a>
-
-            <!-- item-->
-            <a href="pages-profile.html"
-                class="flex items-center gap-2 py-1.5 px-4 text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300">
-                <i class="ri-settings-4-line text-lg align-middle"></i>
-                <span>Settings</span>
-            </a>
-
-            <!-- item-->
-            <a href="pages-faqs.html"
-                class="flex items-center gap-2 py-1.5 px-4 text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300">
-                <i class="ri-customer-service-2-line text-lg align-middle"></i>
-                <span>Support</span>
-            </a>
-
-            <!-- item-->
-            <a href="auth-lock-screen.html"
-                class="flex items-center gap-2 py-1.5 px-4 text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300">
-                <i class="ri-lock-password-line text-lg align-middle"></i>
-                <span>Lock Screen</span>
-            </a>
-
+            
             <!-- item-->
             <label for="logout" class="cursor-pointer flex items-center justify-start gap-2 py-1.5 px-4 text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300">
                 <form method="POST" action="{{ route('logout') }}"

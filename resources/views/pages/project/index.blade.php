@@ -25,14 +25,14 @@
                     <div class="card-header">
                         <div class="flex justify-between items-center">
                             <h5 class="card-title">{{ $project->name }}</h5>
-                            <div class="bg-success text-xs text-white rounded-md py-1 px-1.5 font-medium" role="alert">
-                                {{-- {{ dd($project->status) }} --}}
-                                @if ($project->status->value === 'not_started')
-                                <span>Belum di Mulai</span>
-                                @else
-                                <span>belum ada status</span>
-                                @endif
-                            </div>
+                                <div class="bg-success text-xs text-white rounded-md py-1 px-1.5 font-medium" role="alert">
+                                    {{-- {{ dd($project->status) }} --}}
+                                    @if ($project->status->value === 'not_started')
+                                    <span>Belum di Mulai</span>
+                                    @else
+                                    <span>belum ada status</span>
+                                    @endif
+                             </div>
                         </div>
                     </div>
                     <div class="flex flex-col">
