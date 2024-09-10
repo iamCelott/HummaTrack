@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Contracts\Interfaces\TaskInterface;
+use App\Http\Requests\TaskRequest;
 use App\Models\task;
 use App\Services\TaskService;
 use Illuminate\Http\Request;
@@ -36,9 +37,10 @@ class TaskController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(TaskRequest $request)
     {
-        //
+        $this->task->store($request->validate());
+        return redirect()->back()->with('success', 'Berhasil Menambah Tugas');
     }
 
     /**

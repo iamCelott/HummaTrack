@@ -16,7 +16,7 @@
                     <i class="ri-arrow-right-s-line text-base text-slate-400 rtl:rotate-180"></i>
                     <a href="#" class="text-sm font-medium text-slate-700 dark:text-slate-400">Kanban</a>
                 </div>
-{{-- 
+                {{--
                 <div class="flex items-center gap-2">
                     <i class="ri-arrow-right-s-line text-base text-slate-400 rtl:rotate-180"></i>
                     <a href="#" class="text-sm font-medium text-slate-700 dark:text-slate-400"
@@ -33,306 +33,188 @@
                     <div
                         class="flex flex-col flex-shrink-0 w-80 border rounded-md border-gray-200 dark:border-gray-700 p-4">
 
-                        
+
                         <div class="rounded-md">
-                            <h5 class=" mb-4">TODO (3) <button href="" type="button" data-fc-type="modal" class="relative top-4 right-4 bg-success text-white px-3 py-1 rounded-md hover:bg-success" style="margin-left: 140px;">
-                                Task <i class="ri-add-line"></i>
-                            </button>
-                            {{-- <button class="btn bg-success relative top-4 right-4 bg-success text-white px-3 py-1 rounded-md hover:bg-success" data-fc-type="modal" type="button"> Sign Up Modal </button> --}}
+                            <p>{{ $kanban->name }}</p>
+                            <h5 class=" mb-4">TODO (3) <button href="" type="button" data-fc-type="modal"
+                                    class="relative top-4 right-4 bg-success text-white px-3 py-1 rounded-md hover:bg-success"
+                                    style="margin-left: 140px;">
+                                    Task <i class="ri-add-line"></i>
+                                </button>
+                                {{-- <button class="btn bg-success relative top-4 right-4 bg-success text-white px-3 py-1 rounded-md hover:bg-success" data-fc-type="modal" type="button"> Sign Up Modal </button> --}}
 
-                            <div class="w-full h-full fixed top-0 left-0 z-50 transition-all duration-500 hidden overflow-y-auto">
-                                <div class="-translate-y-5 fc-modal-open:translate-y-0 fc-modal-open:opacity-100 opacity-0 duration-300 ease-in-out transition-all sm:max-w-lg sm:w-full m-3 sm:mx-auto flex flex-col bg-white shadow-sm rounded dark:bg-gray-800">
-                                    <div class="p-4 overflow-y-auto">
-                                        <div class="p-9">
-                                            <h2 class="text-lg font-semibold text-gray-900 dark:text-slate-200">Tambah Tugas Baru</h2>
-                                        </div>
-
-                                        <form class="px-6" action="#">
-
-                                            <div class="space-y-1 mb-6">
-                                                <label for="username" class="font-semibold text-gray-500">Name</label>
-                                                <input class="form-input" type="email" id="username" required="" placeholder="Michael Zenaty">
+                                <div
+                                    class="w-full h-full fixed top-0 left-0 z-50 transition-all duration-500 hidden overflow-y-auto">
+                                    <div
+                                        class="-translate-y-5 fc-modal-open:translate-y-0 fc-modal-open:opacity-100 opacity-0 duration-300 ease-in-out transition-all sm:max-w-lg sm:w-full m-3 sm:mx-auto flex flex-col bg-white shadow-sm rounded dark:bg-gray-800">
+                                        <div class="p-4 overflow-y-auto">
+                                            <div class="p-9">
+                                                <h2 class="text-lg font-semibold text-gray-900 dark:text-slate-200">Tambah
+                                                    Tugas Baru</h2>
                                             </div>
 
-                                            <div class="space-y-1 mb-6">
-                                                <label for="emailaddress" class="font-semibold text-gray-500">Email address</label>
-                                                <input class="form-input" type="email" id="emailaddress" required="" placeholder="john@deo.com">
-                                            </div>
+                                            <form class="px-6" action="#">
 
-                                            <div class="space-y-1 mb-6">
-                                                <label for="password" class="font-semibold text-gray-500">Password</label>
-                                                <input class="form-input" type="password" required="" id="password" placeholder="Enter your password">
-                                            </div>
-
-                                            <div class="mb-6">
-                                                <div class="flex items-center">
-                                                    <input type="checkbox" class="form-checkbox rounded text-primary" id="checkbox-signin">
-                                                    <label class="ms-2 text-sm font-medium text-gray-500" for="checkbox-signin">I accept <a href="#">Terms and Conditions</a></label>
+                                                <div class="space-y-1 mb-6">
+                                                    <label for="username" class="font-semibold text-gray-500">Name</label>
+                                                    <input class="form-input" type="email" id="username" required=""
+                                                        placeholder="Michael Zenaty">
                                                 </div>
-                                            </div>
 
-                                            <div class="mb-6 text-center">
-                                                <a href="{{  route('kanban.index') }}" class="btn bg-danger text-white" type="button">Cancel</a>
-                                                <button class="btn bg-primary text-white" type="submit">Tambah Tugas</button>
-                                            </div>
-                                        </form>
+                                                <div class="space-y-1 mb-6">
+                                                    <label for="emailaddress" class="font-semibold text-gray-500">Email
+                                                        address</label>
+                                                    <input class="form-input" type="email" id="emailaddress"
+                                                        required="" placeholder="john@deo.com">
+                                                </div>
+
+                                                <div class="space-y-1 mb-6">
+                                                    <label for="password"
+                                                        class="font-semibold text-gray-500">Password</label>
+                                                    <input class="form-input" type="password" required="" id="password"
+                                                        placeholder="Enter your password">
+                                                </div>
+
+                                                <div class="mb-6">
+                                                    <div class="flex items-center">
+                                                        <input type="checkbox" class="form-checkbox rounded text-primary"
+                                                            id="checkbox-signin">
+                                                        <label class="ms-2 text-sm font-medium text-gray-500"
+                                                            for="checkbox-signin">I accept <a href="#">Terms and
+                                                                Conditions</a></label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="mb-6 text-center">
+                                                    <a href="{{ route('kanban.index') }}" class="btn bg-danger text-white"
+                                                        type="button">Cancel</a>
+                                                    <button class="btn bg-primary text-white" type="submit">Tambah
+                                                        Tugas</button>
+                                                </div>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
                         </div>
                         </h5>
 
-                        
-                        
+
+
                         <div class="flex flex-col gap-4 kanban-board custom-scroll overflow-x-hidden overflow-y-auto px-1 h-full"
                             id="kanbanborad-one">
 
 
                             <!-- Task Item -->
-                            <div class="card cursor-pointer">
-                                <div class="p-6">
+                            {{-- {{ dd($kanban->task) }} --}}
+                            @php
+                                $to_do = $kanban->task()->where('status', 'to_do')->get();
+                                $in_progres = $kanban->task()->where('status', 'in_progres')->get();
+                                $review = $kanban->task()->where('status', 'review')->get();
+                                $done = $kanban->task()->where('status', 'done')->get();
+                            @endphp
+                            @forelse ($to_do as $task)
+                                <div class="card cursor-pointer">
+                                    <div class="p-6">
 
-                                    <div class="flex justify-between items-center">
-                                        <small>18 Jul 2023</small>
-                                        <span
-                                            class="inline-flex items-center gap-1.5 px-1 rounded-md text-xs font-medium bg-danger/10 text-danger">High</span>
+                                        <div class="flex justify-between items-center">
+                                            <small>18 Jul 2023</small>
+                                            <span
+                                                class="inline-flex items-center gap-1.5 px-1 rounded-md text-xs font-medium bg-danger/10 text-danger">High</span>
+                                        </div>
+
+
+                                        <h5 class="my-2">
+                                            <a href="#" data-fc-type="modal" data-fc-target="task-detail-modal"
+                                                type="button"
+                                                class="text-base text-gray-700 dark:text-slate-400 font-medium">iOS App home
+                                                page</a>
+                                        </h5>
+
+                                        <p class="space-x-3">
+                                            <span class="text-nowrap mb-2">
+                                                <i class="ri-briefcase-2-line text-gray-500 dark:text-gray-400"></i> iOS
+                                            </span>
+                                            <span class="text-nowrap mb-2">
+                                                <i class="ri-discuss-line text-gray-500 dark:text-gray-400"></i>
+                                                <b class="text-gray-500 dark:text-gray-400">74</b> Comments
+                                            </span>
+                                        </p> <!-- space end -->
+
+                                        <div class="mt-5">
+                                            <div class="flex items-center">
+                                                <div class="-me-3">
+                                                    <a href="javascript: void(0);" data-fc-type="tooltip"
+                                                        data-fc-placement="top">
+                                                        <img src="assets/images/users/avatar-1.jpg" alt=""
+                                                            class="rounded-full h-8 w-8 hover:-translate-y-0.5 transition-all duration-200">
+                                                    </a>
+                                                    <div class="bg-slate-700 hidden px-2 py-1 rounded transition-all text-white opacity-0 z-50"
+                                                        role="tooltip">
+                                                        Tosha
+                                                        <div data-fc-arrow
+                                                            class="bg-slate-700 w-2.5 h-2.5 rotate-45 -z-10 rounded-[1px]">
+                                                        </div>
+                                                    </div>
+                                                </div> <!-- avatar-icon end -->
+
+                                                <div class="-me-3">
+                                                    <a href="javascript: void(0);" data-fc-type="tooltip"
+                                                        data-fc-placement="top">
+                                                        <img src="assets/images/users/avatar-5.jpg" alt=""
+                                                            class="rounded-full h-8 w-8 hover:-translate-y-0.5 transition-all duration-200">
+                                                    </a>
+                                                    <div class="bg-slate-700 hidden px-2 py-1 rounded transition-all text-white opacity-0 z-50"
+                                                        role="tooltip">
+                                                        Brain
+                                                        <div data-fc-arrow
+                                                            class="bg-slate-700 w-2.5 h-2.5 rotate-45 -z-10 rounded-[1px]">
+                                                        </div>
+                                                    </div>
+                                                </div> <!-- avatar-icon end -->
+
+                                                <div class="-me-3">
+                                                    <a href="javascript: void(0);" data-fc-type="tooltip"
+                                                        data-fc-placement="top">
+                                                        <div
+                                                            class="bg-success text-white font-medium flex items-center justify-center rounded-full h-8 w-8 hover:-translate-y-0.5 transition-all duration-200">
+                                                            K
+                                                        </div>
+                                                    </a>
+                                                    <div class="bg-slate-700 hidden px-2 py-1 rounded transition-all text-white opacity-0 z-50"
+                                                        role="tooltip">
+                                                        Hooker
+                                                        <div data-fc-arrow
+                                                            class="bg-slate-700 w-2.5 h-2.5 rotate-45 -z-10 rounded-[1px]">
+                                                        </div>
+                                                    </div>
+                                                </div> <!-- avatar-icon end -->
+
+                                                <div class="-me-3">
+                                                    <a href="javascript: void(0);" data-fc-type="tooltip"
+                                                        data-fc-placement="top">
+                                                        <div
+                                                            class="bg-primary text-white font-medium flex items-center justify-center rounded-full h-8 w-8 hover:-translate-y-0.5 transition-all duration-200">
+                                                            9+
+                                                        </div>
+                                                    </a>
+                                                    <div class="bg-slate-700 hidden px-2 py-1 rounded transition-all text-white opacity-0 z-50"
+                                                        role="tooltip">
+                                                        More +
+                                                        <div data-fc-arrow
+                                                            class="bg-slate-700 w-2.5 h-2.5 rotate-45 -z-10 rounded-[1px]">
+                                                        </div>
+                                                    </div>
+                                                </div> <!-- avatar-icon end -->
+                                            </div> <!-- flex end -->
+                                        </div>
+
                                     </div>
+                                </div> <!-- Task Item End -->
+                            @empty
+                                {{-- {{ dd($todo) }} --}}
+                                Kosong
+                            @endforelse
 
-
-                                    <h5 class="my-2">
-                                        <a href="#" data-fc-type="modal" data-fc-target="task-detail-modal"
-                                            type="button"
-                                            class="text-base text-gray-700 dark:text-slate-400 font-medium">iOS App home
-                                            page</a>
-                                    </h5>
-
-                                    <p class="space-x-3">
-                                        <span class="text-nowrap mb-2">
-                                            <i class="ri-briefcase-2-line text-gray-500 dark:text-gray-400"></i> iOS
-                                        </span>
-                                        <span class="text-nowrap mb-2">
-                                            <i class="ri-discuss-line text-gray-500 dark:text-gray-400"></i>
-                                            <b class="text-gray-500 dark:text-gray-400">74</b> Comments
-                                        </span>
-                                    </p> <!-- space end -->
-
-                                    <div class="mt-5">
-                                        <div class="flex items-center">
-                                            <div class="-me-3">
-                                                <a href="javascript: void(0);" data-fc-type="tooltip"
-                                                    data-fc-placement="top">
-                                                    <img src="assets/images/users/avatar-1.jpg" alt=""
-                                                        class="rounded-full h-8 w-8 hover:-translate-y-0.5 transition-all duration-200">
-                                                </a>
-                                                <div class="bg-slate-700 hidden px-2 py-1 rounded transition-all text-white opacity-0 z-50"
-                                                    role="tooltip">
-                                                    Tosha
-                                                    <div data-fc-arrow
-                                                        class="bg-slate-700 w-2.5 h-2.5 rotate-45 -z-10 rounded-[1px]">
-                                                    </div>
-                                                </div>
-                                            </div> <!-- avatar-icon end -->
-
-                                            <div class="-me-3">
-                                                <a href="javascript: void(0);" data-fc-type="tooltip"
-                                                    data-fc-placement="top">
-                                                    <img src="assets/images/users/avatar-5.jpg" alt=""
-                                                        class="rounded-full h-8 w-8 hover:-translate-y-0.5 transition-all duration-200">
-                                                </a>
-                                                <div class="bg-slate-700 hidden px-2 py-1 rounded transition-all text-white opacity-0 z-50"
-                                                    role="tooltip">
-                                                    Brain
-                                                    <div data-fc-arrow
-                                                        class="bg-slate-700 w-2.5 h-2.5 rotate-45 -z-10 rounded-[1px]">
-                                                    </div>
-                                                </div>
-                                            </div> <!-- avatar-icon end -->
-
-                                            <div class="-me-3">
-                                                <a href="javascript: void(0);" data-fc-type="tooltip"
-                                                    data-fc-placement="top">
-                                                    <div
-                                                        class="bg-success text-white font-medium flex items-center justify-center rounded-full h-8 w-8 hover:-translate-y-0.5 transition-all duration-200">
-                                                        K
-                                                    </div>
-                                                </a>
-                                                <div class="bg-slate-700 hidden px-2 py-1 rounded transition-all text-white opacity-0 z-50"
-                                                    role="tooltip">
-                                                    Hooker
-                                                    <div data-fc-arrow
-                                                        class="bg-slate-700 w-2.5 h-2.5 rotate-45 -z-10 rounded-[1px]">
-                                                    </div>
-                                                </div>
-                                            </div> <!-- avatar-icon end -->
-
-                                            <div class="-me-3">
-                                                <a href="javascript: void(0);" data-fc-type="tooltip"
-                                                    data-fc-placement="top">
-                                                    <div
-                                                        class="bg-primary text-white font-medium flex items-center justify-center rounded-full h-8 w-8 hover:-translate-y-0.5 transition-all duration-200">
-                                                        9+
-                                                    </div>
-                                                </a>
-                                                <div class="bg-slate-700 hidden px-2 py-1 rounded transition-all text-white opacity-0 z-50"
-                                                    role="tooltip">
-                                                    More +
-                                                    <div data-fc-arrow
-                                                        class="bg-slate-700 w-2.5 h-2.5 rotate-45 -z-10 rounded-[1px]">
-                                                    </div>
-                                                </div>
-                                            </div> <!-- avatar-icon end -->
-                                        </div> <!-- flex end -->
-                                    </div>
-
-                                </div>
-                            </div> <!-- Task Item End -->
-
-                            <!-- Task Item -->
-                            <div class="card cursor-pointer">
-                                <div class="p-6">
-
-                                    <div class="flex justify-between items-center">
-                                        <small>15 Dec 2023</small>
-                                        <span
-                                            class="inline-flex items-center gap-1.5 px-1 rounded-md text-xs font-medium bg-warning/10 text-warning">Medium</span>
-                                    </div>
-
-
-                                    <h5 class="my-2">
-                                        <a href="#" data-fc-type="modal" data-fc-target="task-detail-modal"
-                                            class="text-base text-gray-700 dark:text-slate-400 font-medium">Topnav layout
-                                            design</a>
-                                    </h5>
-
-                                    <p class="space-x-3">
-                                        <span class="text-nowrap mb-2">
-                                            <i class="ri-briefcase-2-line text-gray-500 dark:text-gray-400"></i>
-                                            Attex
-                                        </span>
-                                        <span class="text-nowrap mb-2">
-                                            <i class="ri-discuss-line text-gray-500 dark:text-gray-400"></i>
-                                            <b class="text-gray-500 dark:text-gray-400">28</b> Comments
-                                        </span>
-                                    </p> <!-- space end -->
-
-                                    <div class="mt-5">
-                                        <div class="flex items-center">
-                                            <div class="-me-3">
-                                                <a href="javascript: void(0);" data-fc-type="tooltip"
-                                                    data-fc-placement="top">
-                                                    <img src="assets/images/users/avatar-1.jpg" alt=""
-                                                        class="rounded-full h-8 w-8 hover:-translate-y-0.5 transition-all duration-200">
-                                                </a>
-                                                <div class="bg-slate-700 hidden px-2 py-1 rounded transition-all text-white opacity-0 z-50"
-                                                    role="tooltip">
-                                                    Tosha
-                                                    <div data-fc-arrow
-                                                        class="bg-slate-700 w-2.5 h-2.5 rotate-45 -z-10 rounded-[1px]">
-                                                    </div>
-                                                </div>
-                                            </div> <!-- avatar-icon end -->
-
-                                            <div class="-me-3">
-                                                <a href="javascript: void(0);" data-fc-type="tooltip"
-                                                    data-fc-placement="top">
-                                                    <img src="assets/images/users/avatar-5.jpg" alt=""
-                                                        class="rounded-full h-8 w-8 hover:-translate-y-0.5 transition-all duration-200">
-                                                </a>
-                                                <div class="bg-slate-700 hidden px-2 py-1 rounded transition-all text-white opacity-0 z-50"
-                                                    role="tooltip">
-                                                    Brain
-                                                    <div data-fc-arrow
-                                                        class="bg-slate-700 w-2.5 h-2.5 rotate-45 -z-10 rounded-[1px]">
-                                                    </div>
-                                                </div>
-                                            </div> <!-- avatar-icon end -->
-                                        </div> <!-- flex end -->
-                                    </div>
-
-                                </div>
-                            </div> <!-- Task Item End -->
-
-                            <!-- Task Item -->
-                            <div class="card cursor-pointer">
-                                <div class="p-6">
-
-                                    <div class="flex justify-between items-center">
-                                        <small>11 Jul 2023</small>
-                                        <span
-                                            class="inline-flex items-center gap-1.5 px-1 rounded-md text-xs font-medium bg-success/10 text-success">Low</span>
-                                    </div>
-
-
-                                    <h5 class="my-2">
-                                        <a href="#" data-fc-type="modal" data-fc-target="task-detail-modal"
-                                            class="text-base text-gray-700 dark:text-slate-400 font-medium">Invite user to
-                                            a project</a>
-                                    </h5>
-
-                                    <p class="space-x-3">
-                                        <span class="text-nowrap mb-2">
-                                            <i class="ri-briefcase-2-line text-gray-500 dark:text-gray-400"></i>
-                                            CRM
-                                        </span>
-                                        <span class="text-nowrap mb-2">
-                                            <i class="ri-discuss-line text-gray-500 dark:text-gray-400"></i>
-                                            <b class="text-gray-500 dark:text-gray-400">68</b> Comments
-                                        </span>
-                                    </p> <!-- space end -->
-
-                                    <div class="mt-5">
-                                        <div class="flex items-center">
-                                            <div class="-me-3">
-                                                <a href="javascript: void(0);" data-fc-type="tooltip"
-                                                    data-fc-placement="top">
-                                                    <img src="assets/images/users/avatar-1.jpg" alt=""
-                                                        class="rounded-full h-8 w-8 hover:-translate-y-0.5 transition-all duration-200">
-                                                </a>
-                                                <div class="bg-slate-700 hidden px-2 py-1 rounded transition-all text-white opacity-0 z-50"
-                                                    role="tooltip">
-                                                    Tosha
-                                                    <div data-fc-arrow
-                                                        class="bg-slate-700 w-2.5 h-2.5 rotate-45 -z-10 rounded-[1px]">
-                                                    </div>
-                                                </div>
-                                            </div> <!-- avatar-icon end -->
-
-                                            <div class="-me-3">
-                                                <a href="javascript: void(0);" data-fc-type="tooltip"
-                                                    data-fc-placement="top">
-                                                    <img src="assets/images/users/avatar-5.jpg" alt=""
-                                                        class="rounded-full h-8 w-8 hover:-translate-y-0.5 transition-all duration-200">
-                                                </a>
-                                                <div class="bg-slate-700 hidden px-2 py-1 rounded transition-all text-white opacity-0 z-50"
-                                                    role="tooltip">
-                                                    Brain
-                                                    <div data-fc-arrow
-                                                        class="bg-slate-700 w-2.5 h-2.5 rotate-45 -z-10 rounded-[1px]">
-                                                    </div>
-                                                </div>
-                                            </div> <!-- avatar-icon end -->
-
-                                            <div class="-me-3">
-                                                <a href="javascript: void(0);" data-fc-type="tooltip"
-                                                    data-fc-placement="top">
-                                                    <div
-                                                        class="bg-primary text-white font-medium flex items-center justify-center rounded-full h-8 w-8 hover:-translate-y-0.5 transition-all duration-200">
-                                                        M
-                                                    </div>
-                                                </a>
-                                                <div class="bg-slate-700 hidden px-2 py-1 rounded transition-all text-white opacity-0 z-50"
-                                                    role="tooltip">
-                                                    More +
-                                                    <div data-fc-arrow
-                                                        class="bg-slate-700 w-2.5 h-2.5 rotate-45 -z-10 rounded-[1px]">
-                                                    </div>
-                                                </div>
-                                            </div> <!-- avatar-icon end -->
-                                        </div> <!-- flex end -->
-                                    </div>
-
-                                </div>
-                            </div> <!-- Task Item End -->
 
                         </div> <!-- end company-list-1-->
                     </div>
@@ -345,152 +227,109 @@
                         <div class="flex flex-col gap-4 kanban-board custom-scroll overflow-x-hidden overflow-y-auto px-1 h-full"
                             id="kanbanborad-two">
 
-                            <!-- Task Item -->
-                            <div class="card cursor-pointer">
-                                <div class="p-6">
+                            @forelse ($in_progres as $task)
+                                <div class="card cursor-pointer">
+                                    <div class="p-6">
 
-                                    <div class="flex justify-between items-center">
-                                        <small>22 Jun 2023</small>
-                                        <span
-                                            class="inline-flex items-center gap-1.5 px-1 rounded-md text-xs font-medium bg-warning/10 text-warning">Medium</span>
+                                        <div class="flex justify-between items-center">
+                                            <small>18 Jul 2023</small>
+                                            <span
+                                                class="inline-flex items-center gap-1.5 px-1 rounded-md text-xs font-medium bg-danger/10 text-danger">High</span>
+                                        </div>
+
+
+                                        <h5 class="my-2">
+                                            <a href="#" data-fc-type="modal" data-fc-target="task-detail-modal"
+                                                type="button"
+                                                class="text-base text-gray-700 dark:text-slate-400 font-medium">iOS App
+                                                home
+                                                page</a>
+                                        </h5>
+
+                                        <p class="space-x-3">
+                                            <span class="text-nowrap mb-2">
+                                                <i class="ri-briefcase-2-line text-gray-500 dark:text-gray-400"></i> iOS
+                                            </span>
+                                            <span class="text-nowrap mb-2">
+                                                <i class="ri-discuss-line text-gray-500 dark:text-gray-400"></i>
+                                                <b class="text-gray-500 dark:text-gray-400">74</b> Comments
+                                            </span>
+                                        </p> <!-- space end -->
+
+                                        <div class="mt-5">
+                                            <div class="flex items-center">
+                                                <div class="-me-3">
+                                                    <a href="javascript: void(0);" data-fc-type="tooltip"
+                                                        data-fc-placement="top">
+                                                        <img src="assets/images/users/avatar-1.jpg" alt=""
+                                                            class="rounded-full h-8 w-8 hover:-translate-y-0.5 transition-all duration-200">
+                                                    </a>
+                                                    <div class="bg-slate-700 hidden px-2 py-1 rounded transition-all text-white opacity-0 z-50"
+                                                        role="tooltip">
+                                                        Tosha
+                                                        <div data-fc-arrow
+                                                            class="bg-slate-700 w-2.5 h-2.5 rotate-45 -z-10 rounded-[1px]">
+                                                        </div>
+                                                    </div>
+                                                </div> <!-- avatar-icon end -->
+
+                                                <div class="-me-3">
+                                                    <a href="javascript: void(0);" data-fc-type="tooltip"
+                                                        data-fc-placement="top">
+                                                        <img src="assets/images/users/avatar-5.jpg" alt=""
+                                                            class="rounded-full h-8 w-8 hover:-translate-y-0.5 transition-all duration-200">
+                                                    </a>
+                                                    <div class="bg-slate-700 hidden px-2 py-1 rounded transition-all text-white opacity-0 z-50"
+                                                        role="tooltip">
+                                                        Brain
+                                                        <div data-fc-arrow
+                                                            class="bg-slate-700 w-2.5 h-2.5 rotate-45 -z-10 rounded-[1px]">
+                                                        </div>
+                                                    </div>
+                                                </div> <!-- avatar-icon end -->
+
+                                                <div class="-me-3">
+                                                    <a href="javascript: void(0);" data-fc-type="tooltip"
+                                                        data-fc-placement="top">
+                                                        <div
+                                                            class="bg-success text-white font-medium flex items-center justify-center rounded-full h-8 w-8 hover:-translate-y-0.5 transition-all duration-200">
+                                                            K
+                                                        </div>
+                                                    </a>
+                                                    <div class="bg-slate-700 hidden px-2 py-1 rounded transition-all text-white opacity-0 z-50"
+                                                        role="tooltip">
+                                                        Hooker
+                                                        <div data-fc-arrow
+                                                            class="bg-slate-700 w-2.5 h-2.5 rotate-45 -z-10 rounded-[1px]">
+                                                        </div>
+                                                    </div>
+                                                </div> <!-- avatar-icon end -->
+
+                                                <div class="-me-3">
+                                                    <a href="javascript: void(0);" data-fc-type="tooltip"
+                                                        data-fc-placement="top">
+                                                        <div
+                                                            class="bg-primary text-white font-medium flex items-center justify-center rounded-full h-8 w-8 hover:-translate-y-0.5 transition-all duration-200">
+                                                            9+
+                                                        </div>
+                                                    </a>
+                                                    <div class="bg-slate-700 hidden px-2 py-1 rounded transition-all text-white opacity-0 z-50"
+                                                        role="tooltip">
+                                                        More +
+                                                        <div data-fc-arrow
+                                                            class="bg-slate-700 w-2.5 h-2.5 rotate-45 -z-10 rounded-[1px]">
+                                                        </div>
+                                                    </div>
+                                                </div> <!-- avatar-icon end -->
+                                            </div> <!-- flex end -->
+                                        </div>
+
                                     </div>
-
-
-                                    <h5 class="my-2">
-                                        <a href="#" data-fc-type="modal" data-fc-target="task-detail-modal"
-                                            class="text-base text-gray-700 dark:text-slate-400 font-medium">Write a release
-                                            note</a>
-                                    </h5>
-
-                                    <p class="space-x-3">
-                                        <span class="text-nowrap mb-2">
-                                            <i class="ri-briefcase-2-line text-gray-500 dark:text-gray-400"></i>
-                                            Attex
-                                        </span>
-                                        <span class="text-nowrap mb-2">
-                                            <i class="ri-discuss-line text-gray-500 dark:text-gray-400"></i>
-                                            <b class="text-gray-500 dark:text-gray-400">17</b> Comments
-                                        </span>
-                                    </p> <!-- space end -->
-
-                                    <div class="mt-5">
-                                        <div class="flex items-center">
-                                            <div class="-me-3">
-                                                <a href="javascript: void(0);" data-fc-type="tooltip"
-                                                    data-fc-placement="top">
-                                                    <img src="assets/images/users/avatar-1.jpg" alt=""
-                                                        class="rounded-full h-8 w-8 hover:-translate-y-0.5 transition-all duration-200">
-                                                </a>
-                                                <div class="bg-slate-700 hidden px-2 py-1 rounded transition-all text-white opacity-0 z-50"
-                                                    role="tooltip">
-                                                    Tosha
-                                                    <div data-fc-arrow
-                                                        class="bg-slate-700 w-2.5 h-2.5 rotate-45 -z-10 rounded-[1px]">
-                                                    </div>
-                                                </div>
-                                            </div> <!-- avatar-icon end -->
-
-                                            <div class="-me-3">
-                                                <a href="javascript: void(0);" data-fc-type="tooltip"
-                                                    data-fc-placement="top">
-                                                    <img src="assets/images/users/avatar-5.jpg" alt=""
-                                                        class="rounded-full h-8 w-8 hover:-translate-y-0.5 transition-all duration-200">
-                                                </a>
-                                                <div class="bg-slate-700 hidden px-2 py-1 rounded transition-all text-white opacity-0 z-50"
-                                                    role="tooltip">
-                                                    Brain
-                                                    <div data-fc-arrow
-                                                        class="bg-slate-700 w-2.5 h-2.5 rotate-45 -z-10 rounded-[1px]">
-                                                    </div>
-                                                </div>
-                                            </div> <!-- avatar-icon end -->
-                                        </div> <!-- flex end -->
-                                    </div>
-
-                                </div>
-                            </div> <!-- Task Item End -->
-
-                            <!-- Task Item -->
-                            <div class="card cursor-pointer">
-                                <div class="p-6">
-
-                                    <div class="flex justify-between items-center">
-                                        <small>19 Jun 2023</small>
-                                        <span
-                                            class="inline-flex items-center gap-1.5 px-1 rounded-md text-xs font-medium bg-success/10 text-success">Low</span>
-                                    </div>
-
-
-                                    <h5 class="my-2">
-                                        <a href="#" data-fc-type="modal" data-fc-target="task-detail-modal"
-                                            class="text-base text-gray-700 dark:text-slate-400 font-medium">Enable
-                                            analytics tracking</a>
-                                    </h5>
-
-                                    <p class="space-x-3">
-                                        <span class="text-nowrap mb-2">
-                                            <i class="ri-briefcase-2-line text-gray-500 dark:text-gray-400"></i>
-                                            CRM
-                                        </span>
-                                        <span class="text-nowrap mb-2">
-                                            <i class="ri-discuss-line text-gray-500 dark:text-gray-400"></i>
-                                            <b class="text-gray-500 dark:text-gray-400">48</b> Comments
-                                        </span>
-                                    </p> <!-- space end -->
-
-                                    <div class="mt-5">
-                                        <div class="flex items-center">
-                                            <div class="-me-3">
-                                                <a href="javascript: void(0);" data-fc-type="tooltip"
-                                                    data-fc-placement="top">
-                                                    <img src="assets/images/users/avatar-1.jpg" alt=""
-                                                        class="rounded-full h-8 w-8 hover:-translate-y-0.5 transition-all duration-200">
-                                                </a>
-                                                <div class="bg-slate-700 hidden px-2 py-1 rounded transition-all text-white opacity-0 z-50"
-                                                    role="tooltip">
-                                                    Tosha
-                                                    <div data-fc-arrow
-                                                        class="bg-slate-700 w-2.5 h-2.5 rotate-45 -z-10 rounded-[1px]">
-                                                    </div>
-                                                </div>
-                                            </div> <!-- avatar-icon end -->
-
-                                            <div class="-me-3">
-                                                <a href="javascript: void(0);" data-fc-type="tooltip"
-                                                    data-fc-placement="top">
-                                                    <div
-                                                        class="bg-success text-white font-medium flex items-center justify-center rounded-full h-8 w-8 hover:-translate-y-0.5 transition-all duration-200">
-                                                        K
-                                                    </div>
-                                                </a>
-                                                <div class="bg-slate-700 hidden px-2 py-1 rounded transition-all text-white opacity-0 z-50"
-                                                    role="tooltip">
-                                                    Hooker
-                                                    <div data-fc-arrow
-                                                        class="bg-slate-700 w-2.5 h-2.5 rotate-45 -z-10 rounded-[1px]">
-                                                    </div>
-                                                </div>
-                                            </div> <!-- avatar-icon end -->
-
-                                            <div class="-me-3">
-                                                <a href="javascript: void(0);" data-fc-type="tooltip"
-                                                    data-fc-placement="top">
-                                                    <img src="assets/images/users/avatar-5.jpg" alt=""
-                                                        class="rounded-full h-8 w-8 hover:-translate-y-0.5 transition-all duration-200">
-                                                </a>
-                                                <div class="bg-slate-700 hidden px-2 py-1 rounded transition-all text-white opacity-0 z-50"
-                                                    role="tooltip">
-                                                    Brain
-                                                    <div data-fc-arrow
-                                                        class="bg-slate-700 w-2.5 h-2.5 rotate-45 -z-10 rounded-[1px]">
-                                                    </div>
-                                                </div>
-                                            </div> <!-- avatar-icon end -->
-                                        </div> <!-- flex end -->
-                                    </div>
-
-                                </div>
-                            </div> <!-- Task Item End -->
+                                </div> <!-- Task Item End -->
+                            @empty
+                                {{-- {{ dd($todo) }} --}}
+                                Kosong
+                            @endforelse
 
                         </div> <!-- end company-list-1-->
                     </div>
@@ -503,317 +342,109 @@
                         <div class="flex flex-col gap-4 kanban-board custom-scroll overflow-x-hidden overflow-y-auto px-1 h-full"
                             id="kanbanborad-three">
 
-                            <!-- Task Item -->
-                            <div class="card cursor-pointer">
-                                <div class="p-6">
+                            @forelse ($review as $task)
+                                <div class="card cursor-pointer">
+                                    <div class="p-6">
 
-                                    <div class="flex justify-between items-center">
-                                        <small>2 May 2023</small>
-                                        <span
-                                            class="inline-flex items-center gap-1.5 px-1 rounded-md text-xs font-medium bg-danger/10 text-danger">High</span>
+                                        <div class="flex justify-between items-center">
+                                            <small>18 Jul 2023</small>
+                                            <span
+                                                class="inline-flex items-center gap-1.5 px-1 rounded-md text-xs font-medium bg-danger/10 text-danger">High</span>
+                                        </div>
+
+
+                                        <h5 class="my-2">
+                                            <a href="#" data-fc-type="modal" data-fc-target="task-detail-modal"
+                                                type="button"
+                                                class="text-base text-gray-700 dark:text-slate-400 font-medium">iOS App
+                                                home
+                                                page</a>
+                                        </h5>
+
+                                        <p class="space-x-3">
+                                            <span class="text-nowrap mb-2">
+                                                <i class="ri-briefcase-2-line text-gray-500 dark:text-gray-400"></i> iOS
+                                            </span>
+                                            <span class="text-nowrap mb-2">
+                                                <i class="ri-discuss-line text-gray-500 dark:text-gray-400"></i>
+                                                <b class="text-gray-500 dark:text-gray-400">74</b> Comments
+                                            </span>
+                                        </p> <!-- space end -->
+
+                                        <div class="mt-5">
+                                            <div class="flex items-center">
+                                                <div class="-me-3">
+                                                    <a href="javascript: void(0);" data-fc-type="tooltip"
+                                                        data-fc-placement="top">
+                                                        <img src="assets/images/users/avatar-1.jpg" alt=""
+                                                            class="rounded-full h-8 w-8 hover:-translate-y-0.5 transition-all duration-200">
+                                                    </a>
+                                                    <div class="bg-slate-700 hidden px-2 py-1 rounded transition-all text-white opacity-0 z-50"
+                                                        role="tooltip">
+                                                        Tosha
+                                                        <div data-fc-arrow
+                                                            class="bg-slate-700 w-2.5 h-2.5 rotate-45 -z-10 rounded-[1px]">
+                                                        </div>
+                                                    </div>
+                                                </div> <!-- avatar-icon end -->
+
+                                                <div class="-me-3">
+                                                    <a href="javascript: void(0);" data-fc-type="tooltip"
+                                                        data-fc-placement="top">
+                                                        <img src="assets/images/users/avatar-5.jpg" alt=""
+                                                            class="rounded-full h-8 w-8 hover:-translate-y-0.5 transition-all duration-200">
+                                                    </a>
+                                                    <div class="bg-slate-700 hidden px-2 py-1 rounded transition-all text-white opacity-0 z-50"
+                                                        role="tooltip">
+                                                        Brain
+                                                        <div data-fc-arrow
+                                                            class="bg-slate-700 w-2.5 h-2.5 rotate-45 -z-10 rounded-[1px]">
+                                                        </div>
+                                                    </div>
+                                                </div> <!-- avatar-icon end -->
+
+                                                <div class="-me-3">
+                                                    <a href="javascript: void(0);" data-fc-type="tooltip"
+                                                        data-fc-placement="top">
+                                                        <div
+                                                            class="bg-success text-white font-medium flex items-center justify-center rounded-full h-8 w-8 hover:-translate-y-0.5 transition-all duration-200">
+                                                            K
+                                                        </div>
+                                                    </a>
+                                                    <div class="bg-slate-700 hidden px-2 py-1 rounded transition-all text-white opacity-0 z-50"
+                                                        role="tooltip">
+                                                        Hooker
+                                                        <div data-fc-arrow
+                                                            class="bg-slate-700 w-2.5 h-2.5 rotate-45 -z-10 rounded-[1px]">
+                                                        </div>
+                                                    </div>
+                                                </div> <!-- avatar-icon end -->
+
+                                                <div class="-me-3">
+                                                    <a href="javascript: void(0);" data-fc-type="tooltip"
+                                                        data-fc-placement="top">
+                                                        <div
+                                                            class="bg-primary text-white font-medium flex items-center justify-center rounded-full h-8 w-8 hover:-translate-y-0.5 transition-all duration-200">
+                                                            9+
+                                                        </div>
+                                                    </a>
+                                                    <div class="bg-slate-700 hidden px-2 py-1 rounded transition-all text-white opacity-0 z-50"
+                                                        role="tooltip">
+                                                        More +
+                                                        <div data-fc-arrow
+                                                            class="bg-slate-700 w-2.5 h-2.5 rotate-45 -z-10 rounded-[1px]">
+                                                        </div>
+                                                    </div>
+                                                </div> <!-- avatar-icon end -->
+                                            </div> <!-- flex end -->
+                                        </div>
+
                                     </div>
-
-
-                                    <h5 class="my-2">
-                                        <a href="#" data-fc-type="modal" data-fc-target="task-detail-modal"
-                                            class="text-base text-gray-700 dark:text-slate-400 font-medium">Kanban board
-                                            design</a>
-                                    </h5>
-
-                                    <p class="space-x-3">
-                                        <span class="text-nowrap mb-2">
-                                            <i class="ri-briefcase-2-line text-gray-500 dark:text-gray-400"></i>
-                                            CRM
-                                        </span>
-                                        <span class="text-nowrap mb-2">
-                                            <i class="ri-discuss-line text-gray-500 dark:text-gray-400"></i>
-                                            <b class="text-gray-500 dark:text-gray-400">65</b> Comments
-                                        </span>
-                                    </p> <!-- space end -->
-
-                                    <div class="mt-5">
-                                        <div class="flex items-center">
-                                            <div class="-me-3">
-                                                <a href="javascript: void(0);" data-fc-type="tooltip"
-                                                    data-fc-placement="top">
-                                                    <img src="assets/images/users/avatar-1.jpg" alt=""
-                                                        class="rounded-full h-8 w-8 hover:-translate-y-0.5 transition-all duration-200">
-                                                </a>
-                                                <div class="bg-slate-700 hidden px-2 py-1 rounded transition-all text-white opacity-0 z-50"
-                                                    role="tooltip">
-                                                    Tosha
-                                                    <div data-fc-arrow
-                                                        class="bg-slate-700 w-2.5 h-2.5 rotate-45 -z-10 rounded-[1px]">
-                                                    </div>
-                                                </div>
-                                            </div> <!-- avatar-icon end -->
-
-                                            <div class="-me-3">
-                                                <a href="javascript: void(0);" data-fc-type="tooltip"
-                                                    data-fc-placement="top">
-                                                    <img src="assets/images/users/avatar-5.jpg" alt=""
-                                                        class="rounded-full h-8 w-8 hover:-translate-y-0.5 transition-all duration-200">
-                                                </a>
-                                                <div class="bg-slate-700 hidden px-2 py-1 rounded transition-all text-white opacity-0 z-50"
-                                                    role="tooltip">
-                                                    Brain
-                                                    <div data-fc-arrow
-                                                        class="bg-slate-700 w-2.5 h-2.5 rotate-45 -z-10 rounded-[1px]">
-                                                    </div>
-                                                </div>
-                                            </div> <!-- avatar-icon end -->
-
-                                            <div class="-me-3">
-                                                <a href="javascript: void(0);" data-fc-type="tooltip"
-                                                    data-fc-placement="top">
-                                                    <div
-                                                        class="bg-light text-black font-medium flex items-center justify-center rounded-full h-8 w-8 hover:-translate-y-0.5 transition-all duration-200">
-                                                        D
-                                                    </div>
-                                                </a>
-                                                <div class="bg-slate-700 hidden px-2 py-1 rounded transition-all text-white opacity-0 z-50"
-                                                    role="tooltip">
-                                                    Hooker
-                                                    <div data-fc-arrow
-                                                        class="bg-slate-700 w-2.5 h-2.5 rotate-45 -z-10 rounded-[1px]">
-                                                    </div>
-                                                </div>
-                                            </div> <!-- avatar-icon end -->
-                                        </div> <!-- flex end -->
-                                    </div>
-
-                                </div>
-                            </div> <!-- Task Item End -->
-
-                            <!-- Task Item -->
-                            <div class="card cursor-pointer">
-                                <div class="p-6">
-
-                                    <div class="flex justify-between items-center">
-                                        <small>7 May 2023</small>
-                                        <span
-                                            class="inline-flex items-center gap-1.5 px-1 rounded-md text-xs font-medium bg-warning/10 text-warning">Medium</span>
-                                    </div>
-
-
-                                    <h5 class="my-2">
-                                        <a href="#" data-fc-type="modal" data-fc-target="task-detail-modal"
-                                            class="text-base text-gray-700 dark:text-slate-400 font-medium">Code HTML email
-                                            template</a>
-                                    </h5>
-
-                                    <p class="space-x-3">
-                                        <span class="text-nowrap mb-2">
-                                            <i class="ri-briefcase-2-line text-gray-500 dark:text-gray-400"></i>
-                                            CRM
-                                        </span>
-                                        <span class="text-nowrap mb-2">
-                                            <i class="ri-discuss-line text-gray-500 dark:text-gray-400"></i>
-                                            <b class="text-gray-500 dark:text-gray-400">106</b> Comments
-                                        </span>
-                                    </p> <!-- space end -->
-
-                                    <div class="mt-5">
-                                        <div class="flex items-center">
-                                            <div class="-me-3">
-                                                <a href="javascript: void(0);" data-fc-type="tooltip"
-                                                    data-fc-placement="top">
-                                                    <img src="assets/images/users/avatar-1.jpg" alt=""
-                                                        class="rounded-full h-8 w-8 hover:-translate-y-0.5 transition-all duration-200">
-                                                </a>
-                                                <div class="bg-slate-700 hidden px-2 py-1 rounded transition-all text-white opacity-0 z-50"
-                                                    role="tooltip">
-                                                    Tosha
-                                                    <div data-fc-arrow
-                                                        class="bg-slate-700 w-2.5 h-2.5 rotate-45 -z-10 rounded-[1px]">
-                                                    </div>
-                                                </div>
-                                            </div> <!-- avatar-icon end -->
-
-                                            <div class="-me-3">
-                                                <a href="javascript: void(0);" data-fc-type="tooltip"
-                                                    data-fc-placement="top">
-                                                    <img src="assets/images/users/avatar-5.jpg" alt=""
-                                                        class="rounded-full h-8 w-8 hover:-translate-y-0.5 transition-all duration-200">
-                                                </a>
-                                                <div class="bg-slate-700 hidden px-2 py-1 rounded transition-all text-white opacity-0 z-50"
-                                                    role="tooltip">
-                                                    Brain
-                                                    <div data-fc-arrow
-                                                        class="bg-slate-700 w-2.5 h-2.5 rotate-45 -z-10 rounded-[1px]">
-                                                    </div>
-                                                </div>
-                                            </div> <!-- avatar-icon end -->
-
-                                            <div class="-me-3">
-                                                <a href="javascript: void(0);" data-fc-type="tooltip"
-                                                    data-fc-placement="top">
-                                                    <img src="assets/images/users/avatar-5.jpg" alt=""
-                                                        class="rounded-full h-8 w-8 hover:-translate-y-0.5 transition-all duration-200">
-                                                </a>
-                                                <div class="bg-slate-700 hidden px-2 py-1 rounded transition-all text-white opacity-0 z-50"
-                                                    role="tooltip">
-                                                    Brain
-                                                    <div data-fc-arrow
-                                                        class="bg-slate-700 w-2.5 h-2.5 rotate-45 -z-10 rounded-[1px]">
-                                                    </div>
-                                                </div>
-                                            </div> <!-- avatar-icon end -->
-                                        </div> <!-- flex end -->
-                                    </div>
-
-                                </div>
-                            </div> <!-- Task Item End -->
-
-                            <!-- Task Item -->
-                            <div class="card cursor-pointer">
-                                <div class="p-6">
-
-                                    <div class="flex justify-between items-center">
-                                        <small>8 Jul 2023</small>
-                                        <span
-                                            class="inline-flex items-center gap-1.5 px-1 rounded-md text-xs font-medium bg-warning/10 text-warning">Medium</span>
-                                    </div>
-
-
-                                    <h5 class="my-2">
-                                        <a href="#" data-fc-type="modal" data-fc-target="task-detail-modal"
-                                            class="text-base text-gray-700 dark:text-slate-400 font-medium">Brand logo
-                                            design</a>
-                                    </h5>
-
-                                    <p class="space-x-3">
-                                        <span class="text-nowrap mb-2">
-                                            <i class="ri-briefcase-2-line text-gray-500 dark:text-gray-400"></i>
-                                            Design
-                                        </span>
-                                        <span class="text-nowrap mb-2">
-                                            <i class="ri-discuss-line text-gray-500 dark:text-gray-400"></i>
-                                            <b class="text-gray-500 dark:text-gray-400">95</b> Comments
-                                        </span>
-                                    </p> <!-- space end -->
-
-                                    <div class="mt-5">
-                                        <div class="flex items-center">
-
-                                            <div class="-me-3">
-                                                <a href="javascript: void(0);" data-fc-type="tooltip"
-                                                    data-fc-placement="top">
-                                                    <div
-                                                        class="bg-primary text-white font-medium flex items-center justify-center rounded-full h-8 w-8 hover:-translate-y-0.5 transition-all duration-200">
-                                                        M
-                                                    </div>
-                                                </a>
-                                                <div class="bg-slate-700 hidden px-2 py-1 rounded transition-all text-white opacity-0 z-50"
-                                                    role="tooltip">
-                                                    More +
-                                                    <div data-fc-arrow
-                                                        class="bg-slate-700 w-2.5 h-2.5 rotate-45 -z-10 rounded-[1px]">
-                                                    </div>
-                                                </div>
-                                            </div> <!-- avatar-icon end -->
-
-                                            <div class="-me-3">
-                                                <a href="javascript: void(0);" data-fc-type="tooltip"
-                                                    data-fc-placement="top">
-                                                    <div
-                                                        class="bg-info text-white font-medium flex items-center justify-center rounded-full h-8 w-8 hover:-translate-y-0.5 transition-all duration-200">
-                                                        A
-                                                    </div>
-                                                </a>
-                                                <div class="bg-slate-700 hidden px-2 py-1 rounded transition-all text-white opacity-0 z-50"
-                                                    role="tooltip">
-                                                    More +
-                                                    <div data-fc-arrow
-                                                        class="bg-slate-700 w-2.5 h-2.5 rotate-45 -z-10 rounded-[1px]">
-                                                    </div>
-                                                </div>
-                                            </div> <!-- avatar-icon end -->
-
-                                            <div class="-me-3">
-                                                <a href="javascript: void(0);" data-fc-type="tooltip"
-                                                    data-fc-placement="top">
-                                                    <img src="assets/images/users/avatar-1.jpg" alt=""
-                                                        class="rounded-full h-8 w-8 hover:-translate-y-0.5 transition-all duration-200">
-                                                </a>
-                                                <div class="bg-slate-700 hidden px-2 py-1 rounded transition-all text-white opacity-0 z-50"
-                                                    role="tooltip">
-                                                    Tosha
-                                                    <div data-fc-arrow
-                                                        class="bg-slate-700 w-2.5 h-2.5 rotate-45 -z-10 rounded-[1px]">
-                                                    </div>
-                                                </div>
-                                            </div> <!-- avatar-icon end -->
-                                        </div> <!-- flex end -->
-                                    </div>
-
-                                </div>
-                            </div> <!-- Task Item End -->
-
-                            <!-- Task Item -->
-                            <div class="card cursor-pointer">
-                                <div class="p-6">
-
-                                    <div class="flex justify-between items-center">
-                                        <small>22 Jul 2023</small>
-                                        <span
-                                            class="inline-flex items-center gap-1.5 px-1 rounded-md text-xs font-medium bg-danger/10 text-danger">High</span>
-                                    </div>
-
-
-                                    <h5 class="my-2">
-                                        <a href="#" data-fc-type="modal" data-fc-target="task-detail-modal"
-                                            class="text-base text-gray-700 dark:text-slate-400 font-medium">Improve
-                                            animation loader</a>
-                                    </h5>
-
-                                    <p class="space-x-3">
-                                        <span class="text-nowrap mb-2">
-                                            <i class="ri-briefcase-2-line text-gray-500 dark:text-gray-400"></i>
-                                            CRM
-                                        </span>
-                                        <span class="text-nowrap mb-2">
-                                            <i class="ri-discuss-line text-gray-500 dark:text-gray-400"></i>
-                                            <b class="text-gray-500 dark:text-gray-400">39</b> Comments
-                                        </span>
-                                    </p> <!-- space end -->
-
-                                    <div class="mt-5">
-                                        <div class="flex items-center">
-                                            <div class="-me-3">
-                                                <a href="javascript: void(0);" data-fc-type="tooltip"
-                                                    data-fc-placement="top">
-                                                    <img src="assets/images/users/avatar-1.jpg" alt=""
-                                                        class="rounded-full h-8 w-8 hover:-translate-y-0.5 transition-all duration-200">
-                                                </a>
-                                                <div class="bg-slate-700 hidden px-2 py-1 rounded transition-all text-white opacity-0 z-50"
-                                                    role="tooltip">
-                                                    Tosha
-                                                    <div data-fc-arrow
-                                                        class="bg-slate-700 w-2.5 h-2.5 rotate-45 -z-10 rounded-[1px]">
-                                                    </div>
-                                                </div>
-                                            </div> <!-- avatar-icon end -->
-
-                                            <div class="-me-3">
-                                                <a href="javascript: void(0);" data-fc-type="tooltip"
-                                                    data-fc-placement="top">
-                                                    <img src="assets/images/users/avatar-5.jpg" alt=""
-                                                        class="rounded-full h-8 w-8 hover:-translate-y-0.5 transition-all duration-200">
-                                                </a>
-                                                <div class="bg-slate-700 hidden px-2 py-1 rounded transition-all text-white opacity-0 z-50"
-                                                    role="tooltip">
-                                                    Brain
-                                                    <div data-fc-arrow
-                                                        class="bg-slate-700 w-2.5 h-2.5 rotate-45 -z-10 rounded-[1px]">
-                                                    </div>
-                                                </div>
-                                            </div> <!-- avatar-icon end -->
-                                        </div> <!-- flex end -->
-                                    </div>
-
-                                </div>
-                            </div> <!-- Task Item End -->
+                                </div> <!-- Task Item End -->
+                            @empty
+                                {{-- {{ dd($todo) }} --}}
+                                Kosong
+                            @endforelse
 
                         </div> <!-- end company-list-1-->
                     </div>
@@ -826,102 +457,109 @@
                         <div class="flex flex-col gap-4 kanban-board custom-scroll overflow-x-hidden overflow-y-auto px-1 h-full"
                             id="kanbanborad-four">
 
-                            <!-- Task Item -->
-                            <div class="card cursor-pointer">
-                                <div class="p-6">
+                            @forelse ($review as $task)
+                                <div class="card cursor-pointer">
+                                    <div class="p-6">
 
-                                    <div class="flex justify-between items-center">
-                                        <small>16 Jul 2023</small>
-                                        <span
-                                            class="inline-flex items-center gap-1.5 px-1 rounded-md text-xs font-medium bg-success/10 text-success">Low</span>
+                                        <div class="flex justify-between items-center">
+                                            <small>18 Jul 2023</small>
+                                            <span
+                                                class="inline-flex items-center gap-1.5 px-1 rounded-md text-xs font-medium bg-danger/10 text-danger">High</span>
+                                        </div>
+
+
+                                        <h5 class="my-2">
+                                            <a href="#" data-fc-type="modal" data-fc-target="task-detail-modal"
+                                                type="button"
+                                                class="text-base text-gray-700 dark:text-slate-400 font-medium">iOS App
+                                                home
+                                                page</a>
+                                        </h5>
+
+                                        <p class="space-x-3">
+                                            <span class="text-nowrap mb-2">
+                                                <i class="ri-briefcase-2-line text-gray-500 dark:text-gray-400"></i> iOS
+                                            </span>
+                                            <span class="text-nowrap mb-2">
+                                                <i class="ri-discuss-line text-gray-500 dark:text-gray-400"></i>
+                                                <b class="text-gray-500 dark:text-gray-400">74</b> Comments
+                                            </span>
+                                        </p> <!-- space end -->
+
+                                        <div class="mt-5">
+                                            <div class="flex items-center">
+                                                <div class="-me-3">
+                                                    <a href="javascript: void(0);" data-fc-type="tooltip"
+                                                        data-fc-placement="top">
+                                                        <img src="assets/images/users/avatar-1.jpg" alt=""
+                                                            class="rounded-full h-8 w-8 hover:-translate-y-0.5 transition-all duration-200">
+                                                    </a>
+                                                    <div class="bg-slate-700 hidden px-2 py-1 rounded transition-all text-white opacity-0 z-50"
+                                                        role="tooltip">
+                                                        Tosha
+                                                        <div data-fc-arrow
+                                                            class="bg-slate-700 w-2.5 h-2.5 rotate-45 -z-10 rounded-[1px]">
+                                                        </div>
+                                                    </div>
+                                                </div> <!-- avatar-icon end -->
+
+                                                <div class="-me-3">
+                                                    <a href="javascript: void(0);" data-fc-type="tooltip"
+                                                        data-fc-placement="top">
+                                                        <img src="assets/images/users/avatar-5.jpg" alt=""
+                                                            class="rounded-full h-8 w-8 hover:-translate-y-0.5 transition-all duration-200">
+                                                    </a>
+                                                    <div class="bg-slate-700 hidden px-2 py-1 rounded transition-all text-white opacity-0 z-50"
+                                                        role="tooltip">
+                                                        Brain
+                                                        <div data-fc-arrow
+                                                            class="bg-slate-700 w-2.5 h-2.5 rotate-45 -z-10 rounded-[1px]">
+                                                        </div>
+                                                    </div>
+                                                </div> <!-- avatar-icon end -->
+
+                                                <div class="-me-3">
+                                                    <a href="javascript: void(0);" data-fc-type="tooltip"
+                                                        data-fc-placement="top">
+                                                        <div
+                                                            class="bg-success text-white font-medium flex items-center justify-center rounded-full h-8 w-8 hover:-translate-y-0.5 transition-all duration-200">
+                                                            K
+                                                        </div>
+                                                    </a>
+                                                    <div class="bg-slate-700 hidden px-2 py-1 rounded transition-all text-white opacity-0 z-50"
+                                                        role="tooltip">
+                                                        Hooker
+                                                        <div data-fc-arrow
+                                                            class="bg-slate-700 w-2.5 h-2.5 rotate-45 -z-10 rounded-[1px]">
+                                                        </div>
+                                                    </div>
+                                                </div> <!-- avatar-icon end -->
+
+                                                <div class="-me-3">
+                                                    <a href="javascript: void(0);" data-fc-type="tooltip"
+                                                        data-fc-placement="top">
+                                                        <div
+                                                            class="bg-primary text-white font-medium flex items-center justify-center rounded-full h-8 w-8 hover:-translate-y-0.5 transition-all duration-200">
+                                                            9+
+                                                        </div>
+                                                    </a>
+                                                    <div class="bg-slate-700 hidden px-2 py-1 rounded transition-all text-white opacity-0 z-50"
+                                                        role="tooltip">
+                                                        More +
+                                                        <div data-fc-arrow
+                                                            class="bg-slate-700 w-2.5 h-2.5 rotate-45 -z-10 rounded-[1px]">
+                                                        </div>
+                                                    </div>
+                                                </div> <!-- avatar-icon end -->
+                                            </div> <!-- flex end -->
+                                        </div>
+
                                     </div>
-
-
-                                    <h5 class="my-2">
-                                        <a href="#" data-fc-type="modal" data-fc-target="task-detail-modal"
-                                            class="text-base text-gray-700 dark:text-slate-400 font-medium">Dashboard
-                                            design</a>
-                                    </h5>
-
-                                    <p class="space-x-3">
-                                        <span class="text-nowrap mb-2">
-                                            <i class="ri-briefcase-2-line text-gray-500 dark:text-gray-400"></i>
-                                            Attex
-                                        </span>
-                                        <span class="text-nowrap mb-2">
-                                            <i class="ri-discuss-line text-gray-500 dark:text-gray-400"></i>
-                                            <b class="text-gray-500 dark:text-gray-400">287</b> Comments
-                                        </span>
-                                    </p> <!-- space end -->
-
-                                    <div class="mt-5">
-                                        <div class="flex items-center">
-                                            <div class="-me-3">
-                                                <a href="javascript: void(0);" data-fc-type="tooltip"
-                                                    data-fc-placement="top">
-                                                    <img src="assets/images/users/avatar-1.jpg" alt=""
-                                                        class="rounded-full h-8 w-8 hover:-translate-y-0.5 transition-all duration-200">
-                                                </a>
-                                                <div class="bg-slate-700 hidden px-2 py-1 rounded transition-all text-white opacity-0 z-50"
-                                                    role="tooltip">
-                                                    Tosha
-                                                    <div data-fc-arrow
-                                                        class="bg-slate-700 w-2.5 h-2.5 rotate-45 -z-10 rounded-[1px]">
-                                                    </div>
-                                                </div>
-                                            </div> <!-- avatar-icon end -->
-
-                                            <div class="-me-3">
-                                                <a href="javascript: void(0);" data-fc-type="tooltip"
-                                                    data-fc-placement="top">
-                                                    <img src="assets/images/users/avatar-5.jpg" alt=""
-                                                        class="rounded-full h-8 w-8 hover:-translate-y-0.5 transition-all duration-200">
-                                                </a>
-                                                <div class="bg-slate-700 hidden px-2 py-1 rounded transition-all text-white opacity-0 z-50"
-                                                    role="tooltip">
-                                                    Brain
-                                                    <div data-fc-arrow
-                                                        class="bg-slate-700 w-2.5 h-2.5 rotate-45 -z-10 rounded-[1px]">
-                                                    </div>
-                                                </div>
-                                            </div> <!-- avatar-icon end -->
-
-                                            <div class="-me-3">
-                                                <a href="javascript: void(0);" data-fc-type="tooltip"
-                                                    data-fc-placement="top">
-                                                    <img src="assets/images/users/avatar-5.jpg" alt=""
-                                                        class="rounded-full h-8 w-8 hover:-translate-y-0.5 transition-all duration-200">
-                                                </a>
-                                                <div class="bg-slate-700 hidden px-2 py-1 rounded transition-all text-white opacity-0 z-50"
-                                                    role="tooltip">
-                                                    Brain
-                                                    <div data-fc-arrow
-                                                        class="bg-slate-700 w-2.5 h-2.5 rotate-45 -z-10 rounded-[1px]">
-                                                    </div>
-                                                </div>
-                                            </div> <!-- avatar-icon end -->
-
-                                            <div class="-me-3">
-                                                <a href="javascript: void(0);" data-fc-type="tooltip"
-                                                    data-fc-placement="top">
-                                                    <div
-                                                        class="bg-danger text-white font-medium flex items-center justify-center rounded-full h-8 w-8 hover:-translate-y-0.5 transition-all duration-200">
-                                                        K
-                                                    </div>
-                                                </a>
-                                                <div class="bg-slate-700 hidden px-2 py-1 rounded transition-all text-white opacity-0 z-50"
-                                                    role="tooltip">
-                                                    Hooker
-                                                    <div data-fc-arrow
-                                                        class="bg-slate-700 w-2.5 h-2.5 rotate-45 -z-10 rounded-[1px]">
-                                                    </div>
-                                                </div>
-                                            </div> <!-- avatar-icon end -->
-                                        </div> <!-- flex end -->
-                                    </div>
-
-                                </div>
-                            </div> <!-- Task Item End -->
+                                </div> <!-- Task Item End -->
+                            @empty
+                                {{-- {{ dd($todo) }} --}}
+                                Kosong
+                            @endforelse
 
                         </div> <!-- end company-list-1-->
                     </div>

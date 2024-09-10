@@ -52,7 +52,11 @@ class ProjectRepository extends BaseRepository implements ProjectInterface
             $data['image'] = $this->service->handleImageImage($data['image'], 'project_images');
         }
 
-        return $this->model->query()->create($data);
+        $project = $this->model->query()->create($data);
+
+        // $this->service->create_kanban($project->name, $project->id, $project->descriptiom);
+
+        return $this->service->create_kanban($project->name, $project->id, $project->descriptiom);
     }
     /**
      * Method show

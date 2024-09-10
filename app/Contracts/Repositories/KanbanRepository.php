@@ -6,6 +6,7 @@ use App\Contracts\Interfaces\AboutInterface;
 use App\Contracts\Interfaces\KanbanInterface;
 use App\Models\About;
 use App\Models\Kanban;
+use App\Models\Task;
 use App\Services\KanbanService;
 use Illuminate\Http\Request;
 
@@ -32,12 +33,9 @@ class KanbanRepository extends BaseRepository implements KanbanInterface
      *
      * @return mixed
      */
-    public function search(Request $request): mixed
+    public function get(): mixed
     {
-        $search = $request->search;
-        return $this->model->query()->when($search, function ($query) use ($search) {
-            $query->whereLike('name', '%' . $search . '%');
-        })->get();
+        return $this->model->all();
     }
     /**
      * Method store

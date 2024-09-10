@@ -10,7 +10,7 @@
         position: absolute;
         top: 50%;
         right: 0;
-        margin-right: 50px;
+        margin-right: 20px;
         transform: translateY(-50%);
         /* Mentransformasi untuk menempatkan di tengah vertikal */
         opacity: 0;
@@ -86,9 +86,23 @@
                 </a>
             </li>
 
+
             <li class="menu-title">Apps</li>
 
             <li class="menu-item">
+                {{-- href="javascript:void(0)" data-fc-type="collapse" --}}
+                <a href="{{ route('projects.index') }}" class="menu-link">
+                    <span class="menu-icon">
+                        <i class="ri-suitcase-line"></i>
+                    </span>
+                    <span class="menu-text"> Proyek </span>
+                </a>
+                <a href="{{ route('projects.create') }}"
+                    class="inline-flex items-center bg-secondary light:bg-[#3e60d5] text-white font-semibold py-1 px-2 rounded group-hover:opacity-100 transition-opacity duration-300 ease-in-out">
+                    <i class="ri-add-line"></i>
+                </a>
+            </li>
+            {{-- <li class="menu-item">
                 <a href="javascript:void(0)" data-fc-type="collapse" class="menu-link">
                     <span class="menu-icon">
                         <i class="ri-suitcase-line"></i>
@@ -96,25 +110,25 @@
                     <span class="menu-text"> Proyek </span>
                     <span class="menu-arrow"></span>
                 </a>
-                {{-- <a href="{{ route('projects.create') }}"
+                <a href="{{ route('projects.create') }}"
                     class="inline-flex items-center bg-secondary light:bg-[#3e60d5] text-white font-semibold py-1 px-2 rounded group-hover:opacity-100 transition-opacity duration-300 ease-in-out">
                     <i class="ri-add-line"></i>
-                </a> --}}
+                </a>
 
                 <ul class="sub-menu hidden">
                     <li class="menu-item">
                         <a href="{{ route('projects.index') }}" class="menu-link">
                             <span class="menu-text">List Proyek</span>
                         </a>
-                        
+
                     </li>
                     {{-- <li class="menu-item">
                         <a href="apps-email-read.html" class="menu-link">
                             <span class="menu-text">Read Email</span>
                         </a>
-                    </li> --}}
+                    </li>
                 </ul>
-            </li>
+            </li> --}}
 
             <li class="menu-item">
                 <a href="apps-calendar.html" class="menu-link">
