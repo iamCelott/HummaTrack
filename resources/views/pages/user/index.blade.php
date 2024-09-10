@@ -40,7 +40,7 @@
                                     </tr>
                                 </thead>
                                 <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
-                                    @foreach ($users as $index => $user)
+                                    @forelse ($users as $index => $user)
                                         <tr>
                                             <th scope="row" class="px-4 py-4 text-sm font-medium text-gray-500 dark:text-gray-200">{{ $index + 1 }}</th>
                                             <td class="px-4 py-4 whitespace-nowrap text-sm font-medium text-gray-500 dark:text-gray-200">
@@ -58,7 +58,9 @@
                                                 </a>
                                             </td>
                                         </tr>
-                                    @endforeach
+                                        @empty
+                                        <td colspan="6" class="text-center padding"> Tidak ada data</td>
+                                    @endforelse
                                 </tbody>
                             </table>
                         </div>

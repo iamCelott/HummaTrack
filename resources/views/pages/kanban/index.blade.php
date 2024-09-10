@@ -765,8 +765,8 @@
     </main>
 
     <!-- Sortablejs -->
-    <script src="assets/libs/sortablejs/Sortable.min.js"></script>
+    <script src="{{ asset('assets/libs/sortablejs/Sortable.min.js') }}"></script>
 
     <!-- Dragula Demo Component js -->
-    <script src="assets/js/pages/apps-kanban.js"></script>
+    <script src="{{ asset('assets/js/pages/apps-kanban.js') }}"></script>
 @endsection
