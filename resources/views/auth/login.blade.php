@@ -13,6 +13,8 @@
     <!-- App favicon -->
     <link rel="shortcut icon" href="assets/images/favicon.ico">
 
+    {{-- flowbite --}}
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
     <!-- App css -->
     <link href="assets/css/app.min.css" rel="stylesheet" type="text/css">
 
@@ -46,9 +48,9 @@
                 <div class="card overflow-hidden" style="border-radius:20px;">
 
                     <div class="p-9">
-                        <div class="text-center mx-auto w-3/4">
-                            <h4 class="text-dark/70 text-center text-lg font-bold dark:text-light/80 mb-2">Log In</h4>
-                            <p class="text-gray-400 mb-9">Enter your email address and password to access admin panel.
+                        <div class="text-start mx-auto w-4/4">
+                            <h2 class="text-dark/70 text-start text-2xl font-bold dark:text-light/80 mb-2">Login</h2>
+                            <p class="text-gray-400 mb-9" style="min-width: 400px">Masuk untuk mulai tugasmu!
                             </p>
                         </div>
 
@@ -57,57 +59,119 @@
 
                             <!-- Email Address -->
                             <div>
-                                <x-input-label for="email" :value="__('Email')" />
-                                <x-text-input id="email" class="block mt-1 w-full" type="email" name="email"
-                                    :value="old('email')" required autofocus autocomplete="username" />
+                                <div class="relative">
+                                    <x-input-label for="email" :value="__('Email')" />
+                                    <i class="ri-mail-line absolute"
+                                        style="top: 50%;left:15px;translate: -20% -10%;font-size:20px;"></i>
+                                    <x-text-input id="email" class="block mt-1 w-full" type="email" name="email"
+                                        style="padding-left: 40px" :value="old('email')" />
+                                </div>
                                 <x-input-error :messages="$errors->get('email')" class="mt-2" />
                             </div>
 
                             <!-- Password -->
                             <div class="mt-4">
-                                <x-input-label for="password" :value="__('Password')" />
+                                <!-- Form Group -->
+                                <!-- End Form Group -->
+                                <div class="relative">
+                                    <!-- Password Input Label -->
+                                    <div class="relative">
+                                        <x-input-label for="password" :value="__('Password')" />
 
-                                <x-text-input id="password" class="block mt-1 w-full" type="password" name="password"
-                                    required autocomplete="current-password" />
+                                        <!-- Password Input Field -->
+                                        <i class="ri-shield-keyhole-line absolute cursor-pointer"
+                                            style="top: 50%;left:15px;translate: -20% -10%;font-size:20px;"></i>
+                                        <x-text-input id="password" class="block mt-1 w-full pr-10" type="password"
+                                            style="padding-left: 40px" name="password" required
+                                            autocomplete="current-password" />
 
-                                <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                                        <!-- Eye Icon for Toggle Visibility -->
+                                        <i id="eye-icon" class="ri-eye-line absolute cursor-pointer"
+                                            style="top: 50%;right:10px;translate: -20% -10%;font-size:20px;"></i>
+
+
+                                        <!-- Error Message -->
+                                    </div>
+                                    <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                                </div>
+
+                                <!-- Script for Toggle Functionality -->
+                                <script>
+                                    document.addEventListener('DOMContentLoaded', function() {
+                                        const passwordInput = document.getElementById('password');
+                                        const eyeIcon = document.getElementById('eye-icon');
+
+                                        eyeIcon.addEventListener('click', function() {
+                                            // Toggle password visibility
+                                            if (passwordInput.type === 'password') {
+                                                passwordInput.type = 'text';
+                                                eyeIcon.classList.remove('ri-eye-line')
+                                                eyeIcon.classList.add('ri-eye-off-line')
+                                                eyeIcon.setAttribute('stroke', 'gray');
+                                            } else {
+                                                passwordInput.type = 'password';
+                                                eyeIcon.classList.remove('ri-eye-off-line')
+                                                eyeIcon.classList.add('ri-eye-line')
+                                                eyeIcon.setAttribute('stroke', 'currentColor');
+                                            }
+                                        });
+                                    });
+                                </script>
+
                             </div>
 
                             <!-- Remember Me -->
-                            <div class="block mt-4">
+                            <div class="flex items-center justify-between" style="margin: 25px 0 30px 0">
                                 <label for="remember_me" class="inline-flex items-center">
                                     <input id="remember_me" type="checkbox"
                                         class="rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800"
                                         name="remember">
                                     <span
-                                        class="ms-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Remember me') }}</span>
+                                        class="ms-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Ingat kata sandi') }}</span>
                                 </label>
-                            </div>
-
-                            <div class="flex items-center justify-end mt-4">
                                 @if (Route::has('password.request'))
-                                    <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
-                                        href="{{ route('password.request') }}">
-                                        {{ __('Forgot your password?') }}
-                                    </a>
-                                @endif
+                                    <label for="forgotPw" class="inline-flex items-center">
+                                        <a ID="forgotPw"
+                                            class=" text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
+                                            href="{{ route('password.request') }}">
+                                            <span
+                                                class="ms-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Lupa Password?') }}</span>
 
+                                        </a>
+                                    </label>
+                                @endif
                             </div>
+                            <div class="flex items-center justify-between" style="margin: 25px 0 30px 0">
+                                <div class="line"
+                                    style="height: 1px; width: 50%;background-color: gray;margin-right:10px;"></div>
+                                <span class="text-gray">atau</span>
+                                <div class="line"
+                                    style="height: 1px; width: 50%;background-color: gray;margin-left:10px;"></div>
+                            </div>
+
                             <div class="flex items-center justify-start mt-4">
-                                <button type='submit' class="flex items-center"
-                                style="
+                                <style>
+                                    .gugel:hover {
+                                        background-color: rgba(230, 230, 230, .2);
+                                        transition: .1s;
+                                    }
+                                </style>
+                                <button type='submit' class="gugel flex items-center bg-white"
+                                    style="
                                     padding:7px 7px;
                                     width:100%;
                                     border-radius:10px;
                                     color:#fefefe;
-                                    box-shadow: 0px 0px 3px rgba(0,0,0,.3)
+                                    border:2px solid rgba(0,0,0,.1);
                                     ">
-                                    <img src="{{ asset('assets/images/google-icon.png') }}" alt="" style="width:30px;">
+                                    <img src="{{ asset('assets/images/google-icon.png') }}" alt=""
+                                        style="width:30px;">
                                     <span class="text-gray-400" style="margin: 0px 0px 0px 10px">Google</span>
                                 </button>
                             </div>
-                                <div class="flex items-center justify-center mt-4">
-                                <button type='submit' style="
+                            <div class="flex items-center justify-center mt-4">
+                                <button type='submit'
+                                    style="
                                     padding: 10px 45px;
                                     border-radius:10px;
                                     margin-top:20px;
@@ -119,30 +183,23 @@
                             </div>
                         </form>
                     </div>
+                    <div class="text-center my-4">
+                        <p class="text-muted">Belum punya akun? <a href="auth-register.html"
+                                class="text-muted  ms-1 link-offset-3 " style="color:#246AFF ">Daftar Sekarang</a></p>
+                    </div>
                 </div>
                 <!-- end card -->
 
-                <div class="text-center my-4">
-                    <p class="text-muted">Don't have an account? <a href="auth-register.html"
-                            class="text-muted ms-1 link-offset-3 underline underline-offset-4"><b>Sign Up</b></a></p>
-                </div>
             </div>
         </div>
     </div>
-
-    <footer class="absolute bottom-0 inset-x-0">
-        <p class="font-medium text-center p-6">
-            <script>
-                document.write(new Date().getFullYear())
-            </script> © Attex - Coderthemes.com
-        </p>
-    </footer>
 
     <!-- Plugin Js -->
     <script src="assets/libs/simplebar/simplebar.min.js"></script>
     <script src="assets/libs/lucide/umd/lucide.min.js"></script>
     <script src="assets/libs/%40frostui/tailwindcss/frostui.js"></script>
-
+    {{-- flowbite --}}
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
     <!-- App Js -->
     <script src="assets/js/app.js"></script>
 
