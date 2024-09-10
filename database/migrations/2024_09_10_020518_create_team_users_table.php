@@ -20,7 +20,7 @@ return new class extends Migration
                 TeamUserRole::Leader->value,
                 TeamUserRole::CoLeader->value,
                 TeamUserRole::Member->value,
-            ]);
+            ])->default(TeamUserRole::Member->value);
             $table->timestamps();
             $table->unique(['user_id', 'team_id']);
         });
