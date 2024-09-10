@@ -14,11 +14,10 @@ class UserController extends Controller
     protected $userRepository;
     private UserService $service;
 
-    public function __construct(UserInterface $user, UserService $service, $userRepository)
+    public function __construct(UserInterface $user, UserService $service)
     {
         $this->user = $user;
         $this->service = $service;
-        $this->userRepository = $userRepository;
     }
     /**
      * Display a listing of the resource.
