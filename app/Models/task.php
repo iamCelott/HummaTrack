@@ -18,6 +18,12 @@ class Task extends Model
         return $this->hasMany(Task::class);
     }
 
+
+    public function kanban(): BelongsTo
+    {
+        return $this->belongsTo(Kanban::class,'kanban_id');
+    }
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class,'user_id');

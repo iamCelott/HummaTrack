@@ -32,7 +32,7 @@ class TaskRepository extends BaseRepository implements TaskInterface
      *
      * @return mixed
      */
-    public function search(Request $request): mixed
+    public function get(Request $request): mixed
     {
         // $search = $request->search;
         // return $this->model->query()->when($search, function ($query) use ($search) {

@@ -12,7 +12,7 @@
                 <a href="#" class="text-sm font-medium text-slate-700 dark:text-slate-400">Proyek</a>
             </div>
 
-            
+
         </div>
     </div>
     <!-- Page Title End -->
@@ -41,7 +41,7 @@
                                 <a href="{{ route('kanban.index') }}" class="text-slate-900 dark:text-slate-200">{{ $project->name }}</a>
                             </h5>
                             <p class="text-gray-500 text-sm mb-9">{{ $project->description }}</p>
-        
+
                             <!-- Gambar Avatar (ambil dari kolom image) -->
                             {{-- <div class="flex -space-x-2">
                                 <a href="javascript: void(0);">
@@ -49,7 +49,7 @@
                                 </a>
                             </div> --}}
                         </div>
-        
+
                         <!-- Bagian tanggal dan tombol komentar -->
                         <div class="border-t p-5 border-gray-300 dark:border-gray-700">
                             <div class="grid lg:grid-cols-2 gap-4">
@@ -64,23 +64,23 @@
                                         <span class="align-text-bottom">{{ \Carbon\Carbon::parse($project->end_date)->format('d M') }}</span>
                                     </a>
                                 </div>
-                                
+
                                 <!-- Bagian progress bar dan kanban (dikomen sesuai permintaan) -->
-                                
+
                                 <div class="flex items-center gap-2">
                                     <div class="w-full bg-gray-200 rounded-full h-1.5 dark:bg-gray-700">
                                         <div class="bg-white h-1.5 rounded-full dark:bg-gray-800 w-2/3"></div>
                                     </div>
-                                    <a href="{{ route('kanban.index') }}" type="button" class="btn bg-primary text-white rounded-full">Kanban</a>
+                                <a href="{{ route('kanban.show', $project->id) }}" type="button" class="btn bg-primary text-white rounded-full">Kanban</a>
                                 </div>
-                               
+
                             </div>
-                        </div>                        
+                        </div>
                     </div>
                 </div>
             @endforeach
         </div>
-        
+
 
     </div>
 
