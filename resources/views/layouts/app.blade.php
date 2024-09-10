@@ -74,7 +74,7 @@
 
     <!-- Icons css -->
     <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css">
-    
+
     <!-- Dropzone -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.css" />
 
@@ -82,6 +82,9 @@
     <script src="{{ asset('assets/js/config.js') }}"></script>
     {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <script src="{{ asset('js/app.js') }}" defer></script> --}}
+
+    {{-- CK Editor 5 --}}
+    <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/43.1.0/ckeditor5.css" />
 
 </head>
 
@@ -322,15 +325,15 @@
 
     <!-- App Js -->
     <script src="{{ asset('assets/js/app.js') }}"></script>
-    
+
     <!-- Dropzone -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.js"></script>
 
-     <!-- Sortablejs -->
-     <script src="assets/libs/sortablejs/Sortable.min.js"></script>
+    <!-- Sortablejs -->
+    <script src="assets/libs/sortablejs/Sortable.min.js"></script>
 
-     <!-- Dragula Demo Component js -->
-     <script src="assets/js/pages/apps-kanban.js"></script>
+    <!-- Dragula Demo Component js -->
+    <script src="assets/js/pages/apps-kanban.js"></script>
 </body>
 
 </html>
