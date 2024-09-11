@@ -20,5 +20,13 @@ class UserSeeder extends Seeder
             'phone_number' => '082340966694',
             'photo_profile' => "https://ui-avatars.com/api/?name=admin&background=random"
         ])->assignRole('admin');
+
+        User::create([
+            'name' => 'pemin',
+            'email' => 'pemin@gmail.com',
+            'password' => '12345678',
+            'phone_number' => '082340956694',
+            'photo_profile' => "https://ui-avatars.com/api/?name=admin&background=random"
+        ])->assignRole('admin');
     }
 }

@@ -77,7 +77,7 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        $deleted = $this->userRepository->delete($id);
+        $deleted = $this->user->delete($id);
 
         if ($deleted) {
             return redirect()->back()->with('success', 'User berhasil di hapus!');
