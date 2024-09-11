@@ -24,6 +24,7 @@ class AppServiceProvider extends ServiceProvider
         KanbanInterface::class => KanbanRepository::class,
         TaskInterface::class => TaskRepository::class,
         TaskDetailInterface::class => TaskDetailRepository::class,
+        TeamInterface::class => TeamRepository::class,
     ];
     /**
      * Register any application services.

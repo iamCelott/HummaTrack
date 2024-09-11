@@ -122,6 +122,16 @@
                     <span class="menu-text"> Pengguna </span>
                 </a>
             </li>
+
+            <li class="menu-item">
+                {{-- href="javascript:void(0)" data-fc-type="collapse" --}}
+                <a href="{{ route('teams.index') }}" class="menu-link">
+                    <span class="menu-icon">
+                        <i class="ri-team-line"></i>
+                    </span>
+                    <span class="menu-text">Kelompok</span>
+                </a>
+            </li>
             {{-- <li class="menu-item">
                 <a href="javascript:void(0)" data-fc-type="collapse" class="menu-link">
                     <span class="menu-icon">
