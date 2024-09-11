@@ -30,14 +30,14 @@
                         {{-- @dd($project) --}}
                         @if ($project->type === 'team')
                             <div class="absolute top-0 left-0 h-full">
-                                <div class="bg-success text-white font-bold text-xs py-2 px-2 mr-6 h-full flex items-center"
+                                <div class="bg-success text-white font-bold text-xs py-2 px-3 mr-6 h-full flex items-center"
                                     style="writing-mode: vertical-rl;  border-top-left-radius: 20px; border-bottom-left-radius: 20px;">
                                     TEAM
                                 </div>
                             </div>
                         @else
                             <div class="absolute top-0 left-0 h-full">
-                                <div class="bg-info text-white font-bold text-xs py-2 px-2 mr-6 h-full flex items-center"
+                                <div class="bg-info text-white font-bold text-xs py-2 px-3 mr-6 h-full flex items-center"
                                     style="writing-mode: vertical-rl;  border-top-left-radius: 20px; border-bottom-left-radius: 20px;">
                                     PERSONAL
                                 </div>
@@ -49,7 +49,7 @@
 
                                 <!-- Project Name and Icon -->
                                 <div class="w-full flex items-center">
-                                    <div class="bg-primary/20 px-2 py-1 rounded-full me-2" style="margin-left: 1.5rem;">
+                                    <div class="bg-primary/20 px-2 py-1 rounded-full me-2" style="margin-left: 2rem;">
                                         <i class="ri-suitcase-line text-primary/90" style="font-size: 20px;"></i>
                                     </div>
                                     <h5 class="flex items-center card-title py-3 ellipsis ml-3">
@@ -85,18 +85,18 @@
 
                         <!-- Project Details -->
                         <div class="py-3 px-6 flex-grow">
-                            <h5 class="my-2 ellipsis" style="margin-left: 1.5rem;">
+                            <h5 class="my-2 ellipsis" style="margin-left: 2rem;">
                                 <a href="{{ route('kanban.index') }}"
                                     class="text-slate-900 dark:text-slate-200">{{ $project->name }}</a>
                             </h5>
-                            <p class="text-gray-500 text-sm mb-4 ellipsis" style="margin-left: 1.5rem;">
+                            <p class="text-gray-500 text-sm mb-4 ellipsis" style="margin-left: 2rem;">
                                 {{ $project->description }}</p>
                         </div>
 
                         <!-- Footer with Task Progress -->
                         <div class="border-t p-5 border-gray-300 dark:border-gray-700">
                             <div class="grid lg:grid-cols-2 gap-4">
-                                <div class="flex items-center justify-between gap-2" style="margin-left: 1.5rem;">
+                                <div class="flex items-center justify-between gap-2" style="margin-left: 2rem;">
                                     <a href="#" class="text-sm">
                                         <i class="ri-calendar-line text-lg me-2"></i>
                                         <span
