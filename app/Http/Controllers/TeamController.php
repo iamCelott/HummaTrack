@@ -5,24 +5,26 @@ namespace App\Http\Controllers;
 use App\Contracts\Interfaces\TeamInterface;
 use App\Models\Team;
 use App\Services\TeamService;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
 class TeamController extends Controller
 {
     private TeamInterface $team;
-    private TeamService $TeamService;
+    private TeamService $service;
 
-    public function __construct(TeamInterface $team, TeamService $TeamService)
+    public function __construct(TeamInterface $team, TeamService $service)
     {
         $this->team = $team;
-        $this->TeamService = $TeamService;
+        $this->service = $service;
     }
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request): View
     {
-        //
+        $teams = $this->team->search($request);
+        return view('pages.team.index', compact('teams'));
     }
 
     /**

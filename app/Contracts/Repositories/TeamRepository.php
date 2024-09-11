@@ -2,27 +2,25 @@
 
 namespace App\Contracts\Repositories;
 
-use App\Contracts\Interfaces\AboutInterface;
-use App\Contracts\Interfaces\UserInterface;
-use App\Models\About;
-use App\Models\User;
-use App\Services\UserService;
+use App\Contracts\Interfaces\TeamInterface;
+use App\Models\Team;
+use App\Services\TeamService;
 use Illuminate\Http\Request;
 
-class TeamRepository extends BaseRepository implements UserInterface
+class TeamRepository extends BaseRepository implements TeamInterface
 {
     protected $service;
     /**
      * Method __construct
      *
-     * @param User $user [explicite description]
-     * @param UserService $service
+     * @param Team $team [explicite description]
+     * @param TeamService $service
      *
      * @return void
      */
-    public function __construct(User $user, UserService $service)
+    public function __construct(Team $team, TeamService $service)
     {
-        $this->model = $user;
+        $this->model = $team;
         $this->service = $service;
     }
     /**
@@ -34,11 +32,10 @@ class TeamRepository extends BaseRepository implements UserInterface
      */
     public function search(Request $request): mixed
     {
-        // $search = $request->search;
-        // return $this->model->query()->when($search, function ($query) use ($search) {
-        //     $query->whereLike('name', '%' . $search . '%');
-        // })->get();
-        return $this->model->query()->search($request);
+        $search = $request->search;
+        return $this->model->query()->when($search, function ($query) use ($search) {
+            $query->whereLike('name', '%' . $search . '%');
+        })->latest()->paginate();
     }
     /**
      * Method store
@@ -86,3 +83,4 @@ class TeamRepository extends BaseRepository implements UserInterface
         return $this->show($id)->delete();
     }
 }
+    
