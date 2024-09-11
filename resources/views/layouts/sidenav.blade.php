@@ -61,7 +61,7 @@
     <!--- Menu -->
     <div class="scrollbar" data-simplebar>
         <ul class="menu" data-fc-type="accordion">
-            <li class="menu-title mt-4">Last opened </li>
+            <li class="menu-title mt-4">Terakhir Dibuka</li>
 
             <li class="menu-item">
                 {{-- href="javascript:void(0)" data-fc-type="collapse" --}}
@@ -83,21 +83,32 @@
                 </a>
             </li>
 
-            <li class="menu-title">Navigation</li>
+            @hasrole('admin')
+                <li class="menu-title">Manajemen Umum</li>
 
-            <li class="menu-item">
-                {{-- href="javascript:void(0)" data-fc-type="collapse" --}}
-                <a href="{{ route('dashboard') }}" class="menu-link">
-                    <span class="menu-icon">
-                        <i class="ri-home-4-line"></i>
-                    </span>
-                    <span class="menu-text"> Dashboard </span>
-                    {{-- <span class="badge bg-success rounded-full">2</span> --}}
-                </a>
-            </li>
+                <li class="menu-item">
+                    {{-- href="javascript:void(0)" data-fc-type="collapse" --}}
+                    <a href="{{ route('dashboard') }}" class="menu-link">
+                        <span class="menu-icon">
+                            <i class="ri-dashboard-line"></i>
+                        </span>
+                        <span class="menu-text"> Dashboard </span>
+                        {{-- <span class="badge bg-success rounded-full">2</span> --}}
+                    </a>
+                </li>
 
+                <li class="menu-item">
+                    {{-- href="javascript:void(0)" data-fc-type="collapse" --}}
+                    <a href="{{ route('users.index') }}" class="menu-link">
+                        <span class="menu-icon">
+                            <i class="ri-user-line"></i>
+                        </span>
+                        <span class="menu-text"> Pengguna </span>
+                    </a>
+                </li>
+            @endhasrole
 
-            <li class="menu-title">Apps</li>
+            <li class="menu-title">Manajemen Proyek</li>
 
             <li class="menu-item">
                 {{-- href="javascript:void(0)" data-fc-type="collapse" --}}
@@ -111,16 +122,6 @@
                     class="inline-flex items-center bg-secondary light:bg-[#3e60d5] text-white font-semibold py-1 px-2 rounded group-hover:opacity-100 transition-opacity duration-300 ease-in-out">
                     <i class="ri-add-line"></i>
                 </button>
-            </li>
-
-            <li class="menu-item">
-                {{-- href="javascript:void(0)" data-fc-type="collapse" --}}
-                <a href="{{ route('users.index') }}" class="menu-link">
-                    <span class="menu-icon">
-                        <i class="ri-user-line"></i>
-                    </span>
-                    <span class="menu-text"> Pengguna </span>
-                </a>
             </li>
 
             <li class="menu-item">
@@ -160,7 +161,7 @@
                 </ul>
             </li> --}}
 
-            <li class="menu-item">
+            {{-- <li class="menu-item">
                 <a class="menu-link">
                     <span class="menu-icon">
                         <i class="ri-calendar-event-line"></i>
@@ -176,7 +177,7 @@
                     </span>
                     <span class="menu-text"> Tugas </span>
                 </a>
-            </li>
+            </li> --}}
 
             {{-- <li class="menu-item">
                 <a href="javascript:void(0)" data-fc-type="collapse" class="menu-link">

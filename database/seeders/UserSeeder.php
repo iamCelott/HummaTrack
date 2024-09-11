@@ -21,12 +21,20 @@ class UserSeeder extends Seeder
             'photo_profile' => "https://ui-avatars.com/api/?name=admin&background=random"
         ])->assignRole('admin');
 
+        // User::create([
+        //     'name' => 'pemin',
+        //     'email' => 'pemin@gmail.com',
+        //     'password' => '12345678',
+        //     'phone_number' => '082340956694',
+        //     'photo_profile' => "https://ui-avatars.com/api/?name=admin&background=random"
+        // ])->assignRole('admin');
+
         User::create([
-            'name' => 'pemin',
-            'email' => 'pemin@gmail.com',
+            'name' => 'member',
+            'email' => 'member@gmail.com',
             'password' => '12345678',
             'phone_number' => '082340956694',
-            'photo_profile' => "https://ui-avatars.com/api/?name=pemin&background=random"
-        ])->assignRole('admin');
+            'photo_profile' => "https://ui-avatars.com/api/?name=member&background=random"
+        ])->assignRole('member');
     }
 }
