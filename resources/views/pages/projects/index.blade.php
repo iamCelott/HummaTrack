@@ -23,6 +23,7 @@
     </style>
     <main class="flex-grow p-6">
 
+        
 
         <div class="flex justify-between items-center mb-6">
             <h4 class="text-slate-900 dark:text-slate-200 text-lg font-medium">List Proyek</h4>
@@ -73,8 +74,8 @@
                                 <!-- Project Status -->
                                 <div class="text-xs text-white rounded-md py-1 px-3 font-medium whitespace-nowrap"
                                     role="alert"
-                                    style="max-width: 150px; text-align: center; 
-                                    background-color: 
+                                    style="max-width: 150px; text-align: center;
+                                    background-color:
                                         @if ($project->status->value === 'not_started') #6c757d; /* Secondary */
                                         @elseif ($project->status->value === 'in_progress') #ffc107; /* Yellow */
                                         @elseif ($project->status->value === 'on_hold') #fd7e14; /* Orange */

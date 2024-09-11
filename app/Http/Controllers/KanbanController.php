@@ -30,7 +30,7 @@ class KanbanController extends Controller
     {
 
         $kanbans = $this->kanban->get();
-        return view('pages.kanban.index');
+        return view('pages.kanbans.index');
     }
 
     /**
@@ -55,7 +55,7 @@ class KanbanController extends Controller
     public function show(Kanban $kanban)
     {
         $users = $this->user->get();
-        return view('pages.kanban.index', compact('kanban', 'users'));
+        return view('pages.kanbans.index', compact('kanban', 'users'));
     }
 
     /**

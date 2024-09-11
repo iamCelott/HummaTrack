@@ -1,13 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Prefix\Admin;
 
 use App\Contracts\Interfaces\TeamInterface;
 use App\Contracts\Interfaces\UserInterface;
-use App\Http\Requests\TeamRequest;
-use App\Models\Team;
+use App\Http\Controllers\Controller;
 use App\Services\TeamService;
-use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
 class TeamController extends Controller
@@ -25,11 +23,11 @@ class TeamController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request): View
+    public function index(Request $request)
     {
         $teams = $this->team->search($request);
         $users = $this->user->get();
-        return view('pages.team.index', compact('teams', 'users'));
+        return view('pages.teams.admin.index', compact('teams', 'users'));
     }
 
     /**
@@ -43,16 +41,15 @@ class TeamController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(TeamRequest $request)
+    public function store(Request $request)
     {
-        $this->team->store($request->all());
-        return redirect()->back()->with('success','Team Berhasil Dibuat');
+        //
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Team $team)
+    public function show(string $id)
     {
         //
     }
@@ -60,7 +57,7 @@ class TeamController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Team $team)
+    public function edit(string $id)
     {
         //
     }
@@ -68,7 +65,7 @@ class TeamController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Team $team)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -76,7 +73,7 @@ class TeamController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Team $team)
+    public function destroy(string $id)
     {
         //
     }

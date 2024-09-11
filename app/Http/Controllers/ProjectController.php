@@ -28,7 +28,7 @@ class ProjectController extends Controller
     public function index(Request $request): View
     {
         $projects = $this->project->search($request);
-        return view('pages.project.index', compact('projects'));
+        return view('pages.projects.index', compact('projects'));
     }
 
     /**
@@ -36,7 +36,7 @@ class ProjectController extends Controller
      */
     public function create(Request $request): View
     {
-        return view('pages.project.create');
+        return view('pages.projects.create');
     }
 
     /**
