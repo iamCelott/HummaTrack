@@ -26,7 +26,7 @@ class UserSeeder extends Seeder
             'email' => 'pemin@gmail.com',
             'password' => '12345678',
             'phone_number' => '082340956694',
-            'photo_profile' => "https://ui-avatars.com/api/?name=admin&background=random"
+            'photo_profile' => "https://ui-avatars.com/api/?name=pemin&background=random"
         ])->assignRole('admin');
     }
 }

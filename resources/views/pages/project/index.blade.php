@@ -10,7 +10,7 @@
     </style>
     <main class="flex-grow p-6">
 
-        <!-- Page Title Start -->
+
         <div class="flex justify-between items-center mb-6">
             <h4 class="text-slate-900 dark:text-slate-200 text-lg font-medium">List Proyek</h4>
 
@@ -20,26 +20,44 @@
                 </div>
             </div>
         </div>
-        <!-- Page Title End -->
 
         <div class="flex flex-auto flex-col">
             <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-6" style="border-radius: 20px">
                 @foreach ($projects as $project)
-                    <div class="card flex flex-col justify-between" style="height: 350px; border-radius: 20px">
+                    <div class="relative card flex flex-col justify-between"
+                        style="height: 350px; border-radius: 20px; position: relative;">
+
+                        {{-- @dd($project) --}}
+                        @if ($project->type === 'team')
+                            <div class="absolute top-0 left-0 h-full">
+                                <div class="bg-success text-white font-bold text-xs py-2 px-2 mr-6 h-full flex items-center"
+                                    style="writing-mode: vertical-rl;  border-top-left-radius: 20px; border-bottom-left-radius: 20px;">
+                                    TEAM
+                                </div>
+                            </div>
+                        @else
+                            <div class="absolute top-0 left-0 h-full">
+                                <div class="bg-info text-white font-bold text-xs py-2 px-2 mr-6 h-full flex items-center"
+                                    style="writing-mode: vertical-rl;  border-top-left-radius: 20px; border-bottom-left-radius: 20px;">
+                                    PERSONAL
+                                </div>
+                            </div>
+                        @endif
+
                         <div class="card-header">
                             <div class="flex justify-between items-center">
 
                                 <!-- Project Name and Icon -->
                                 <div class="w-full flex items-center">
-                                    <div class="bg-primary px-2 py-1 rounded-full me-2">
-                                        <i class="ri-suitcase-line text-white" style="font-size: 20px;"></i>
+                                    <div class="bg-primary/20 px-2 py-1 rounded-full me-2" style="margin-left: 1.5rem;">
+                                        <i class="ri-suitcase-line text-primary/90" style="font-size: 20px;"></i>
                                     </div>
                                     <h5 class="flex items-center card-title py-3 ellipsis ml-3">
                                         {{ $project->name }}
                                     </h5>
                                 </div>
 
-                                <!-- Project Status (aligned to the right) -->
+                                <!-- Project Status -->
                                 <div class="text-xs text-white rounded-md py-1 px-3 font-medium whitespace-nowrap"
                                     role="alert"
                                     style="max-width: 150px; text-align: center; 
@@ -67,17 +85,18 @@
 
                         <!-- Project Details -->
                         <div class="py-3 px-6 flex-grow">
-                            <h5 class="my-2 ellipsis">
+                            <h5 class="my-2 ellipsis" style="margin-left: 1.5rem;">
                                 <a href="{{ route('kanban.index') }}"
                                     class="text-slate-900 dark:text-slate-200">{{ $project->name }}</a>
                             </h5>
-                            <p class="text-gray-500 text-sm mb-4 ellipsis">{{ $project->description }}</p>
+                            <p class="text-gray-500 text-sm mb-4 ellipsis" style="margin-left: 1.5rem;">
+                                {{ $project->description }}</p>
                         </div>
 
                         <!-- Footer with Task Progress -->
                         <div class="border-t p-5 border-gray-300 dark:border-gray-700">
                             <div class="grid lg:grid-cols-2 gap-4">
-                                <div class="flex items-center justify-between gap-2">
+                                <div class="flex items-center justify-between gap-2" style="margin-left: 1.5rem;">
                                     <a href="#" class="text-sm">
                                         <i class="ri-calendar-line text-lg me-2"></i>
                                         <span
@@ -102,6 +121,7 @@
                 @endforeach
             </div>
         </div>
+
 
 
     </main>
