@@ -97,10 +97,10 @@
                     </span>
                     <span class="menu-text"> Proyek </span>
                 </a>
-                <a href="{{ route('projects.create') }}"
+                <button type="button" data-fc-type="modal" data-fc-target="createProject" 
                     class="inline-flex items-center bg-secondary light:bg-[#3e60d5] text-white font-semibold py-1 px-2 rounded group-hover:opacity-100 transition-opacity duration-300 ease-in-out">
                     <i class="ri-add-line"></i>
-                </a>
+            </button>
             </li>
 
             <li class="menu-item">
@@ -831,4 +831,61 @@
 
     </div>
 </div>
+
+<div class="rounded-md">
+    <div id="createProject"
+        class="w-full h-full fixed top-0 left-0 z-50 transition-all duration-500 hidden overflow-y-auto">
+        <div
+            class="-translate-y-5 fc-modal-open:translate-y-0 fc-modal-open:opacity-100 opacity-0 duration-300 ease-in-out transition-all sm:max-w-lg sm:w-full m-3 sm:mx-auto flex flex-col bg-white shadow-sm rounded dark:bg-gray-800">
+            <div class="p-4 overflow-y-auto">
+                <div class="p-9">
+                    <h2 class="text-lg font-semibold text-gray-900 dark:text-slate-200">Tambah Project Baru</h2>
+                </div>
+
+                <form class="px-6" action="{{ route('projects.store') }}" method="POST">
+                    @csrf
+                    <div class="space-y-6 mb-6">
+                        <div class="space-y-1 mb-6">
+                            <label for="project-name" class="font-semibold text-gray-500">Project Name</label>
+                            <input class="form-input" type="text" id="project-name" name="name" placeholder="Enter Project Name" required>
+                        </div>
+
+                        <div class="space-y-1 mb-6">
+                            <label for="project-description" class="font-semibold text-gray-500">Project Description <span class="text-red-500">*</span></label>
+                            <textarea class="form-input" id="project-description" name="description" rows="4" placeholder="Enter Project Description" required></textarea>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4 mb-6">
+                            <div class="space-y-1">
+                                <label for="start-date" class="font-semibold text-gray-500">Start Date</label>
+                                <input class="form-input" type="date" id="start-date" name="start_date" required>
+                            </div>
+                            <div class="space-y-1">
+                                <label for="end-date" class="font-semibold text-gray-500">End Date</label>
+                                <input class="form-input" type="date" id="end-date" name="end_date" required>
+                            </div>
+                        </div>
+
+                        {{-- <div class="mb-6">
+                            <div class="flex items-center">
+                                <input type="checkbox" class="form-checkbox rounded text-primary" id="checkbox-terms" required>
+                                <label class="ml-2 text-sm font-medium text-gray-500" for="checkbox-terms">
+                                    I accept the <a href="#">Terms and Conditions</a>
+                                </label>
+                            </div>
+                        </div> --}}
+
+                        <div class="mb-6 text-center">
+                            <button class="btn bg-danger text-white" type="button" data-fc-dismiss>Cancel</button>
+                            <button class="btn bg-primary text-white" type="submit">Tambah Project</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 <!-- Sidenav Menu End  -->
