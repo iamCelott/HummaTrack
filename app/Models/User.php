@@ -48,10 +48,15 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
-    }
+        }
 
     public function team()
     {
-        return $this->belongsToMany(TeamUser::class, 'team_users', 'team_id', 'user_id')->withPivot('role');
+        return $this->belongsToMany(Team::class, 'team_users', 'team_id', 'user_id')->withPivot('role');
     }
+
+    public function team_leader(){
+        return $this->hasOne(Team::class);
+    }
+
 }
