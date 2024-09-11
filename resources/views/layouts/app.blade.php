@@ -330,12 +330,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.js"></script>
 
     <!-- Sortablejs -->
-    <script src="assets/libs/sortablejs/Sortable.min.js"></script>
+    <script src="{{ asset('assets/libs/sortablejs/Sortable.min.js') }}"></script>
 
     <!-- Dragula Demo Component js -->
+
     <script src="assets/js/pages/apps-kanban.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
+
+    <script src="{{ asset('assets/js/pages/apps-kanban.js') }}"></script>
+
 </body>
 
 </html>
