@@ -26,9 +26,8 @@ class UserRequest extends FormRequest
         return [
             'photo_profile' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'name' => 'required|string|max:255',
-            'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users', 'email')->ignore($this->route('user'))],
             'phone_number' => ['required', 'string', 'max:15', Rule::unique('users', 'phone_number')->ignore($this->route('user'))],
-            'password' => 'required|string|min:8|confirmed',
+
         ];
     }
 
