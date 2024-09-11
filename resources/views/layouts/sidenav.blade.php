@@ -97,10 +97,10 @@
                     </span>
                     <span class="menu-text"> Proyek </span>
                 </a>
-                <button type="button" data-fc-type="modal" data-fc-target="createProject" 
+                <button type="button" data-fc-type="modal" data-fc-target="createProject"
                     class="inline-flex items-center bg-secondary light:bg-[#3e60d5] text-white font-semibold py-1 px-2 rounded group-hover:opacity-100 transition-opacity duration-300 ease-in-out">
                     <i class="ri-add-line"></i>
-            </button>
+                </button>
             </li>
 
             <li class="menu-item">
@@ -110,6 +110,16 @@
                         <i class="ri-user-line"></i>
                     </span>
                     <span class="menu-text"> Pengguna </span>
+                </a>
+            </li>
+
+            <li class="menu-item">
+                {{-- href="javascript:void(0)" data-fc-type="collapse" --}}
+                <a href="{{ route('teams.index') }}" class="menu-link">
+                    <span class="menu-icon">
+                        <i class="ri-team-line"></i>
+                    </span>
+                    <span class="menu-text">Kelompok</span>
                 </a>
             </li>
             {{-- <li class="menu-item">
@@ -847,12 +857,15 @@
                     <div class="space-y-6 mb-6">
                         <div class="space-y-1 mb-6">
                             <label for="project-name" class="font-semibold text-gray-500">Project Name</label>
-                            <input class="form-input" type="text" id="project-name" name="name" placeholder="Enter Project Name" required>
+                            <input class="form-input" type="text" id="project-name" name="name"
+                                placeholder="Enter Project Name" required>
                         </div>
 
                         <div class="space-y-1 mb-6">
-                            <label for="project-description" class="font-semibold text-gray-500">Project Description <span class="text-red-500">*</span></label>
-                            <textarea class="form-input" id="project-description" name="description" rows="4" placeholder="Enter Project Description" required></textarea>
+                            <label for="project-description" class="font-semibold text-gray-500">Project Description
+                                <span class="text-red-500">*</span></label>
+                            <textarea class="form-input" id="project-description" name="description" rows="4"
+                                placeholder="Enter Project Description" required></textarea>
                         </div>
 
                         <div class="grid grid-cols-2 gap-4 mb-6">
