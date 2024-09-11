@@ -185,7 +185,7 @@
                                 </div> <!-- Task Item End -->
                             @empty
                                 {{-- {{ dd($todo) }} --}}
-                                Kosong
+                                
                             @endforelse
                             <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>
 
@@ -302,7 +302,7 @@
                                 </div> <!-- Task Item End -->
                             @empty
                                 {{-- {{ dd($todo) }} --}}
-                                Kosong
+                                
                             @endforelse
 
                         </div> <!-- end company-list-1-->
@@ -417,7 +417,7 @@
                                 </div> <!-- Task Item End -->
                             @empty
                                 {{-- {{ dd($todo) }} --}}
-                                Kosong
+                                
                             @endforelse
 
                         </div> <!-- end company-list-1-->
@@ -532,7 +532,7 @@
                                 </div> <!-- Task Item End -->
                             @empty
                                 {{-- {{ dd($todo) }} --}}
-                                Kosong
+                                
                             @endforelse
 
                         </div> <!-- end company-list-1-->

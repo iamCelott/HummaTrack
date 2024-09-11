@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Contracts\Interfaces\TeamInterface;
+use App\Contracts\Interfaces\UserInterface;
+use App\Http\Requests\TeamRequest;
 use App\Models\Team;
 use App\Services\TeamService;
 use Illuminate\Contracts\View\View;
@@ -12,11 +14,13 @@ class TeamController extends Controller
 {
     private TeamInterface $team;
     private TeamService $service;
+    private UserInterface $user;
 
-    public function __construct(TeamInterface $team, TeamService $service)
+    public function __construct(TeamInterface $team, TeamService $service, UserInterface $user)
     {
         $this->team = $team;
         $this->service = $service;
+        $this->user = $user;
     }
     /**
      * Display a listing of the resource.
@@ -24,7 +28,8 @@ class TeamController extends Controller
     public function index(Request $request): View
     {
         $teams = $this->team->search($request);
-        return view('pages.team.index', compact('teams'));
+        $users = $this->user->get();
+        return view('pages.team.index', compact('teams', 'users'));
     }
 
     /**
@@ -38,9 +43,10 @@ class TeamController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(TeamRequest $request)
     {
-        //
+        $this->team->store($request->all());
+        return redirect()->back()->with('success','Team Berhasil Dibuat');
     }
 
     /**

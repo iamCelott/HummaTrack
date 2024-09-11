@@ -10,13 +10,18 @@ class Team extends Model
     use HasFactory;
     protected $guarded = ['id'];
 
-    public function members()
+    public function users()
     {
-    return $this->belongsToMany(Team::class, 'team_users', 'team_id', 'user_id')->withPivot('role');
+        return $this->belongsToMany(User::class, 'team_users', 'team_id', 'user_id')->withPivot('role');
     }
 
-    public function leader()
+    // public function leader()
+    // {
+    //     return $this->hasOne(Team::class, 'team_users', 'team_id', 'user_id')->where('role', 'leader');
+    // }
+
+    public function create_by()
     {
-        return $this->hasOne(Team::class)->where('role', 'leader');
+        return $this->belongsTo(User::class, 'created_by');
     }
 }
