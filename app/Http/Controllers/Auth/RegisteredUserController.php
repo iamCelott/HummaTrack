@@ -38,7 +38,7 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
             'phone_number' => $request->phone_number,
             'photo_profile' => "https://ui-avatars.com/api/?name={{ $request->name }}&background=random",
-        ]);
+        ])->assignRole('member');
 
         event(new Registered($user));
 
