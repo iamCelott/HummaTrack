@@ -28,7 +28,7 @@ class UserController extends Controller
 
         $users =  $this->user->search($request);
 
-        return view('pages.user.index', compact('users'));
+        return view('pages.users.index', compact('users'));
     }
 
     /**

@@ -124,15 +124,29 @@
                 </button>
             </li>
 
-            <li class="menu-item">
-                {{-- href="javascript:void(0)" data-fc-type="collapse" --}}
-                <a href="{{ route('teams.index') }}" class="menu-link">
-                    <span class="menu-icon">
-                        <i class="ri-team-line"></i>
-                    </span>
-                    <span class="menu-text">Kelompok</span>
-                </a>
-            </li>
+            @hasrole('admin')
+                <li class="menu-item">
+                    {{-- href="javascript:void(0)" data-fc-type="collapse" --}}
+                    <a href="{{ route('admin.teams.index') }}" class="menu-link">
+                        <span class="menu-icon">
+                            <i class="ri-team-line"></i>
+                        </span>
+                        <span class="menu-text">Kelompok</span>
+                    </a>
+                </li>
+            @endhasrole
+
+            @hasrole('member')
+                <li class="menu-item">
+                    {{-- href="javascript:void(0)" data-fc-type="collapse" --}}
+                    <a href="{{ route('member.teams.index') }}" class="menu-link">
+                        <span class="menu-icon">
+                            <i class="ri-team-line"></i>
+                        </span>
+                        <span class="menu-text">Kelompok</span>
+                    </a>
+                </li>
+            @endhasrole
             {{-- <li class="menu-item">
                 <a href="javascript:void(0)" data-fc-type="collapse" class="menu-link">
                     <span class="menu-icon">
