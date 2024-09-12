@@ -86,7 +86,7 @@
     </div>
 
     <div class="flex justify-center items-center text-black">
-        <div class="flex flex-col" style="max-width: 18rem;">
+        <div class="flex flex-col" style="max-width: 18rem; margin-top: 10rem;">
             <div class="flex justify-center">
                 <svg width="203" height="211" viewBox="0 0 243 251" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <mask id="mask0_323_2752" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="80" y="91"
