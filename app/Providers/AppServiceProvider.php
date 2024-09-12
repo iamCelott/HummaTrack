@@ -9,7 +9,8 @@ use App\Contracts\Interfaces\UserInterface;
 use App\Contracts\Interfaces\KanbanInterface;
 use App\Contracts\Interfaces\ProjectInterface;
 use App\Contracts\Repositories\TaskRepository;
-use App\Contracts\Repositories\TeamRepository;
+use App\Contracts\Repositories\Admin\TeamRepository as AdminTeamRepository;
+use App\Contracts\Repositories\Member\TeamRepository as MemberTeamRepository;
 use App\Contracts\Repositories\UserRepository;
 use App\Contracts\Repositories\KanbanRepository;
 use App\Contracts\Interfaces\TaskDetailInterface;
@@ -24,7 +25,8 @@ class AppServiceProvider extends ServiceProvider
         KanbanInterface::class => KanbanRepository::class,
         TaskInterface::class => TaskRepository::class,
         TaskDetailInterface::class => TaskDetailRepository::class,
-        TeamInterface::class => TeamRepository::class,
+        TeamInterface::class => AdminTeamRepository::class,
+        TeamInterface::class => MemberTeamRepository::class,
     ];
     /**
      * Register any application services.

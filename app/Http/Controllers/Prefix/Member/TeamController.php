@@ -10,6 +10,7 @@ use App\Services\TeamService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\JsonResponse;
 
 class TeamController extends Controller
 {
@@ -32,6 +33,15 @@ class TeamController extends Controller
         return view('pages.teams.member.index', compact('teams'));
     }
 
+    public function team_search_user(Request $request): JsonResponse
+    {
+        $users = $this->user->team_search_user($request);
+
+        return response()->json([
+            'status' => true,
+            'data' => $users
+        ]);
+    }
     /**
      * Show the form for creating a new resource.
      */

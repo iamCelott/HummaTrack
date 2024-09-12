@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Contracts\Repositories;
+namespace App\Contracts\Repositories\Admin;
 
 use App\Contracts\Interfaces\TeamInterface;
+use App\Contracts\Repositories\BaseRepository;
 use App\Models\Team;
 use App\Services\TeamService;
 use Illuminate\Http\Request;
@@ -35,7 +36,7 @@ class TeamRepository extends BaseRepository implements TeamInterface
         $search = $request->search;
         return $this->model->query()->when($search, function ($query) use ($search) {
             $query->whereLike('name', '%' . $search . '%');
-        })->latest()->paginate();
+        })->latest()->paginate(10);
     }
     /**
      * Method store
@@ -83,4 +84,3 @@ class TeamRepository extends BaseRepository implements TeamInterface
         return $this->show($id)->delete();
     }
 }
-    
