@@ -65,11 +65,11 @@
                                                 <td
                                                     class="px-4 py-4 whitespace-nowrap text-sm font-medium text-gray-500 dark:text-gray-200">
                                                     <!-- Tombol untuk membuka modal -->
-                                                    <a href="#"
+                                                    {{-- <a href="#"
                                                         class="bg-primary text-white text-md px-2 py-1 rounded-md inline-block"
                                                         id="openModal">
                                                         <i class="ri-pencil-line text-lg"></i>
-                                                    </a>
+                                                    </a> --}}
 
                                                     <!-- Modal Edit Kosong -->
                                                     <div id="editModal"
