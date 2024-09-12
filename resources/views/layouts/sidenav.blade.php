@@ -867,55 +867,62 @@
     </div>
 </div>
 
-<div class="rounded-md">
+<div class="">
     <div id="createProject"
         class="w-full h-full fixed top-0 left-0 z-50 transition-all duration-500 hidden overflow-y-auto">
         <div
             class="-translate-y-5 fc-modal-open:translate-y-0 fc-modal-open:opacity-100 opacity-0 duration-300 ease-in-out transition-all sm:max-w-lg sm:w-full m-3 sm:mx-auto flex flex-col bg-white shadow-sm rounded dark:bg-gray-800 relative">
 
-            <div class="p-4 overflow-y-auto">
-                <div class="p-9">
-                    <h2 class="text-lg text-center font-semibold text-gray-900 dark:text-slate-200">Tambah Project Baru
+            <div class="p-4 overflow-y-auto rounded-xl">
+                <div class="text-muted py-5 px-3">
+                    <h2 class="text-lg font-semibold text-gray-400 dark:text-slate-200">Tambah Project Baru
                     </h2>
                 </div>
 
                 <form class="px-6" action="{{ route('projects.store') }}" method="POST">
                     @csrf
                     <div class="space-y-6 mb-6">
-                        <div class="space-y-1 mb-6">
-                            <label for="project-name" class="font-semibold text-gray-500">Project Name
-                                <span class="text-danger">*</span></label>
-                            <input class="form-input" type="text" id="project-name" name="name"
-                                placeholder="Enter Project Name" required>
-                        </div>
-
-                        <div class="space-y-1 mb-6">
-                            <label for="project-description" class="font-semibold text-gray-500">Project Description
-                                <span class="text-danger">*</span></label>
-                            <textarea class="form-input" id="project-description" name="description" rows="4"
-                                placeholder="Enter Project Description" required></textarea>
-                        </div>
-
                         <div>
-                            <label for="project-type" class="font-semibold text-gray-500">Tipe Project
-                                <span class="text-danger">*</span></label>
+                            {{-- <label for="project-type" class="font-semibold text-gray-500">Tipe Project
+                                <span class="text-danger">*</span></label> --}}
                             <div class="mx-8 shadow rounded-xl h-10 mb-6 flex p-1 relative items-center">
 
                                 <div class="w-full flex justify-center">
-                                    <button type="button" id="leftButton" class="toggle-button">Personal</button>
+                                    <button type="button" id="leftButton" class="toggle-button">Individu</button>
                                 </div>
                                 <div class="w-full flex justify-center">
-                                    <button type="button" id="rightButton" class="toggle-button">Team</button>
+                                    <button type="button" id="rightButton" class="toggle-button">Tim</button>
                                 </div>
                                 <span id="elSwitch"
-                                    class="elSwitch bg-primary shadow text-white flex items-center justify-center w-1/2 rounded-xl h-8 transition-all top-[4px] absolute left-1">
-                                    Personal
+                                    class="elSwitch bg-info shadow text-white flex items-center justify-center w-1/2 rounded-xl h-8 transition-all top-[4px] absolute left-1">
+                                    Individu
                                 </span>
                                 <input type="hidden" id="selectedType" name="type" value="individual">
                             </div>
                         </div>
 
-                        <div class="grid grid-cols-2 gap-4" style="margin-bottom: 4rem;">
+                        <div class="space-y-1 mb-6">
+                            <label for="project-name" class="font-semibold text-gray-500">Judul
+                                <span class="text-danger">*</span></label>
+                            <input class="form-input" type="text" id="project-name" name="name"
+                                placeholder="Berikan judul proyek" required>
+                        </div>
+
+                        <div class="space-y-1 mb-6">
+                            <label for="project-name" class="font-semibold text-gray-500">Sub judul
+                                <span class="text-danger">*</span></label>
+                            <input class="form-input" type="text" id="project-name" name="name"
+                                placeholder="Berikan sub judul proyek" required>
+                        </div>
+
+                        <div class="space-y-1 mb-6">
+                            <label for="project-description" class="font-semibold text-gray-500">Deskripsi
+                                <span class="text-danger">*</span></label>
+                            <textarea class="form-input" id="project-description" name="description" rows="4"
+                                placeholder="Berikan deskripsi untuk proyek" required></textarea>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4">
                             <div class="space-y-1">
                                 <label for="start-date" class="font-semibold text-gray-500">Start Date</label>
                                 <input class="form-input" type="date" id="start-date" name="start_date" required>
@@ -924,6 +931,13 @@
                                 <label for="end-date" class="font-semibold text-gray-500">End Date</label>
                                 <input class="form-input" type="date" id="end-date" name="end_date" required>
                             </div>
+                        </div>
+
+                        <div class="space-y-1">
+                            <label for="project-name" class="font-semibold text-gray-500">Assign
+                                <span class="text-danger"></span></label>
+                            <input class="form-input" type="text" id="project-name" name="name"
+                                placeholder="Cari pengguna atau kelompok" required>
                         </div>
 
                         <script>
@@ -935,22 +949,24 @@
 
                                 leftButton.addEventListener('click', function() {
                                     elSwitch.style.transform = 'translateX(0)';
-                                    elSwitch.textContent = 'Personal';
+                                    elSwitch.textContent = 'Individu';
                                     selectedType.value = 'individual';
                                 });
 
                                 rightButton.addEventListener('click', function() {
                                     elSwitch.style.transform = 'translateX(100%)';
-                                    elSwitch.textContent = 'Team';
+                                    elSwitch.textContent = 'Tim';
                                     selectedType.value = 'team';
                                 });
                             });
                         </script>
 
+
                         <div class="modal-footer">
-                            <button class="btn bg-transparent border border-danger text-black me-1" type="button"
-                                data-fc-dismiss>Batal</button>
-                            <button class="btn bg-success text-white" type="submit">Tambah Project</button>
+                            <button type="button"
+                                class="btn border-danger text-danger hover:bg-danger hover:text-white rounded-lg"
+                                data-fc-dismiss="">Batal</button>
+                            <button class="btn bg-info rounded-lg text-white" type="submit">Tambah Project</button>
                         </div>
                     </div>
                 </form>
