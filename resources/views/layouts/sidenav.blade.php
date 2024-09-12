@@ -966,7 +966,7 @@
                             <button type="button"
                                 class="btn border-danger text-danger hover:bg-danger hover:text-white rounded-lg"
                                 data-fc-dismiss="">Batal</button>
-                            <button class="btn bg-info rounded-lg text-white" type="submit">Tambah Project</button>
+                            <button class="btn bg-info rounded-lg text-white" type="submit">Konfirmasi</button>
                         </div>
                     </div>
                 </form>
