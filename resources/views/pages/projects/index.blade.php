@@ -41,8 +41,8 @@
                         <div class="card-header p-4 bg-white rounded-xl rounded-b-none">
                             <div class="flex justify-between items-center">
                                 <div class="flex items-center">
-                                    <div class="bg-primary/20 px-3 py-1 rounded-full me-3">
-                                        <i class="ri-suitcase-line text-primary/90" style="font-size: 30px;"></i>
+                                    <div class="bg-info/20 px-3 py-1 rounded-full me-3">
+                                        <i class="ri-suitcase-line text-info" style="font-size: 30px;"></i>
                                     </div>
                                     <h5 class="text-black card-title text-2xl ellipsis">
                                         {{ $project->name }}
@@ -187,7 +187,7 @@
 
                     <div class="p-4 overflow-y-auto rounded-xl">
                         <div class="text-muted py-5 px-3">
-                            <h2 class="text-lg font-semibold text-gray-400 dark:text-slate-200">Edit Project
+                            <h2 class="text-lg font-semibold text-gray-400 dark:text-slate-200">Edit Proyek (belum selesai)
                             </h2>
                         </div>
 
@@ -281,8 +281,7 @@
                                     <button type="button"
                                         class="btn border-danger text-danger hover:bg-danger hover:text-white rounded-lg"
                                         data-fc-dismiss="">Batal</button>
-                                    <button class="btn bg-info rounded-lg text-white" type="submit">Tambah
-                                        Project</button>
+                                    <button class="btn bg-info rounded-lg text-white" type="submit">Konfirmasi</button>
                                 </div>
                             </div>
                         </form>
