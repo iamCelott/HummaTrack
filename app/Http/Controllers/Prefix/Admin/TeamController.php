@@ -43,7 +43,8 @@ class TeamController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->team->store($request->all());
+        return redirect()->back()->with('success', 'Team Berhasil Dibuat');
     }
 
     /**
