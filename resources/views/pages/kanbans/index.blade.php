@@ -42,77 +42,57 @@
                                 </button>
                                 {{-- <button class="btn bg-success relative top-4 right-4 bg-success text-white px-3 py-1 rounded-md hover:bg-success" data-fc-type="modal" type="button"> Sign Up Modal </button> --}}
 
-                                <div
-                                    class="w-full h-full fixed top-0 left-0 z-50 transition-all duration-500 hidden overflow-y-auto">
+                                {{-- modal  --}}
+                                <div class="w-full h-full fixed top-0 left-0 z-50 transition-all duration-500 hidden overflow-y-auto">
                                     <div
                                         class="-translate-y-5 fc-modal-open:translate-y-0 fc-modal-open:opacity-100 opacity-0 duration-300 ease-in-out transition-all sm:max-w-lg sm:w-full m-3 sm:mx-auto flex flex-col bg-white shadow-sm rounded dark:bg-gray-800">
                                         <div class="p-4 overflow-y-auto">
                                             <div class="p-9">
-                                                <h2 class="text-lg font-semibold text-gray-900 dark:text-slate-200">Tambah
-                                                    Tugas Baru</h2>
+                                                <h2 class="text-lg font-semibold text-gray-400 dark:text-slate-200">Tambah Tugas Baru</h2>
                                             </div>
-
+                                
                                             <form class="px-6" action="{{ route('tasks.store') }}" method="POST">
                                                 @csrf
-                                                <div class="space-y-1 mb-6">
-                                                    <label for="name" class="font-semibold text-gray-500">Name</label>
-                                                    <input class="form-input" type="text" id="name" name="name"
-                                                        placeholder="Name">
-                                                </div>
-
-                                                <div class="space-y-1 mb-6">
-                                                    <label for="kanban_id" class="font-semibold text-gray-500">
-                                                        Project
-                                                    </label>
-                                                    <input class="form-input" name="kanban_id" type="hidden" id="kanban_id"
-                                                        placeholder="{{ $kanban->name }}" value="{{ $kanban->id }}">
-                                                    <input class="form-input" type="text" id="kanban_id"
-                                                        placeholder="{{ $kanban->name }}" value="{{ $kanban->name }}"
-                                                        disabled>
-                                                </div>
-
-                                                <div class="space-y-1 mb-6">
-                                                    <label for="user_id" class="font-semibold text-gray-500">Nama
-                                                        User</label>
-                                                    <select class="form-select" id="user_id" name="user_id">
-                                                        <option value="">Pilih Nama User</option>
-
-                                                        @forelse($users as $user)
-                                                            <option value="{{ $user->id }}">{{ $user->name }}</option>
-                                                        @empty
-                                                            <option value="">Tidak ada pengguna tersedia</option>
-                                                        @endforelse
-                                                    </select>
-                                                </div>
-
-                                                <div class="space-y-1 mb-6">
-                                                    <label for="description"
-                                                        class="font-semibold text-gray-500">Deskripsi</label>
-                                                    <textarea class="form-input" id="description" name="description" rows="4" placeholder="Deskripsi tugas"></textarea>
-                                                </div>
-
-
-                                                <div class="mb-6">
-                                                    <div class="flex items-center">
-                                                        <input type="checkbox" class="form-checkbox rounded text-primary"
-                                                            id="checkbox-signin">
-                                                        <label class="ms-2 text-sm font-medium text-gray-500"
-                                                            for="checkbox-signin">I accept <a href="#">Terms and
-                                                                Conditions</a></label>
+                                                <div class="space-y-6 mb-6">
+                                                    <div class="space-y-1 mb-6">
+                                                        <label for="name" class="font-semibold text-gray-500">Judul Tugas</label>
+                                                        <input class="form-input" type="text" id="name" name="name" placeholder="Masukkan judul tugas" required>
+                                                    </div>
+                                
+                                                    <div class="space-y-1 mb-6">
+                                                        <label for="kanban_id" class="font-semibold text-gray-500">Proyek</label>
+                                                        <input class="form-input" type="hidden" name="kanban_id" value="{{ $kanban->id }}">
+                                                        <input class="form-input" type="text" placeholder="{{ $kanban->name }}" value="{{ $kanban->name }}" disabled>
+                                                    </div>
+                                
+                                                    <div class="space-y-1 mb-6">
+                                                        <label for="user_id" class="font-semibold text-gray-500">Nama Pengguna</label>
+                                                        <select class="form-select" id="user_id" name="user_id" required>
+                                                            <option value="">Pilih Nama Pengguna</option>
+                                                            @forelse($users as $user)
+                                                                <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                                            @empty
+                                                                <option value="">Tidak ada pengguna tersedia</option>
+                                                            @endforelse
+                                                        </select>
+                                                    </div>
+                                
+                                                    <div class="space-y-1 mb-6">
+                                                        <label for="description" class="font-semibold text-gray-500">Deskripsi Tugas</label>
+                                                        <textarea class="form-input" id="description" name="description" rows="4" placeholder="Deskripsi tugas" required></textarea>
+                                                    </div>
+                                
+                                                    <div class="mb-6 flex justify-end">
+                                                        <button type="button" class="btn border-danger text-danger hover:bg-danger hover:text-white rounded-lg me-2" data-fc-dismiss="">Batal</button>
+                                                        <button class="btn bg-info rounded-lg text-white" type="submit">Konfirmasi</button>
                                                     </div>
                                                 </div>
-
-                                                <div class="mb-6 text-center">
-                                                    <button class="btn bg-danger text-white" data-fc-dismiss type="button"
-                                                        data-bs-dismiss="modal">Cancel</button>
-                                                    <button class="btn bg-primary text-white" type="submit">Tambah
-                                                        Tugas</button>
-                                                </div>
-
                                             </form>
                                         </div>
                                     </div>
                                 </div>
+                                
+
                         </div>
                         </h5>
 
@@ -185,7 +165,6 @@
                                 </div> <!-- Task Item End -->
                             @empty
                                 {{-- {{ dd($todo) }} --}}
-                                
                             @endforelse
                             <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>
 
@@ -302,7 +281,6 @@
                                 </div> <!-- Task Item End -->
                             @empty
                                 {{-- {{ dd($todo) }} --}}
-                                
                             @endforelse
 
                         </div> <!-- end company-list-1-->
@@ -417,7 +395,6 @@
                                 </div> <!-- Task Item End -->
                             @empty
                                 {{-- {{ dd($todo) }} --}}
-                                
                             @endforelse
 
                         </div> <!-- end company-list-1-->
@@ -532,7 +509,6 @@
                                 </div> <!-- Task Item End -->
                             @empty
                                 {{-- {{ dd($todo) }} --}}
-                                
                             @endforelse
 
                         </div> <!-- end company-list-1-->
