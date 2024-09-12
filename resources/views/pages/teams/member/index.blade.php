@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div id="createTeam"
+    {{-- <div id="createTeam"
         class="w-full h-full fixed top-0 left-0 z-50 transition-all duration-500 hidden overflow-y-auto rounded-lg">
         <div class="overflow-hidden text-black -translate-y-5 fc-modal-open:translate-y-0 fc-modal-open:opacity-100 opacity-0 duration-300 ease-in-out transition-all sm:max-w-lg sm:w-full m-3 sm:mx-auto flex flex-col shadow-sm dark:bg-gray-800 relative rounded-lg"
             style="background-color: white">
@@ -45,6 +45,43 @@
 
             </div>
 
+        </div>
+    </div> --}}
+    <div id="createTeam"
+        class="w-full h-full fixed top-0 left-0 z-50 transition-all duration-500 hidden overflow-y-auto rounded-lg">
+        <div class="overflow-hidden text-black -translate-y-5 fc-modal-open:translate-y-0 fc-modal-open:opacity-100 opacity-0 duration-300 ease-in-out transition-all sm:max-w-lg sm:w-full m-3 sm:mx-auto flex flex-col shadow-sm dark:bg-gray-800 relative rounded-lg"
+            style="background-color: white">
+
+            <div class="p-6">
+                <div class="flex gap-2 items-center mb-3">
+                    <img src="{{ asset('assets/images/svg/create-team-logo.svg') }}" alt="">
+                    <div class="">
+                        <h1 class="text-2xl font-bold">Buat Tim Baru</h1>
+                        <span>Berkolaborasi dan berkreasi dengan imajinasi</span>
+                    </div>
+                </div>
+
+                <div class="">
+                    <div class="mb-3">
+                        <label for="name" class="text-lg font-bold text-black">Nama Tim</label>
+                        <input type="text" name="name" id="name" placeholder="beri nama untuk tim anda"
+                            class="text-sm w-full outline-none rounded-lg">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="name" class="text-lg font-bold text-black">Anggota</label>
+                        <div class="relative">
+                            <i class="ri-search-line absolute" style="left: 10px; top:9px;"></i>
+                            <input type="text" name="name" id="searchUser" placeholder="tambah anggota tim anda"
+                                class="text-sm w-full outline-none rounded-lg" style="padding-left: 30px">
+                        </div>
+
+                        <div class="mt-3" id="searchResult">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
 
@@ -198,6 +235,59 @@
             $('.js-example-basic-multiple').select2({
                 dropdownParent: $('#createTeam')
             });
+
+            $(document).ready(function() {
+                function searchUsers(query = '') {
+                    $.ajax({
+                        url: "{{ route('api.team_search_user') }}",
+                        type: "POST",
+                        data: {
+                            search: query,
+                        },
+                        success: function(data) {
+                            $('#searchResult').empty();
+
+                            if (data.data.length > 0) {
+                                $.each(data.data, function(index, user) {
+                                    var photoUrl = "";
+
+                                    if (user.photo_profile && user.photo_profile
+                                        .includes('profile_images/')) {
+                                        photoUrl = "{{ asset('storage') }}/" + user
+                                            .photo_profile; 
+                                    } else {
+                                        photoUrl = user.photo_profile;
+                                    }
+
+                                    $('#searchResult').append(
+                                        `
+                            <div class="flex items-center mb-3 gap-3">
+                                <img src="${photoUrl}" class="w-12 h-12 object-cover rounded-full" alt="">
+                                <div class="">
+                                    <h1 class="text-lg font-bold">${user.name}</h1>
+                                    <span>${user.email}</span>
+                                </div>
+                            </div>
+                            `
+                                    );
+                                });
+                            } else {
+                                $('#searchResult').append('<p>No results found</p>');
+                            }
+                        }
+                    });
+                }
+
+                searchUsers();
+
+                $('#searchUser').on('keypress', function(e) {
+                    if (e.which === 13) {
+                        var query = $(this).val();
+                        searchUsers(query);
+                    }
+                });
+            });
+
         });
     </script>
 @endsection

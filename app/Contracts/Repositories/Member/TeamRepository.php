@@ -1,15 +1,19 @@
 <?php
 
-namespace App\Contracts\Repositories;
+namespace App\Contracts\Repositories\Member;
 
 use App\Contracts\Interfaces\TeamInterface;
+use App\Contracts\Repositories\BaseRepository;
 use App\Models\Team;
+use App\Models\User;
 use App\Services\TeamService;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class TeamRepository extends BaseRepository implements TeamInterface
 {
     protected $service;
+    protected $user;
     /**
      * Method __construct
      *
@@ -18,9 +22,10 @@ class TeamRepository extends BaseRepository implements TeamInterface
      *
      * @return void
      */
-    public function __construct(Team $team, TeamService $service)
+    public function __construct(Team $team, User $user, TeamService $service)
     {
         $this->model = $team;
+        $this->user = $user;
         $this->service = $service;
     }
     /**
@@ -35,8 +40,9 @@ class TeamRepository extends BaseRepository implements TeamInterface
         $search = $request->search;
         return $this->model->query()->when($search, function ($query) use ($search) {
             $query->whereLike('name', '%' . $search . '%');
-        })->latest()->paginate();
+        })->latest()->paginate(10);
     }
+
     /**
      * Method store
      *
@@ -83,4 +89,3 @@ class TeamRepository extends BaseRepository implements TeamInterface
         return $this->show($id)->delete();
     }
 }
-    

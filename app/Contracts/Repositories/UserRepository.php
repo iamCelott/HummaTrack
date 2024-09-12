@@ -43,7 +43,15 @@ class UserRepository extends BaseRepository implements UserInterface
         $search = $request->search;
         return $this->model->query()->when($search, function ($query) use ($search) {
             $query->whereLike('name', '%' . $search . '%');
-        })->where('id', '!=', Auth::user()->id)->get();
+        })->where('id', '!=', Auth::user()->id)->latest()->paginate(10);
+    }
+
+    public function team_search_user(Request $request): mixed
+    {
+        $search = $request->search;
+        return $this->model->query()->when($search, function ($query) use ($search) {
+            $query->whereLike('name', '%' . $search . '%');
+        })->latest()->get();
     }
     /**
      * Method store
