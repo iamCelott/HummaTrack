@@ -52,8 +52,20 @@ class TeamRepository extends BaseRepository implements TeamInterface
      */
     public function store(array $data): mixed
     {
-        return $this->model->query()->create($data);
+        $team = $this->model->create([
+            'name' => $data['name'],
+            'created_by' => $data['created_by'],
+        ]);
+
+        $userIds = array_map('intval', $data['user_id'] ?? []);
+
+        if (!empty($userIds)) {
+            $team->users()->sync($userIds);
+        }
+
+        return $team;
     }
+
     /**
      * Method show
      *

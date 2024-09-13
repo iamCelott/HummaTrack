@@ -12,7 +12,8 @@ class Team extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class, 'team_users', 'team_id', 'user_id')->withPivot('role');
+        return $this->belongsToMany(User::class, 'team_users', 'team_id', 'user_id')
+                    ->withTimestamps();
     }
 
     // public function leader()

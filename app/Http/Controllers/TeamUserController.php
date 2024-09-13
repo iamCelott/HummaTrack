@@ -38,7 +38,7 @@ class TeamUserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**

@@ -27,6 +27,7 @@ class TeamRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'max:255', Rule::unique('teams', 'name')->ignore($this->route('team'))],
             'created_by' => ['required', 'exists:users,id'],
+            'user_id' => ['required', 'exists:users,id'],
         ];
     }
 
