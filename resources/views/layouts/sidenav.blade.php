@@ -873,7 +873,16 @@
         <div
             class="-translate-y-5 fc-modal-open:translate-y-0 fc-modal-open:opacity-100 opacity-0 duration-300 ease-in-out transition-all sm:max-w-2xl sm:w-full m-3 sm:mx-auto flex flex-col bg-white shadow-sm rounded-xl dark:bg-gray-800 relative">
 
-            <div class="p-4 overflow-y-auto rounded-xl">
+            <div class="p-4 overflow-y-auto rounded-xl relative">
+                <!-- Header dengan ikon X -->
+                <div class="flex justify-end">
+                    <button id="closeModal" data-fc-dismiss class="text-gray-500 hover:text-gray-700">
+                        <!-- Ikon X menggunakan SVG -->
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                        </svg>
+                    </button>
+                </div>
                 <div class="text-muted py-5 px-3">
                     <h2 class="text-lg font-semibold text-gray-400 dark:text-slate-200">Tambah Project Baru
                     </h2>
@@ -883,8 +892,6 @@
                     @csrf
                     <div class="space-y-6 mb-6">
                         <div>
-                            {{-- <label for="project-type" class="font-semibold text-gray-500">Tipe Project
-                                <span class="text-danger">*</span></label> --}}
                             <div class="mx-8 shadow rounded-xl h-10 mb-6 flex p-1 relative items-center">
 
                                 <div class="w-full flex justify-center">
@@ -908,13 +915,6 @@
                                 placeholder="Berikan judul proyek" required>
                         </div>
 
-                        {{-- <div class="space-y-1 mb-6">
-                            <label for="project-name" class="font-semibold text-gray-500">Sub judul
-                                <span class="text-danger">*</span></label>
-                            <input class="form-input" type="text" id="project-name" name="name"
-                                placeholder="Berikan sub judul proyek" required>
-                        </div> --}}
-
                         <div class="space-y-1 mb-6">
                             <label for="project-description" class="font-semibold text-gray-500">Deskripsi
                                 <span class="text-danger">*</span></label>
@@ -933,19 +933,14 @@
                             </div>
                         </div>
 
-                        {{-- <div class="space-y-1">
-                            <label for="project-name" class="font-semibold text-gray-500">Assign
-                                <span class="text-danger"></span></label>
-                            <input class="form-input" type="text" id="project-name" name="name"
-                                placeholder="Cari pengguna atau kelompok" required>
-                        </div> --}}
-
                         <script>
                             document.addEventListener('DOMContentLoaded', function() {
                                 const leftButton = document.getElementById('leftButton');
                                 const rightButton = document.getElementById('rightButton');
                                 const elSwitch = document.getElementById('elSwitch');
                                 const selectedType = document.getElementById('selectedType');
+                                const closeModal = document.getElementById('closeModal');
+                                const createProject = document.getElementById('createProject');
 
                                 leftButton.addEventListener('click', function() {
                                     elSwitch.style.transform = 'translateX(0)';
@@ -958,9 +953,12 @@
                                     elSwitch.textContent = 'Tim';
                                     selectedType.value = 'team';
                                 });
+
+                                closeModal.addEventListener('click', function() {
+                                    createProject.classList.add('hidden');
+                                });
                             });
                         </script>
-
 
                         <div class="modal-footer">
                             <button type="button"
@@ -974,6 +972,9 @@
         </div>
     </div>
 </div>
+
+
+
 <script src="//unpkg.com/alpinejs" defer></script>
 
 
