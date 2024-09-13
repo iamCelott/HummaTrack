@@ -916,6 +916,13 @@
                         </div>
 
                         <div class="space-y-1 mb-6">
+                            <label for="project-name" class="font-semibold text-gray-500">Sub judul
+                                <span class="text-danger">*</span></label>
+                            <input class="form-input" type="text" id="project-name" name="subtitle"
+                                placeholder="Berikan sub judul proyek" required>
+                        </div>
+
+                        <div class="space-y-1 mb-6">
                             <label for="project-description" class="font-semibold text-gray-500">Deskripsi
                                 <span class="text-danger">*</span></label>
                             <textarea class="form-input" id="project-description" name="description" rows="4"
