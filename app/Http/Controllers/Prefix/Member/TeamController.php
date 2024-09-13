@@ -11,6 +11,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Auth;
 
 class TeamController extends Controller
 {
@@ -55,7 +56,7 @@ class TeamController extends Controller
      */
     public function store(TeamRequest $request)
     {
-        $this->team->store($request->all());
+        $this->team->store($request->validated());
         return redirect()->back()->with('success', 'Team Berhasil Dibuat');
     }
 

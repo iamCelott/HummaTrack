@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Services\UserService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class UserRepository extends BaseRepository implements UserInterface
 {
@@ -49,9 +50,27 @@ class UserRepository extends BaseRepository implements UserInterface
     public function team_search_user(Request $request): mixed
     {
         $search = $request->search;
-        return $this->model->query()->when($search, function ($query) use ($search) {
-            $query->whereLike('name', '%' . $search . '%');
-        })->latest()->get();
+
+        if (!empty($search)) {
+            return $this->model
+                ->when($search, function ($query) use ($search) {
+                    $query->where('name', 'like', '%' . $search . '%');
+                })->whereHas('roles', function ($query) {
+                    $query->where('name', 'member');
+                })->whereKeyNot($request->id)
+                ->latest()
+                ->get();
+        } else {
+            return $this->model
+                ->when($search, function ($query) use ($search) {
+                    $query->where('name', 'like', '%' . $search . '%');
+                })->whereHas('roles', function ($query) {
+                    $query->where('name', 'member');
+                })->whereKeyNot($request->id)
+                ->latest()
+                ->take(10)
+                ->get();
+        }
     }
     /**
      * Method store

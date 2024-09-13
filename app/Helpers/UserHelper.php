@@ -30,6 +30,11 @@ class UserHelper
      * @return string
      */
 
+    public static function getUserId(): string
+
+    {
+        return Auth::user()->id;
+    }
     public static function getUserName(): string
     {
         return Auth::user()->name;
