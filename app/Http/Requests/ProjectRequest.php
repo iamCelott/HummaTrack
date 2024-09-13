@@ -28,6 +28,7 @@ class ProjectRequest extends FormRequest
         return [
             // 'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'name' => ['required', 'string', 'max:255', Rule::unique('projects', 'name')->ignore($this->route('project'))],
+            'subtitle' => ['required', 'string', 'max:255', Rule::unique('projects', 'subtitle')->ignore($this->route('project'))],
             'start_date' => 'required|date',
             'end_date' => 'required|date|after:start_date',
             'type' => ['required', Rule::in(ProjectType::Individual->value, ProjectType::Team->value)],

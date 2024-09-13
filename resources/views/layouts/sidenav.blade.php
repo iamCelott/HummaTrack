@@ -908,12 +908,12 @@
                                 placeholder="Berikan judul proyek" required>
                         </div>
 
-                        {{-- <div class="space-y-1 mb-6">
+                        <div class="space-y-1 mb-6">
                             <label for="project-name" class="font-semibold text-gray-500">Sub judul
                                 <span class="text-danger">*</span></label>
-                            <input class="form-input" type="text" id="project-name" name="name"
+                            <input class="form-input" type="text" id="project-name" name="subtitle"
                                 placeholder="Berikan sub judul proyek" required>
-                        </div> --}}
+                        </div>
 
                         <div class="space-y-1 mb-6">
                             <label for="project-description" class="font-semibold text-gray-500">Deskripsi
