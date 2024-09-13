@@ -1,3 +1,6 @@
+@php
+    use App\Helpers\UserHelper;
+@endphp
 @extends('layouts.app')
 
 @section('content')
@@ -52,7 +55,8 @@
         <div class="overflow-hidden text-black -translate-y-5 fc-modal-open:translate-y-0 fc-modal-open:opacity-100 opacity-0 duration-300 ease-in-out transition-all sm:max-w-lg sm:w-full m-3 sm:mx-auto flex flex-col shadow-sm dark:bg-gray-800 relative rounded-lg"
             style="background-color: white">
 
-            <div class="p-6">
+            <form action="{{ route('member.teams.store') }}" method="POST" class="p-6">
+                @csrf
                 <div class="flex gap-2 items-center mb-3">
                     <img src="{{ asset('assets/images/svg/create-team-logo.svg') }}" alt="">
                     <div class="">
@@ -66,22 +70,29 @@
                         <label for="name" class="text-lg font-bold text-black">Nama Tim</label>
                         <input type="text" name="name" id="name" placeholder="beri nama untuk tim anda"
                             class="text-sm w-full outline-none rounded-lg">
+
+                        <input type="hidden" name="created_by" id="created_by" value="{{ UserHelper::getUserId() }}">
                     </div>
 
                     <div class="mb-3">
-                        <label for="name" class="text-lg font-bold text-black">Anggota</label>
-                        <div class="relative">
+                        <label for="searchUser" class="text-lg font-bold text-black">Anggota Tim</label>
+                        <div class="relative mb-3">
                             <i class="ri-search-line absolute" style="left: 10px; top:9px;"></i>
-                            <input type="text" name="name" id="searchUser" placeholder="tambah anggota tim anda"
+                            <input type="text" name="user_id" id="searchUser" placeholder="cari nama anggota tim anda"
                                 class="text-sm w-full outline-none rounded-lg" style="padding-left: 30px">
                         </div>
 
-                        <div class="mt-3" id="searchResult">
+                        <small>Hasil yang ditampilkan</small>
+                        <div class="overflow-auto w-full" style="max-height: 170px;" id="searchResult">
                         </div>
+                    </div>
+
+                    <div class="flex justify-end">
+                        <button type="submit" class="bg-primary px-6 py-1.5 rounded-lg text-white">Buat Tim</button>
                     </div>
                 </div>
 
-            </div>
+            </form>
         </div>
     </div>
 
@@ -243,6 +254,7 @@
                         type: "POST",
                         data: {
                             search: query,
+                            id: {{ Auth::user()->id }}
                         },
                         success: function(data) {
                             $('#searchResult').empty();
@@ -254,25 +266,31 @@
                                     if (user.photo_profile && user.photo_profile
                                         .includes('profile_images/')) {
                                         photoUrl = "{{ asset('storage') }}/" + user
-                                            .photo_profile; 
+                                            .photo_profile;
                                     } else {
                                         photoUrl = user.photo_profile;
                                     }
 
                                     $('#searchResult').append(
                                         `
-                            <div class="flex items-center mb-3 gap-3">
-                                <img src="${photoUrl}" class="w-12 h-12 object-cover rounded-full" alt="">
+                            <div class="flex justify-between mb-3 p-3 rounded-lg" style="background-color: #F2F2F2">
+                                <div class="flex gap-3 items-center">
+                                    <img src="${photoUrl}"
+                                        class="w-12 h-12 object-cover rounded-full" alt="">
+                                    <div class="">
+                                        <h1 class="text-lg font-bold">${user.name}</h1>
+                                        <span>${user.email}</span>
+                                    </div>
+                                </div>
                                 <div class="">
-                                    <h1 class="text-lg font-bold">${user.name}</h1>
-                                    <span>${user.email}</span>
+                                    <input type="checkbox" name="user_id[]" class="rounded-full" id="">
                                 </div>
                             </div>
                             `
                                     );
                                 });
                             } else {
-                                $('#searchResult').append('<p>No results found</p>');
+                                $('#searchResult').append('<p class="text-center font-bold" style="line-height:170px;">Pengguna tidak ditemukan.</p>');
                             }
                         }
                     });
@@ -280,11 +298,9 @@
 
                 searchUsers();
 
-                $('#searchUser').on('keypress', function(e) {
-                    if (e.which === 13) {
-                        var query = $(this).val();
-                        searchUsers(query);
-                    }
+                $('#searchUser').on('keyup', function(e) {
+                    var query = $(this).val();
+                    searchUsers(query);
                 });
             });
 

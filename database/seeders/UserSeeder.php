@@ -33,7 +33,15 @@ class UserSeeder extends Seeder
             'name' => 'member',
             'email' => 'member@gmail.com',
             'password' => '12345678',
-            'phone_number' => '082340956694',
+            'phone_number' => '123456782',
+            'photo_profile' => "https://ui-avatars.com/api/?name=member&background=random"
+        ])->assignRole('member');
+
+        User::create([
+            'name' => 'member1',
+            'email' => 'member2@gmail.com',
+            'password' => '12345678',
+            'phone_number' => '123456781',
             'photo_profile' => "https://ui-avatars.com/api/?name=member&background=random"
         ])->assignRole('member');
     }
