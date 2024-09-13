@@ -45,7 +45,7 @@
                                 {{-- modal  --}}
                                 <div class="w-full h-full fixed top-0 left-0 z-50 transition-all duration-500 hidden overflow-y-auto">
                                     <div
-                                        class="-translate-y-5 fc-modal-open:translate-y-0 fc-modal-open:opacity-100 opacity-0 duration-300 ease-in-out transition-all sm:max-w-lg sm:w-full m-3 sm:mx-auto flex flex-col bg-white shadow-sm rounded dark:bg-gray-800">
+                                        class="-translate-y-5 fc-modal-open:translate-y-0 fc-modal-open:opacity-100 opacity-0 duration-300 ease-in-out transition-all sm:max-w-2xl sm:w-full m-3 sm:mx-auto flex flex-col bg-white shadow-sm rounded-xl dark:bg-gray-800">
                                         <div class="p-4 overflow-y-auto">
                                             <div class="p-9">
                                                 <h2 class="text-lg font-semibold text-gray-400 dark:text-slate-200">Tambah Tugas Baru</h2>

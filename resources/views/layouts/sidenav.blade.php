@@ -871,7 +871,7 @@
     <div id="createProject"
         class="w-full h-full fixed top-0 left-0 z-50 transition-all duration-500 hidden overflow-y-auto">
         <div
-            class="-translate-y-5 fc-modal-open:translate-y-0 fc-modal-open:opacity-100 opacity-0 duration-300 ease-in-out transition-all sm:max-w-lg sm:w-full m-3 sm:mx-auto flex flex-col bg-white shadow-sm rounded dark:bg-gray-800 relative">
+            class="-translate-y-5 fc-modal-open:translate-y-0 fc-modal-open:opacity-100 opacity-0 duration-300 ease-in-out transition-all sm:max-w-2xl sm:w-full m-3 sm:mx-auto flex flex-col bg-white shadow-sm rounded-xl dark:bg-gray-800 relative">
 
             <div class="p-4 overflow-y-auto rounded-xl">
                 <div class="text-muted py-5 px-3">
@@ -908,12 +908,12 @@
                                 placeholder="Berikan judul proyek" required>
                         </div>
 
-                        <div class="space-y-1 mb-6">
+                        {{-- <div class="space-y-1 mb-6">
                             <label for="project-name" class="font-semibold text-gray-500">Sub judul
                                 <span class="text-danger">*</span></label>
                             <input class="form-input" type="text" id="project-name" name="name"
                                 placeholder="Berikan sub judul proyek" required>
-                        </div>
+                        </div> --}}
 
                         <div class="space-y-1 mb-6">
                             <label for="project-description" class="font-semibold text-gray-500">Deskripsi
@@ -933,12 +933,12 @@
                             </div>
                         </div>
 
-                        <div class="space-y-1">
+                        {{-- <div class="space-y-1">
                             <label for="project-name" class="font-semibold text-gray-500">Assign
                                 <span class="text-danger"></span></label>
                             <input class="form-input" type="text" id="project-name" name="name"
                                 placeholder="Cari pengguna atau kelompok" required>
-                        </div>
+                        </div> --}}
 
                         <script>
                             document.addEventListener('DOMContentLoaded', function() {
