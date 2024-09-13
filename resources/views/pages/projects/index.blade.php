@@ -78,18 +78,22 @@
                                             </span>
                                         @endif
                                     </div>
-                                
+
                                     <!-- Dropdown -->
                                     <div class="dropdown ml-auto">
-                                        <a href="javascript:void(0)" class="" data-fc-type="dropdown" data-fc-placement="bottom-end">
+                                        <a href="javascript:void(0)" class="" data-fc-type="dropdown"
+                                            data-fc-placement="bottom-end">
                                             <i class="ri-more-fill"></i>
                                         </a>
-                                        <div class="fc-dropdown fc-dropdown-open:opacity-100 opacity-0 min-w-40 z-50 transition-all duration-300 bg-white dark:bg-gray-800 shadow-lg border border-gray-200 dark:border-gray-600 rounded-md py-2 absolute hidden">
+                                        <div
+                                            class="fc-dropdown fc-dropdown-open:opacity-100 opacity-0 min-w-40 z-50 transition-all duration-300 bg-white dark:bg-gray-800 shadow-lg border border-gray-200 dark:border-gray-600 rounded-md py-2 absolute hidden">
                                             {{-- <a class="flex items-center py-1.5 px-4 text-sm text-gray-500 hover:bg-slate-100 hover:text-slate-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300" href="javascript:void(0)">
                                                 <i class="ri-attachment-line me-1.5"></i>
                                                 <span>Attachment</span>
                                             </a> --}}
-                                            <a data-fc-target="editProject" type="button" data-fc-type="modal" class="flex items-center py-1.5 px-4 text-sm text-gray-500 hover:bg-slate-100 hover:text-slate-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300" href="javascript:void(0)">
+                                            <a data-fc-target="editProject" type="button" data-fc-type="modal"
+                                                class="flex items-center py-1.5 px-4 text-sm text-gray-500 hover:bg-slate-100 hover:text-slate-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
+                                                href="javascript:void(0)">
                                                 <i class="ri-edit-box-line me-1.5"></i>
                                                 <span>Edit</span>
                                             </a>
@@ -98,21 +102,22 @@
                                                 <span>Mark as Duplicate</span>
                                             </a> --}}
                                             {{-- <hr class="my-3 border-gray-300 dark:border-gray-700"> --}}
-                                            <a class="flex items-center py-1.5 px-4 text-sm text-danger hover:bg-slate-100 dark:hover:bg-gray-700" href="javascript:void(0)">
+                                            <a class="flex items-center py-1.5 px-4 text-sm text-danger hover:bg-slate-100 dark:hover:bg-gray-700"
+                                                href="javascript:void(0)">
                                                 <i class="ri-delete-bin-line me-1.5"></i>
                                                 <span>Remove</span>
                                             </a>
                                         </div>
                                     </div>
                                 </div>
-                                
+
 
                             </div>
                         </div>
 
                         <div class="card-body p-6 flex-grow bg-white ">
                             <h5 class="text-slate-900 text-xl dark:text-slate-200 mb-2">
-                                {{ $project->name }}
+                                {{ $project->subtitle }}
                             </h5>
                             <p class="text-gray-500 text-sm mb-4 description">
                                 {{ $project->description }}
