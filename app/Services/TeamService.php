@@ -3,10 +3,12 @@
 namespace App\Services;
 
 use App\Models\TeamUser;
+use App\Traits\TeamUniqueCodeTrait;
 use Illuminate\Http\Request;
 
 class TeamService
 {
+    use TeamUniqueCodeTrait;
     // public function create_team_user($teamId, $userIds)
     // {
     //     foreach ($userIds as $userId) {
@@ -16,4 +18,9 @@ class TeamService
     //         ]);
     //     }
     // }
+
+    public function generateCode()
+    {
+        return $this->generateUniqueCode();
+    }
 }
