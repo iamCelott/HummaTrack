@@ -1,6 +1,7 @@
 <?php
 
 use App\Enums\StatusTask;
+use App\Enums\TaskCategory;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -23,6 +24,13 @@ return new class extends Migration
                 StatusTask::Review->value,
                 StatusTask::Done->value,
             ])->default(StatusTask::To_do->value);
+            $table->enum('category',[
+                TaskCategory::UiUx->value,
+                TaskCategory::Digmar->value,
+                TaskCategory::Frontend->value,
+                TaskCategory::Backend->value,
+                TaskCategory::Mobile->value,
+            ]);
             $table->text('description')->nullable();
             $table->timestamps();
         });
