@@ -49,7 +49,7 @@ class UserSeeder extends Seeder
             'name' => 'member2',
             'email' => 'member2@gmail.com',
             'password' => '12345678',
-            'phone_number' => '123456782',
+            'phone_number' => '12345678678131',
             'photo_profile' => "https://ui-avatars.com/api/?name=member&background=random"
         ])->assignRole('member');
     }
