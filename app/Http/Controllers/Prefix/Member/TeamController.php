@@ -30,6 +30,8 @@ class TeamController extends Controller
      */
     public function index(Request $request): View
     {
+        $authId = Auth::user()->id;
+        $request->merge(['authId' => $authId]);
         $teams = $this->team->search($request);
         return view('pages.teams.member.index', compact('teams'));
     }
