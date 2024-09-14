@@ -27,7 +27,7 @@
     </button>
 
     <!-- Topbar Search Input -->
-    <div class="relative hidden lg:block">
+    {{-- <div class="relative hidden lg:block">
 
         <form data-fc-type="dropdown" type="button">
             <input type="search" class="form-input bg-black/5 border-none ps-8 relative" placeholder="Search...">
@@ -87,7 +87,7 @@
                 </div>
             </a>
         </div>
-    </div>
+    </div> --}}
 
     <!-- Language Dropdown Button -->
     <div class="relative ms-auto">

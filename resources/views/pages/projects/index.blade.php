@@ -86,29 +86,30 @@
                                             <i class="ri-more-fill"></i>
                                         </a>
                                         <div
-                                            class="fc-dropdown fc-dropdown-open:opacity-100 opacity-0 min-w-40 z-50 transition-all duration-300 bg-white dark:bg-gray-800 shadow-lg border border-gray-200 dark:border-gray-600 rounded-md py-2 absolute hidden">
-                                            {{-- <a class="flex items-center py-1.5 px-4 text-sm text-gray-500 hover:bg-slate-100 hover:text-slate-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300" href="javascript:void(0)">
+                                            class="fc-dropdown fc-dropdown-open:opacity-100 opacity-0 min-w-60 z-50 transition-all duration-300 bg-white dark:bg-gray-800 shadow-lg border border-gray-200 dark:border-gray-600 rounded-md py-3 absolute hidden">
+                                            {{-- <a class="flex items-center py-2 px-5 text-base text-gray-500 hover:bg-slate-100 hover:text-slate-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300" href="javascript:void(0)">
                                                 <i class="ri-attachment-line me-1.5"></i>
                                                 <span>Attachment</span>
                                             </a> --}}
                                             <a data-fc-target="editProject" type="button" data-fc-type="modal"
-                                                class="flex items-center py-1.5 px-4 text-sm text-gray-500 hover:bg-slate-100 hover:text-slate-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
+                                                class="flex items-center py-2 px-5 text-base text-gray-500 hover:bg-slate-100 hover:text-slate-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
                                                 href="javascript:void(0)">
                                                 <i class="ri-edit-box-line me-1.5"></i>
                                                 <span>Edit</span>
                                             </a>
-                                            {{-- <a class="flex items-center py-1.5 px-4 text-sm text-gray-500 hover:bg-slate-100 hover:text-slate-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300" href="javascript:void(0)">
+                                            {{-- <a class="flex items-center py-2 px-5 text-base text-gray-500 hover:bg-slate-100 hover:text-slate-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300" href="javascript:void(0)">
                                                 <i class="ri-file-copy-2-line me-1.5"></i>
                                                 <span>Mark as Duplicate</span>
                                             </a> --}}
                                             {{-- <hr class="my-3 border-gray-300 dark:border-gray-700"> --}}
-                                            <a class="flex items-center py-1.5 px-4 text-sm text-danger hover:bg-slate-100 dark:hover:bg-gray-700"
+                                            <a class="flex items-center py-2 px-5 text-base text-danger hover:bg-slate-100 dark:hover:bg-gray-700"
                                                 href="javascript:void(0)">
                                                 <i class="ri-delete-bin-line me-1.5"></i>
                                                 <span>Remove</span>
                                             </a>
                                         </div>
                                     </div>
+                                    
                                 </div>
 
 
@@ -186,15 +187,22 @@
 
         <div class="">
             <div id="editProject"
-                class="w-full h-full fixed top-0 left-0 z-50 transition-all duration-500 hidden overflow-y-auto">
+                class="w-full h-full fixed top-0 left-0 z-50 transition-all duration-500 hidden overflow-y-auto flex items-center justify-center">
                 <div
-                    class="-translate-y-5 fc-modal-open:translate-y-0 fc-modal-open:opacity-100 opacity-0 duration-300 ease-in-out transition-all sm:max-w-lg sm:w-full m-3 sm:mx-auto flex flex-col bg-white shadow-sm rounded dark:bg-gray-800 relative">
+                    class="-translate-y-5 fc-modal-open:translate-y-0 fc-modal-open:opacity-100 opacity-0 duration-300 ease-in-out transition-all sm:max-w-2xl sm:w-full m-3 sm:mx-auto flex flex-col bg-white shadow-sm rounded-xl dark:bg-gray-800 relative">
 
-                    <div class="p-4 overflow-y-auto rounded-xl">
-                        <div class="text-muted py-5 px-3">
-                            <h2 class="text-lg font-semibold text-gray-400 dark:text-slate-200">Edit Proyek (belum selesai)
-                            </h2>
+                    <div class="p-4 overflow-y-auto rounded-xl relative">
+                
+                        <div class="flex items-center justify-between mb-8 px-5 mt-5">
+                            <h2 class="text-lg font-semibold text-black dark:text-slate-200">Edit Proyek</h2>
+                            <button id="closeModal" data-fc-dismiss class="text-gray-500 hover:text-gray-700">
+                                <!-- Ikon X menggunakan SVG -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                                </svg>
+                            </button>
                         </div>
+                        
 
                         <form class="px-6" action="{{ route('projects.store') }}" method="POST">
                             @csrf
@@ -219,18 +227,20 @@
                                     </div>
                                 </div>
 
-                                <div class="space-y-1 mb-6">
-                                    <label for="project-name" class="font-semibold text-gray-500">Judul
-                                        <span class="text-danger">*</span></label>
-                                    <input class="form-input" type="text" id="project-name" name="name"
-                                        placeholder="Berikan judul proyek" required>
-                                </div>
-
-                                <div class="space-y-1 mb-6">
-                                    <label for="project-name" class="font-semibold text-gray-500">Sub judul
-                                        <span class="text-danger">*</span></label>
-                                    <input class="form-input" type="text" id="project-name" name="name"
-                                        placeholder="Berikan sub judul proyek" required>
+                                <div class="flex justify-between gap-4 mb-6">
+                                    <div class="flex-1 space-y-1">
+                                        <label for="project-name" class="font-semibold text-gray-500">Judul
+                                            <span class="text-danger">*</span></label>
+                                        <input class="form-input w-full" type="text" id="project-name" name="name"
+                                            placeholder="Berikan judul proyek" required>
+                                    </div>
+        
+                                    <div class="flex-1 space-y-1">
+                                        <label for="project-subtitle" class="font-semibold text-gray-500">Sub judul
+                                            <span class="text-danger">*</span></label>
+                                        <input class="form-input w-full" type="text" id="project-subtitle"
+                                            name="subtitle" placeholder="Berikan sub judul proyek" required>
+                                    </div>
                                 </div>
 
                                 <div class="space-y-1 mb-6">

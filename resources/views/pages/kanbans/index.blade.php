@@ -43,13 +43,21 @@
                                 {{-- <button class="btn bg-success relative top-4 right-4 bg-success text-white px-3 py-1 rounded-md hover:bg-success" data-fc-type="modal" type="button"> Sign Up Modal </button> --}}
 
                                 {{-- modal  --}}
-                                <div class="w-full h-full fixed top-0 left-0 z-50 transition-all duration-500 hidden overflow-y-auto">
+                                <div class="w-full h-full fixed top-0 left-0 z-50 transition-all duration-500 hidden overflow-y-auto flex items-center justify-center">
                                     <div
                                         class="-translate-y-5 fc-modal-open:translate-y-0 fc-modal-open:opacity-100 opacity-0 duration-300 ease-in-out transition-all sm:max-w-2xl sm:w-full m-3 sm:mx-auto flex flex-col bg-white shadow-sm rounded-xl dark:bg-gray-800">
-                                        <div class="p-4 overflow-y-auto">
-                                            <div class="p-9">
-                                                <h2 class="text-lg font-semibold text-gray-400 dark:text-slate-200">Tambah Tugas Baru</h2>
+                                        <div class="p-4 overflow-y-auto rounded-xl relative">
+                
+                                            <div class="flex items-center justify-between mb-10 px-5 mt-5">
+                                                <h2 class="text-lg font-semibold text-black dark:text-slate-200">Tambah Tugas Baru</h2>
+                                                <button id="closeModal" data-fc-dismiss class="text-gray-500 hover:text-gray-700">
+                                                    <!-- Ikon X menggunakan SVG -->
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                                                    </svg>
+                                                </button>
                                             </div>
+                                            
                                 
                                             <form class="px-6" action="{{ route('tasks.store') }}" method="POST">
                                                 @csrf

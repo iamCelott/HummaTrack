@@ -867,33 +867,33 @@
     </div>
 </div>
 
+{{-- modal edit  --}}
+
 <div class="">
     <div id="createProject"
-        class="w-full h-full fixed top-0 left-0 z-50 transition-all duration-500 hidden overflow-y-auto">
+        class="w-full h-full fixed top-0 left-0 z-50 transition-all duration-500 hidden overflow-y-auto flex items-center justify-center">
         <div
             class="-translate-y-5 fc-modal-open:translate-y-0 fc-modal-open:opacity-100 opacity-0 duration-300 ease-in-out transition-all sm:max-w-2xl sm:w-full m-3 sm:mx-auto flex flex-col bg-white shadow-sm rounded-xl dark:bg-gray-800 relative">
 
             <div class="p-4 overflow-y-auto rounded-xl relative">
-                <!-- Header dengan ikon X -->
-                <div class="flex justify-end">
+
+                <div class="flex items-center justify-between mb-10 px-5 mt-5">
+                    <h2 class="text-lg font-semibold text-black dark:text-slate-200">Tambah Project Baru</h2>
                     <button id="closeModal" data-fc-dismiss class="text-gray-500 hover:text-gray-700">
                         <!-- Ikon X menggunakan SVG -->
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12" />
                         </svg>
                     </button>
-                </div>
-                <div class="text-muted py-5 px-3">
-                    <h2 class="text-lg font-semibold text-gray-400 dark:text-slate-200">Tambah Project Baru
-                    </h2>
                 </div>
 
                 <form class="px-6" action="{{ route('projects.store') }}" method="POST">
                     @csrf
                     <div class="space-y-6 mb-6">
                         <div>
-                            <div class="mx-8 shadow rounded-xl h-10 mb-6 flex p-1 relative items-center">
-
+                            <div id="" class="bgSwitch mx-8 shadow rounded-xl h-10 mb-6 flex p-0.5 relative items-center">
                                 <div class="w-full flex justify-center">
                                     <button type="button" id="leftButton" class="toggle-button">Individu</button>
                                 </div>
@@ -908,19 +908,22 @@
                             </div>
                         </div>
 
-                        <div class="space-y-1 mb-6">
-                            <label for="project-name" class="font-semibold text-gray-500">Judul
-                                <span class="text-danger">*</span></label>
-                            <input class="form-input" type="text" id="project-name" name="name"
-                                placeholder="Berikan judul proyek" required>
+                        <div class="flex justify-between gap-4 mb-6">
+                            <div class="flex-1 space-y-1">
+                                <label for="project-name" class="font-semibold text-gray-500">Judul
+                                    <span class="text-danger">*</span></label>
+                                <input class="form-input w-full" type="text" id="project-name" name="name"
+                                    placeholder="Berikan judul proyek" required>
+                            </div>
+
+                            <div class="flex-1 space-y-1">
+                                <label for="project-subtitle" class="font-semibold text-gray-500">Sub judul
+                                    <span class="text-danger">*</span></label>
+                                <input class="form-input w-full" type="text" id="project-subtitle"
+                                    name="subtitle" placeholder="Berikan sub judul proyek" required>
+                            </div>
                         </div>
 
-                        <div class="space-y-1 mb-6">
-                            <label for="project-name" class="font-semibold text-gray-500">Sub judul
-                                <span class="text-danger">*</span></label>
-                            <input class="form-input" type="text" id="project-name" name="subtitle"
-                                placeholder="Berikan sub judul proyek" required>
-                        </div>
 
                         <div class="space-y-1 mb-6">
                             <label for="project-description" class="font-semibold text-gray-500">Deskripsi
@@ -944,25 +947,28 @@
                             document.addEventListener('DOMContentLoaded', function() {
                                 const leftButton = document.getElementById('leftButton');
                                 const rightButton = document.getElementById('rightButton');
+                                const bgSwitch = document.getElementById('bgSwitch');
                                 const elSwitch = document.getElementById('elSwitch');
                                 const selectedType = document.getElementById('selectedType');
-                                const closeModal = document.getElementById('closeModal');
-                                const createProject = document.getElementById('createProject');
 
                                 leftButton.addEventListener('click', function() {
                                     elSwitch.style.transform = 'translateX(0)';
+                                    elSwitch.classList.remove('bg-success');
+                                    elSwitch.classList.add('bg-info');
+                                    bgSwitch.classList.remove('bg-success/70');
+                                    bgSwitch.classList.add('bg-info/70');
                                     elSwitch.textContent = 'Individu';
                                     selectedType.value = 'individual';
                                 });
 
                                 rightButton.addEventListener('click', function() {
                                     elSwitch.style.transform = 'translateX(100%)';
+                                    elSwitch.classList.remove('bg-info');
+                                    elSwitch.classList.add('bg-success');
+                                    bgSwitch.classList.remove('bg-info/70');
+                                    bgSwitch.classList.add('bg-success/70');
                                     elSwitch.textContent = 'Tim';
                                     selectedType.value = 'team';
-                                });
-
-                                closeModal.addEventListener('click', function() {
-                                    createProject.classList.add('hidden');
                                 });
                             });
                         </script>
