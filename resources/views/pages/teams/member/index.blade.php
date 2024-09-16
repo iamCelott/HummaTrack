@@ -154,9 +154,9 @@
                         </div>
 
                         <div class="flex items-end">
-                            <button class="rounded-lg py-1 text-white font-semibold"
+                            <a href="{{ route('member.teams.show', $team->id) }}" class="rounded-lg py-1 text-white font-semibold"
                                 style="background-color: #0496FF;padding-left: 1.8rem; padding-right: 1.8rem"><i
-                                    class="ri-information-line"></i> Detail</button>
+                                    class="ri-information-line"></i> Detail</a>
                         </div>
                     </div>
                 </div>
