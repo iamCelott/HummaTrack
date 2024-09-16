@@ -38,83 +38,72 @@
                     <div class="relative card flex flex-col justify-between hover:shadow-lg hover:scale-105 transition-all duration-200"
                         style="height: 400px; border-radius: 20px; position: relative;">
 
-                        <div class="card-header p-4 bg-white rounded-xl rounded-b-none">
-                            <div class="flex justify-between items-center">
-                                <div class="flex items-center">
-                                    <div class="bg-info/20 px-3 py-1 rounded-full me-3">
-                                        <i class="ri-suitcase-line text-info" style="font-size: 30px;"></i>
-                                    </div>
-                                    <h5 class="text-black card-title text-2xl ellipsis">
-                                        {{ $project->name }}
-                                    </h5>
-                                </div>
-
-                                <div class="flex flex-wrap items-center justify-between gap-2">
+                            <div class="card-header p-4 bg-white rounded-xl rounded-b-none">
+                                <div class="flex justify-between items-center">
                                     <div class="flex items-center">
-                                        @if ($project->status->value === 'not_started')
-                                            <span
-                                                class="inline-flex items-center gap-1.5 py-0.5 px-3 rounded-full text-md font-medium bg-dark/10 text-dark">
-                                                Belum Dimulai
-                                            </span>
-                                        @elseif ($project->status->value === 'in_progress')
-                                            <span
-                                                class="inline-flex items-center gap-3 py-0.5 px-3 rounded-full text-md font-medium bg-warning/10 text-warning">
-                                                Sedang Berjalan
-                                            </span>
-                                        @elseif ($project->status->value === 'on_hold')
-                                            <span
-                                                class="inline-flex items-center gap-3 py-0.5 px-3 rounded-full text-md font-medium bg-danger/10 text-danger">
-                                                Tertunda
-                                            </span>
-                                        @elseif ($project->status->value === 'completed')
-                                            <span
-                                                class="inline-flex items-center gap-1.5 py-0.5 px-4 rounded-full text-md font-medium bg-success/10 text-success">
-                                                Selesai
-                                            </span>
-                                        @else
-                                            <span
-                                                class="inline-flex items-center gap-1.5 py-0.5 px-1.5 rounded-full text-md font-medium bg-dark/10 text-dark">
-                                                Status Tidak Diketahui
-                                            </span>
-                                        @endif
+                                        <div class="bg-info/20 px-3 py-1 rounded-full me-3">
+                                            <i class="ri-suitcase-line text-info" style="font-size: 30px;"></i>
+                                        </div>
+                                        <h5 class="text-black card-title text-2xl sm:text-lg ellipsis">
+                                            {{ $project->name }}
+                                        </h5>
                                     </div>
-
-                                    <!-- Dropdown -->
-                                    <div class="dropdown ml-auto">
-                                        <a href="javascript:void(0)" class="" data-fc-type="dropdown"
-                                            data-fc-placement="bottom-end">
-                                            <i class="ri-more-fill"></i>
-                                        </a>
-                                        <div
-                                            class="fc-dropdown fc-dropdown-open:opacity-100 opacity-0 min-w-60 z-50 transition-all duration-300 bg-white dark:bg-gray-800 shadow-lg border border-gray-200 dark:border-gray-600 rounded-md py-3 absolute hidden">
-                                            {{-- <a class="flex items-center py-2 px-5 text-base text-gray-500 hover:bg-slate-100 hover:text-slate-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300" href="javascript:void(0)">
-                                                <i class="ri-attachment-line me-1.5"></i>
-                                                <span>Attachment</span>
-                                            </a> --}}
-                                            <a data-fc-target="editProject" type="button" data-fc-type="modal"
-                                                class="flex items-center py-2 px-5 text-base text-gray-500 hover:bg-slate-100 hover:text-slate-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
-                                                href="javascript:void(0)">
-                                                <i class="ri-edit-box-line me-1.5"></i>
-                                                <span>Edit</span>
+                            
+                                    <div class="flex flex-wrap items-center justify-between gap-2">
+                                        <div class="flex items-center">
+                                            @if ($project->status->value === 'not_started')
+                                                <span
+                                                    class="inline-flex items-center gap-1.5 py-0.5 px-3 rounded-full text-md font-medium bg-dark/10 text-dark badge-status">
+                                                    Belum Dimulai
+                                                </span>
+                                            @elseif ($project->status->value === 'in_progress')
+                                                <span
+                                                    class="inline-flex items-center gap-3 py-0.5 px-3 rounded-full text-md font-medium bg-warning/10 text-warning">
+                                                    Sedang Berjalan
+                                                </span>
+                                            @elseif ($project->status->value === 'on_hold')
+                                                <span
+                                                    class="inline-flex items-center gap-3 py-0.5 px-3 rounded-full text-md font-medium bg-danger/10 text-danger">
+                                                    Tertunda
+                                                </span>
+                                            @elseif ($project->status->value === 'completed')
+                                                <span
+                                                    class="inline-flex items-center gap-1.5 py-0.5 px-4 rounded-full text-md font-medium bg-success/10 text-success">
+                                                    Selesai
+                                                </span>
+                                            @else
+                                                <span
+                                                    class="inline-flex items-center gap-1.5 py-0.5 px-1.5 rounded-full text-md font-medium bg-dark/10 text-dark">
+                                                    Status Tidak Diketahui
+                                                </span>
+                                            @endif
+                                        </div>
+                            
+                                        <!-- Dropdown -->
+                                        <div class="dropdown ml-auto">
+                                            <a href="javascript:void(0)" class="" data-fc-type="dropdown" data-fc-placement="bottom-end">
+                                                <i class="ri-more-fill"></i>
                                             </a>
-                                            {{-- <a class="flex items-center py-2 px-5 text-base text-gray-500 hover:bg-slate-100 hover:text-slate-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300" href="javascript:void(0)">
-                                                <i class="ri-file-copy-2-line me-1.5"></i>
-                                                <span>Mark as Duplicate</span>
-                                            </a> --}}
-                                            {{-- <hr class="my-3 border-gray-300 dark:border-gray-700"> --}}
-                                            <a class="flex items-center py-2 px-5 text-base text-danger hover:bg-slate-100 dark:hover:bg-gray-700"
-                                                href="javascript:void(0)">
-                                                <i class="ri-delete-bin-line me-1.5"></i>
-                                                <span>Remove</span>
-                                            </a>
+                                            <div
+                                                class="fc-dropdown fc-dropdown-open:opacity-100 opacity-0 min-w-60 z-50 transition-all duration-300 bg-white dark:bg-gray-800 shadow-lg border border-gray-200 dark:border-gray-600 rounded-md py-3 absolute hidden">
+                                                <a data-fc-target="editProject" type="button" data-fc-type="modal"
+                                                    class="flex items-center py-2 px-5 text-base text-gray-500 hover:bg-slate-100 hover:text-slate-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
+                                                    href="javascript:void(0)">
+                                                    <i class="ri-edit-box-line me-1.5"></i>
+                                                    <span>Edit</span>
+                                                </a>
+                                                <a class="flex items-center py-2 px-5 text-base text-danger hover:bg-slate-100 dark:hover:bg-gray-700"
+                                                    href="javascript:void(0)">
+                                                    <i class="ri-delete-bin-line me-1.5"></i>
+                                                    
+                                                    <span>Remove</span>
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
-                                    
                                 </div>
-
-
                             </div>
-                        </div>
+                        
 
                         <div class="card-body p-6 flex-grow bg-white ">
                             <h5 class="text-slate-900 text-xl dark:text-slate-200 mb-2">
