@@ -18,6 +18,7 @@ Route::middleware('auth')->prefix('admin')->group(function () {
 
 Route::middleware('auth')->prefix('member')->group(function () {
     Route::get('teams', [MemberTeamController::class, 'index'])->name('member.teams.index');
+    Route::get('teams/{team}', [MemberTeamController::class, 'show'])->name('member.teams.show');
     Route::post('teams/store', [MemberTeamController::class, 'store'])->name('member.teams.store');
     Route::put('teams/{team}/update', [MemberTeamController::class, 'update'])->name('member.teams.update');
     Route::delete('teams/{team}/destroy', [MemberTeamController::class, 'delete'])->name('member.teams.delete');
