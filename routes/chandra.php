@@ -23,3 +23,5 @@ Route::middleware('auth')->prefix('member')->group(function () {
     Route::put('teams/{team}/update', [MemberTeamController::class, 'update'])->name('member.teams.update');
     Route::delete('teams/{team}/destroy', [MemberTeamController::class, 'delete'])->name('member.teams.delete');
 });
+
+Route::get('teams/invite/{unique_code}', [MemberTeamController::class, 'invite'])->name(name: 'teams.invite');
