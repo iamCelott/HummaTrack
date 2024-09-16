@@ -156,7 +156,7 @@
                                         transition: .1s;
                                     }
                                 </style>
-                                <button type='submit' class="gugel flex items-center bg-white"
+                                <button type='button' class="gugel flex items-center bg-white"
                                     style="
                                     padding:7px 7px;
                                     width:100%;
@@ -184,7 +184,7 @@
                         </form>
                     </div>
                     <div class="text-center my-4">
-                        <p class="text-muted">Belum punya akun? <a href="auth-register.html"
+                        <p class="text-muted">Belum punya akun? <a href="{{ route('register') }}"
                                 class="text-muted  ms-1 link-offset-3 " style="color:#246AFF ">Daftar Sekarang</a></p>
                     </div>
                 </div>
