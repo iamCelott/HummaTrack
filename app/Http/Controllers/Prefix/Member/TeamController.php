@@ -36,6 +36,12 @@ class TeamController extends Controller
         return view('pages.teams.member.index', compact('teams'));
     }
 
+    public function invite(string $unique_code): View
+    {
+        $team = Team::where('unique_code', $unique_code)->first();
+        return view('pages.teams.invite', compact('team'));
+    }
+
     public function team_search_user(Request $request): JsonResponse
     {
         $users = $this->user->team_search_user($request);
