@@ -64,7 +64,6 @@ class TeamController extends Controller
      */
     public function store(TeamRequest $request)
     {
-
         $this->team->store($request->all());
         return redirect()->back()->with('success', 'Team Berhasil Dibuat');
     }
