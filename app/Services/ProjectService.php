@@ -43,4 +43,13 @@ class ProjectService
             "description" => $description,
         ]);
     }
+
+    public function insert_team_projects($data, $project)
+    {
+        $teamIds = array_map('intval', $data ?? []);
+
+        if (!empty($teamIds)) {
+            $project->teams()->sync($teamIds);
+        }
+    }
 }

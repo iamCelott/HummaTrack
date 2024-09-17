@@ -9,12 +9,4 @@ class TeamProject extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
-
-    public function Team(){
-        return $this->belongsTo(Team::class);
-    }
-
-    public function Project(){
-        return $this->belongsTo(Project::class);
-    }
 }

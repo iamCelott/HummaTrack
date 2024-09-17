@@ -27,7 +27,14 @@ class Project extends Model
         'description',
     ];
 
-    public function kanban():HasOne{
+    public function kanban(): HasOne
+    {
         return $this->hasOne(Kanban::class);
+    }
+
+    public function teams()
+    {
+        return $this->belongsToMany(Team::class, 'team_projects', 'project_id', 'team_id')
+            ->withTimestamps();
     }
 }
