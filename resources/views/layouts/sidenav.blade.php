@@ -869,122 +869,81 @@
 
 {{-- modal edit  --}}
 
-<div class="">
-    <div id="createProject"
-        class="w-full h-full fixed top-0 left-0 z-50 transition-all duration-500 hidden overflow-y-auto flex items-center justify-center">
-        <div
-            class="-translate-y-5 fc-modal-open:translate-y-0 fc-modal-open:opacity-100 opacity-0 duration-300 ease-in-out transition-all sm:max-w-2xl sm:w-full m-3 sm:mx-auto flex flex-col bg-white shadow-sm rounded-xl dark:bg-gray-800 relative">
+<div id="createProject"
+    class="w-full h-full fixed top-0 left-0 z-50 transition-all duration-500 hidden overflow-y-auto flex items-center justify-center">
+    <div
+        class="-translate-y-5 text-black fc-modal-open:translate-y-0 fc-modal-open:opacity-100 opacity-0 duration-300 ease-in-out transition-all sm:max-w-2xl sm:w-full m-3 sm:mx-auto flex flex-col bg-white shadow-sm rounded-xl dark:bg-gray-800 relative">
 
-            <div class="p-4 overflow-y-auto rounded-xl relative">
+        <div class="flex justify-between p-6">
+            <h1 class="text-2xl">Tambah Proyek</h1>
+            <button id="closeModal" data-fc-dismiss class="text-black hover:text-gray-700">
+                <!-- Ikon X menggunakan SVG -->
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
 
-                <div class="flex items-center justify-between mb-10 px-5 mt-5">
-                    <h2 class="text-lg font-semibold text-black dark:text-slate-200">Tambah Project Baru</h2>
-                    <button id="closeModal" data-fc-dismiss class="text-gray-500 hover:text-gray-700">
-                        <!-- Ikon X menggunakan SVG -->
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M6 18L18 6M6 6l12 12" />
-                        </svg>
-                    </button>
+        <div class="px-6 pb-6">
+
+            <div class="flex justify-between gap-3 mb-3">
+                <div class="w-1/2">
+                    <label for="name" class="font-bold text-black ">Judul</label>
+                    <br>
+                    <input type="text" class="w-full px-3 py-2 rounded-lg" id="name" name="name"
+                        placeholder="Beri judul untuk proyek anda">
                 </div>
 
-                <form class="px-6" action="{{ route('projects.store') }}" method="POST">
-                    @csrf
-                    <div class="space-y-6 mb-6">
-                        <div>
-                            <div id="" class="bgSwitch mx-8 shadow rounded-xl h-10 mb-6 flex p-0.5 relative items-center">
-                                <div class="w-full flex justify-center">
-                                    <button type="button" id="leftButton" class="toggle-button">Individu</button>
-                                </div>
-                                <div class="w-full flex justify-center">
-                                    <button type="button" id="rightButton" class="toggle-button">Tim</button>
-                                </div>
-                                <span id="elSwitch"
-                                    class="elSwitch bg-info shadow text-white flex items-center justify-center w-1/2 rounded-xl h-8 transition-all top-[4px] absolute left-1">
-                                    Individu
-                                </span>
-                                <input type="hidden" id="selectedType" name="type" value="individual">
-                            </div>
-                        </div>
-
-                        <div class="flex justify-between gap-4 mb-6">
-                            <div class="flex-1 space-y-1">
-                                <label for="project-name" class="font-semibold text-gray-500">Judul
-                                    <span class="text-danger">*</span></label>
-                                <input class="form-input w-full" type="text" id="project-name" name="name"
-                                    placeholder="Berikan judul proyek" required>
-                            </div>
-
-                            <div class="flex-1 space-y-1">
-                                <label for="project-subtitle" class="font-semibold text-gray-500">Sub judul
-                                    <span class="text-danger">*</span></label>
-                                <input class="form-input w-full" type="text" id="project-subtitle"
-                                    name="subtitle" placeholder="Berikan sub judul proyek" required>
-                            </div>
-                        </div>
-
-
-                        <div class="space-y-1 mb-6">
-                            <label for="project-description" class="font-semibold text-gray-500">Deskripsi
-                                <span class="text-danger">*</span></label>
-                            <textarea class="form-input" id="project-description" name="description" rows="4"
-                                placeholder="Berikan deskripsi untuk proyek" required></textarea>
-                        </div>
-
-                        <div class="grid grid-cols-2 gap-4">
-                            <div class="space-y-1">
-                                <label for="start-date" class="font-semibold text-gray-500">Start Date</label>
-                                <input class="form-input" type="date" id="start-date" name="start_date" required>
-                            </div>
-                            <div class="space-y-1">
-                                <label for="end-date" class="font-semibold text-gray-500">End Date</label>
-                                <input class="form-input" type="date" id="end-date" name="end_date" required>
-                            </div>
-                        </div>
-
-                        <script>
-                            document.addEventListener('DOMContentLoaded', function() {
-                                const leftButton = document.getElementById('leftButton');
-                                const rightButton = document.getElementById('rightButton');
-                                const bgSwitch = document.getElementById('bgSwitch');
-                                const elSwitch = document.getElementById('elSwitch');
-                                const selectedType = document.getElementById('selectedType');
-
-                                leftButton.addEventListener('click', function() {
-                                    elSwitch.style.transform = 'translateX(0)';
-                                    elSwitch.classList.remove('bg-success');
-                                    elSwitch.classList.add('bg-info');
-                                    bgSwitch.classList.remove('bg-success/70');
-                                    bgSwitch.classList.add('bg-info/70');
-                                    elSwitch.textContent = 'Individu';
-                                    selectedType.value = 'individual';
-                                });
-
-                                rightButton.addEventListener('click', function() {
-                                    elSwitch.style.transform = 'translateX(100%)';
-                                    elSwitch.classList.remove('bg-info');
-                                    elSwitch.classList.add('bg-success');
-                                    bgSwitch.classList.remove('bg-info/70');
-                                    bgSwitch.classList.add('bg-success/70');
-                                    elSwitch.textContent = 'Tim';
-                                    selectedType.value = 'team';
-                                });
-                            });
-                        </script>
-
-                        <div class="modal-footer">
-                            <button type="button"
-                                class="btn border-danger text-danger hover:bg-danger hover:text-white rounded-lg"
-                                data-fc-dismiss="">Batal</button>
-                            <button class="btn bg-info rounded-lg text-white" type="submit">Konfirmasi</button>
-                        </div>
-                    </div>
-                </form>
+                <div class="w-1/2">
+                    <label for="subtitle" class="font-bold text-black ">Sub Judul</label>
+                    <br>
+                    <input type="text" class="w-full px-3 py-2 rounded-lg" id="subtitle" name="subtitle"
+                        placeholder="Beri sub judul untuk proyek anda">
+                </div>
             </div>
+
+            <div class="w-full mb-3">
+                <label for="description" class="font-bold text-black ">Deskripsi (Opsional)</label>
+                <br>
+                <textarea name="description" id="description" class="w-full rounded-lg p-3" cols="30" rows="5"
+                    placeholder="Beri deskripsi untuk proyek anda"></textarea>
+            </div>
+
+            <div class="flex justify-between gap-3 mb-3">
+                <div class="w-1/2">
+                    <label for="start_date" class="font-bold text-black ">Tanggal Mulai</label>
+                    <br>
+                    <input type="date" class="w-full px-3 py-2 rounded-lg" id="start_date" name="start_date">
+                </div>
+
+                <div class="w-1/2">
+                    <label for="end_date" class="font-bold text-black ">Tanggal Berakhir</label>
+                    <br>
+                    <input type="date" class="w-full px-3 py-2 rounded-lg" id="end_date" name="end_date">
+                </div>
+            </div>
+
+            <div class="w-full mb-3">
+                <label for="description" class="font-bold text-black ">Tugaskan Untuk</label>
+                <br>
+                <select class="js-example-basic-multiple" style="width: 100%" name="teams[]" multiple="multiple">
+                    <option value="AL">Alabama</option>
+                    <option value="WY">Wyoming</option>
+                </select>
+            </div>
+
         </div>
     </div>
 </div>
+
+<script>
+    $(document).ready(function() {
+        $('.js-example-basic-multiple').select2({
+            dropdownParent: $('#createProject')
+        });
+    });
+</script>
 
 
 

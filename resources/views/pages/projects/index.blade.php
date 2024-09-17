@@ -109,7 +109,7 @@
                                             </a>
                                         </div>
                                     </div>
-                                    
+
                                 </div>
 
 
@@ -192,17 +192,19 @@
                     class="-translate-y-5 fc-modal-open:translate-y-0 fc-modal-open:opacity-100 opacity-0 duration-300 ease-in-out transition-all sm:max-w-2xl sm:w-full m-3 sm:mx-auto flex flex-col bg-white shadow-sm rounded-xl dark:bg-gray-800 relative">
 
                     <div class="p-4 overflow-y-auto rounded-xl relative">
-                
+
                         <div class="flex items-center justify-between mb-8 px-5 mt-5">
                             <h2 class="text-lg font-semibold text-black dark:text-slate-200">Edit Proyek</h2>
                             <button id="closeModal" data-fc-dismiss class="text-gray-500 hover:text-gray-700">
                                 <!-- Ikon X menggunakan SVG -->
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M6 18L18 6M6 6l12 12" />
                                 </svg>
                             </button>
                         </div>
-                        
+
 
                         <form class="px-6" action="{{ route('projects.store') }}" method="POST">
                             @csrf
@@ -234,7 +236,7 @@
                                         <input class="form-input w-full" type="text" id="project-name" name="name"
                                             placeholder="Berikan judul proyek" required>
                                     </div>
-        
+
                                     <div class="flex-1 space-y-1">
                                         <label for="project-subtitle" class="font-semibold text-gray-500">Sub judul
                                             <span class="text-danger">*</span></label>
