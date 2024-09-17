@@ -48,15 +48,12 @@ class ProjectRepository extends BaseRepository implements ProjectInterface
      */
     public function store(array $data): mixed
     {
-        // if (isset($data['image'])) {
-        //     $data['image'] = $this->service->handleImageImage($data['image'], 'project_images');
-        // }
-
         $project = $this->model->query()->create($data);
+        
+        $this->service->insert_team_projects($data['team_id'], $project);
+        $this->service->create_kanban($project->name, $project->id, $project->descriptiom);
 
-        // $this->service->create_kanban($project->name, $project->id, $project->descriptiom);
-
-        return $this->service->create_kanban($project->name, $project->id, $project->descriptiom);
+        return $project;
     }
     /**
      * Method show

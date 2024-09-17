@@ -58,7 +58,7 @@ class ProjectController extends Controller
      */
     public function store(ProjectRequest $request, Project $project)
     {
-        $this->project->store($request->validated());
+        $this->project->store($request->all());
         return redirect()->route('projects.index')->with('success', 'Berhasil menambah proyek baru.');
     }
 

@@ -885,21 +885,26 @@
             </button>
         </div>
 
-        <div class="px-6 pb-6">
+        <form action="{{ route('projects.store') }}" method="POST" class="px-6 pb-6">
+            @csrf
+
+            <input type="hidden" name="type" value="team">
 
             <div class="flex justify-between gap-3 mb-3">
                 <div class="w-1/2">
                     <label for="name" class="font-bold text-black ">Judul</label>
                     <br>
                     <input type="text" style="border: 2px solid #cacaca" class="w-full px-6 py-2 rounded-lg"
-                        id="name" name="name" placeholder="Beri judul untuk proyek anda">
+                        id="name" name="name" value="{{ old('name') }}"
+                        placeholder="Beri judul untuk proyek anda">
                 </div>
 
                 <div class="w-1/2">
                     <label for="subtitle" class="font-bold text-black ">Sub Judul</label>
                     <br>
                     <input type="text" style="border: 2px solid #cacaca" class="w-full px-6 py-2 rounded-lg"
-                        id="subtitle" name="subtitle" placeholder="Beri sub judul untuk proyek anda">
+                        id="subtitle" name="subtitle" value="{{ old('subtitle') }}"
+                        placeholder="Beri sub judul untuk proyek anda">
                 </div>
             </div>
 
@@ -907,7 +912,7 @@
                 <label for="description" class="font-bold text-black ">Deskripsi (Opsional)</label>
                 <br>
                 <textarea name="description" id="description" style="border: 2px solid #cacaca" class="w-full rounded-lg px-6 py-2"
-                    cols="30" rows="5" placeholder="Beri deskripsi untuk proyek anda"></textarea>
+                    cols="30" rows="5" placeholder="Beri deskripsi untuk proyek anda">{{ old('description') }}</textarea>
             </div>
 
             <div class="flex justify-between gap-3 mb-3">
@@ -915,14 +920,14 @@
                     <label for="start_date" class="font-bold text-black ">Tanggal Mulai</label>
                     <br>
                     <input type="date" style="border: 2px solid #cacaca" class="w-full px-6 py-2 rounded-lg"
-                        id="start_date" name="start_date">
+                        id="start_date" name="start_date" value="{{ old('start_date') }}">
                 </div>
 
                 <div class="w-1/2">
                     <label for="end_date" class="font-bold text-black ">Tanggal Berakhir</label>
                     <br>
                     <input type="date" style="border: 2px solid #cacaca" class="w-full px-6 py-2 rounded-lg"
-                        id="end_date" name="end_date">
+                        id="end_date" name="end_date" value="{{ old('end_date') }}">
                 </div>
             </div>
 
@@ -930,20 +935,24 @@
                 <label for="searchTeam" class="font-bold text-black">Tugaskan Untuk</label>
                 <div class="relative mb-3">
                     <i class="ri-search-line absolute" style="left: 10px; top:12px;"></i>
-                    <input type="text" name="" id="searchTeam" placeholder="cari nama tim anda"
-                        class="w-full outline-none rounded-lg py-2"
+                    <input type="text" value="{{ old('searchTeam') }}" id="searchTeam"
+                        placeholder="cari nama tim anda" class="w-full outline-none rounded-lg py-2"
                         style="padding-left: 30px;border: 2px solid #cacaca">
                 </div>
 
                 <div class="mb-3" id="addedTeam">
                 </div>
 
-                {{-- <small>Hasil yang ditampilkan</small> --}}
                 <div class="overflow-auto w-full" style="max-height: 170px;" id="searchTeamResult">
                 </div>
+
             </div>
 
-        </div>
+            <div class="flex justify-end">
+                <button type="submit" class="px-6 py-2 bg-primary rounded-lg text-white">Konfirmasi</button>
+            </div>
+
+        </form>
     </div>
 </div>
 

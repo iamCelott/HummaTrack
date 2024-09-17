@@ -48,7 +48,7 @@
                                             {{ $project->name }}
                                         </h5>
                                     </div>
-                            
+
                                     <div class="flex flex-wrap items-center justify-between gap-2">
                                         <div class="flex items-center">
                                             @if ($project->status->value === 'not_started')
@@ -78,7 +78,7 @@
                                                 </span>
                                             @endif
                                         </div>
-                            
+
                                         <!-- Dropdown -->
                                         <div class="dropdown ml-auto">
                                             <a href="javascript:void(0)" class="" data-fc-type="dropdown" data-fc-placement="bottom-end">
@@ -103,7 +103,7 @@
                                     </div>
                                 </div>
                             </div>
-                        
+
 
                         <div class="card-body p-6 flex-grow bg-white">
                             <h5 class="text-slate-900 text-xl dark:text-slate-200 mb-2">
