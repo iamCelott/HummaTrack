@@ -23,8 +23,12 @@
         <h1 class="text-sm sm:text-lg md:text-2xl font-bold">PROYEK</h1>
         <div class="flex gap-3 items-center h-8 md:h-10 justify-between relative">
             <i class="ri-search-line absolute sm:top-1.5 md:top-2.5 left-3"></i>
-            <input placeholder="cari proyek anda disini...." type="text" class="rounded-sm h-full bg-white w-[15rem] md:w-[20rem] lg:w-[25rem] xl:w-[30rem] px-8" style="border: 2px solid #cacaca">
-            <button data-fc-target="createProject" data-fc-type="modal" class="text-xs sm:text-sm sm:py-1.5 h-full sm:px-3 text-white" style="background-color: #0396fe"><i class="ri-menu-add-line"></i>
+            <input placeholder="cari proyek anda disini...." type="text"
+                class="rounded-sm h-full bg-white w-[15rem] md:w-[20rem] lg:w-[25rem] xl:w-[30rem] px-8"
+                style="border: 2px solid #cacaca">
+            <button data-fc-target="createProject" data-fc-type="modal"
+                class="text-xs sm:text-sm sm:py-1.5 h-full sm:px-3 text-white" style="background-color: #0396fe"><i
+                    class="ri-menu-add-line"></i>
                 Tambah Proyek</button>
         </div>
     </div>
@@ -40,7 +44,7 @@
 
         @if ($hasCreatedTeam)
             <div class="flex flex-auto flex-col">
-                <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
+                <div class="grid md:px-12 md:grid-cols-1 lg:px-0 lg:grid-cols-2 gap-6">
                     @foreach ($projects as $project)
                         <div class="relative card flex flex-col justify-between hover:shadow-lg hover:scale-105 transition-all duration-200"
                             style="height: 400px; border-radius: 20px; position: relative;">
@@ -51,7 +55,7 @@
                                         <div class="bg-info/20 px-3 py-1 rounded-full me-3">
                                             <i class="ri-suitcase-line text-info" style="font-size: 30px;"></i>
                                         </div>
-                                        <h5 class="text-black card-title text-2xl sm:text-lg ellipsis">
+                                        <h5 class="text-black card-title text-sm sm:text-xl lg:text-3xl font-bold ellipsis">
                                             {{ $project->name }}
                                         </h5>
                                     </div>
@@ -60,7 +64,7 @@
                                         <div class="flex items-center">
                                             @if ($project->status->value === 'not_started')
                                                 <span
-                                                    class="inline-flex items-center gap-1.5 py-0.5 px-3 rounded-full text-md font-medium bg-dark/10 text-dark badge-status">
+                                                    class="inline-flex items-center gap-1.5 py-2 px-3 lg:px-5 rounded-xl text-md font-medium bg-dark/10 text-dark badge-status ">
                                                     Belum Dimulai
                                                 </span>
                                             @elseif ($project->status->value === 'in_progress')
@@ -86,7 +90,7 @@
                                             @endif
                                         </div>
 
-                                        <!-- Dropdown -->
+                                        {{-- <!-- Dropdown -->
                                         <div class="dropdown ml-auto">
                                             <a href="javascript:void(0)" class="" data-fc-type="dropdown"
                                                 data-fc-placement="bottom-end">
@@ -107,64 +111,67 @@
                                                     <span>Remove</span>
                                                 </a>
                                             </div>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </div>
                             </div>
 
 
-                            <div class="card-body p-6 flex-grow bg-white">
-                                <h5 class="text-slate-900 text-xl dark:text-slate-200 mb-2">
+                            <div class="card-body p-6 py-3 flex-grow bg-white w-3/4 leading-1 ">
+                                <h5 class="text-slate-900 text-xl dark:black lg:text-2xl font-semibold mb-2">
                                     {{ $project->subtitle }}
                                 </h5>
-                                <p class="text-gray-500 text-sm mb-4 description">
+                                <p class="text-gray-500 text-sm mb-4 description ellipsis-3 ">
                                     {{ $project->description }}
                                 </p>
 
                                 <div class="">
                                     @if ($project->type === 'team')
                                         <span
-                                            class="inline-flex items-center gap-1.5 py-0.5 px-5 rounded-full text-md font-medium border border-success text-success">
+                                            class="inline-flex items-center gap-1.5 py-0.5 px-5 rounded-lg text-md font-medium border bg-[#aee6ff] text-success">
                                             Tim
                                         </span>
                                     @else
                                         <span
-                                            class="inline-flex items-center gap-1.5 py-0.5 px-5 rounded-full text-md font-medium border border-info text-info">
+                                            class="inline-flex items-center gap-1.5 py-0.5 px-5 rounded-full text-md font-medium border bg-[#aaffae] text-info">
                                             Individual
                                         </span>
                                     @endif
                                 </div>
-
                             </div>
-                            <div class="flex items-center p-6">
-                                <div class="-me-3">
+                            <div class="flex items-center p-6 pt-2">
+                                <div class="-me-2">
                                     <img src="assets/images/users/avatar-1.jpg" alt="" class="rounded-full h-8 w-8">
                                 </div>
-                                <div class="-me-3">
+                                <div class="-me-2">
                                     <img src="assets/images/users/avatar-5.jpg" alt="" class="rounded-full h-8 w-8">
                                 </div>
-                                <div class="-me-3">
+                                <div class="-me-2">
                                     <div class="bg-success text-white flex items-center justify-center rounded-full h-8 w-8">
                                         K
                                     </div>
                                 </div>
-                                <div class="-me-3">
+                                <div class="-me-2">
                                     <div class="bg-primary text-white flex items-center justify-center rounded-full h-8 w-8">
                                         9+
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="card-footer p-4 border-t border-gray-300 dark:border-gray-700 bg-white rounded-xl">
+                            <div class="card-footer p-4 py-3 border-t border-[#cacaca] bg-white rounded-b-xl">
                                 <div class="flex items-center justify-between w-full px-2">
-                                    <div class="flex items-center gap-2">
+                                    <div class="flex items-center gap-1">
                                         <i class="ri-calendar-line text-info text-lg me-2"></i>
                                         <span>{{ \Carbon\Carbon::parse($project->start_date)->format('d M') }}</span>
                                     </div>
 
-                                    <div class="flex items-center gap-2">
+                                    <div class="flex items-center gap-1">
+                                        <i class="ri-time-line text-info text-lg me-2"></i>
+                                        <span>29 September 2024</span>
+                                    </div>
+                                    <div class="flex items-center gap-1">
                                         <i class="ri-file-line text-info text-lg me-2"></i>
-                                        <span>1 / 10 Task</span>
+                                        <span>Project Selesai 2/7</span>
                                     </div>
 
                                     {{-- data-fc-target="editProject" type="button" data-fc-type="modal" --}}
@@ -229,5 +236,15 @@
             </div>
         @endif
     @endhasrole
+
+    <style>
+        .ellipsis-3 {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    </style>
 
 @endsection
