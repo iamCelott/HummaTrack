@@ -913,14 +913,14 @@
                                 <label for="project-name" class="font-semibold text-gray-500">Judul
                                     <span class="text-danger">*</span></label>
                                 <input class="form-input w-full" type="text" id="project-name" name="name"
-                                    placeholder="Berikan judul proyek" required>
+                                    placeholder="Berikan judul proyek">
                             </div>
 
                             <div class="flex-1 space-y-1">
                                 <label for="project-subtitle" class="font-semibold text-gray-500">Sub judul
                                     <span class="text-danger">*</span></label>
                                 <input class="form-input w-full" type="text" id="project-subtitle"
-                                    name="subtitle" placeholder="Berikan sub judul proyek" required>
+                                    name="subtitle" placeholder="Berikan sub judul proyek">
                             </div>
                         </div>
 
@@ -929,17 +929,17 @@
                             <label for="project-description" class="font-semibold text-gray-500">Deskripsi
                                 <span class="text-danger">*</span></label>
                             <textarea class="form-input" id="project-description" name="description" rows="4"
-                                placeholder="Berikan deskripsi untuk proyek" required></textarea>
+                                placeholder="Berikan deskripsi untuk proyek"></textarea>
                         </div>
 
                         <div class="grid grid-cols-2 gap-4">
                             <div class="space-y-1">
                                 <label for="start-date" class="font-semibold text-gray-500">Start Date</label>
-                                <input class="form-input" type="date" id="start-date" name="start_date" required>
+                                <input class="form-input" type="date" id="start-date" name="start_date">
                             </div>
                             <div class="space-y-1">
                                 <label for="end-date" class="font-semibold text-gray-500">End Date</label>
-                                <input class="form-input" type="date" id="end-date" name="end_date" required>
+                                <input class="form-input" type="date" id="end-date" name="end_date">
                             </div>
                         </div>
 

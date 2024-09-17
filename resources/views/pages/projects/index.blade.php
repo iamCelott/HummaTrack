@@ -95,7 +95,7 @@
                                                 <a class="flex items-center py-2 px-5 text-base text-danger hover:bg-slate-100 dark:hover:bg-gray-700"
                                                     href="javascript:void(0)">
                                                     <i class="ri-delete-bin-line me-1.5"></i>
-                                                    
+
                                                     <span>Remove</span>
                                                 </a>
                                             </div>
@@ -105,7 +105,7 @@
                             </div>
                         
 
-                        <div class="card-body p-6 flex-grow bg-white ">
+                        <div class="card-body p-6 flex-grow bg-white">
                             <h5 class="text-slate-900 text-xl dark:text-slate-200 mb-2">
                                 {{ $project->subtitle }}
                             </h5>
