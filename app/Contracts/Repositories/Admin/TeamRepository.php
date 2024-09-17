@@ -8,7 +8,7 @@ use App\Models\Team;
 use App\Services\TeamService;
 use Illuminate\Http\Request;
 
-class TeamRepository extends BaseRepository implements TeamInterface
+class TeamRepository extends BaseRepository
 {
     protected $service;
     /**

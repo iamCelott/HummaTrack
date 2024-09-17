@@ -891,46 +891,56 @@
                 <div class="w-1/2">
                     <label for="name" class="font-bold text-black ">Judul</label>
                     <br>
-                    <input type="text" class="w-full px-3 py-2 rounded-lg" id="name" name="name"
-                        placeholder="Beri judul untuk proyek anda">
+                    <input type="text" style="border: 2px solid #cacaca" class="w-full px-6 py-2 rounded-lg"
+                        id="name" name="name" placeholder="Beri judul untuk proyek anda">
                 </div>
 
                 <div class="w-1/2">
                     <label for="subtitle" class="font-bold text-black ">Sub Judul</label>
                     <br>
-                    <input type="text" class="w-full px-3 py-2 rounded-lg" id="subtitle" name="subtitle"
-                        placeholder="Beri sub judul untuk proyek anda">
+                    <input type="text" style="border: 2px solid #cacaca" class="w-full px-6 py-2 rounded-lg"
+                        id="subtitle" name="subtitle" placeholder="Beri sub judul untuk proyek anda">
                 </div>
             </div>
 
             <div class="w-full mb-3">
                 <label for="description" class="font-bold text-black ">Deskripsi (Opsional)</label>
                 <br>
-                <textarea name="description" id="description" class="w-full rounded-lg p-3" cols="30" rows="5"
-                    placeholder="Beri deskripsi untuk proyek anda"></textarea>
+                <textarea name="description" id="description" style="border: 2px solid #cacaca" class="w-full rounded-lg px-6 py-2"
+                    cols="30" rows="5" placeholder="Beri deskripsi untuk proyek anda"></textarea>
             </div>
 
             <div class="flex justify-between gap-3 mb-3">
                 <div class="w-1/2">
                     <label for="start_date" class="font-bold text-black ">Tanggal Mulai</label>
                     <br>
-                    <input type="date" class="w-full px-3 py-2 rounded-lg" id="start_date" name="start_date">
+                    <input type="date" style="border: 2px solid #cacaca" class="w-full px-6 py-2 rounded-lg"
+                        id="start_date" name="start_date">
                 </div>
 
                 <div class="w-1/2">
                     <label for="end_date" class="font-bold text-black ">Tanggal Berakhir</label>
                     <br>
-                    <input type="date" class="w-full px-3 py-2 rounded-lg" id="end_date" name="end_date">
+                    <input type="date" style="border: 2px solid #cacaca" class="w-full px-6 py-2 rounded-lg"
+                        id="end_date" name="end_date">
                 </div>
             </div>
 
-            <div class="w-full mb-3">
-                <label for="description" class="font-bold text-black ">Tugaskan Untuk</label>
-                <br>
-                <select class="js-example-basic-multiple" style="width: 100%" name="teams[]" multiple="multiple">
-                    <option value="AL">Alabama</option>
-                    <option value="WY">Wyoming</option>
-                </select>
+            <div class="mb-3">
+                <label for="searchTeam" class="font-bold text-black">Tugaskan Untuk</label>
+                <div class="relative mb-3">
+                    <i class="ri-search-line absolute" style="left: 10px; top:12px;"></i>
+                    <input type="text" name="" id="searchTeam" placeholder="cari nama tim anda"
+                        class="w-full outline-none rounded-lg py-2"
+                        style="padding-left: 30px;border: 2px solid #cacaca">
+                </div>
+
+                <div class="mb-3" id="addedTeam">
+                </div>
+
+                {{-- <small>Hasil yang ditampilkan</small> --}}
+                <div class="overflow-auto w-full" style="max-height: 170px;" id="searchTeamResult">
+                </div>
             </div>
 
         </div>
@@ -943,12 +953,147 @@
             dropdownParent: $('#createProject')
         });
     });
+
+    var selectedTeams = [];
+
+    function searchTeams(query = '') {
+        $.ajax({
+            url: "{{ route('api.project_search_team') }}",
+            type: "POST",
+            data: {
+                search: query,
+                id: {{ Auth::user()->id }}
+            },
+            success: function(data) {
+                $('#searchTeamResult').empty();
+
+                var teams = data.data;
+                var userLogin = {{ Auth::user()->id }}
+
+                if (teams.length > 0) {
+                    $.each(teams, function(index, team) {
+
+                        if (!selectedTeams.includes(team.id.toString())) {
+                            var photoUrl = "";
+
+                            if (team.leader[0].photo_profile && team.leader[0].photo_profile
+                                .includes(
+                                    'profile_images/')) {
+                                photoUrl = "{{ asset('storage') }}/" + team.leader[0]
+                                    .photo_profile;
+                            } else {
+                                photoUrl = team.leader[0].photo_profile;
+                            }
+
+                            var isChecked = selectedTeams.includes(team.id.toString()) ?
+                                'checked' : '';
+
+                            $('#searchTeamResult').append(`
+                        <div class="team-item flex justify-between mb-3 p-3 rounded-lg" style="background-color: #F2F2F2"
+                        data-team-id="${team.id}">
+                        <div class="flex gap-3 items-center">
+                            <img src="${photoUrl}"
+                                class="w-10 h-10 object-cover rounded-full" alt="">
+                            <div class="">
+                                <h1 class="text-lg font-semibold">${team.name}</h1>
+                                <span style="opacity: 70%">Ketua: <strong>${team.leader[0].id == userLogin ? 'Anda' : team.leader[0].name}</strong></span>
+                            </div>
+                        </div>
+                        <div class="">
+                            <input type="checkbox" name="team_id[]" value="${team.id}" class="rounded-full">
+                        </div>
+                    </div>
+                    `);
+                        }
+                    });
+                } else {
+                    $('#searchTeamResult').append(
+                        '<p class="text-center font-bold" style="line-height:170px;">Tim tidak ditemukan.</p>'
+                    );
+                }
+            }
+        });
+    }
+
+    searchTeams()
+
+    $('#searchTeam').on('keyup', function(e) {
+        var query = $(this).val();
+        searchTeams(query);
+    });
+
+    $(document).on('change', 'input[name="team_id[]"]', function() {
+        var teamId = $(this).val();
+        var teamItem = $(this).closest('.team-item');
+        var teamName = $(this).closest('.flex').find('h1').text();
+        var teamLeader = $(this).closest('.flex').find('span').text();
+        var photoUrl = $(this).closest('.flex').find('img').attr('src');
+
+        if ($(this).is(':checked')) {
+            if (!selectedTeams.includes(teamId)) {
+                selectedTeams.push(teamId);
+
+                teamItem.remove();
+
+                $('#addedTeam').append(`
+                   <div class="team-item flex justify-between mb-3 p-3 rounded-lg" style="background-color: #F2F2F2"
+                        data-team-id="${teamId}">
+                        <div class="flex gap-3 items-center">
+                            <img src="${photoUrl}"
+                                class="w-10 h-10 object-cover rounded-full" alt="">
+                            <div class="">
+                                <h1 class="text-lg font-semibold">${teamName}</h1>
+                                <span style="opacity: 70%">${teamLeader }</span>
+                            </div>
+                        </div>
+                        <div class="">
+                            <input type="checkbox" name="team_id[]" value="${teamId}" class="rounded-full" checked>
+                        </div>
+                    </div>
+                `);
+            }
+        } else {
+            selectedTeams = selectedTeams.filter(function(id) {
+                return id !== teamId;
+            });
+
+            $(`#addedTeam div[data-team-id="${teamId}"]`).remove();
+
+            $('#searchTeamResult').append(`
+                <div class="team-item flex justify-between mb-3 p-3 rounded-lg" style="background-color: #F2F2F2"
+                        data-team-id="${teamId}">
+                        <div class="flex gap-3 items-center">
+                            <img src="${photoUrl}"
+                                class="w-10 h-10 object-cover rounded-full" alt="">
+                            <div class="">
+                                <h1 class="text-lg font-semibold">${teamName}</h1>
+                                <span style="opacity: 70%">${teamLeader}</span>
+                            </div>
+                        </div>
+                        <div class="">
+                            <input type="checkbox" name="team_id[]" value="${teamId}" class="rounded-full">
+                        </div>
+                    </div>
+            `);
+        }
+
+        $('#addedTeam small').remove();
+        if (selectedTeams.length > 0) {
+            $('#addedTeam').prepend(`<small>Ditugaskan</small>`);
+
+            $('#addedTeam').css({
+                'border-bottom': '2px solid #cacaca'
+            });
+        } else {
+            $('#addedTeam').css({
+                'border-bottom': '0'
+            });
+        }
+
+    });
 </script>
 
-
-
 <script src="//unpkg.com/alpinejs" defer></script>
-
 
 <style>
     .modal-footer {

@@ -73,6 +73,16 @@ class TeamRepository extends BaseRepository implements TeamInterface
         return $team;
     }
 
+    public function project_search_team(Request $request): mixed
+    {
+        $search = $request->search;
+
+        return $this->model->with(['users', 'create_by', 'leader'])
+            ->when($search, function ($query) use ($search) {
+                $query->where('name', 'like', '%' . $search . '%');
+            })->where('created_by', $request->id)->latest()->get();
+    }
+
     /**
      * Method show
      *

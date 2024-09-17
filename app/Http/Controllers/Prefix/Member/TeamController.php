@@ -44,7 +44,7 @@ class TeamController extends Controller
 
     public function team_search_user(Request $request): JsonResponse
     {
-        $users = $this->user->team_search_user($request);
+        $users = $this->user->team_search_user(request: $request);
 
         return response()->json([
             'status' => true,
