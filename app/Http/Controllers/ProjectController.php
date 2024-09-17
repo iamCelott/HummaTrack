@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Contracts\Interfaces\KanbanInterface;
 use App\Contracts\Interfaces\ProjectInterface;
+use App\Contracts\Interfaces\TeamInterface;
 use App\Http\Requests\ProjectRequest;
 use App\Models\Project;
 use App\Services\ProjectService;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
@@ -15,10 +17,12 @@ class ProjectController extends Controller
     private ProjectInterface $project;
     private ProjectService $service;
     private KanbanInterface $kanban;
+    private TeamInterface $team;
 
-    public function __construct(ProjectInterface $project, ProjectService $service, KanbanInterface $kanban)
+    public function __construct(ProjectInterface $project, ProjectService $service, KanbanInterface $kanban, TeamInterface $team)
     {
         $this->project = $project;
+        $this->team = $team;
         $this->kanban = $kanban;
         $this->service = $service;
     }
@@ -29,6 +33,16 @@ class ProjectController extends Controller
     {
         $projects = $this->project->search($request);
         return view('pages.projects.index', compact('projects'));
+    }
+
+    public function project_search_team(Request $request): JsonResponse
+    {
+        $teams = $this->team->project_search_team($request);
+
+        return response()->json([
+            'status' => true,
+            'data' => $teams
+        ]);
     }
 
     /**

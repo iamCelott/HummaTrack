@@ -13,6 +13,7 @@ class Team extends Model
     public function users()
     {
         return $this->belongsToMany(User::class, 'team_users', 'team_id', 'user_id')
+            ->withPivot('role')
             ->withTimestamps();
     }
 
@@ -24,5 +25,12 @@ class Team extends Model
     public function create_by()
     {
         return $this->belongsTo(User::class, 'created_by');
+    }
+
+    public function leader()
+    {
+        return $this->belongsToMany(User::class, 'team_users', 'team_id', 'user_id')
+            ->wherePivot('role', 'leader')
+            ->withTimestamps();
     }
 }

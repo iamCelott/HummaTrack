@@ -338,6 +338,7 @@
                 </div>
             `);
                 }
+
                 $('#invitedUser small').remove();
                 if (selectedUsers.length > 0) {
                     $('#invitedUser').prepend(`<small>Diundang</small>`);
