@@ -31,6 +31,7 @@ return new class extends Migration
                 ProjectStatus::OnHold->value,
             ])->default(ProjectStatus::NotStarted->value);
             $table->text('description')->nullable();
+            $table->foreignId('created_by')->constrained('users')->onDelete('restrict')->onUpdate('cascade');
             $table->timestamps();
         });
     }

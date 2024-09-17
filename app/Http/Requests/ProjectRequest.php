@@ -34,6 +34,7 @@ class ProjectRequest extends FormRequest
             'type' => ['required', Rule::in(ProjectType::Individual->value, ProjectType::Team->value)],
             'status' => ['nullable', Rule::in(ProjectStatus::NotStarted->value, ProjectStatus::InProgress->value, ProjectStatus::Completed->value, ProjectStatus::OnHold->value)],
             'description' => 'nullable|string',
+            'created_by' => ['required', 'exists:users,id'],
         ];
     }
 
@@ -55,6 +56,8 @@ class ProjectRequest extends FormRequest
             'image.image' => 'File yang diunggah harus berupa gambar.',
             'image.mimes' => 'Format gambar harus jpeg, png, jpg, atau gif.',
             'image.max' => 'Ukuran gambar tidak boleh lebih dari 2MB.',
+            'created_by.required' => 'Nama pembuat harus diisi.',
+            'created_by.exists' => 'ID pembuat tidak valid. Pastikan pengguna terdaftar.',
         ];
     }
 }

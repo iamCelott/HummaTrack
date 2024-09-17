@@ -25,6 +25,7 @@ class Project extends Model
         'type',
         'status',
         'description',
+        'created_by'
     ];
 
     public function kanban(): HasOne
@@ -36,5 +37,10 @@ class Project extends Model
     {
         return $this->belongsToMany(Team::class, 'team_projects', 'project_id', 'team_id')
             ->withTimestamps();
+    }
+
+    public function created_by()
+    {
+        return $this->belongsTo(User::class, 'created_by');
     }
 }
