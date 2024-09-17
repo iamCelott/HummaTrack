@@ -8,6 +8,7 @@ use App\Models\About;
 use App\Models\Project;
 use App\Services\ProjectService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProjectRepository extends BaseRepository implements ProjectInterface
 {
@@ -35,9 +36,15 @@ class ProjectRepository extends BaseRepository implements ProjectInterface
     public function search(Request $request): mixed
     {
         $search = $request->search;
-        return $this->model->query()->when($search, function ($query) use ($search) {
-            $query->whereLike('name', '%' . $search . '%');
-        })->get();
+        if (Auth::user()->hasRole('member')) {
+            return $this->model->query()->when($search, function ($query) use ($search) {
+                $query->whereLike('name', '%' . $search . '%');
+            })->where('created_by', $request->authId)->latest()->paginate(10);
+        } else {
+            return $this->model->query()->when($search, function ($query) use ($search) {
+                $query->whereLike('name', '%' . $search . '%');
+            })->latest()->paginate(10);
+        }
     }
     /**
      * Method store
@@ -49,7 +56,7 @@ class ProjectRepository extends BaseRepository implements ProjectInterface
     public function store(array $data): mixed
     {
         $project = $this->model->query()->create($data);
-        
+
         $this->service->insert_team_projects($data['team_id'], $project);
         $this->service->create_kanban($project->name, $project->id, $project->descriptiom);
 

@@ -11,6 +11,7 @@ use App\Services\ProjectService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProjectController extends Controller
 {
@@ -31,6 +32,7 @@ class ProjectController extends Controller
      */
     public function index(Request $request): View
     {
+        $request->merge(['authId' => Auth::user()->id]);
         $projects = $this->project->search($request);
         return view('pages.projects.index', compact('projects'));
     }

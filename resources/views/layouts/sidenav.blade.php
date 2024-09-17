@@ -872,7 +872,7 @@
 <div id="createProject"
     class="w-full h-full fixed top-0 left-0 z-50 transition-all duration-500 hidden overflow-y-auto flex items-center justify-center">
     <div
-        class="-translate-y-5 text-black fc-modal-open:translate-y-0 fc-modal-open:opacity-100 opacity-0 duration-300 ease-in-out transition-all sm:max-w-2xl sm:w-full m-3 sm:mx-auto flex flex-col bg-white shadow-sm rounded-xl dark:bg-gray-800 relative">
+        class="-translate-y-5 text-black fc-modal-open:translate-y-0 fc-modal-open:opacity-100 opacity-0 duration-300 ease-in-out transition-all sm:max-w-2xl sm:w-full m-3 sm:mx-auto flex flex-col bg-white shadow-sm rounded-xl relative">
 
         <div class="flex justify-between p-6">
             <h1 class="text-2xl">Tambah Proyek</h1>
@@ -889,6 +889,7 @@
             @csrf
 
             <input type="hidden" name="type" value="team">
+            <input type="hidden" name="created_by" value="{{ Auth::user()->id }}">
 
             <div class="flex justify-between gap-3 mb-3">
                 <div class="w-1/2">
