@@ -23,12 +23,11 @@
         <h1 class="text-sm sm:text-lg md:text-2xl font-bold">PROYEK</h1>
         <div class="flex gap-3 items-center h-8 md:h-10 justify-between relative">
             <i class="ri-search-line absolute sm:top-1.5 md:top-2.5 left-3"></i>
-            <input placeholder="cari proyek anda disini...." type="text"
-                class="rounded-sm h-full bg-white w-[15rem] md:w-[20rem] lg:w-[25rem] xl:w-[30rem] px-8"
-                style="border: 2px solid #cacaca">
-            <button data-fc-target="createProject" data-fc-type="modal"
-                class="text-xs sm:text-sm sm:py-1.5 h-full sm:px-3 text-white" style="background-color: #0396fe"><i
-                    class="ri-menu-add-line"></i>
+            <form action="{{ route('projects.index') }}" method="GET">
+                @csrf
+                <input name="search" placeholder="cari proyek anda disini...." type="text" class="rounded-sm h-full bg-white w-[15rem] md:w-[20rem] lg:w-[25rem] xl:w-[30rem] px-8" style="border: 2px solid #cacaca">
+            </form>
+                <button data-fc-target="createProject" data-fc-type="modal" class="text-xs sm:text-sm sm:py-1.5 h-full sm:px-3 text-white" style="background-color: #0396fe"><i class="ri-menu-add-line"></i>
                 Tambah Proyek</button>
         </div>
     </div>

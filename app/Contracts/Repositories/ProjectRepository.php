@@ -57,7 +57,10 @@ class ProjectRepository extends BaseRepository implements ProjectInterface
     {
         $project = $this->model->query()->create($data);
 
-        $this->service->insert_team_projects($data['team_id'], $project);
+        if (!empty($data['team_id'])) {
+            $this->service->insert_team_projects($data['team_id'], $project);
+        }
+
         $this->service->create_kanban($project->name, $project->id, $project->descriptiom);
 
         return $project;
