@@ -37,7 +37,9 @@
                                 class="text-sm w-full outline-none rounded-lg" style="padding-left: 30px">
                         </div>
 
-                        <small>Hasil yang ditampilkan</small>
+                        <div id="invitedUser"></div>
+
+                        {{-- <small>Hasil yang ditampilkan</small> --}}
                         <div class="overflow-auto w-full" style="max-height: 170px;" id="searchResult">
                         </div>
                     </div>
@@ -154,7 +156,8 @@
                         </div>
 
                         <div class="flex items-end">
-                            <a href="{{ route('member.teams.show', $team->id) }}" class="rounded-lg py-1 text-white font-semibold"
+                            <a href="{{ route('member.teams.show', $team->id) }}"
+                                class="rounded-lg py-1 text-white font-semibold"
                                 style="background-color: #0496FF;padding-left: 1.8rem; padding-right: 1.8rem"><i
                                     class="ri-information-line"></i> Detail</a>
                         </div>
@@ -219,65 +222,137 @@
                 dropdownParent: $('#createTeam')
             });
 
-            $(document).ready(function() {
-                function searchUsers(query = '') {
-                    $.ajax({
-                        url: "{{ route('api.team_search_user') }}",
-                        type: "POST",
-                        data: {
-                            search: query,
-                            id: {{ Auth::user()->id }}
-                        },
-                        success: function(data) {
-                            $('#searchResult').empty();
+            var selectedUsers = [];
 
-                            if (data.data.length > 0) {
-                                $.each(data.data, function(index, user) {
+            function searchUsers(query = '') {
+                $.ajax({
+                    url: "{{ route('api.team_search_user') }}",
+                    type: "POST",
+                    data: {
+                        search: query,
+                        id: {{ Auth::user()->id }}
+                    },
+                    success: function(data) {
+                        $('#searchResult').empty();
+
+                        var users = data.data;
+
+                        if (users.length > 0) {
+                            $.each(users, function(index, user) {
+
+                                if (!selectedUsers.includes(user.id.toString())) {
                                     var photoUrl = "";
 
-                                    if (user.photo_profile && user.photo_profile
-                                        .includes('profile_images/')) {
+                                    if (user.photo_profile && user.photo_profile.includes(
+                                            'profile_images/')) {
                                         photoUrl = "{{ asset('storage') }}/" + user
                                             .photo_profile;
                                     } else {
                                         photoUrl = user.photo_profile;
                                     }
 
-                                    $('#searchResult').append(
-                                        `
-                            <div class="flex justify-between mb-3 p-3 rounded-lg" style="background-color: #F2F2F2">
+                                    var isChecked = selectedUsers.includes(user.id.toString()) ?
+                                        'checked' : '';
+
+                                    $('#searchResult').append(`
+                            <div class="user-item flex justify-between mb-3 p-3 rounded-lg" style="background-color: #F2F2F2" data-user-id="${user.id}">
                                 <div class="flex gap-3 items-center">
-                                    <img src="${photoUrl}"
-                                        class="w-12 h-12 object-cover rounded-full" alt="">
+                                    <img src="${photoUrl}" class="w-12 h-12 object-cover rounded-full" alt="">
                                     <div class="">
                                         <h1 class="text-lg font-bold">${user.name}</h1>
                                         <span>${user.email}</span>
                                     </div>
                                 </div>
                                 <div class="">
-                                    <input type="checkbox" name="user_id[]" value="${user.id}" class="rounded-full" id="">
+                                    <input type="checkbox" name="user_id[]" value="${user.id}" class="rounded-full" ${isChecked}>
                                 </div>
                             </div>
-                            `
-                                    );
-                                });
-                            } else {
-                                $('#searchResult').append(
-                                    '<p class="text-center font-bold" style="line-height:170px;">Pengguna tidak ditemukan.</p>'
-                                );
-                            }
+                        `);
+                                }
+                            });
+                        } else {
+                            $('#searchResult').append(
+                                '<p class="text-center font-bold" style="line-height:170px;">Pengguna tidak ditemukan.</p>'
+                            );
                         }
+                    }
+                });
+            }
+
+            searchUsers();
+
+            $('#searchUser').on('keyup', function(e) {
+                var query = $(this).val();
+                searchUsers(query);
+            });
+
+            $(document).on('change', 'input[name="user_id[]"]', function() {
+                var userId = $(this).val();
+                var userItem = $(this).closest('.user-item');
+                var userName = $(this).closest('.flex').find('h1').text();
+                var userEmail = $(this).closest('.flex').find('span').text();
+                var photoUrl = $(this).closest('.flex').find('img').attr('src');
+
+                if ($(this).is(':checked')) {
+                    if (!selectedUsers.includes(userId)) {
+                        selectedUsers.push(userId);
+
+                        // Remove the user from the search result if it exists
+                        userItem.remove();
+
+                        // Append the user to the invitedUser section
+                        $('#invitedUser').append(`
+                    <div class="user-item flex justify-between ml-3 mb-3 p-3 rounded-lg" style="background-color: #F2F2F2" data-user-id="${userId}">
+                        <div class="flex gap-3 items-center">
+                            <img src="${photoUrl}" class="w-12 h-12 object-cover rounded-full" alt="User Photo">
+                            <div class="">
+                                <h1 class="text-lg font-bold">${userName}</h1>
+                                <span>${userEmail}</span>
+                            </div>
+                        </div>
+                        <div class="">
+                            <input type="checkbox" name="user_id[]" value="${userId}" class="rounded-full" checked>
+                        </div>
+                    </div>
+                `);
+                    }
+                } else {
+                    selectedUsers = selectedUsers.filter(function(id) {
+                        return id !== userId;
+                    });
+
+                    $(`#invitedUser div[data-user-id="${userId}"]`).remove();
+
+                    $('#searchResult').append(`
+                <div class="user-item flex justify-between mb-3 p-3 rounded-lg" style="background-color: #F2F2F2" data-user-id="${userId}">
+                    <div class="flex gap-3 items-center">
+                        <img src="${photoUrl}" class="w-12 h-12 object-cover rounded-full" alt="">
+                        <div class="">
+                            <h1 class="text-lg font-bold">${userName}</h1>
+                            <span>${userEmail}</span>
+                        </div>
+                    </div>
+                    <div class="">
+                        <input type="checkbox" name="user_id[]" value="${userId}" class="rounded-full">
+                    </div>
+                </div>
+            `);
+                }
+                $('#invitedUser small').remove();
+                if (selectedUsers.length > 0) {
+                    $('#invitedUser').prepend(`<small>Diundang</small>`);
+
+                    $('#invitedUser').css({
+                        'border-bottom': '2px solid #cacaca'
+                    });
+                } else {
+                    $('#invitedUser').css({
+                        'border-bottom': '0'
                     });
                 }
-
-                searchUsers();
-
-                $('#searchUser').on('keyup', function(e) {
-                    var query = $(this).val();
-                    searchUsers(query);
-                });
             });
 
         });
     </script>
+
 @endsection
