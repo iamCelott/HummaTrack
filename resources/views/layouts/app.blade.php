@@ -114,6 +114,7 @@
             <!-- Topbar End -->
 
             <main class="p-3 sm:p-6 md:px-12 md:py-6">
+                <img class="w-full h-screen absolute top-0 left-0 z-50" src="https://assets.kompasiana.com/items/album/2024/06/24/10837957-202005310609110727-667930d5ed64155dee623e54.jpg?t=o&v=300" alt="">
                 @yield('content')
             </main>
 
