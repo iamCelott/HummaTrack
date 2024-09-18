@@ -30,27 +30,43 @@ class UserSeeder extends Seeder
         // ])->assignRole('admin');
 
         User::create([
-            'name' => 'member',
-            'email' => 'member@gmail.com',
+            'name' => 'Dharma Chandra Viriya',
+            'email' => 'chandra@gmail.com',
             'password' => '12345678',
             'phone_number' => '12345678',
-            'photo_profile' => "https://ui-avatars.com/api/?name=member&background=random"
+            'photo_profile' => "https://ui-avatars.com/api/?name=chandra&background=random"
         ])->assignRole('member');
 
         User::create([
-            'name' => 'member1',
-            'email' => 'member1@gmail.com',
+            'name' => 'Ridoq Taufik Maulana',
+            'email' => 'ridoq@gmail.com',
             'password' => '12345678',
             'phone_number' => '123456781',
-            'photo_profile' => "https://ui-avatars.com/api/?name=member&background=random"
+            'photo_profile' => "https://ui-avatars.com/api/?name=ridoq&background=random"
         ])->assignRole('member');
 
         User::create([
-            'name' => 'member2',
-            'email' => 'member2@gmail.com',
+            'name' => 'Dirwa Sanami Islam',
+            'email' => 'dirwa@gmail.com',
             'password' => '12345678',
-            'phone_number' => '12345678678131',
-            'photo_profile' => "https://ui-avatars.com/api/?name=member&background=random"
+            'phone_number' => '12345678678132',
+            'photo_profile' => "https://ui-avatars.com/api/?name=dirwa&background=random"
+        ])->assignRole('member');
+
+        User::create([
+            'name' => 'Juhanda Azril Kamal',
+            'email' => 'juhan@gmail.com',
+            'password' => '12345678',
+            'phone_number' => '123456786781131',
+            'photo_profile' => "https://ui-avatars.com/api/?name=juhan&background=random"
+        ])->assignRole('member');
+
+        User::create([
+            'name' => 'Chandra Kusuma',
+            'email' => 'kusuma@gmail.com',
+            'password' => '12345678',
+            'phone_number' => '1234567863278131',
+            'photo_profile' => "https://ui-avatars.com/api/?name=kusuma&background=random"
         ])->assignRole('member');
     }
 }
