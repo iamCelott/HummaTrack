@@ -4,9 +4,9 @@ namespace App\Enums;
 
 enum TaskCategory: string
 {
-    case UiUx = 'ui/ux';
-    case Digmar = 'digmar';
-    case Frontend = 'frontend';
-    case Backend = 'backend';
-    case Mobile = 'mobile';
+    case UiUx = 'Ui/ux';
+    case Digmar = 'Digmar';
+    case Frontend = 'Frontend';
+    case Backend = 'Backend';
+    case Mobile = 'Mobile';
 }

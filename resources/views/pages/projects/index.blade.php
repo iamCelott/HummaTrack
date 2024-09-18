@@ -26,7 +26,7 @@
     @endphp
 
     @if ($hasCreatedProject)
-        <div class="flex relative w-full bg-white mb-6 px-6 py-3 items-center justify-between overflow-hidden">
+        <div class="flex relative w-full bg-white mb-6 px-6 py-3 items-center justify-between rounded-md overflow-hidden">
             <img src="{{ asset('assets/images/elements/wave-right.png') }}" class="absolute top-0 left-0 sm:h-14 md:h-16"
                 alt="">
             <h1 class="text-sm sm:text-lg md:text-2xl font-bold">PROYEK</h1>
