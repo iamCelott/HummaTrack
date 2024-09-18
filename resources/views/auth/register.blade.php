@@ -138,7 +138,8 @@
                                             Sekarang</a>
                                     </div>
                                     <div class="mt-5 text-center">
-                                        <span>Lakukan<a href="{{ route('register') }}" style="color: #2176FF;margin:0 0 0 10px;">Registrasi ulang!</a></span>
+                                        <span>Ingin membuat akun lagi?<a href="{{ route('register') }}"
+                                                style="color: #2176FF;margin:0 0 0 10px;">Daftar</a></span>
                                     </div>
                                 @else
                                     <form id="signUpForm" class=" bg-white" method="POST"
@@ -153,18 +154,33 @@
                                         <div class="step">
                                             <div class="mb-6">
                                                 <x-input-label for="name" :value="__('Nama')" />
-                                                <x-text-input id="name" class="block mt-1 w-full" type="text"
-                                                    name="name" :value="old('name')" required autofocus
-                                                    autocomplete="name" />
+                                                <div class="relative">
+                                                    <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+                                                        <i class="ri-user-line"></i>
+                                                    </span>
+                                                    <x-text-input id="name" class="block mt-1 w-full"
+                                                        type="text" name="name" :value="old('name')" required
+                                                        autofocus autocomplete="name" style='padding-left:35px;' />
+                                                </div>
                                                 <x-input-error :messages="$errors->get('name')" class="mt-2" />
                                             </div>
                                             <div class="mb-6">
                                                 <label for="phone_number"
                                                     class='block font-bold text-sm text-gray-700 dark:text-gray-300'>Nomor
                                                     Telepon</label>
-                                                <x-text-input id="phone_number" class="block mt-1 w-full" type="number"
-                                                    name="phone_number" :value="old('phone_number')" required
-                                                    autocomplete="phone_number" />
+                                                <div class="relative">
+                                                    <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+                                                        <div class="flex items-center">
+                                                            <img src="{{ asset('assets/images/flag.png') }}"
+                                                                alt=""
+                                                                style="width: 20px;height:16px;box-shadow:0px 0px 2px rgba(0,0,0,.1);">
+                                                            <p style="margin-left: 10px">+62</p>
+                                                        </div>
+                                                    </span>
+                                                    <x-text-input id="phone_number" class="block mt-1 w-full"
+                                                        type="number" name="phone_number" :value="old('phone_number')" required
+                                                        autocomplete="phone_number" style='padding-left:80px;' />
+                                                </div>
                                                 <x-input-error :messages="$errors->get('phone_number')" class="mt-2" />
                                             </div>
                                             <div class="flex items-center justify-between"
@@ -203,31 +219,41 @@
                                         <div class="step">
                                             <div class="mb-6">
                                                 <x-input-label for="email" :value="__('Email')" />
-                                                <x-text-input id="email" class="block mt-1 w-full" type="email"
-                                                    name="email" :value="old('email')" required
-                                                    autocomplete="username" />
+                                                <div class="relative">
+                                                    <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+                                                        <i class="ri-mail-line"></i>
+                                                    </span>
+                                                    <x-text-input id="email" class="block mt-1 w-full"
+                                                        type="email" name="email" :value="old('email')" required
+                                                        autocomplete="username" style="padding-left: 35px" />
+                                                </div>
                                                 <x-input-error :messages="$errors->get('email')" class="mt-2" />
                                             </div>
                                             <div class="mt-4">
                                                 <x-input-label for="password" :value="__('Password')" />
-                                                <x-text-input id="password" class="block mt-1 w-full"
-                                                    type="password" name="password" required
-                                                    autocomplete="new-password" />
+                                                <div class="relative">
+                                                    <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+                                                        <i class="ri-shield-keyhole-line"></i>
+                                                    </span>
+                                                    <x-text-input id="password" class="block mt-1 w-full"
+                                                        type="password" name="password" required
+                                                        autocomplete="new-password" style="padding-left: 35px" />
+                                                </div>
                                                 <x-input-error :messages="$errors->get('password')" class="mt-2" />
                                             </div>
                                             <div class="form-header gap-2 mb-4 text-xs">
                                                 <div class="flex gap-1 w-2/4 mt-5 mb-2">
                                                     <span id="pw-weakest"
-                                                        class="pwIndicator flex-1 pb-2 rounded relative "
+                                                        class="pwIndicator flex-1 pb-1 rounded relative "
                                                         style="background-color: rgba(255,255,255.2)"></span>
                                                     <span id="pw-weak"
-                                                        class="pwIndicator flex-1 pb-2 rounded relative    "
+                                                        class="pwIndicator flex-1 pb-1 rounded relative    "
                                                         style="background-color: rgba(255,255,255.2)"></span>
                                                     <span id="pw-medium"
-                                                        class="pwIndicator flex-1 pb-2 rounded relative  "
+                                                        class="pwIndicator flex-1 pb-1 rounded relative  "
                                                         style="background-color: rgba(255,255,255.2)"></span>
                                                     <span id="pw-strong"
-                                                        class="pwIndicator flex-1 pb-2 rounded relative  "
+                                                        class="pwIndicator flex-1 pb-1 rounded relative  "
                                                         style="background-color: rgba(255,255,255.2)"></span>
                                                 </div>
                                                 <p id="textPwIndicator" class="textPwIndicator"></p>
@@ -265,18 +291,18 @@
                                                                 pwStrong.style.backgroundColor = "rgba(230,230,230,.4)";
                                                             } else if (password.length < 15) {
                                                                 strength = 3; // Kuat
-                                                                textPwIndicator.textContent = 'Kuat';
-                                                                pwWeakest.style.backgroundColor = "green";
-                                                                pwWeak.style.backgroundColor = "green";
-                                                                pwMedium.style.backgroundColor = "green";
+                                                                textPwIndicator.textContent = 'Sedang';
+                                                                pwWeakest.style.backgroundColor = "#ede900";
+                                                                pwWeak.style.backgroundColor = "#ede900";
+                                                                pwMedium.style.backgroundColor = "#ede900";
                                                                 pwStrong.style.backgroundColor = "rgba(230,230,230,.4)";
                                                             } else if (password.length >= 15) {
                                                                 strength = 4; // Sangat Kuat
                                                                 textPwIndicator.textContent = 'Sangat Kuat';
-                                                                pwWeakest.style.backgroundColor = "darkgreen";
-                                                                pwWeak.style.backgroundColor = "darkgreen";
-                                                                pwMedium.style.backgroundColor = "darkgreen";
-                                                                pwStrong.style.backgroundColor = "darkgreen";
+                                                                pwWeakest.style.backgroundColor = "green";
+                                                                pwWeak.style.backgroundColor = "green";
+                                                                pwMedium.style.backgroundColor = "green";
+                                                                pwStrong.style.backgroundColor = "green";
                                                             }
                                                         } else {
                                                             textPwIndicator.textContent = '';
