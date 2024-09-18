@@ -2,19 +2,19 @@
 
 
 @section('content')
-
 @section('banner')
-<div class="flex w-full h-[135px] bg-white justify-between m-0 p-0" style="margin: 0; padding:0">
-    <a href="#" class="font-bold text-2xl absolute p-7 text-black">Kanban</a>
-    <a href="#" class="font-semibold text-md absolute p-7 mt-[55px] text-black">{{ $kanban->name }}</a>
-    <img src="{{ asset('assets/images/kiri.png') }}">
-    <img src="{{ asset('assets/images/kanan.png') }}">
-</div>
+    <div class="flex w-full h-[135px] bg-white justify-between m-0 p-0" style="margin: 0; padding:0">
+        <a href="#" class="font-bold text-2xl absolute p-7 text-black">Kanban</a>
+        <a href="#" class="font-semibold text-md absolute p-7 mt-[55px] text-black">{{ $kanban->name }}</a>
+        <img src="{{ asset('assets/images/kiri.png') }}">
+        <img src="{{ asset('assets/images/kanan.png') }}">
+    </div>
 @endsection
 
-   
+<meta name="csrf-token" content="{{ csrf_token() }}">
 
 <main class="p-6">
+
 
     <!-- Page Title Start -->
     <div class="flex justify-between items-center mb-6">
@@ -34,21 +34,21 @@
                     <i class="ri-arrow-right-s-line text-base text-slate-400 rtl:rotate-180"></i>
                     <a href="#" class="text-sm font-medium text-slate-700 dark:text-slate-400"
                         aria-current="page">Kanban</a>
-                </div> 
+                </div>
         </div> --}}
     </div>
     <!-- Page Title End -->
 
     @php
         $to_do = $kanban->task()->where('status', 'to_do')->get();
-        $in_progres = $kanban->task()->where('status', 'in_progres')->get();
+        $in_progress = $kanban->task()->where('status', 'in_progress')->get();
         $review = $kanban->task()->where('status', 'review')->get();
         $done = $kanban->task()->where('status', 'done')->get();
     @endphp
 
     <div class="grid w-full">
         <div class="overflow-hidden text-gray-700 dark:text-slate-400">
-            <div class="flex overflow-x-auto custom-scroll gap-6 pb-4 h-[calc(100vh-235px)]">
+            <div class="flex overflow-x-auto custom-scroll gap-6 pb-4">
 
                 <div class="flex flex-col flex-shrink-0 border rounded-md w-[80%] max-w-[30rem] border-gray-300 p-4"
                     style="background-color: rgba(255, 187, 187, 0.3)">
@@ -145,8 +145,8 @@
 
 
                     <button type="button" data-fc-type="modal" data-fc-target="addTask">
-                        <div
-                            class="flex items-center justify-center w-full py-20 border-4 border-dashed mb-6 border-gray-400 cursor-pointer hover:bg-red-200 transition duration-300 ease-in-out" style="border-radius: 18px">
+                        <div class="flex items-center justify-center w-full py-20 border-4 border-dashed mb-6 border-gray-400 cursor-pointer hover:bg-red-200 transition duration-300 ease-in-out"
+                            style="border-radius: 18px">
                             <div class="text-center">
                                 <i class="ri-file-line text-gray-500 text-6xl"></i>
                                 <p class="text-gray-500 text-lg mt-2">Tambah Tugas</p>
@@ -154,8 +154,8 @@
                         </div>
                     </button>
 
-                    <div class="flex flex-col gap-4 kanban-board custom-scroll overflow-x-hidden overflow-y-auto px-1 h-full"
-                        id="kanbanborad-one">
+                    <div class="flex flex-col gap-4 kanban-board custom-scroll overflow-x-hidden px-1 h-full"
+                        id="to_do">
 
 
                         <!-- Task Item -->
@@ -170,7 +170,7 @@
                             </button> --}}
 
                         @foreach ($to_do as $task)
-                            <div class="card" style="border-radius: 18px">
+                            <div class="card" data-id="{{ $task->id }}" style="border-radius: 18px">
                                 <div class="grid grid-rows-[auto,1fr]">
                                     <div class="card-header flex justify-between items-center">
                                         <h5>
@@ -238,10 +238,10 @@
                     <h5 class="uppercase text-black mb-4">In Progress (2)</h5>
 
                     <div class="flex flex-col gap-4 kanban-board custom-scroll overflow-x-hidden overflow-y-auto px-1 h-full"
-                        id="kanbanborad-two">
+                        id="in_progress">
 
-                        @forelse ($in_progres as $task)
-                            <div class="card cursor-pointer">
+                        @forelse ($in_progress as $task)
+                            <div data-id="{{ $task->id }}" class="card cursor-pointer">
                                 <div class="p-6">
 
                                     <div class="flex justify-between items-center">
@@ -353,10 +353,10 @@
                     <h5 class="uppercase text-black mb-4">Review (4)</h5>
 
                     <div class="flex flex-col gap-4 kanban-board custom-scroll overflow-x-hidden overflow-y-auto px-1 h-full"
-                        id="kanbanborad-three">
+                        id="review">
 
                         @forelse ($review as $task)
-                            <div class="card cursor-pointer">
+                            <div data-id="{{ $task->id }}" class="card cursor-pointer">
                                 <div class="p-6">
 
                                     <div class="flex justify-between items-center">
@@ -468,10 +468,10 @@
                     <h5 class="uppercase text-black mb-4">Done (1)</h5>
 
                     <div class="flex flex-col gap-4 kanban-board custom-scroll overflow-x-hidden overflow-y-auto px-1 h-full"
-                        id="kanbanborad-four">
+                        id="done">
 
-                        @forelse ($review as $task)
-                            <div class="card cursor-pointer">
+                        @forelse ($done as $task)
+                            <div data-id="{{ $task->id }}" class="card cursor-pointer">
                                 <div class="p-6">
 
                                     <div class="flex justify-between items-center">
