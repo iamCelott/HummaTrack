@@ -874,8 +874,9 @@
     <div
         class="-translate-y-5 text-black fc-modal-open:translate-y-0 fc-modal-open:opacity-100 opacity-0 duration-300 ease-in-out transition-all sm:max-w-2xl sm:w-full m-3 sm:mx-auto flex flex-col bg-white shadow-sm rounded-xl relative">
 
-        <div class="flex justify-between p-6">
-            <h1 class="text-2xl">Tambah Proyek</h1>
+        <div class="relative flex justify-between p-6">
+            <img src="{{ asset('assets/images/elements/wave-right.png') }}" class="absolute top-0 left-0 sm:h-20" alt="">
+            <h1 class="text-2xl font-bold">Tambah Proyek</h1>
             <button id="closeModal" data-fc-dismiss class="text-black hover:text-gray-700">
                 <!-- Ikon X menggunakan SVG -->
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"

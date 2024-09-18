@@ -19,34 +19,46 @@
         }
     </style> --}}
 
-    <div class="flex w-full bg-white mb-6 px-6 py-3 items-center justify-between">
-        <h1 class="text-sm sm:text-lg md:text-2xl font-bold">PROYEK</h1>
-        <div class="flex gap-3 items-center h-8 md:h-10 justify-between relative">
-            <i class="ri-search-line absolute sm:top-1.5 md:top-2.5 left-3"></i>
-            <form action="{{ route('projects.index') }}" method="GET">
-                @csrf
-                <input name="search" placeholder="cari proyek anda disini...." type="text" class="rounded-sm h-full bg-white w-[15rem] md:w-[20rem] lg:w-[25rem] xl:w-[30rem] px-8" style="border: 2px solid #cacaca">
-            </form>
-                <button data-fc-target="createProject" data-fc-type="modal" class="text-xs sm:text-sm sm:py-1.5 h-full sm:px-3 text-white" style="background-color: #0396fe"><i class="ri-menu-add-line"></i>
-                Tambah Proyek</button>
+    @php
+        use App\Helpers\ImageProfileHelper;
+        $userId = Auth::id();
+        $hasCreatedProject = \App\Models\Project::where('created_by', $userId)->exists();
+    @endphp
+
+    @if ($hasCreatedProject)
+        <div class="flex relative w-full bg-white mb-6 px-6 py-3 items-center justify-between overflow-hidden">
+            <img src="{{ asset('assets/images/elements/wave-right.png') }}" class="absolute top-0 left-0 sm:h-14 md:h-16"
+                alt="">
+            <h1 class="text-sm sm:text-lg md:text-2xl font-bold">PROYEK</h1>
+            <div class="flex gap-3 items-center h-8 md:h-10 justify-between relative">
+                <i class="ri-search-line absolute sm:top-1.5 md:top-2.5 left-3"></i>
+                <form action="{{ route('projects.index') }}" method="GET">
+                    @csrf
+                    <input name="search" placeholder="cari proyek anda disini...." type="text"
+                        class="rounded-md h-full bg-white w-[15rem] md:w-[20rem] lg:w-[25rem] xl:w-[30rem] px-8"
+                        style="border: 2px solid #cacaca">
+                </form>
+                <button data-fc-target="createProject" data-fc-type="modal"
+                    class="rounded-md text-xs sm:text-sm sm:py-1.5 h-full sm:px-3 text-white"
+                    style="background-color: #0396fe"><i class="ri-menu-add-line"></i>
+                    Tambah Proyek</button>
+            </div>
         </div>
-    </div>
+    @endif
 
     @hasrole('admin')
     @endhasrole
 
     @hasrole('member')
-        @php
-            $userId = Auth::id();
-            $hasCreatedTeam = \App\Models\Project::where('created_by', $userId)->exists();
-        @endphp
-
-        @if ($hasCreatedTeam)
+        @if ($hasCreatedProject)
             <div class="flex flex-auto flex-col">
                 <div class="grid md:px-12 md:grid-cols-1 lg:px-0 lg:grid-cols-2 gap-6">
                     @foreach ($projects as $project)
                         <div class="relative card flex flex-col justify-between hover:shadow-lg hover:scale-105 transition-all duration-200"
                             style="height: 400px; border-radius: 20px; position: relative;">
+
+                            <img src="{{ asset('assets/images/elements/project-rounded.png') }}"
+                                class="h-32 absolute top-40 right-12 z-40" alt="">
 
                             <div class="card-header p-4 bg-white rounded-xl rounded-b-none">
                                 <div class="flex justify-between items-center">
@@ -116,7 +128,7 @@
                             </div>
 
 
-                            <div class="card-body p-6 py-3 flex-grow bg-white w-3/4 leading-1 ">
+                            <div class="relative card-body p-6 py-3 flex-grow bg-white w-3/4 leading-1 ">
                                 <h5 class="text-slate-900 text-xl dark:black lg:text-2xl font-semibold mb-2">
                                     {{ $project->subtitle }}
                                 </h5>
@@ -138,23 +150,15 @@
                                     @endif
                                 </div>
                             </div>
+
                             <div class="flex items-center p-6 pt-2">
-                                <div class="-me-2">
-                                    <img src="assets/images/users/avatar-1.jpg" alt="" class="rounded-full h-8 w-8">
-                                </div>
-                                <div class="-me-2">
-                                    <img src="assets/images/users/avatar-5.jpg" alt="" class="rounded-full h-8 w-8">
-                                </div>
-                                <div class="-me-2">
-                                    <div class="bg-success text-white flex items-center justify-center rounded-full h-8 w-8">
-                                        K
+                                @forelse ($project->teams->flatMap->users as $user)
+                                    <div class="-me-2">
+                                        <img src="{{ ImageProfileHelper::getPhotoProfile($user->photo_profile) }}"
+                                            alt="{{ $user->name }}" class="rounded-full h-8 w-8">
                                     </div>
-                                </div>
-                                <div class="-me-2">
-                                    <div class="bg-primary text-white flex items-center justify-center rounded-full h-8 w-8">
-                                        9+
-                                    </div>
-                                </div>
+                                @empty
+                                @endforelse
                             </div>
 
                             <div class="card-footer p-4 py-3 border-t border-[#cacaca] bg-white rounded-b-xl">
@@ -166,7 +170,7 @@
 
                                     <div class="flex items-center gap-1">
                                         <i class="ri-time-line text-info text-lg me-2"></i>
-                                        <span>29 September 2024</span>
+                                        <span>{{ \Carbon\Carbon::parse($project->end_date)->format('d M') }}</span>
                                     </div>
                                     <div class="flex items-center gap-1">
                                         <i class="ri-file-line text-info text-lg me-2"></i>
@@ -187,11 +191,11 @@
             </div>
         @else
             <div class="flex justify-center items-center text-black">
-                <div class="flex flex-col" style="max-width: 18rem; margin-top: 10rem; margin-right: 3rem;">
+                <div class="flex flex-col lg:mt-[2rem] 2xl:mt-[8rem]" style="max-width: 18rem;">
                     <div class="flex justify-center ">
                         <img src="{{ asset('assets/images/svg/no-team-logo.svg') }}" alt="">
                     </div>
-                    <h1 class="py-3 text-center text-lg dark:text-white">Anda Belum Memiliki Tim</h1>
+                    <h1 class="py-3 text-center text-lg">Anda Belum Memiliki Project</h1>
 
                     <div class="mb-3">
                         <div class="flex gap-2 items-center mb-3">
@@ -204,10 +208,7 @@
                                         fill="#29B6F6" />
                                 </svg>
                             </div>
-                            <p class="text-xs dark:text-white">Dengan membuat tim, Anda bisa berbagi ide dan masukan
-                                dari
-                                berbagai
-                                pengguna.</p>
+                            <p class="text-xs">dengan membuat proyek, anda bisa melihat perkembangan proyek tujuan anda.</p>
                         </div>
 
                         <div class="flex gap-2">
@@ -220,16 +221,15 @@
                                         fill="#29B6F6" />
                                 </svg>
                             </div>
-                            <p class="text-xs dark:text-white">Dengan membuat tim, Anda dapat berkolaborasi dengan tim
-                                untuk
-                                menyelesaikan proyek lebih efisien.</p>
+                            <p class="text-xs">dengan membuat proyek, anda dapat berkolaborasi dengan user atau tim untuk
+                                menggapai satu tujuan yang sama.</p>
                         </div>
                     </div>
 
-                    <button data-fc-type="modal" data-fc-target="createTeam"
+                    <button data-fc-type="modal" data-fc-target="createProject"
                         class="rounded-xl text-white py-2 mt-3 text-lg font-semibold outline-none"
                         style="background-color: #0288D1">
-                        Buat Tim
+                        Buat Proyek
                     </button>
                 </div>
             </div>
