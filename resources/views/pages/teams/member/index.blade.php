@@ -40,7 +40,7 @@
                         <div id="invitedUser"></div>
 
                         {{-- <small>Hasil yang ditampilkan</small> --}}
-                        <div class="overflow-auto w-full" style="max-height: 170px;" id="searchResult">
+                        <div class="overflow-auto w-full mt-3" style="max-height: 170px;" id="searchResult">
                         </div>
                     </div>
 
@@ -77,7 +77,7 @@
                     Tim</button>
             </div>
         </div>
-        <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
+        <div class="grid md:px-12 md:grid-cols-1 lg:px-0 lg:grid-cols-2 2xl:grid-cols-3 gap-6">
             @forelse ($teams as $team)
             <div class="w-full pb-6 px-6 rounded-lg text-black overflow-hidden" style="background-color: white; position: relative;">
                     <img class="absolute -top-6 -left-12" width="120px" src="{{ asset('assets/images/kotak.png') }}" alt="" >
@@ -169,11 +169,11 @@
         </div>
     @else
         <div class="flex justify-center items-center text-black">
-            <div class="flex flex-col" style="max-width: 18rem; margin-top: 10rem; margin-right: 3rem;">
+            <div class="flex flex-col lg:mt-[2rem] 2xl:mt-[8rem]" style="max-width: 18rem">
                 <div class="flex justify-center ">
                     <img src="{{ asset('assets/images/svg/no-team-logo.svg') }}" alt="">
                 </div>
-                <h1 class="py-3 text-center text-lg dark:text-white">Anda Belum Memiliki Tim</h1>
+                <h1 class="py-3 text-center text-lg">Anda Belum Memiliki Tim</h1>
 
                 <div class="mb-3">
                     <div class="flex gap-2 items-center mb-3">
@@ -186,7 +186,7 @@
                                     fill="#29B6F6" />
                             </svg>
                         </div>
-                        <p class="text-xs dark:text-white">Dengan membuat tim, Anda bisa berbagi ide dan masukan
+                        <p class="text-xs">Dengan membuat tim, Anda bisa berbagi ide dan masukan
                             dari
                             berbagai
                             pengguna.</p>
@@ -202,7 +202,7 @@
                                     fill="#29B6F6" />
                             </svg>
                         </div>
-                        <p class="text-xs dark:text-white">Dengan membuat tim, Anda dapat berkolaborasi dengan tim
+                        <p class="text-xs">Dengan membuat tim, Anda dapat berkolaborasi dengan tim
                             untuk
                             menyelesaikan proyek lebih efisien.</p>
                     </div>

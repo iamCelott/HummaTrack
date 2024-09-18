@@ -113,6 +113,7 @@
             @include('layouts.topbar')
             <!-- Topbar End -->
 
+           @yield('banner')
             <main class="p-3 sm:p-6 md:px-12 md:py-6">
                 @yield('content')
             </main>
