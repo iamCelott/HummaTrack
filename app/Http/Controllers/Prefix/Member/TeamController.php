@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class TeamController extends Controller
 {
@@ -73,6 +74,7 @@ class TeamController extends Controller
      */
     public function show(Team $team)
     {
+        Gate::authorize('view', $team);
         return view('pages.teams.show', compact('team'));
     }
 

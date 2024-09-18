@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TaskController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\ProjectController;
@@ -20,5 +21,6 @@ Route::post('/login', [AuthController::class, 'login']);
 
 Route::post('/teams/search_user', [MemberTeamController::class, 'team_search_user'])->name('api.team_search_user');
 Route::post('/projects/search_team', [ControllersProjectController::class, 'project_search_team'])->name('api.project_search_team');
+Route::put('/tasks/{id}/update_status', [TaskController::class, 'update_status'])->name('api.update_status');
 
 // Route::apiResource('/login', App\Http\Controllers\Api\Auth\LoginController::class);

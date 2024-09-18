@@ -58,6 +58,12 @@ class TaskRepository extends BaseRepository implements TaskInterface
     {
         return $this->model->query()->findOrFail($id);
     }
+
+    public function update_status(mixed $id, array $data): mixed
+    {
+        return $this->show($id)->update(['status' => $data['status']]);
+    }
+
     /**
      * Method update
      *

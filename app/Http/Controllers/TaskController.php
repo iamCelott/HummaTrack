@@ -6,6 +6,8 @@ use App\Contracts\Interfaces\TaskInterface;
 use App\Http\Requests\TaskRequest;
 use App\Models\task;
 use App\Services\TaskService;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
@@ -37,10 +39,20 @@ class TaskController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(TaskRequest $request)
+    public function store(TaskRequest $request): RedirectResponse
     {
         $this->task->store($request->all());
         return redirect()->back()->with('success', 'Berhasil Menambah Tugas');
+    }
+
+    public function update_status(Request $request, string $id): JsonResponse
+    {
+        $task = $this->task->update_status($id, $request->all());
+
+        return response()->json([
+            'status' => true,
+            'data' => $task
+        ]);
     }
 
     /**

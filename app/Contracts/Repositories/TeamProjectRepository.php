@@ -3,13 +3,14 @@
 namespace App\Contracts\Repositories;
 
 use App\Contracts\Interfaces\AboutInterface;
+use App\Contracts\Interfaces\TeamProjectInterface;
 use App\Contracts\Interfaces\UserInterface;
 use App\Models\About;
 use App\Models\User;
 use App\Services\UserService;
 use Illuminate\Http\Request;
 
-class TeamProjectRepository extends BaseRepository implements UserInterface
+class TeamProjectRepository extends BaseRepository implements TeamProjectInterface
 {
     protected $service;
     /**

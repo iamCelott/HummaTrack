@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Policies\TeamPolicy;
 use Illuminate\Support\ServiceProvider;
 use App\Contracts\Interfaces\TaskInterface;
 use App\Contracts\Interfaces\TeamInterface;
@@ -15,6 +16,7 @@ use App\Contracts\Repositories\KanbanRepository;
 use App\Contracts\Interfaces\TaskDetailInterface;
 use App\Contracts\Repositories\ProjectRepository;
 use App\Contracts\Repositories\TaskDetailRepository;
+use App\Models\Team;
 
 class AppServiceProvider extends ServiceProvider
 {
