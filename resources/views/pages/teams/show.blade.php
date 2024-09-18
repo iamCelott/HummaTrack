@@ -91,18 +91,20 @@
 
     <!-- Content -->
     <div id="tab1-content" class="p-4">
+        @forelse ($team->users as $user)
         <span class="inline-block bg-gray-200 rounded-md px-3 py-1 text-sm font-normal py-3 text-gray-700 mr-2 mb-2">
             <i class="ri-user-3-line font-semibold mr-2"></i>
-            Dirwa Sanami Islami
+            {{ $user->name }}
         </span>
+
+        @empty
+
         <span class="inline-block bg-gray-200 rounded-md px-3 py-1 text-sm font-normal py-3 text-gray-700 mr-2 mb-2">
             <i class="ri-user-3-line font-semibold mr-2"></i>
-            Dirwa Sanami Islami
+            Kosong
         </span>
-        <span class="inline-block bg-gray-200 rounded-md px-3 py-1 text-sm font-normal py-3 text-gray-700 mr-2 mb-2">
-            <i class="ri-user-3-line font-semibold mr-2"></i>
-            Dirwa Sanami Islami
-        </span>
+        @endforelse
+
     </div>
     <div id="tab2-content" class="p-4 hidden">
         <p>kosong</p>
