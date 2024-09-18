@@ -54,12 +54,9 @@
             <div class="flex flex-auto flex-col">
                 <div class="grid md:px-12 md:grid-cols-1 lg:px-0 lg:grid-cols-2 gap-6">
                     @foreach ($projects as $project)
-                        <div class="relative card flex flex-col justify-between hover:shadow-lg hover:scale-105 transition-all duration-200"
+                        <div class="relative card flex flex-col justify-between hover:shadow-lg overflow-hidden hover:scale-105 transition-all duration-200"
                             style="height: 400px; border-radius: 20px; position: relative;">
-
-                            <img src="{{ asset('assets/images/elements/project-rounded.png') }}"
-                                class="h-32 absolute top-40 right-12 z-40" alt="">
-
+                            <img class="absolute top-1/6 -right-10 translate-y-1/2" src="{{ asset('assets/images/bulat.png') }}" alt="" >
                             <div class="card-header p-4 bg-white rounded-xl rounded-b-none">
                                 <div class="flex justify-between items-center">
                                     <div class="flex items-center">
