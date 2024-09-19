@@ -166,7 +166,7 @@
 {{-- modal edit  --}}
 
 <div id="createProject"
-    class="w-full h-full fixed top-0 left-0 z-50 transition-all duration-500 hidden overflow-y-auto flex items-center justify-center">
+    class="w-full h-full fixed top-0 left-0 z-50 transition-all duration-500 hidden overflow-y-auto sm:mt-0 md:mt-[125px] items-center justify-center">
     <div
         class="-translate-y-5 text-black fc-modal-open:translate-y-0 fc-modal-open:opacity-100 opacity-0 duration-300 ease-in-out transition-all sm:max-w-2xl sm:w-full m-3 sm:mx-auto flex flex-col bg-white shadow-sm rounded-xl relative">
 
@@ -189,7 +189,7 @@
 
             <div class="flex justify-between gap-3 mb-3">
                 <div class="w-1/2">
-                    <label for="name" class="font-bold text-black ">Judul</label>
+                    <label for="name" class="font-semibold text-black ">Judul</label>
                     <br>
                     <input type="text" style="border: 2px solid #cacaca" class="w-full px-6 py-2 rounded-lg"
                         id="name" name="name" value="{{ old('name') }}"
@@ -197,7 +197,7 @@
                 </div>
 
                 <div class="w-1/2">
-                    <label for="subtitle" class="font-bold text-black ">Sub Judul</label>
+                    <label for="subtitle" class="font-semibold text-black ">Sub Judul</label>
                     <br>
                     <input type="text" style="border: 2px solid #cacaca" class="w-full px-6 py-2 rounded-lg"
                         id="subtitle" name="subtitle" value="{{ old('subtitle') }}"
@@ -206,7 +206,7 @@
             </div>
 
             <div class="w-full mb-3">
-                <label for="description" class="font-bold text-black ">Deskripsi (Opsional)</label>
+                <label for="description" class="font-semibold text-black ">Deskripsi (Opsional)</label>
                 <br>
                 <textarea name="description" id="description" style="border: 2px solid #cacaca" class="w-full rounded-lg px-6 py-2"
                     cols="30" rows="5" placeholder="Beri deskripsi untuk proyek anda">{{ old('description') }}</textarea>
@@ -214,14 +214,14 @@
 
             <div class="flex justify-between gap-3 mb-3">
                 <div class="w-1/2">
-                    <label for="start_date" class="font-bold text-black ">Tanggal Mulai</label>
+                    <label for="start_date" class="font-semibold text-black ">Tanggal Mulai</label>
                     <br>
                     <input type="date" style="border: 2px solid #cacaca" class="w-full px-6 py-2 rounded-lg"
                         id="start_date" name="start_date" value="{{ old('start_date') }}">
                 </div>
 
                 <div class="w-1/2">
-                    <label for="end_date" class="font-bold text-black ">Tanggal Berakhir</label>
+                    <label for="end_date" class="font-semibold text-black ">Tanggal Berakhir</label>
                     <br>
                     <input type="date" style="border: 2px solid #cacaca" class="w-full px-6 py-2 rounded-lg"
                         id="end_date" name="end_date" value="{{ old('end_date') }}">
@@ -229,7 +229,7 @@
             </div>
 
             <div class="mb-3">
-                <label for="searchTeam" class="font-bold text-black">Tugaskan Untuk</label>
+                <label for="searchTeam" class="font-semibold text-black">Tugaskan Untuk</label>
                 <div class="relative mb-3">
                     <i class="ri-search-line absolute" style="left: 10px; top:12px;"></i>
                     <input type="text" value="{{ old('searchTeam') }}" id="searchTeam"

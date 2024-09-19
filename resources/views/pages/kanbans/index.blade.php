@@ -48,7 +48,7 @@
 
     <div class="grid w-full">
         <div class="overflow-hidden text-gray-700 dark:text-slate-400">
-            <div class="flex overflow-x-auto custom-scroll gap-6 pb-4 h-[calc(100vh-235px)]">
+            <div class="flex overflow-x-auto gap-6 pb-4 h-[calc(100vh-235px)]">
 
                 <div class="flex flex-col flex-shrink-0 border rounded-md w-[80%] max-w-[30rem] border-gray-300 p-4"
                     style="background-color: rgba(255, 187, 187, 0.3)">
