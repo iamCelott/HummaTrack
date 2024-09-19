@@ -85,7 +85,7 @@
                         <h1 style="padding-bottom: 20px" class="font-bold text-2xl">{{ $team->name }}</h1>
                     </div>
                     <div class="flex py-3 gap-3 justify-between"
-                        style="border-top: 2px solid #CACACA; border-bottom: 2px solid #CACACA;">
+                        style="border-top: 2px solid #f2f0f0; border-bottom: 2px solid #f2f0f0;">
                         <div class="flex items-center gap-2">
                             <div style="background-color: #AEE6FF"
                                 class="w-8 h-8 flex justify-center items-center rounded-full">

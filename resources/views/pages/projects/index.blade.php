@@ -67,60 +67,6 @@
                                             {{ $project->name }}
                                         </h5>
                                     </div>
-
-                                    <div class="flex flex-wrap items-center justify-between gap-2">
-                                        <div class="flex items-center">
-                                            @if ($project->status->value === 'not_started')
-                                                <span
-                                                    class="inline-flex items-center gap-1.5 py-2 px-3 lg:px-5 rounded-xl text-md font-medium bg-dark/10 text-dark badge-status ">
-                                                    Belum Dimulai
-                                                </span>
-                                            @elseif ($project->status->value === 'in_progress')
-                                                <span
-                                                    class="inline-flex items-center gap-3 py-0.5 px-3 rounded-full text-md font-medium bg-warning/10 text-warning">
-                                                    Sedang Berjalan
-                                                </span>
-                                            @elseif ($project->status->value === 'on_hold')
-                                                <span
-                                                    class="inline-flex items-center gap-3 py-0.5 px-3 rounded-full text-md font-medium bg-danger/10 text-danger">
-                                                    Tertunda
-                                                </span>
-                                            @elseif ($project->status->value === 'completed')
-                                                <span
-                                                    class="inline-flex items-center gap-1.5 py-0.5 px-4 rounded-full text-md font-medium bg-success/10 text-success">
-                                                    Selesai
-                                                </span>
-                                            @else
-                                                <span
-                                                    class="inline-flex items-center gap-1.5 py-0.5 px-1.5 rounded-full text-md font-medium bg-dark/10 text-dark">
-                                                    Status Tidak Diketahui
-                                                </span>
-                                            @endif
-                                        </div>
-
-                                        {{-- <!-- Dropdown -->
-                                        <div class="dropdown ml-auto">
-                                            <a href="javascript:void(0)" class="" data-fc-type="dropdown"
-                                                data-fc-placement="bottom-end">
-                                                <i class="ri-more-fill"></i>
-                                            </a>
-                                            <div
-                                                class="fc-dropdown fc-dropdown-open:opacity-100 opacity-0 min-w-60 z-50 transition-all duration-300 bg-white dark:bg-gray-800 shadow-lg border border-gray-200 dark:border-gray-600 rounded-md py-3 absolute hidden">
-                                                <a data-fc-target="editProject" type="button" data-fc-type="modal"
-                                                    class="flex items-center py-2 px-5 text-base text-gray-500 hover:bg-slate-100 hover:text-slate-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
-                                                    href="javascript:void(0)">
-                                                    <i class="ri-edit-box-line me-1.5"></i>
-                                                    <span>Edit</span>
-                                                </a>
-                                                <a class="flex items-center py-2 px-5 text-base text-danger hover:bg-slate-100 dark:hover:bg-gray-700"
-                                                    href="javascript:void(0)">
-                                                    <i class="ri-delete-bin-line me-1.5"></i>
-
-                                                    <span>Remove</span>
-                                                </a>
-                                            </div>
-                                        </div> --}}
-                                    </div>
                                 </div>
                             </div>
 
@@ -133,7 +79,7 @@
                                     {{ $project->description }}
                                 </p>
 
-                                <div class="">
+                                <div class="flex gap-2">
                                     @if ($project->type === 'team')
                                         <span
                                             class="inline-flex items-center gap-1.5 py-0.5 px-5 rounded-lg text-md font-medium border bg-[#aee6ff] text-success">
@@ -145,6 +91,35 @@
                                             Individual
                                         </span>
                                     @endif
+
+                                    <div class="flex items-center">
+                                        @if ($project->status->value === 'not_started')
+                                            <span
+                                                class="inline-flex items-center gap-1.5 py-2 px-3 lg:px-5 rounded-xl text-md font-medium bg-dark/10 text-dark badge-status ">
+                                                Belum Dimulai
+                                            </span>
+                                        @elseif ($project->status->value === 'in_progress')
+                                            <span
+                                                class="inline-flex items-center gap-3 py-0.5 px-3 rounded-full text-md font-medium bg-warning/10 text-warning">
+                                                Sedang Berjalan
+                                            </span>
+                                        @elseif ($project->status->value === 'on_hold')
+                                            <span
+                                                class="inline-flex items-center gap-3 py-0.5 px-3 rounded-full text-md font-medium bg-danger/10 text-danger">
+                                                Tertunda
+                                            </span>
+                                        @elseif ($project->status->value === 'completed')
+                                            <span
+                                                class="inline-flex items-center gap-1.5 py-0.5 px-4 rounded-full text-md font-medium bg-success/10 text-success">
+                                                Selesai
+                                            </span>
+                                        @else
+                                            <span
+                                                class="inline-flex items-center gap-1.5 py-0.5 px-1.5 rounded-full text-md font-medium bg-dark/10 text-dark">
+                                                Status Tidak Diketahui
+                                            </span>
+                                        @endif
+                                    </div>
                                 </div>
                             </div>
 
