@@ -306,7 +306,7 @@
                                                     <div data-fc-arrow
                                                         class="bg-slate-700 w-2.5 h-2.5 rotate-45 -z-10 rounded-[1px]">
                                                     </div>
-                                                </div>
+                                                </div> 
                                             </div> <!-- avatar-icon end -->
 
                                             <div class="-me-3">
