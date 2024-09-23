@@ -24,7 +24,7 @@ class DepartmentRequest extends FormRequest
     public function rules(): array
     {
             return [
-                'name' => ['required', 'string', Rule::unique('Departments', 'name')->ignore($this->route('department'))],
+                'name' => ['required', 'string', Rule::unique('departments', 'name')->ignore($this->route('department'))],
                 'description' => 'nullable|string',
             ];
     }

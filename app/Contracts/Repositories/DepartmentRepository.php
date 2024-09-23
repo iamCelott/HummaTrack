@@ -34,10 +34,9 @@ class DepartmentRepository extends BaseRepository implements DepartmentInterface
     public function search(Request $request): mixed
     {
         $search = $request->search;
-        $authId = $request->authId;
         return $this->model->query()->when($search, function ($query) use ($search) {
             $query->whereLike('name', '%' . $search . '%');
-        })->where('created_by', $authId)->latest()->paginate(10);
+        })->latest()->paginate(10);
     }
 
     /**
@@ -49,25 +48,7 @@ class DepartmentRepository extends BaseRepository implements DepartmentInterface
      */
     public function store(array $data): mixed
     {
-        $team = $this->model->create([
-            'name' => $data['name'],
-            'created_by' => $data['created_by'],
-            'unique_code' => $this->service->generateCode(),
-        ]);
-
-        array_push($data['user_id'], $data['created_by']);
-        $userIds = array_map('intval', $data['user_id'] ?? []);
-
-        $syncData = [];
-        foreach ($userIds as $user) {
-            $syncData[$user] = ['role' => $user == $data['created_by'] ? 'leader' : 'member'];
-        }
-
-        if (!empty($userIds)) {
-            $team->users()->sync($syncData);
-        }
-
-        return $team;
+        return $this->model->query()->create($data);
     }
 
     public function project_search_team(Request $request): mixed
@@ -101,7 +82,7 @@ class DepartmentRepository extends BaseRepository implements DepartmentInterface
      */
     public function update(mixed $id, array $data): mixed
     {
-        return $this->show($id)->update($data);
+        return $this->model->query()->findOrFail($id)->update($data);
     }
     /**
      * Method delete
@@ -112,6 +93,6 @@ class DepartmentRepository extends BaseRepository implements DepartmentInterface
      */
     public function delete(mixed $id): mixed
     {
-        return $this->show($id)->delete();
+        return $this->model->query()->findOrFail($id)->delete();
     }
 }
