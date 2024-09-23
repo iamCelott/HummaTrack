@@ -55,7 +55,7 @@
                     <div class="rounded-md">
                         <div class="flex justify-between">
 
-                            <h5 class="items-center text-black mb-6">TODO ({{  }}) </h5>
+                            <h5 class="items-center text-black mb-6">TODO ({{ $to_do->count() }}) </h5>
                             {{-- <button type="button" data-fc-type="modal" data-fc-target="addTask"
                                     class="relative bg-success text-white px-3 py-1 rounded-md hover:bg-success mb-6">
                                     Task
@@ -243,7 +243,7 @@
                     style="background-color: rgba(248, 218, 173, 0.3)">
 
 
-                    <h5 class="uppercase text-black mb-4">In Progress (2)</h5>
+                    <h5 class="uppercase text-black mb-4">In Progress ({{ $in_progress->count() }})</h5>
 
                     <div class="flex flex-col gap-4 kanban-board custom-scroll overflow-x-hidden overflow-y-auto px-1 h-full"
                         id="in_progress">
@@ -263,7 +263,7 @@
                                             </a>
                                         </h5>
                                         <span
-                                            class="inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-medium bg-danger/10 text-danger">Todo</span>
+                                            class="inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-medium bg-warning/10 text-warning">In Progress</span>
                                     </div>
 
                                     <div class="card-body p-6">
@@ -318,7 +318,7 @@
                     style="background-color: rgba(174, 230, 255, 0.3)">
 
 
-                    <h5 class="uppercase text-black mb-4">Review (4)</h5>
+                    <h5 class="uppercase text-black mb-4">Review ({{ $review->count() }})</h5>
 
                     <div class="flex flex-col gap-4 kanban-board custom-scroll overflow-x-hidden overflow-y-auto px-1 h-full"
                         id="review">
@@ -338,7 +338,7 @@
                                             </a>
                                         </h5>
                                         <span
-                                            class="inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-medium bg-danger/10 text-danger">Todo</span>
+                                            class="inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-medium bg-info/10 text-info">Review</span>
                                     </div>
 
                                     <div class="card-body p-6">
@@ -395,7 +395,7 @@
                     style="background-color: rgba(170, 255, 174, 0.3))">
 
 
-                    <h5 class="uppercase text-black mb-4">Done (1)</h5>
+                    <h5 class="uppercase text-black mb-4">Done ({{ $done->count() }})</h5>
 
                     <div class="flex flex-col gap-4 kanban-board custom-scroll overflow-x-hidden overflow-y-auto px-1 h-full"
                         id="done">
@@ -415,7 +415,7 @@
                                             </a>
                                         </h5>
                                         <span
-                                            class="inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-medium bg-danger/10 text-danger">Todo</span>
+                                            class="inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-medium bg-success/10 text-success">Completed</span>
                                     </div>
 
                                     <div class="card-body p-6">
