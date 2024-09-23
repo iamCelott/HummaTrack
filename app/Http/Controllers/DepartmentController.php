@@ -3,28 +3,31 @@
 namespace App\Http\Controllers;
 
 use App\Models\Department;
-use App\Services\DepartmentService;
 use Illuminate\Http\Request;
+use App\Services\DepartmentService;
+use App\Contracts\Interfaces\DepartmentInterface;
+use App\Contracts\Interfaces\UserInterface;
+use App\Http\Requests\DepartmentRequest;
+use Illuminate\Contracts\View\View;
 
 class DepartmentController extends Controller
 {
 
     private DepartmentInterface $department;
     private DepartmentService $service;
-    private DepartmentInterface $DepartmentInterface;
 
-    public function __construct(DepartmentInterface $department, DepartmentService $service, DepartmentInterface $DepartmentInterface)
+    public function __construct(DepartmentInterface $department, DepartmentService $service)
     {
         $this->department = $department;
         $this->service = $service;
-        $this->$DepartmentInterface = $DepartmentInterface;
     }
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request): View
     {
-        //
+        $departments = $this->department->search($request);
+        return view('pages.department.index',compact('departments'));
     }
 
     /**
@@ -40,7 +43,8 @@ class DepartmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->department->store($request->all());
+        return redirect()->route('admin.department.index')->with('success', 'Berhasil menambah divisi baru.');
     }
 
     /**
@@ -62,8 +66,10 @@ class DepartmentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Department $department)
+    public function update(DepartmentRequest $request, Department $department)
     {
+        $this->department->update($department->id, $request->validated());
+        return redirect()->route('admin.department.index')->with('success', 'Berhasil mengupdate divisi baru.');
         //
     }
 
@@ -72,6 +78,7 @@ class DepartmentController extends Controller
      */
     public function destroy(Department $department)
     {
-        //
+        $this->department->delete($department->id);
+        return redirect()->back()->with('success', 'Berhasil menghapus divisi.');
     }
 }

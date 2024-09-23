@@ -134,6 +134,15 @@
                         <span class="menu-text">Kelompok</span>
                     </a>
                 </li>
+                <li class="menu-item">
+                    {{-- href="javascript:void(0)" data-fc-type="collapse" --}}
+                    <a href="{{ route('departements.index') }}" class="menu-link">
+                        <span class="menu-icon">
+                            <i class="ri-team-line"></i>
+                        </span>
+                        <span class="menu-text">Divisi</span>
+                    </a>
+                </li>
             @endhasrole
 
             @hasrole('member')
@@ -146,8 +155,9 @@
                         <span class="menu-text">Kelompok</span>
                     </a>
                 </li>
+
             @endhasrole
-            
+
 
             {{-- <li class="menu-item">
                 <a href="javascript:void(0)" class="menu-link">
@@ -158,7 +168,7 @@
                     <span class="badge bg-danger rounded-md">Hot</span>
                 </a>
             </li>
-        </ul> --}} 
+        </ul> --}}
 
     </div>
 </div>
