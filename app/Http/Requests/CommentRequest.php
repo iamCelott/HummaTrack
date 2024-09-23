@@ -25,10 +25,9 @@ class CommentRequest extends FormRequest
         return [
             'task_id' => 'required|exists:tasks,id',
             'user_id' => 'required|exists:users,id',
-            'parent_id' => 'required|exists:parents,id',
-            'content' => ['nullable', 'string', 'max:255'],
+            'reply_to' => 'required|exists:comments,id',
+            'content' => ['required', 'string', 'max:255'],
         ];
-
     }
 
     public function messages()
@@ -38,11 +37,11 @@ class CommentRequest extends FormRequest
             'task_id.exists' => 'Task yang dipilih tidak valid.',
             'user_id.required' => 'User harus dipilih.',
             'user_id.exists' => 'User yang dipilih tidak valid.',
-            'parent_id.required' => 'Parent harus dipilih.',
-            'parent_id.exists' => 'Parent yang dipilih tidak valid.',
+            'reply_to.required' => 'Komentar yang direply harus dipilih.',
+            'reply_to.exists' => 'Komentar yang direply tidak valid.',
+            'content.required' => 'Konten tidak boleh kosong.',
             'content.string' => 'Konten harus berupa teks.',
             'content.max' => 'Konten tidak boleh lebih dari 255 karakter.',
         ];
     }
-
 }
