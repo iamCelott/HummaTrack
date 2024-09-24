@@ -90,7 +90,7 @@
                                     <form class="px-6" action="{{ route('tasks.store') }}" method="POST">
                                         @csrf
                                         <div class="space-y-6 mb-6">
-                                            
+
                                             <!-- Select for Task Category -->
                                             <div class="space-y-1 mb-6 sm:w-full">
                                                 <label for="category" class="font-semibold text-gray-500">Kategori Tugas</label>
@@ -104,18 +104,18 @@
 
                                                 </select>
                                             </div>
-                                    
+
                                             <div class="space-y-1 mb-6 sm:w-full">
                                                 <label for="name" class="font-semibold text-gray-500">Judul Tugas</label>
                                                 <input class="form-input" type="text" id="name" name="name" placeholder="Masukkan judul tugas" required>
                                             </div>
-                                    
+
                                             <div class="space-y-1 mb-6">
                                                 <label for="kanban_id" class="font-semibold text-gray-500">Proyek</label>
                                                 <input class="form-input" type="hidden" name="kanban_id" value="{{ $kanban->id }}">
                                                 <input class="form-input" type="text" placeholder="{{ $kanban->name }}" value="{{ $kanban->name }}" disabled>
                                             </div>
-                                    
+
                                             <div class="space-y-1 mb-6">
                                                 <label for="user_id" class="font-semibold text-gray-500">Nama Pengguna</label>
                                                 <select class="form-select" id="user_id" name="user_id" required>
@@ -127,18 +127,18 @@
                                                     @endforelse
                                                 </select>
                                             </div>
-                                    
+
                                             <div class="space-y-1 mb-6">
                                                 <label for="description" class="font-semibold text-gray-500">Deskripsi Tugas</label>
                                                 <textarea class="form-input" id="description" name="description" rows="4" placeholder="Deskripsi tugas" required></textarea>
                                             </div>
-                                    
+
                                             <div class="mb-6 flex justify-end">
                                                 <button class="btn bg-info rounded-lg text-white" type="submit">Konfirmasi</button>
                                             </div>
                                         </div>
                                     </form>
-                                    
+
                                 </div>
                             </div>
                         </div>
@@ -183,7 +183,7 @@
                                                 @if ($task->category == 'digmar')
                                                 Digital Marketing
                                                 @else
-                                                {{ $task->category }} 
+                                                {{ $task->category }}
                                                 @endif
                                             </a>
                                         </h5>
@@ -306,7 +306,7 @@
                                                     <div data-fc-arrow
                                                         class="bg-slate-700 w-2.5 h-2.5 rotate-45 -z-10 rounded-[1px]">
                                                     </div>
-                                                </div> 
+                                                </div>
                                             </div> <!-- avatar-icon end -->
 
                                             <div class="-me-3">

@@ -134,16 +134,17 @@
                         <span class="menu-text">Kelompok</span>
                     </a>
                 </li>
-                <li class="menu-item">
-                    {{-- href="javascript:void(0)" data-fc-type="collapse" --}}
-                    <a href="{{ route('departements.index') }}" class="menu-link">
-                        <span class="menu-icon">
-                            <i class="ri-team-line"></i>
-                        </span>
-                        <span class="menu-text">Divisi</span>
-                    </a>
-                </li>
             @endhasrole
+
+            <li class="menu-item">
+                {{-- href="javascript:void(0)" data-fc-type="collapse" --}}
+                <a href="{{ route('departements.index') }}" class="menu-link">
+                    <span class="menu-icon">
+                        <i class="ri-home-office-line"></i>
+                    </span>
+                    <span class="menu-text">Divisi</span>
+                </a>
+            </li>
 
             @hasrole('member')
                 <li class="menu-item">
@@ -155,7 +156,6 @@
                         <span class="menu-text">Kelompok</span>
                     </a>
                 </li>
-
             @endhasrole
 
 
@@ -176,12 +176,13 @@
 {{-- modal edit  --}}
 
 <div id="createProject"
-    class="w-full h-full fixed top-0 left-0 z-50 transition-all duration-500 hidden overflow-y-auto sm:mt-0 md:mt-[125px] items-center justify-center">
+    class="w-full h-full fixed top-0 left-0 z-50 transition-all duration-500 hidden overflow-y-auto items-center justify-center">
     <div
         class="-translate-y-5 text-black fc-modal-open:translate-y-0 fc-modal-open:opacity-100 opacity-0 duration-300 ease-in-out transition-all sm:max-w-2xl sm:w-full m-3 sm:mx-auto flex flex-col bg-white shadow-sm rounded-xl relative">
 
         <div class="relative flex justify-between p-6">
-            <img src="{{ asset('assets/images/elements/wave-right.png') }}" class="absolute top-0 left-0 sm:h-20" alt="">
+            <img src="{{ asset('assets/images/elements/wave-right.png') }}" class="absolute top-0 left-0 sm:h-20"
+                alt="">
             <h1 class="text-2xl font-bold">Tambah Proyek</h1>
             <button id="closeModal" data-fc-dismiss class="text-black hover:text-gray-700">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
@@ -191,75 +192,186 @@
             </button>
         </div>
 
-        <form action="{{ route('projects.store') }}" method="POST" class="px-6 pb-6">
-            @csrf
+        <div class="flex space-x-4 border-b mt-3 mx-6">
+            <button id="tab1-btn"
+                class="relative py-2 px-4 text-base text-gray-600 hover:text-black transition duration-300 focus:outline-none">
+                Pribadi
+                <span
+                    class="absolute left-0 bottom-0 w-full h-0.5 bg-transparent hover:bg-black transition duration-300"></span>
+            </button>
+            <button id="tab2-btn"
+                class="relative py-2 px-4 text-base text-gray-600 hover:text-black transition duration-300 focus:outline-none">
+                Berkelompok
+                <span
+                    class="absolute left-0 bottom-0 w-full h-0.5 bg-transparent hover:bg-black transition duration-300"></span>
+            </button>
+        </div>
 
-            <input type="hidden" name="type" value="team">
-            <input type="hidden" name="created_by" value="{{ Auth::user()->id }}">
+        <!-- Content -->
+        <div id="tab1-content" class="">
+            <form action="{{ route('projects.store') }}" method="POST" class="px-6 py-6">
+                @csrf
 
-            <div class="flex justify-between gap-3 mb-3">
-                <div class="w-1/2">
-                    <label for="name" class="font-semibold text-black ">Judul</label>
+                <input type="hidden" name="type" value="individual">
+                <input type="hidden" name="created_by" value="{{ Auth::user()->id }}">
+
+                <div class="flex justify-between gap-3 mb-3">
+                    <div class="w-1/2">
+                        <label for="name" class="font-semibold text-black ">Judul</label>
+                        <br>
+                        <input type="text" style="border: 2px solid #cacaca" class="w-full px-6 py-2 rounded-lg"
+                            id="name" name="name" value="{{ old('name') }}"
+                            placeholder="Beri judul untuk proyek anda">
+                    </div>
+
+                    <div class="w-1/2">
+                        <label for="subtitle" class="font-semibold text-black ">Sub Judul</label>
+                        <br>
+                        <input type="text" style="border: 2px solid #cacaca" class="w-full px-6 py-2 rounded-lg"
+                            id="subtitle" name="subtitle" value="{{ old('subtitle') }}"
+                            placeholder="Beri sub judul untuk proyek anda">
+                    </div>
+                </div>
+
+                <div class="w-full mb-3">
+                    <label for="description" class="font-semibold text-black ">Deskripsi (Opsional)</label>
                     <br>
-                    <input type="text" style="border: 2px solid #cacaca" class="w-full px-6 py-2 rounded-lg"
-                        id="name" name="name" value="{{ old('name') }}"
-                        placeholder="Beri judul untuk proyek anda">
+                    <textarea name="description" id="description" style="border: 2px solid #cacaca" class="w-full rounded-lg px-6 py-2"
+                        cols="30" rows="5" placeholder="Beri deskripsi untuk proyek anda">{{ old('description') }}</textarea>
                 </div>
 
-                <div class="w-1/2">
-                    <label for="subtitle" class="font-semibold text-black ">Sub Judul</label>
+                <div class="flex justify-between gap-3 mb-6">
+                    <div class="w-1/2">
+                        <label for="start_date" class="font-semibold text-black ">Tanggal Mulai</label>
+                        <br>
+                        <input type="date" style="border: 2px solid #cacaca" class="w-full px-6 py-2 rounded-lg"
+                            id="start_date" name="start_date" value="{{ old('start_date') }}">
+                    </div>
+
+                    <div class="w-1/2">
+                        <label for="end_date" class="font-semibold text-black ">Tanggal Berakhir</label>
+                        <br>
+                        <input type="date" style="border: 2px solid #cacaca" class="w-full px-6 py-2 rounded-lg"
+                            id="end_date" name="end_date" value="{{ old('end_date') }}">
+                    </div>
+                </div>
+
+                <div class="flex justify-end">
+                    <button type="submit" class="px-6 py-2 bg-primary rounded-lg text-white">Konfirmasi</button>
+                </div>
+
+            </form>
+        </div>
+
+        <div id="tab2-content" class="hidden">
+            <form action="{{ route('projects.store') }}" method="POST" class="px-6 py-6">
+                @csrf
+
+                <input type="hidden" name="type" value="team">
+                <input type="hidden" name="created_by" value="{{ Auth::user()->id }}">
+
+                <div class="flex justify-between gap-3 mb-3">
+                    <div class="w-1/2">
+                        <label for="name" class="font-semibold text-black ">Judul</label>
+                        <br>
+                        <input type="text" style="border: 2px solid #cacaca" class="w-full px-6 py-2 rounded-lg"
+                            id="name" name="name" value="{{ old('name') }}"
+                            placeholder="Beri judul untuk proyek anda">
+                    </div>
+
+                    <div class="w-1/2">
+                        <label for="subtitle" class="font-semibold text-black ">Sub Judul</label>
+                        <br>
+                        <input type="text" style="border: 2px solid #cacaca" class="w-full px-6 py-2 rounded-lg"
+                            id="subtitle" name="subtitle" value="{{ old('subtitle') }}"
+                            placeholder="Beri sub judul untuk proyek anda">
+                    </div>
+                </div>
+
+                <div class="w-full mb-3">
+                    <label for="description" class="font-semibold text-black ">Deskripsi (Opsional)</label>
                     <br>
-                    <input type="text" style="border: 2px solid #cacaca" class="w-full px-6 py-2 rounded-lg"
-                        id="subtitle" name="subtitle" value="{{ old('subtitle') }}"
-                        placeholder="Beri sub judul untuk proyek anda">
-                </div>
-            </div>
-
-            <div class="w-full mb-3">
-                <label for="description" class="font-semibold text-black ">Deskripsi (Opsional)</label>
-                <br>
-                <textarea name="description" id="description" style="border: 2px solid #cacaca" class="w-full rounded-lg px-6 py-2"
-                    cols="30" rows="5" placeholder="Beri deskripsi untuk proyek anda">{{ old('description') }}</textarea>
-            </div>
-
-            <div class="flex justify-between gap-3 mb-3">
-                <div class="w-1/2">
-                    <label for="start_date" class="font-semibold text-black ">Tanggal Mulai</label>
-                    <br>
-                    <input type="date" style="border: 2px solid #cacaca" class="w-full px-6 py-2 rounded-lg"
-                        id="start_date" name="start_date" value="{{ old('start_date') }}">
+                    <textarea name="description" id="description" style="border: 2px solid #cacaca" class="w-full rounded-lg px-6 py-2"
+                        cols="30" rows="5" placeholder="Beri deskripsi untuk proyek anda">{{ old('description') }}</textarea>
                 </div>
 
-                <div class="w-1/2">
-                    <label for="end_date" class="font-semibold text-black ">Tanggal Berakhir</label>
-                    <br>
-                    <input type="date" style="border: 2px solid #cacaca" class="w-full px-6 py-2 rounded-lg"
-                        id="end_date" name="end_date" value="{{ old('end_date') }}">
-                </div>
-            </div>
+                <div class="flex justify-between gap-3 mb-3">
+                    <div class="w-1/2">
+                        <label for="start_date" class="font-semibold text-black ">Tanggal Mulai</label>
+                        <br>
+                        <input type="date" style="border: 2px solid #cacaca" class="w-full px-6 py-2 rounded-lg"
+                            id="start_date" name="start_date" value="{{ old('start_date') }}">
+                    </div>
 
-            <div class="mb-3">
-                <label for="searchTeam" class="font-semibold text-black">Tugaskan Untuk</label>
-                <div class="relative mb-3">
-                    <i class="ri-search-line absolute" style="left: 10px; top:12px;"></i>
-                    <input type="text" value="{{ old('searchTeam') }}" id="searchTeam"
-                        placeholder="cari nama tim anda" class="w-full outline-none rounded-lg py-2"
-                        style="padding-left: 30px;border: 2px solid #cacaca">
-                </div>
-
-                <div class="mb-3" id="addedTeam">
+                    <div class="w-1/2">
+                        <label for="end_date" class="font-semibold text-black ">Tanggal Berakhir</label>
+                        <br>
+                        <input type="date" style="border: 2px solid #cacaca" class="w-full px-6 py-2 rounded-lg"
+                            id="end_date" name="end_date" value="{{ old('end_date') }}">
+                    </div>
                 </div>
 
-                <div class="overflow-auto w-full" style="max-height: 170px;" id="searchTeamResult">
+                <div class="mb-3">
+                    <label for="searchTeam" class="font-semibold text-black">Tugaskan Untuk</label>
+                    <div class="relative mb-3">
+                        <i class="ri-search-line absolute" style="left: 10px; top:12px;"></i>
+                        <input type="text" value="{{ old('searchTeam') }}" id="searchTeam"
+                            placeholder="cari nama tim anda" class="w-full outline-none rounded-lg py-2"
+                            style="padding-left: 30px;border: 2px solid #cacaca">
+                    </div>
+
+                    <div class="mb-3" id="addedTeam">
+                    </div>
+
+                    <div class="overflow-auto w-full" style="max-height: 170px;" id="searchTeamResult">
+                    </div>
+
                 </div>
 
-            </div>
+                <style>
+                    #submitButton:disabled {
+                        background-color: #d3d3d3;
+                        cursor: not-allowed;
+                    }
+                </style>
+                <div class="flex justify-end">
+                    <button id="submitButton" type="submit"
+                        class="px-6 py-2 bg-primary rounded-lg text-white">Konfirmasi</button>
+                    {{-- <small class="text-red-500">Tim wajib diisi!</small> --}}
+                </div>
+                <div class="flex justify-end">
+                    <small class="text-red-500" id="teamAlert">Tim wajib diisi!</small>
+                </div>
 
-            <div class="flex justify-end">
-                <button type="submit" class="px-6 py-2 bg-primary rounded-lg text-white">Konfirmasi</button>
-            </div>
+            </form>
+        </div>
 
-        </form>
+        <script>
+            const tabButtons = document.querySelectorAll('[id$="-btn"]');
+            const tabContents = document.querySelectorAll('[id$="-content"]');
+
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+
+                    tabButtons.forEach(btn => {
+                        btn.classList.remove('text-black', 'font-bold');
+                        btn.querySelector('span').classList.remove('bg-black');
+                        btn.classList.add('text-gray-600');
+                    });
+                    tabContents.forEach(content => content.classList.add('hidden'));
+
+                    const tabId = button.id.split('-btn')[0];
+                    button.classList.add('text-black', 'font-bold');
+                    button.querySelector('span').classList.add('bg-black');
+                    document.getElementById(`${tabId}-content`).classList.remove('hidden');
+                });
+            });
+
+            const firstButton = tabButtons[0];
+            if (firstButton) {
+                firstButton.click();
+            }
+        </script>
     </div>
 </div>
 
@@ -268,9 +380,22 @@
         $('.js-example-basic-multiple').select2({
             dropdownParent: $('#createProject')
         });
+
+        searchTeams()
+        toggleSubmitButton();
     });
 
     var selectedTeams = [];
+
+    function toggleSubmitButton() {
+        if (selectedTeams.length === 0) {
+            $('#submitButton').prop('disabled', true);
+            $('#teamAlert').removeClass('hidden');
+        } else {
+            $('#submitButton').prop('disabled', false);
+            $('#teamAlert').addClass('hidden');
+        }
+    }
 
     function searchTeams(query = '') {
         $.ajax({
@@ -331,8 +456,6 @@
         });
     }
 
-    searchTeams()
-
     $('#searchTeam').on('keyup', function(e) {
         var query = $(this).val();
         searchTeams(query);
@@ -348,9 +471,9 @@
         if ($(this).is(':checked')) {
             if (!selectedTeams.includes(teamId)) {
                 selectedTeams.push(teamId);
-
                 teamItem.remove();
 
+                toggleSubmitButton();
                 $('#addedTeam').append(`
                    <div class="team-item flex justify-between mb-3 p-3 rounded-lg" style="background-color: #F2F2F2"
                         data-team-id="${teamId}">
@@ -372,6 +495,8 @@
             selectedTeams = selectedTeams.filter(function(id) {
                 return id !== teamId;
             });
+
+            toggleSubmitButton();
 
             $(`#addedTeam div[data-team-id="${teamId}"]`).remove();
 
@@ -405,7 +530,6 @@
                 'border-bottom': '0'
             });
         }
-
     });
 </script>
 
