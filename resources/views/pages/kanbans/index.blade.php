@@ -72,6 +72,7 @@
 
                                     <div class="flex items-center justify-between mb-10 px-2 mt-5">
                                         <img src="{{ asset('assets/images/elements/wave-right.png') }}"
+
                                             class="absolute top-0 left-0 sm:h-20" alt="">
                                         <h2 class="text-lg font-semibold text-black">Tambah
                                             Tugas Baru</h2>
@@ -533,7 +534,6 @@
                                         </div>
                                     </div> <!-- avatar-icon end -->
 
-                                    
                                     <div class="-me-3">
                                         <a href="javascript: void(0);" data-fc-type="tooltip"
                                             data-fc-placement="top">
@@ -591,7 +591,7 @@
                                             vulputate at, tempus viverra turpis.</p>
                                         <!-- chat-end -->
 
-                                        
+
                                         <div class="mt-5">
                                             <div class="flex gap-5">
                                                 <img src="assets/images/users/avatar-4.jpg" alt=""

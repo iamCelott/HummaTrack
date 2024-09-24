@@ -356,34 +356,34 @@
 
     {{-- solid toast --}}
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-    
+
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-    
+
             @if(session('success'))
             Toastify({
-                text: "{{ session('success') }}", 
+                text: "{{ session('success') }}",
                 duration: 5000,
                 close: true,
                 gravity: "top",
                 position: "right",
-                backgroundColor: "#4CAF50", 
+                backgroundColor: "#4CAF50",
             }).showToast();
             @endif
-    
+
             @if(session('error'))
             Toastify({
-                text: "{{ session('error') }}", 
+                text: "{{ session('error') }}",
                 duration: 5000,
                 close: true,
                 gravity: "top",
                 position: "right",
-                backgroundColor: "#F44336", 
+                backgroundColor: "#F44336",
             }).showToast();
             @endif
-    
+
         });
-    </script>    
+    </script>
 
 </body>
 
