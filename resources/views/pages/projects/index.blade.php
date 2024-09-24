@@ -93,6 +93,7 @@
                                         </span>
                                     @endif
 
+                                    
                                     <div class="flex items-center">
                                         @if ($project->status->value === 'not_started')
                                             <span
