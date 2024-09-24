@@ -49,7 +49,6 @@
     <div class="grid w-full">
         <div class="overflow-hidden text-gray-700 dark:text-slate-400">
             <div class="flex overflow-x-auto custom-scroll gap-6 pb-4">
-
                 <div class="flex flex-col flex-shrink-0 border rounded-md w-[80%] max-w-[30rem] border-gray-300 p-4"
                     style="background-color: rgba(255, 187, 187, 0.3)">
                     <div class="rounded-md">
@@ -224,7 +223,7 @@
                                                 <span class="text-gray-500">
                                                     {{ \Carbon\Carbon::parse($task->created_at)->translatedFormat('d F Y') }}
                                                 </span>
-                                            </div>  
+                                            </div>
                                             <div class="">
                                                 <i class="ri-file-line" style="margin-right: 8px"></i>
                                                 <span class="text-gray-500">
@@ -263,7 +262,8 @@
                                             </a>
                                         </h5>
                                         <span
-                                            class="inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-medium bg-warning/10 text-warning">In Progress</span>
+                                            class="inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-medium bg-warning/10 text-warning">In
+                                            Progress</span>
                                     </div>
 
                                     <div class="card-body p-6">
@@ -299,7 +299,7 @@
                                                 <span class="text-gray-500">
                                                     {{ \Carbon\Carbon::parse($task->created_at)->translatedFormat('d F Y') }}
                                                 </span>
-                                            </div>  
+                                            </div>
                                             <div class="">
                                                 <i class="ri-file-line" style="margin-right: 8px"></i>
                                                 <span class="text-gray-500">
@@ -374,7 +374,7 @@
                                                 <span class="text-gray-500">
                                                     {{ \Carbon\Carbon::parse($task->created_at)->translatedFormat('d F Y') }}
                                                 </span>
-                                            </div>  
+                                            </div>
                                             <div class="">
                                                 <i class="ri-file-line" style="margin-right: 8px"></i>
                                                 <span class="text-gray-500">
@@ -451,7 +451,7 @@
                                                 <span class="text-gray-500">
                                                     {{ \Carbon\Carbon::parse($task->created_at)->translatedFormat('d F Y') }}
                                                 </span>
-                                            </div>                                            
+                                            </div>
                                             <div class="">
                                                 <i class="ri-file-line" style="margin-right: 8px"></i>
                                                 <span class="text-gray-500">
@@ -692,6 +692,23 @@
         </div>
     </div>
 </main>
+
+<script>
+    Toastify({
+        text: "This is a toast",
+        duration: 3000,
+        destination: "https://github.com/apvarun/toastify-js",
+        newWindow: true,
+        close: true,
+        gravity: "top", // `top` or `bottom`
+        position: "left", // `left`, `center` or `right`
+        stopOnFocus: true, // Prevents dismissing of toast on hover
+        style: {
+            background: "linear-gradient(to right, #00b09b, #96c93d)",
+        },
+        onClick: function() {} // Callback after click
+    }).showToast();
+</script>
 
 <!-- Sortablejs -->
 <script src="{{ asset('assets/libs/sortablejs/Sortable.min.js') }}"></script>
