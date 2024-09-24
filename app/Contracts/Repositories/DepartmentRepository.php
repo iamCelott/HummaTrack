@@ -46,11 +46,15 @@ class DepartmentRepository extends BaseRepository implements DepartmentInterface
      *
      * @return mixed
      */
+
     public function store(array $data): mixed
     {
         return $this->model->query()->create($data);
     }
-
+    public function get(): mixed
+    {
+        return $this->model->query()->get();
+    }
     public function project_search_team(Request $request): mixed
     {
         $search = $request->search;
