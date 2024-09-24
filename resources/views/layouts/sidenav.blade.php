@@ -177,9 +177,7 @@
 
 <div id="createProject"
     class="w-full h-full fixed top-0 left-0 z-50 transition-all duration-500 hidden overflow-y-auto items-center justify-center">
-    <div
-        class="-translate-y-5 text-black fc-modal-open:translate-y-0 fc-modal-open:opacity-100 opacity-0 duration-300 ease-in-out transition-all sm:max-w-2xl sm:w-full m-3 sm:mx-auto flex flex-col bg-white shadow-sm rounded-xl relative">
-
+    <div class="-translate-y-5 text-black fc-modal-open:translate-y-0 fc-modal-open:opacity-100 opacity-0 duration-300 ease-in-out transition-all sm:max-w-2xl sm:w-full m-3 sm:mx-auto flex flex-col bg-white shadow-sm rounded-xl relative">
         <div class="relative flex justify-between p-6">
             <img src="{{ asset('assets/images/elements/wave-right.png') }}" class="absolute top-0 left-0 sm:h-20"
                 alt="">
@@ -551,4 +549,3 @@
 
 
 <!-- Sidenav Menu End  -->
-    
