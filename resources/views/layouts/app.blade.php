@@ -98,7 +98,7 @@
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body>
@@ -119,7 +119,7 @@
             @include('layouts.topbar')
             <!-- Topbar End -->
 
-            @yield('banner')
+           @yield('banner')
             <main class="p-3 sm:p-6 md:px-12 md:py-6">
                 @yield('content')
             </main>
@@ -356,9 +356,8 @@
 
     {{-- solid toast --}}
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-
+    
     <script>
-<<<<<<< HEAD
         document.addEventListener("DOMContentLoaded", function () {
     
             @if(session('success'))
@@ -381,34 +380,10 @@
                 position: "right",
                 backgroundColor: "#F44336", 
             }).showToast();
-=======
-        document.addEventListener("DOMContentLoaded", function() {
-
-            @if (session('success'))
-                Toastify({
-                    text: "{{ session('success') }}",
-                    duration: 5000,
-                    close: true,
-                    gravity: "top",
-                    position: "right",
-                    backgroundColor: "#4CAF50",
-                }).showToast();
             @endif
-
-            @if (session('error'))
-                Toastify({
-                    text: "{{ session('error') }}",
-                    duration: 5000,
-                    close: true,
-                    gravity: "top",
-                    position: "right",
-                    backgroundColor: "#F44336",
-                }).showToast();
->>>>>>> 81d89a56b1416bb3ac53443b6ae518f7e14f3887
-            @endif
-
+    
         });
-    </script>
+    </script>    
 
 </body>
 
