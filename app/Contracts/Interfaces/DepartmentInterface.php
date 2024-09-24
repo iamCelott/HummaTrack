@@ -9,4 +9,4 @@ use App\Contracts\Interfaces\Eloquent\ShowInterface;
 use App\Contracts\Interfaces\Eloquent\StoreInterface;
 use App\Contracts\Interfaces\Eloquent\UpdateInterface;
 
-interface DepartmentInterface extends SearchInterface, StoreInterface, ShowInterface, DeleteInterface, UpdateInterface {}
+interface DepartmentInterface extends SearchInterface, GetInterface, StoreInterface, ShowInterface, DeleteInterface, UpdateInterface {}

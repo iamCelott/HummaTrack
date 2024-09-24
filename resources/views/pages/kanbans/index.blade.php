@@ -49,13 +49,12 @@
     <div class="grid w-full">
         <div class="overflow-hidden text-gray-700 dark:text-slate-400">
             <div class="flex overflow-x-auto custom-scroll gap-6 pb-4">
-
                 <div class="flex flex-col flex-shrink-0 border rounded-md w-[80%] max-w-[30rem] border-gray-300 p-4"
                     style="background-color: rgba(255, 187, 187, 0.3)">
                     <div class="rounded-md">
                         <div class="flex justify-between">
 
-                            <h5 class="items-center text-black mb-6">TODO (3) </h5>
+                            <h5 class="items-center text-black mb-6">TODO ({{ $to_do->count() }}) </h5>
                             {{-- <button type="button" data-fc-type="modal" data-fc-target="addTask"
                                     class="relative bg-success text-white px-3 py-1 rounded-md hover:bg-success mb-6">
                                     Task
@@ -72,7 +71,8 @@
                                 <div class="px-12 overflow-y-auto rounded-xl relative">
 
                                     <div class="flex items-center justify-between mb-10 px-2 mt-5">
-                                        <img src="{{ asset('assets/images/elements/wave-right.png') }}" class="absolute top-0 left-0 sm:h-20" alt="">
+                                        <img src="{{ asset('assets/images/elements/wave-right.png') }}"
+                                            class="absolute top-0 left-0 sm:h-20" alt="">
                                         <h2 class="text-lg font-semibold text-black">Tambah
                                             Tugas Baru</h2>
                                         <button id="closeModal" data-fc-dismiss
@@ -93,35 +93,69 @@
 
                                             <!-- Select for Task Category -->
                                             <div class="space-y-1 mb-6 sm:w-full">
-                                                <label for="category" class="font-semibold text-gray-500">Kategori Tugas</label>
-                                                <select class="form-select" id="category" name="category" required>
+<<<<<<< HEAD
+                                                <label for="department_id" class="font-semibold text-gray-500">Kategori Tugas</label>
+                                                <select class="form-select" id="department_id" name="department_id"
                                                     <option value="">Pilih Kategori</option>
-                                                    <option value="Frontend">Frontend</option>
-                                                    <option value="Backend">Backend</option>
-                                                    <option value="Mobile">Mobile</option>
-                                                    <option value="Ui/ux">UI / UX</option>
-                                                    <option value="Digmar">Digmar</option>
-
+                                                    @forelse ($departments as $department)
+                                                    <option value="{{ $department->id }}">{{ $department->name }}</option>
+                                                    @empty
+                                                    <option value="">Divisi Tidak Ditemukan</option>
+=======
+                                                <label for="department_id" class="font-semibold text-gray-500">Kategori
+                                                    Tugas</label>
+                                                <select class="form-select" id="department_id" name="department_id">
+                                                    <option value="">Pilih Divisi</option>
+                                                    @forelse ($departments as $department)
+                                                        <option value="{{ $department->id }}"
+                                                            {{ old('department_id') == $department->id ? 'selected' : '' }}>
+                                                            {{ $department->name }}
+                                                        </option>
+                                                    @empty
+                                                        <option value="">Divisi Tidak Ditemukan</option>
+>>>>>>> ab0f31e578d68d5606a62027365bfb842cfc6e23
+                                                    @endforelse
                                                 </select>
                                             </div>
 
                                             <div class="space-y-1 mb-6 sm:w-full">
-                                                <label for="name" class="font-semibold text-gray-500">Judul Tugas</label>
-                                                <input class="form-input" type="text" id="name" name="name" placeholder="Masukkan judul tugas" required>
+                                                <label for="name" class="font-semibold text-gray-500">Judul
+                                                    Tugas</label>
+                                                <input class="form-input" type="text" id="name" name="name"
+<<<<<<< HEAD
+                                                    placeholder="Masukkan judul tugas" required>
+=======
+                                                    placeholder="Masukkan judul tugas" value="{{ old('name') }}">
+>>>>>>> ab0f31e578d68d5606a62027365bfb842cfc6e23
                                             </div>
 
                                             <div class="space-y-1 mb-6">
-                                                <label for="kanban_id" class="font-semibold text-gray-500">Proyek</label>
-                                                <input class="form-input" type="hidden" name="kanban_id" value="{{ $kanban->id }}">
-                                                <input class="form-input" type="text" placeholder="{{ $kanban->name }}" value="{{ $kanban->name }}" disabled>
+                                                <label for="kanban_id"
+                                                    class="font-semibold text-gray-500">Proyek</label>
+                                                <input class="form-input" type="hidden" name="kanban_id"
+                                                    value="{{ $kanban->id }}">
+                                                <input class="form-input" type="text"
+                                                    placeholder="{{ $kanban->name }}" value="{{ $kanban->name }}"
+                                                    disabled>
                                             </div>
 
                                             <div class="space-y-1 mb-6">
-                                                <label for="user_id" class="font-semibold text-gray-500">Nama Pengguna</label>
+                                                <label for="user_id" class="font-semibold text-gray-500">Nama
+                                                    Pengguna</label>
+<<<<<<< HEAD
                                                 <select class="form-select" id="user_id" name="user_id" required>
                                                     <option value="">Pilih Nama Pengguna</option>
                                                     @forelse($users as $user)
-                                                        <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                                        <option value="{{ $user->id }}">{{ $user->name }}
+=======
+                                                <select class="form-select" id="user_id" name="user_id">
+                                                    <option value="">Pilih Nama Pengguna</option>
+                                                    @forelse($users as $user)
+                                                        <option value="{{ $user->id }}"
+                                                            {{ old('user_id') == $user->id ? 'selected' : '' }}>
+                                                            {{ $user->name }}
+>>>>>>> ab0f31e578d68d5606a62027365bfb842cfc6e23
+                                                        </option>
                                                     @empty
                                                         <option value="">Tidak ada pengguna tersedia</option>
                                                     @endforelse
@@ -129,12 +163,19 @@
                                             </div>
 
                                             <div class="space-y-1 mb-6">
-                                                <label for="description" class="font-semibold text-gray-500">Deskripsi Tugas</label>
+                                                <label for="description" class="font-semibold text-gray-500">Deskripsi
+                                                    Tugas</label>
+<<<<<<< HEAD
                                                 <textarea class="form-input" id="description" name="description" rows="4" placeholder="Deskripsi tugas" required></textarea>
+=======
+                                                <textarea class="form-input" id="description" name="description" rows="4" placeholder="Deskripsi tugas"
+                                                    value="{{ old('name') }}"></textarea>
+>>>>>>> ab0f31e578d68d5606a62027365bfb842cfc6e23
                                             </div>
 
                                             <div class="mb-6 flex justify-end">
-                                                <button class="btn bg-info rounded-lg text-white" type="submit">Konfirmasi</button>
+                                                <button class="btn bg-info rounded-lg text-white"
+                                                    type="submit">Konfirmasi</button>
                                             </div>
                                         </div>
                                     </form>
@@ -161,18 +202,6 @@
                     <div class="flex flex-col gap-4 kanban-board custom-scroll overflow-x-hidden px-1 h-full"
                         id="to_do">
 
-
-                        <!-- Task Item -->
-                        {{-- {{ dd($kanban->task) }} --}}
-                        {{-- <button type="button" data-fc-type="modal" data-fc-target="addTask">
-                                <div class="flex items-center justify-center w-full py-20 border-4 border-dashed border-gray-400 rounded-lg bg-red-200 cursor-pointer hover:bg-red-300 transition duration-300 ease-in-out">
-                                    <div class="text-center">
-                                        <i class="ri-file-line text-gray-500 text-3xl"></i>
-                                        <p class="text-gray-500 mt-2">Add Task</p>
-                                    </div>
-                                </div>
-                            </button> --}}
-
                         @foreach ($to_do as $task)
                             <div class="card" data-id="{{ $task->id }}" style="border-radius: 18px">
                                 <div class="grid grid-rows-[auto,1fr]">
@@ -180,12 +209,16 @@
                                         <h5>
                                             <a href="#" data-fc-type="modal" data-fc-target="task-detail-modal"
                                                 class="font-semibold text-lg text-black capitalize">
+<<<<<<< HEAD
                                                 @if ($task->category == 'digmar')
-                                                Digital Marketing
+                                                    Digital Marketing
                                                 @else
                                                 {{ $task->category }}
                                                 @endif
                                             </a>
+=======
+                                                {{ $task->department->name }}
+>>>>>>> ab0f31e578d68d5606a62027365bfb842cfc6e23
                                         </h5>
                                         <span
                                             class="inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-medium bg-danger/10 text-danger">Todo</span>
@@ -212,7 +245,7 @@
                                                         <img src="{{ $task->user->photo_profile }}"
                                                             class="rounded-full h-8 w-8 ">
                                                     </a>
-                                                    <p class="text-gray-500">Dirwa Sanami Islam</p>
+                                                    <p class="text-gray-500">{{ $task->user->name }}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -222,7 +255,7 @@
                                             <div class="">
                                                 <i class="ri-calendar-line" style="margin-right: 8px"></i>
                                                 <span class="text-gray-500">
-                                                    28 Agustus 2024
+                                                    {{ \Carbon\Carbon::parse($task->created_at)->translatedFormat('d F Y') }}
                                                 </span>
                                             </div>
                                             <div class="">
@@ -243,22 +276,35 @@
                     style="background-color: rgba(248, 218, 173, 0.3)">
 
 
-                    <h5 class="uppercase text-black mb-4">In Progress (2)</h5>
+                    <h5 class="uppercase text-black mb-4">In Progress ({{ $in_progress->count() }})</h5>
 
                     <div class="flex flex-col gap-4 kanban-board custom-scroll overflow-x-hidden overflow-y-auto px-1 h-full"
                         id="in_progress">
 
-                        @forelse ($in_progress as $task)
-                            <div data-id="{{ $task->id }}" class="card cursor-pointer">
-                                <div class="p-6">
-
-                                    <div class="flex justify-between items-center">
-                                        <small>18 Jul 2023</small>
+                        @foreach ($in_progress as $task)
+                            <div class="card" data-id="{{ $task->id }}" style="border-radius: 18px">
+                                <div class="grid grid-rows-[auto,1fr]">
+                                    <div class="card-header flex justify-between items-center">
+                                        <h5>
+                                            <a href="#" data-fc-type="modal" data-fc-target="task-detail-modal"
+                                                class="font-semibold text-lg text-black capitalize">
+<<<<<<< HEAD
+                                                @if ($task->category == 'digmar')
+                                                    Digital Marketing
+                                                @else
+                                                    {{ $task->category }}
+                                                @endif
+=======
+                                                {{ $task->department->name }}
+>>>>>>> ab0f31e578d68d5606a62027365bfb842cfc6e23
+                                            </a>
+                                        </h5>
                                         <span
-                                            class="inline-flex items-center gap-1.5 px-1 rounded-md text-xs font-medium bg-danger/10 text-danger">High</span>
+                                            class="inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-medium bg-warning/10 text-warning">In
+                                            Progress</span>
                                     </div>
 
-
+<<<<<<< HEAD
                                     <h5 class="my-2">
                                         <a href="#" data-fc-type="modal" data-fc-target="task-detail-modal"
                                             type="button"
@@ -341,16 +387,52 @@
                                                         class="bg-slate-700 w-2.5 h-2.5 rotate-45 -z-10 rounded-[1px]">
                                                     </div>
                                                 </div>
-                                            </div> <!-- avatar-icon end -->
-                                        </div> <!-- flex end -->
+=======
+                                    <div class="card-body p-6">
+                                        <p>
+                                        <h5>
+                                            <a href="#" data-fc-type="modal" data-fc-target="task-detail-modal"
+                                                class="font-semibold text-lg text-black">
+                                                {{ $task->name }}
+                                            </a>
+                                        </h5>
+                                        <h5 class="text-gray-500">
+                                            {{ Str::limit($task->description, 100, '...') }}
+                                        </h5>
+                                        </p>
+                                        <div class="mt-5">
+                                            <div class="grid items-center">
+                                                <div
+                                                    class="flex items-center gap-2 hover:-translate-y-0.5 transition-all duration-200">
+                                                    <a href="javascript: void(0);">
+                                                        <img src="{{ $task->user->photo_profile }}"
+                                                            class="rounded-full h-8 w-8 ">
+                                                    </a>
+                                                    <p class="text-gray-500">{{ $task->user->name }}</p>
+                                                </div>
+>>>>>>> ab0f31e578d68d5606a62027365bfb842cfc6e23
+                                            </div>
+                                        </div>
                                     </div>
-
+                                    <div class="card-footer grid items-center gap-4 p-6">
+                                        <div class="flex justify-start gap-4">
+                                            <div class="">
+                                                <i class="ri-calendar-line" style="margin-right: 8px"></i>
+                                                <span class="text-gray-500">
+                                                    {{ \Carbon\Carbon::parse($task->created_at)->translatedFormat('d F Y') }}
+                                                </span>
+                                            </div>
+                                            <div class="">
+                                                <i class="ri-file-line" style="margin-right: 8px"></i>
+                                                <span class="text-gray-500">
+                                                    1 / 10 Selesai
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div> <!-- Task Item End -->
-                        @empty
-                            {{-- {{ dd($todo) }} --}}
-                        @endforelse
-
+                            </div>
+                        @endforeach
                     </div> <!-- end company-list-1-->
                 </div>
 
@@ -358,113 +440,79 @@
                     style="background-color: rgba(174, 230, 255, 0.3)">
 
 
-                    <h5 class="uppercase text-black mb-4">Review (4)</h5>
+                    <h5 class="uppercase text-black mb-4">Review ({{ $review->count() }})</h5>
 
                     <div class="flex flex-col gap-4 kanban-board custom-scroll overflow-x-hidden overflow-y-auto px-1 h-full"
                         id="review">
 
-                        @forelse ($review as $task)
-                            <div data-id="{{ $task->id }}" class="card cursor-pointer">
-                                <div class="p-6">
-
-                                    <div class="flex justify-between items-center">
-                                        <small>18 Jul 2023</small>
+                        @foreach ($review as $task)
+                            <div class="card" data-id="{{ $task->id }}" style="border-radius: 18px">
+                                <div class="grid grid-rows-[auto,1fr]">
+                                    <div class="card-header flex justify-between items-center">
+                                        <h5>
+                                            <a href="#" data-fc-type="modal" data-fc-target="task-detail-modal"
+                                                class="font-semibold text-lg text-black capitalize">
+<<<<<<< HEAD
+                                                @if ($task->category == 'digmar')
+                                                    Digital Marketing
+                                                @else
+                                                    {{ $task->category }}
+                                                @endif
+=======
+                                                {{ $task->department->name }}
+>>>>>>> ab0f31e578d68d5606a62027365bfb842cfc6e23
+                                            </a>
+                                        </h5>
                                         <span
-                                            class="inline-flex items-center gap-1.5 px-1 rounded-md text-xs font-medium bg-danger/10 text-danger">High</span>
+                                            class="inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-medium bg-info/10 text-info">Review</span>
                                     </div>
 
+                                    <div class="card-body p-6">
+                                        <p>
+                                        <h5>
+                                            <a href="#" data-fc-type="modal" data-fc-target="task-detail-modal"
+                                                class="font-semibold text-lg text-black">
+                                                {{ $task->name }}
+                                            </a>
+                                        </h5>
+                                        <h5 class="text-gray-500">
+                                            {{ Str::limit($task->description, 100, '...') }}
+                                        </h5>
+                                        </p>
 
-                                    <h5 class="my-2">
-                                        <a href="#" data-fc-type="modal" data-fc-target="task-detail-modal"
-                                            type="button"
-                                            class="text-base text-gray-700 dark:text-slate-400 font-medium">iOS App
-                                            home
-                                            page</a>
-                                    </h5>
-
-                                    <p class="space-x-3">
-                                        <span class="text-nowrap mb-2">
-                                            <i class="ri-briefcase-2-line text-gray-500 dark:text-gray-400"></i> iOS
-                                        </span>
-                                        <span class="text-nowrap mb-2">
-                                            <i class="ri-discuss-line text-gray-500 dark:text-gray-400"></i>
-                                            <b class="text-gray-500 dark:text-gray-400">74</b> Comments
-                                        </span>
-                                    </p> <!-- space end -->
-
-                                    <div class="mt-5">
-                                        <div class="flex items-center">
-                                            <div class="-me-3">
-                                                <a href="javascript: void(0);" data-fc-type="tooltip"
-                                                    data-fc-placement="top">
-                                                    <img src="assets/images/users/avatar-1.jpg" alt=""
-                                                        class="rounded-full h-8 w-8 hover:-translate-y-0.5 transition-all duration-200">
-                                                </a>
-                                                <div class="bg-slate-700 hidden px-2 py-1 rounded transition-all text-white opacity-0 z-50"
-                                                    role="tooltip">
-                                                    Tosha
-                                                    <div data-fc-arrow
-                                                        class="bg-slate-700 w-2.5 h-2.5 rotate-45 -z-10 rounded-[1px]">
-                                                    </div>
+                                        <div class="mt-5">
+                                            <div class="grid items-center">
+                                                <div
+                                                    class="flex items-center gap-2 hover:-translate-y-0.5 transition-all duration-200">
+                                                    <a href="javascript: void(0);">
+                                                        <img src="{{ $task->user->photo_profile }}"
+                                                            class="rounded-full h-8 w-8 ">
+                                                    </a>
+                                                    <p class="text-gray-500">{{ $task->user->name }}</p>
                                                 </div>
-                                            </div> <!-- avatar-icon end -->
-
-                                            <div class="-me-3">
-                                                <a href="javascript: void(0);" data-fc-type="tooltip"
-                                                    data-fc-placement="top">
-                                                    <img src="assets/images/users/avatar-5.jpg" alt=""
-                                                        class="rounded-full h-8 w-8 hover:-translate-y-0.5 transition-all duration-200">
-                                                </a>
-                                                <div class="bg-slate-700 hidden px-2 py-1 rounded transition-all text-white opacity-0 z-50"
-                                                    role="tooltip">
-                                                    Brain
-                                                    <div data-fc-arrow
-                                                        class="bg-slate-700 w-2.5 h-2.5 rotate-45 -z-10 rounded-[1px]">
-                                                    </div>
-                                                </div>
-                                            </div> <!-- avatar-icon end -->
-
-                                            <div class="-me-3">
-                                                <a href="javascript: void(0);" data-fc-type="tooltip"
-                                                    data-fc-placement="top">
-                                                    <div
-                                                        class="bg-success text-white font-medium flex items-center justify-center rounded-full h-8 w-8 hover:-translate-y-0.5 transition-all duration-200">
-                                                        K
-                                                    </div>
-                                                </a>
-                                                <div class="bg-slate-700 hidden px-2 py-1 rounded transition-all text-white opacity-0 z-50"
-                                                    role="tooltip">
-                                                    Hooker
-                                                    <div data-fc-arrow
-                                                        class="bg-slate-700 w-2.5 h-2.5 rotate-45 -z-10 rounded-[1px]">
-                                                    </div>
-                                                </div>
-                                            </div> <!-- avatar-icon end -->
-
-                                            <div class="-me-3">
-                                                <a href="javascript: void(0);" data-fc-type="tooltip"
-                                                    data-fc-placement="top">
-                                                    <div
-                                                        class="bg-primary text-white font-medium flex items-center justify-center rounded-full h-8 w-8 hover:-translate-y-0.5 transition-all duration-200">
-                                                        9+
-                                                    </div>
-                                                </a>
-                                                <div class="bg-slate-700 hidden px-2 py-1 rounded transition-all text-white opacity-0 z-50"
-                                                    role="tooltip">
-                                                    More +
-                                                    <div data-fc-arrow
-                                                        class="bg-slate-700 w-2.5 h-2.5 rotate-45 -z-10 rounded-[1px]">
-                                                    </div>
-                                                </div>
-                                            </div> <!-- avatar-icon end -->
-                                        </div> <!-- flex end -->
+                                            </div>
+                                        </div>
                                     </div>
-
+                                    <div class="card-footer grid items-center gap-4 p-6">
+                                        <div class="flex justify-start gap-4">
+                                            <div class="">
+                                                <i class="ri-calendar-line" style="margin-right: 8px"></i>
+                                                <span class="text-gray-500">
+                                                    {{ \Carbon\Carbon::parse($task->created_at)->translatedFormat('d F Y') }}
+                                                </span>
+                                            </div>
+                                            <div class="">
+                                                <i class="ri-file-line" style="margin-right: 8px"></i>
+                                                <span class="text-gray-500">
+                                                    1 / 10 Selesai
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div> <!-- Task Item End -->
-                        @empty
+                            </div>
                             {{-- {{ dd($todo) }} --}}
-                        @endforelse
+                        @endforeach
 
                     </div> <!-- end company-list-1-->
                 </div>
@@ -473,113 +521,78 @@
                     style="background-color: rgba(170, 255, 174, 0.3))">
 
 
-                    <h5 class="uppercase text-black mb-4">Done (1)</h5>
+                    <h5 class="uppercase text-black mb-4">Done ({{ $done->count() }})</h5>
 
                     <div class="flex flex-col gap-4 kanban-board custom-scroll overflow-x-hidden overflow-y-auto px-1 h-full"
                         id="done">
 
-                        @forelse ($done as $task)
-                            <div data-id="{{ $task->id }}" class="card cursor-pointer">
-                                <div class="p-6">
-
-                                    <div class="flex justify-between items-center">
-                                        <small>18 Jul 2023</small>
+                        @foreach ($done as $task)
+                            <div class="card" data-id="{{ $task->id }}" style="border-radius: 18px">
+                                <div class="grid grid-rows-[auto,1fr]">
+                                    <div class="card-header flex justify-between items-center">
+                                        <h5>
+                                            <a href="#" data-fc-type="modal" data-fc-target="task-detail-modal"
+                                                class="font-semibold text-lg text-black capitalize">
+<<<<<<< HEAD
+                                                @if ($task->category == 'digmar')
+                                                    Digital Marketing
+                                                @else
+                                                    {{ $task->category }}
+                                                @endif
+=======
+                                                {{ $task->department->name }}
+>>>>>>> ab0f31e578d68d5606a62027365bfb842cfc6e23
+                                            </a>
+                                        </h5>
                                         <span
-                                            class="inline-flex items-center gap-1.5 px-1 rounded-md text-xs font-medium bg-danger/10 text-danger">High</span>
+                                            class="inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-medium bg-success/10 text-success">Completed</span>
                                     </div>
 
+                                    <div class="card-body p-6">
+                                        <p>
+                                        <h5>
+                                            <a href="#" data-fc-type="modal" data-fc-target="task-detail-modal"
+                                                class="font-semibold text-lg text-black">
+                                                {{ $task->name }}
+                                            </a>
+                                        </h5>
+                                        <h5 class="text-gray-500">
+                                            {{ Str::limit($task->description, 100, '...') }}
+                                        </h5>
+                                        </p>
 
-                                    <h5 class="my-2">
-                                        <a href="#" data-fc-type="modal" data-fc-target="task-detail-modal"
-                                            type="button"
-                                            class="text-base text-gray-700 dark:text-slate-400 font-medium">iOS App
-                                            home
-                                            page</a>
-                                    </h5>
-
-                                    <p class="space-x-3">
-                                        <span class="text-nowrap mb-2">
-                                            <i class="ri-briefcase-2-line text-gray-500 dark:text-gray-400"></i> iOS
-                                        </span>
-                                        <span class="text-nowrap mb-2">
-                                            <i class="ri-discuss-line text-gray-500 dark:text-gray-400"></i>
-                                            <b class="text-gray-500 dark:text-gray-400">74</b> Comments
-                                        </span>
-                                    </p> <!-- space end -->
-
-                                    <div class="mt-5">
-                                        <div class="flex items-center">
-                                            <div class="-me-3">
-                                                <a href="javascript: void(0);" data-fc-type="tooltip"
-                                                    data-fc-placement="top">
-                                                    <img src="assets/images/users/avatar-1.jpg" alt=""
-                                                        class="rounded-full h-8 w-8 hover:-translate-y-0.5 transition-all duration-200">
-                                                </a>
-                                                <div class="bg-slate-700 hidden px-2 py-1 rounded transition-all text-white opacity-0 z-50"
-                                                    role="tooltip">
-                                                    Tosha
-                                                    <div data-fc-arrow
-                                                        class="bg-slate-700 w-2.5 h-2.5 rotate-45 -z-10 rounded-[1px]">
-                                                    </div>
+                                        <div class="mt-5">
+                                            <div class="grid items-center">
+                                                <div
+                                                    class="flex items-center gap-2 hover:-translate-y-0.5 transition-all duration-200">
+                                                    <a href="javascript: void(0);">
+                                                        <img src="{{ $task->user->photo_profile }}"
+                                                            class="rounded-full h-8 w-8 ">
+                                                    </a>
+                                                    <p class="text-gray-500">{{ $task->user->name }}</p>
                                                 </div>
-                                            </div> <!-- avatar-icon end -->
-
-                                            <div class="-me-3">
-                                                <a href="javascript: void(0);" data-fc-type="tooltip"
-                                                    data-fc-placement="top">
-                                                    <img src="assets/images/users/avatar-5.jpg" alt=""
-                                                        class="rounded-full h-8 w-8 hover:-translate-y-0.5 transition-all duration-200">
-                                                </a>
-                                                <div class="bg-slate-700 hidden px-2 py-1 rounded transition-all text-white opacity-0 z-50"
-                                                    role="tooltip">
-                                                    Brain
-                                                    <div data-fc-arrow
-                                                        class="bg-slate-700 w-2.5 h-2.5 rotate-45 -z-10 rounded-[1px]">
-                                                    </div>
-                                                </div>
-                                            </div> <!-- avatar-icon end -->
-
-                                            <div class="-me-3">
-                                                <a href="javascript: void(0);" data-fc-type="tooltip"
-                                                    data-fc-placement="top">
-                                                    <div
-                                                        class="bg-success text-white font-medium flex items-center justify-center rounded-full h-8 w-8 hover:-translate-y-0.5 transition-all duration-200">
-                                                        K
-                                                    </div>
-                                                </a>
-                                                <div class="bg-slate-700 hidden px-2 py-1 rounded transition-all text-white opacity-0 z-50"
-                                                    role="tooltip">
-                                                    Hooker
-                                                    <div data-fc-arrow
-                                                        class="bg-slate-700 w-2.5 h-2.5 rotate-45 -z-10 rounded-[1px]">
-                                                    </div>
-                                                </div>
-                                            </div> <!-- avatar-icon end -->
-
-                                            <div class="-me-3">
-                                                <a href="javascript: void(0);" data-fc-type="tooltip"
-                                                    data-fc-placement="top">
-                                                    <div
-                                                        class="bg-primary text-white font-medium flex items-center justify-center rounded-full h-8 w-8 hover:-translate-y-0.5 transition-all duration-200">
-                                                        9+
-                                                    </div>
-                                                </a>
-                                                <div class="bg-slate-700 hidden px-2 py-1 rounded transition-all text-white opacity-0 z-50"
-                                                    role="tooltip">
-                                                    More +
-                                                    <div data-fc-arrow
-                                                        class="bg-slate-700 w-2.5 h-2.5 rotate-45 -z-10 rounded-[1px]">
-                                                    </div>
-                                                </div>
-                                            </div> <!-- avatar-icon end -->
-                                        </div> <!-- flex end -->
+                                            </div>
+                                        </div>
                                     </div>
-
+                                    <div class="card-footer grid items-center gap-4 p-6">
+                                        <div class="flex justify-start gap-4">
+                                            <div class="">
+                                                <i class="ri-calendar-line" style="margin-right: 8px"></i>
+                                                <span class="text-gray-500">
+                                                    {{ \Carbon\Carbon::parse($task->created_at)->translatedFormat('d F Y') }}
+                                                </span>
+                                            </div>
+                                            <div class="">
+                                                <i class="ri-file-line" style="margin-right: 8px"></i>
+                                                <span class="text-gray-500">
+                                                    1 / 10 Selesai
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div> <!-- Task Item End -->
-                        @empty
-                            {{-- {{ dd($todo) }} --}}
-                        @endforelse
+                            </div>
+                        @endforeach
 
                     </div> <!-- end company-list-1-->
                 </div>
@@ -663,6 +676,7 @@
                                         </div>
                                     </div> <!-- avatar-icon end -->
 
+                                    
                                     <div class="-me-3">
                                         <a href="javascript: void(0);" data-fc-type="tooltip"
                                             data-fc-placement="top">
@@ -720,6 +734,11 @@
                                             vulputate at, tempus viverra turpis.</p>
                                         <!-- chat-end -->
 
+<<<<<<< HEAD
+
+=======
+                                        
+>>>>>>> ab0f31e578d68d5606a62027365bfb842cfc6e23
                                         <div class="mt-5">
                                             <div class="flex gap-5">
                                                 <img src="assets/images/users/avatar-4.jpg" alt=""
@@ -809,6 +828,23 @@
         </div>
     </div>
 </main>
+
+<script>
+    Toastify({
+        text: "This is a toast",
+        duration: 3000,
+        destination: "https://github.com/apvarun/toastify-js",
+        newWindow: true,
+        close: true,
+        gravity: "top", // `top` or `bottom`
+        position: "left", // `left`, `center` or `right`
+        stopOnFocus: true, // Prevents dismissing of toast on hover
+        style: {
+            background: "linear-gradient(to right, #00b09b, #96c93d)",
+        },
+        onClick: function() {} // Callback after click
+    }).showToast();
+</script>
 
 <!-- Sortablejs -->
 <script src="{{ asset('assets/libs/sortablejs/Sortable.min.js') }}"></script>
