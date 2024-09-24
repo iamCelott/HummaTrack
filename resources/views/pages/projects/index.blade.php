@@ -53,11 +53,10 @@
         @if ($hasCreatedProject)
             <div class="flex flex-auto flex-col">
                 <div class="grid md:px-12 md:grid-cols-1 lg:px-0 lg:grid-cols-2 gap-6">
-                    @forelse ($projects as $project)
+                    @foreach ($projects as $project)
                         <div class="relative card flex flex-col justify-between hover:shadow-lg overflow-hidden hover:scale-105 transition-all duration-200"
                             style="height: 400px; border-radius: 20px; position: relative;">
-                            <img class="absolute top-1/6 -right-10 translate-y-1/2" src="{{ asset('assets/images/bulat.png') }}"
-                                alt="">
+                            <img class="absolute top-1/6 -right-10 translate-y-1/2" src="{{ asset('assets/images/bulat.png') }}" alt="" >
                             <div class="card-header p-4 bg-white rounded-xl rounded-b-none">
                                 <div class="flex justify-between items-center">
                                     <div class="flex items-center">
@@ -83,12 +82,12 @@
                                 <div class="flex gap-2">
                                     @if ($project->type === 'team')
                                         <span
-                                            class="text-[#39b1e6] inline-flex items-center gap-1.5 py-0.5 px-6 rounded-lg text-md font-medium border bg-[#aee6ff] text-success">
+                                            class="inline-flex items-center gap-1.5 py-0.5 px-5 rounded-lg text-md font-medium border bg-[#aee6ff] text-success">
                                             Tim
                                         </span>
                                     @else
                                         <span
-                                            class="text-[#65bb6a] inline-flex items-center gap-1.5 py-0.5 px-6 rounded-lg text-md font-medium border bg-[#a9ffae] text-info">
+                                            class="inline-flex items-center gap-1.5 py-0.5 px-5 rounded-full text-md font-medium border bg-[#aaffae] text-info">
                                             Individual
                                         </span>
                                     @endif
@@ -96,27 +95,27 @@
                                     <div class="flex items-center">
                                         @if ($project->status->value === 'not_started')
                                             <span
-                                                class="inline-flex items-center gap-1.5 py-2 px-3 lg:px-6 rounded-lg text-md font-medium bg-dark/10 text-dark badge-status ">
+                                                class="inline-flex items-center gap-1.5 py-2 px-3 lg:px-5 rounded-xl text-md font-medium bg-dark/10 text-dark badge-status ">
                                                 Belum Dimulai
                                             </span>
                                         @elseif ($project->status->value === 'in_progress')
                                             <span
-                                                class="inline-flex items-center gap-3 py-0.5 px-3 lg:px-6 rounded-lg text-md font-medium bg-warning/10 text-warning">
+                                                class="inline-flex items-center gap-3 py-0.5 px-3 rounded-full text-md font-medium bg-warning/10 text-warning">
                                                 Sedang Berjalan
                                             </span>
                                         @elseif ($project->status->value === 'on_hold')
                                             <span
-                                                class="inline-flex items-center gap-3 py-0.5 px-3 lg:px-6 rounded-lg text-md font-medium bg-danger/10 text-danger">
+                                                class="inline-flex items-center gap-3 py-0.5 px-3 rounded-full text-md font-medium bg-danger/10 text-danger">
                                                 Tertunda
                                             </span>
                                         @elseif ($project->status->value === 'completed')
                                             <span
-                                                class="inline-flex items-center gap-1.5 py-0.5 px-4 lg:px-6 rounded-lg text-md font-medium bg-success/10 text-success">
+                                                class="inline-flex items-center gap-1.5 py-0.5 px-4 rounded-full text-md font-medium bg-success/10 text-success">
                                                 Selesai
                                             </span>
                                         @else
                                             <span
-                                                class="inline-flex items-center gap-1.5 py-0.5 px-1.5 lg:px-6 rounded-lg text-md font-medium bg-dark/10 text-dark">
+                                                class="inline-flex items-center gap-1.5 py-0.5 px-1.5 rounded-full text-md font-medium bg-dark/10 text-dark">
                                                 Status Tidak Diketahui
                                             </span>
                                         @endif
@@ -147,16 +146,7 @@
                                     </div>
                                     <div class="flex items-center gap-1">
                                         <i class="ri-file-line text-info text-lg me-2"></i>
-
-                                        @php
-                                            $doneCount = 0;
-                                            foreach ($project->kanban->task as $task) {
-                                                if ($task->status === 'done') {
-                                                    $doneCount++;
-                                                }
-                                            }
-                                        @endphp
-                                        <span>Project Selesai {{ $doneCount }}/{{ $project->kanban->task->count() }}</span>
+                                        <span>Project Selesai 2/7</span>
                                     </div>
 
                                     {{-- data-fc-target="editProject" type="button" data-fc-type="modal" --}}
@@ -168,9 +158,7 @@
                             </div>
 
                         </div>
-                    @empty
-                        <h1 class="font-bold text-lg">Project {{ request('search') }} tidak ditemukan.</h1>
-                    @endforelse
+                    @endforeach
                 </div>
             </div>
         @else
