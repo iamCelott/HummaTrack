@@ -94,16 +94,14 @@
 
                                             <!-- Select for Task Category -->
                                             <div class="space-y-1 mb-6 sm:w-full">
-                                                <label for="category" class="font-semibold text-gray-500">Kategori
-                                                    Tugas</label>
-                                                <select class="form-select" id="category" name="category" required>
+                                                <label for="department_id" class="font-semibold text-gray-500">Kategori Tugas</label>
+                                                <select class="form-select" id="department_id" name="department_id"
                                                     <option value="">Pilih Kategori</option>
-                                                    <option value="Frontend">Frontend</option>
-                                                    <option value="Backend">Backend</option>
-                                                    <option value="Mobile">Mobile</option>
-                                                    <option value="Ui/ux">UI / UX</option>
-                                                    <option value="Digmar">Digmar</option>
-
+                                                    @forelse ($departments as $department)
+                                                    <option value="{{ $department->id }}">{{ $department->name }}</option>
+                                                    @empty
+                                                    <option value="">Divisi Tidak Ditemukan</option>
+                                                    @endforelse
                                                 </select>
                                             </div>
 
@@ -183,7 +181,7 @@
                                                 @if ($task->category == 'digmar')
                                                     Digital Marketing
                                                 @else
-                                                    {{ $task->category }}
+                                                {{ $task->category }}
                                                 @endif
                                             </a>
                                         </h5>
@@ -278,7 +276,6 @@
                                             {{ Str::limit($task->description, 100, '...') }}
                                         </h5>
                                         </p>
-
                                         <div class="mt-5">
                                             <div class="grid items-center">
                                                 <div

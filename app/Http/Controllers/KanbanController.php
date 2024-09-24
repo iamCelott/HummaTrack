@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Contracts\Interfaces\KanbanInterface;
 use App\Contracts\Interfaces\TaskInterface;
 use App\Contracts\Interfaces\UserInterface;
+use App\Contracts\Interfaces\DepartmentInterface;
 use App\Models\Kanban;
 use App\Services\KanbanService;
 use Illuminate\Contracts\View\View;
@@ -17,10 +18,13 @@ class KanbanController extends Controller
     private KanbanService $service;
     private UserInterface $user;
 
-    public function __construct(KanbanInterface $kanban, KanbanService $service, UserInterface $user)
+    private DepartmentInterface $department;
+
+    public function __construct(KanbanInterface $kanban, KanbanService $service, UserInterface $user, DepartmentInterface $department )
     {
         $this->kanban = $kanban;
         $this->service = $service;
+        $this->department = $department;
         $this->user = $user;
     }
     /**
@@ -29,7 +33,8 @@ class KanbanController extends Controller
     public function index(Request $request)
     {
 
-        $kanbans = $this->kanban->get();
+        $this->kanban->get();
+        $departments = $this->department->get();
         return view('pages.kanbans.index');
     }
 
@@ -55,7 +60,8 @@ class KanbanController extends Controller
     public function show(Kanban $kanban)
     {
         $users = $this->user->get();
-        return view('pages.kanbans.index', compact('kanban', 'users'));
+        $departments = $this->department->get();
+        return view('pages.kanbans.index', compact('kanban', 'users', 'departments'));
     }
 
     /**
