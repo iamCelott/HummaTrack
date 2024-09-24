@@ -93,15 +93,6 @@
 
                                             <!-- Select for Task Category -->
                                             <div class="space-y-1 mb-6 sm:w-full">
-<<<<<<< HEAD
-                                                <label for="department_id" class="font-semibold text-gray-500">Kategori Tugas</label>
-                                                <select class="form-select" id="department_id" name="department_id"
-                                                    <option value="">Pilih Kategori</option>
-                                                    @forelse ($departments as $department)
-                                                    <option value="{{ $department->id }}">{{ $department->name }}</option>
-                                                    @empty
-                                                    <option value="">Divisi Tidak Ditemukan</option>
-=======
                                                 <label for="department_id" class="font-semibold text-gray-500">Kategori
                                                     Tugas</label>
                                                 <select class="form-select" id="department_id" name="department_id">
@@ -113,7 +104,6 @@
                                                         </option>
                                                     @empty
                                                         <option value="">Divisi Tidak Ditemukan</option>
->>>>>>> ab0f31e578d68d5606a62027365bfb842cfc6e23
                                                     @endforelse
                                                 </select>
                                             </div>
@@ -122,11 +112,7 @@
                                                 <label for="name" class="font-semibold text-gray-500">Judul
                                                     Tugas</label>
                                                 <input class="form-input" type="text" id="name" name="name"
-<<<<<<< HEAD
-                                                    placeholder="Masukkan judul tugas" required>
-=======
                                                     placeholder="Masukkan judul tugas" value="{{ old('name') }}">
->>>>>>> ab0f31e578d68d5606a62027365bfb842cfc6e23
                                             </div>
 
                                             <div class="space-y-1 mb-6">
@@ -142,19 +128,12 @@
                                             <div class="space-y-1 mb-6">
                                                 <label for="user_id" class="font-semibold text-gray-500">Nama
                                                     Pengguna</label>
-<<<<<<< HEAD
-                                                <select class="form-select" id="user_id" name="user_id" required>
-                                                    <option value="">Pilih Nama Pengguna</option>
-                                                    @forelse($users as $user)
-                                                        <option value="{{ $user->id }}">{{ $user->name }}
-=======
                                                 <select class="form-select" id="user_id" name="user_id">
                                                     <option value="">Pilih Nama Pengguna</option>
                                                     @forelse($users as $user)
                                                         <option value="{{ $user->id }}"
                                                             {{ old('user_id') == $user->id ? 'selected' : '' }}>
                                                             {{ $user->name }}
->>>>>>> ab0f31e578d68d5606a62027365bfb842cfc6e23
                                                         </option>
                                                     @empty
                                                         <option value="">Tidak ada pengguna tersedia</option>
@@ -165,12 +144,8 @@
                                             <div class="space-y-1 mb-6">
                                                 <label for="description" class="font-semibold text-gray-500">Deskripsi
                                                     Tugas</label>
-<<<<<<< HEAD
-                                                <textarea class="form-input" id="description" name="description" rows="4" placeholder="Deskripsi tugas" required></textarea>
-=======
                                                 <textarea class="form-input" id="description" name="description" rows="4" placeholder="Deskripsi tugas"
                                                     value="{{ old('name') }}"></textarea>
->>>>>>> ab0f31e578d68d5606a62027365bfb842cfc6e23
                                             </div>
 
                                             <div class="mb-6 flex justify-end">
@@ -209,16 +184,7 @@
                                         <h5>
                                             <a href="#" data-fc-type="modal" data-fc-target="task-detail-modal"
                                                 class="font-semibold text-lg text-black capitalize">
-<<<<<<< HEAD
-                                                @if ($task->category == 'digmar')
-                                                    Digital Marketing
-                                                @else
-                                                {{ $task->category }}
-                                                @endif
-                                            </a>
-=======
                                                 {{ $task->department->name }}
->>>>>>> ab0f31e578d68d5606a62027365bfb842cfc6e23
                                         </h5>
                                         <span
                                             class="inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-medium bg-danger/10 text-danger">Todo</span>
@@ -288,15 +254,7 @@
                                         <h5>
                                             <a href="#" data-fc-type="modal" data-fc-target="task-detail-modal"
                                                 class="font-semibold text-lg text-black capitalize">
-<<<<<<< HEAD
-                                                @if ($task->category == 'digmar')
-                                                    Digital Marketing
-                                                @else
-                                                    {{ $task->category }}
-                                                @endif
-=======
                                                 {{ $task->department->name }}
->>>>>>> ab0f31e578d68d5606a62027365bfb842cfc6e23
                                             </a>
                                         </h5>
                                         <span
@@ -304,90 +262,6 @@
                                             Progress</span>
                                     </div>
 
-<<<<<<< HEAD
-                                    <h5 class="my-2">
-                                        <a href="#" data-fc-type="modal" data-fc-target="task-detail-modal"
-                                            type="button"
-                                            class="text-base text-gray-700 dark:text-slate-400 font-medium">iOS App
-                                            home
-                                            page</a>
-                                    </h5>
-
-                                    <p class="space-x-3">
-                                        <span class="text-nowrap mb-2">
-                                            <i class="ri-briefcase-2-line text-gray-500 dark:text-gray-400"></i> iOS
-                                        </span>
-                                        <span class="text-nowrap mb-2">
-                                            <i class="ri-discuss-line text-gray-500 dark:text-gray-400"></i>
-                                            <b class="text-gray-500 dark:text-gray-400">74</b> Comments
-                                        </span>
-                                    </p> <!-- space end -->
-
-                                    <div class="mt-5">
-                                        <div class="flex items-center">
-                                            <div class="-me-3">
-                                                <a href="javascript: void(0);" data-fc-type="tooltip"
-                                                    data-fc-placement="top">
-                                                    <img src="assets/images/users/avatar-1.jpg" alt=""
-                                                        class="rounded-full h-8 w-8 hover:-translate-y-0.5 transition-all duration-200">
-                                                </a>
-                                                <div class="bg-slate-700 hidden px-2 py-1 rounded transition-all text-white opacity-0 z-50"
-                                                    role="tooltip">
-                                                    Tosha
-                                                    <div data-fc-arrow
-                                                        class="bg-slate-700 w-2.5 h-2.5 rotate-45 -z-10 rounded-[1px]">
-                                                    </div>
-                                                </div>
-                                            </div> <!-- avatar-icon end -->
-
-                                            <div class="-me-3">
-                                                <a href="javascript: void(0);" data-fc-type="tooltip"
-                                                    data-fc-placement="top">
-                                                    <img src="assets/images/users/avatar-5.jpg" alt=""
-                                                        class="rounded-full h-8 w-8 hover:-translate-y-0.5 transition-all duration-200">
-                                                </a>
-                                                <div class="bg-slate-700 hidden px-2 py-1 rounded transition-all text-white opacity-0 z-50"
-                                                    role="tooltip">
-                                                    Brain
-                                                    <div data-fc-arrow
-                                                        class="bg-slate-700 w-2.5 h-2.5 rotate-45 -z-10 rounded-[1px]">
-                                                    </div>
-                                                </div>
-                                            </div> <!-- avatar-icon end -->
-
-                                            <div class="-me-3">
-                                                <a href="javascript: void(0);" data-fc-type="tooltip"
-                                                    data-fc-placement="top">
-                                                    <div
-                                                        class="bg-success text-white font-medium flex items-center justify-center rounded-full h-8 w-8 hover:-translate-y-0.5 transition-all duration-200">
-                                                        K
-                                                    </div>
-                                                </a>
-                                                <div class="bg-slate-700 hidden px-2 py-1 rounded transition-all text-white opacity-0 z-50"
-                                                    role="tooltip">
-                                                    Hooker
-                                                    <div data-fc-arrow
-                                                        class="bg-slate-700 w-2.5 h-2.5 rotate-45 -z-10 rounded-[1px]">
-                                                    </div>
-                                                </div>
-                                            </div> <!-- avatar-icon end -->
-
-                                            <div class="-me-3">
-                                                <a href="javascript: void(0);" data-fc-type="tooltip"
-                                                    data-fc-placement="top">
-                                                    <div
-                                                        class="bg-primary text-white font-medium flex items-center justify-center rounded-full h-8 w-8 hover:-translate-y-0.5 transition-all duration-200">
-                                                        9+
-                                                    </div>
-                                                </a>
-                                                <div class="bg-slate-700 hidden px-2 py-1 rounded transition-all text-white opacity-0 z-50"
-                                                    role="tooltip">
-                                                    More +
-                                                    <div data-fc-arrow
-                                                        class="bg-slate-700 w-2.5 h-2.5 rotate-45 -z-10 rounded-[1px]">
-                                                    </div>
-                                                </div>
-=======
                                     <div class="card-body p-6">
                                         <p>
                                         <h5>
@@ -410,7 +284,6 @@
                                                     </a>
                                                     <p class="text-gray-500">{{ $task->user->name }}</p>
                                                 </div>
->>>>>>> ab0f31e578d68d5606a62027365bfb842cfc6e23
                                             </div>
                                         </div>
                                     </div>
@@ -452,15 +325,7 @@
                                         <h5>
                                             <a href="#" data-fc-type="modal" data-fc-target="task-detail-modal"
                                                 class="font-semibold text-lg text-black capitalize">
-<<<<<<< HEAD
-                                                @if ($task->category == 'digmar')
-                                                    Digital Marketing
-                                                @else
-                                                    {{ $task->category }}
-                                                @endif
-=======
                                                 {{ $task->department->name }}
->>>>>>> ab0f31e578d68d5606a62027365bfb842cfc6e23
                                             </a>
                                         </h5>
                                         <span
@@ -533,15 +398,7 @@
                                         <h5>
                                             <a href="#" data-fc-type="modal" data-fc-target="task-detail-modal"
                                                 class="font-semibold text-lg text-black capitalize">
-<<<<<<< HEAD
-                                                @if ($task->category == 'digmar')
-                                                    Digital Marketing
-                                                @else
-                                                    {{ $task->category }}
-                                                @endif
-=======
                                                 {{ $task->department->name }}
->>>>>>> ab0f31e578d68d5606a62027365bfb842cfc6e23
                                             </a>
                                         </h5>
                                         <span
@@ -676,7 +533,7 @@
                                         </div>
                                     </div> <!-- avatar-icon end -->
 
-                                    
+
                                     <div class="-me-3">
                                         <a href="javascript: void(0);" data-fc-type="tooltip"
                                             data-fc-placement="top">
@@ -734,11 +591,6 @@
                                             vulputate at, tempus viverra turpis.</p>
                                         <!-- chat-end -->
 
-<<<<<<< HEAD
-
-=======
-                                        
->>>>>>> ab0f31e578d68d5606a62027365bfb842cfc6e23
                                         <div class="mt-5">
                                             <div class="flex gap-5">
                                                 <img src="assets/images/users/avatar-4.jpg" alt=""
