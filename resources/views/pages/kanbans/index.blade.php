@@ -72,6 +72,7 @@
 
                                     <div class="flex items-center justify-between mb-10 px-2 mt-5">
                                         <img src="{{ asset('assets/images/elements/wave-right.png') }}"
+
                                             class="absolute top-0 left-0 sm:h-20" alt="">
                                         <h2 class="text-lg font-semibold text-black">Tambah
                                             Tugas Baru</h2>
@@ -93,13 +94,17 @@
 
                                             <!-- Select for Task Category -->
                                             <div class="space-y-1 mb-6 sm:w-full">
-                                                <label for="department_id" class="font-semibold text-gray-500">Kategori Tugas</label>
-                                                <select class="form-select" id="department_id" name="department_id"
-                                                    <option value="">Pilih Kategori</option>
+                                                <label for="department_id" class="font-semibold text-gray-500">Kategori
+                                                    Tugas</label>
+                                                <select class="form-select" id="department_id" name="department_id">
+                                                    <option value="">Pilih Divisi</option>
                                                     @forelse ($departments as $department)
-                                                    <option value="{{ $department->id }}">{{ $department->name }}</option>
+                                                        <option value="{{ $department->id }}"
+                                                            {{ old('department_id') == $department->id ? 'selected' : '' }}>
+                                                            {{ $department->name }}
+                                                        </option>
                                                     @empty
-                                                    <option value="">Divisi Tidak Ditemukan</option>
+                                                        <option value="">Divisi Tidak Ditemukan</option>
                                                     @endforelse
                                                 </select>
                                             </div>
@@ -108,7 +113,7 @@
                                                 <label for="name" class="font-semibold text-gray-500">Judul
                                                     Tugas</label>
                                                 <input class="form-input" type="text" id="name" name="name"
-                                                    placeholder="Masukkan judul tugas" required>
+                                                    placeholder="Masukkan judul tugas" value="{{ old('name') }}">
                                             </div>
 
                                             <div class="space-y-1 mb-6">
@@ -124,10 +129,12 @@
                                             <div class="space-y-1 mb-6">
                                                 <label for="user_id" class="font-semibold text-gray-500">Nama
                                                     Pengguna</label>
-                                                <select class="form-select" id="user_id" name="user_id" required>
+                                                <select class="form-select" id="user_id" name="user_id">
                                                     <option value="">Pilih Nama Pengguna</option>
                                                     @forelse($users as $user)
-                                                        <option value="{{ $user->id }}">{{ $user->name }}
+                                                        <option value="{{ $user->id }}"
+                                                            {{ old('user_id') == $user->id ? 'selected' : '' }}>
+                                                            {{ $user->name }}
                                                         </option>
                                                     @empty
                                                         <option value="">Tidak ada pengguna tersedia</option>
@@ -138,7 +145,8 @@
                                             <div class="space-y-1 mb-6">
                                                 <label for="description" class="font-semibold text-gray-500">Deskripsi
                                                     Tugas</label>
-                                                <textarea class="form-input" id="description" name="description" rows="4" placeholder="Deskripsi tugas" required></textarea>
+                                                <textarea class="form-input" id="description" name="description" rows="4" placeholder="Deskripsi tugas"
+                                                    value="{{ old('name') }}"></textarea>
                                             </div>
 
                                             <div class="mb-6 flex justify-end">
@@ -177,12 +185,7 @@
                                         <h5>
                                             <a href="#" data-fc-type="modal" data-fc-target="task-detail-modal"
                                                 class="font-semibold text-lg text-black capitalize">
-                                                @if ($task->category == 'digmar')
-                                                    Digital Marketing
-                                                @else
-                                                {{ $task->category }}
-                                                @endif
-                                            </a>
+                                                {{ $task->department->name }}
                                         </h5>
                                         <span
                                             class="inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-medium bg-danger/10 text-danger">Todo</span>
@@ -252,11 +255,7 @@
                                         <h5>
                                             <a href="#" data-fc-type="modal" data-fc-target="task-detail-modal"
                                                 class="font-semibold text-lg text-black capitalize">
-                                                @if ($task->category == 'digmar')
-                                                    Digital Marketing
-                                                @else
-                                                    {{ $task->category }}
-                                                @endif
+                                                {{ $task->department->name }}
                                             </a>
                                         </h5>
                                         <span
@@ -327,11 +326,7 @@
                                         <h5>
                                             <a href="#" data-fc-type="modal" data-fc-target="task-detail-modal"
                                                 class="font-semibold text-lg text-black capitalize">
-                                                @if ($task->category == 'digmar')
-                                                    Digital Marketing
-                                                @else
-                                                    {{ $task->category }}
-                                                @endif
+                                                {{ $task->department->name }}
                                             </a>
                                         </h5>
                                         <span
@@ -404,11 +399,7 @@
                                         <h5>
                                             <a href="#" data-fc-type="modal" data-fc-target="task-detail-modal"
                                                 class="font-semibold text-lg text-black capitalize">
-                                                @if ($task->category == 'digmar')
-                                                    Digital Marketing
-                                                @else
-                                                    {{ $task->category }}
-                                                @endif
+                                                {{ $task->department->name }}
                                             </a>
                                         </h5>
                                         <span
@@ -599,6 +590,7 @@
                                             metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in
                                             vulputate at, tempus viverra turpis.</p>
                                         <!-- chat-end -->
+
 
                                         <div class="mt-5">
                                             <div class="flex gap-5">
