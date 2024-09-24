@@ -86,6 +86,12 @@
     {{-- CK Editor 5 --}}
     <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/43.1.0/ckeditor5.css" />
 
+    {{-- Toast JS --}}
+    {{-- <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"> --}}
+
+    {{-- Solid Toast --}}
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
     {{-- Jquery --}}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
@@ -348,6 +354,37 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
 
     <script src="{{ asset('assets/js/pages/apps-kanban.js') }}"></script>
+
+    {{-- solid toast --}}
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+    
+            @if(session('success'))
+            Toastify({
+                text: "{{ session('success') }}", 
+                duration: 5000,
+                close: true,
+                gravity: "top",
+                position: "right",
+                backgroundColor: "#4CAF50", 
+            }).showToast();
+            @endif
+    
+            @if(session('error'))
+            Toastify({
+                text: "{{ session('error') }}", 
+                duration: 5000,
+                close: true,
+                gravity: "top",
+                position: "right",
+                backgroundColor: "#F44336", 
+            }).showToast();
+            @endif
+    
+        });
+    </script>    
 
 </body>
 

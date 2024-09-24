@@ -18,19 +18,13 @@ return new class extends Migration
             $table->string('name')->unique();
             $table->foreignId('kanban_id')->constrained()->onDelete('restrict')->onUpdate('cascade');
             $table->foreignId('user_id')->constrained()->onDelete('restrict')->onUpdate('cascade');
+            $table->foreignId('department_id')->constrained()->onDelete('restrict')->onUpdate('cascade');
             $table->enum('status', [
                 StatusTask::To_do->value,
                 StatusTask::In_progres->value,
                 StatusTask::Review->value,
                 StatusTask::Done->value,
             ])->default(StatusTask::To_do->value);
-            $table->enum('category',[
-                TaskCategory::UiUx->value,
-                TaskCategory::Digmar->value,
-                TaskCategory::Frontend->value,
-                TaskCategory::Backend->value,
-                TaskCategory::Mobile->value,
-            ]);
             $table->text('description')->nullable();
             $table->timestamps();
         });
