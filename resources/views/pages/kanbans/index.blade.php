@@ -68,13 +68,13 @@
                             class="w-full h-full fixed top-0 left-0 z-50 transition-all duration-500 hidden overflow-y-auto flex items-center justify-center">
                             <div
                                 class="-translate-y-5 fc-modal-open:translate-y-0 fc-modal-open:opacity-100 opacity-0 duration-300 ease-in-out transition-all sm:max-w-2xl sm:w-full m-3 sm:mx-auto flex flex-col bg-white shadow-sm rounded-xl">
-                                <div class="px-12 overflow-y-auto rounded-xl relative">
+                                <div class="px-6 overflow-y-auto rounded-xl relative">
 
-                                    <div class="flex items-center justify-between mb-10 px-2 mt-5">
+                                    <div class="flex items-center justify-between mb-10 mt-5">
                                         <img src="{{ asset('assets/images/elements/wave-right.png') }}"
 
                                             class="absolute top-0 left-0 sm:h-20" alt="">
-                                        <h2 class="text-lg font-semibold text-black">Tambah
+                                        <h2 class="text-2xl font-bold text-black">Tambah
                                             Tugas Baru</h2>
                                         <button id="closeModal" data-fc-dismiss
                                             class="text-gray-500 hover:text-gray-700">
