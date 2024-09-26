@@ -81,20 +81,44 @@
 
                             $.each(data.data, function(index, project) {
                                 $('#lastRecentResult').append(`
-                    <li class="menu-item">
-                        <a href="{{ route('kanban.show', '') }}/${project.id}" class="menu-link">
-                            <span class="menu-icon">
-                                <i class="ri-file-line"></i>
-                            </span>
-                            <span class="menu-text">${project.name}</span>
-                        </a>
-                    </li>
-                `);
+                                    <li class="menu-item flex justify-between items-center" data-project-id="${project.id}">
+                                        <a href="{{ route('kanban.show', '') }}/${project.id}" class="menu-link">
+                                            <span class="menu-icon">
+                                                <i class="ri-file-line"></i>
+                                            </span>
+                                            <span class="menu-text">${project.name}</span>
+                                        </a>
+                                        <button data-project-id="${project.id}" type="button" class="recentDeleteBtn inline-flex items-center bg-secondary light:bg-[#3e60d5] text-white font-semibold py-1 px-2 rounded group-hover:opacity-100 transition-opacity duration-300 ease-in-out">
+                                            <i class="ri-close-line"></i>
+                                        </button>
+                                    </li>
+                                `);
                             });
                         }
                     });
+
+                    $(document).on('click', '.recentDeleteBtn', function() {
+                        var recent_project_id = $(this).data('project-id');
+                        var parentLi = $(this).closest('li');
+
+                        $.ajax({
+                            url: "{{ route('api.destroy.recent_projects') }}",
+                            type: "DELETE",
+                            data: {
+                                user_id: {{ Auth::user()->id }},
+                                project_id: recent_project_id,
+                            },
+                            success: function(response) {
+                                parentLi.remove();
+                            },
+                            error: function(xhr) {
+                                alert('Error: ' + xhr.responseJSON.message);
+                            }
+                        });
+                    });
                 });
             </script>
+
 
             @hasrole('admin')
                 <li class="menu-title">Manajemen Umum</li>
