@@ -37,4 +37,13 @@ class RecentProjectService
 
         return $user->recent_projects()->syncWithoutDetaching([$projectId]);
     }
+
+    public function destroyUserRecentProjects($userId, $projectId)
+    {
+        $user = User::find($userId);
+        if (!$user) {
+            return response()->json(['message' => 'User tidak found'], 404);
+        }
+        return $user->recent_projects()->detach($projectId);
+    }
 }

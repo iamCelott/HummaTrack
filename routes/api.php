@@ -27,5 +27,6 @@ Route::post('/projects/search_team', [ControllersProjectController::class, 'proj
 Route::put('/tasks/{id}/update_status', [TaskController::class, 'update_status'])->name('api.update_status');
 Route::post('/recent_projects', [UserController::class, 'getUserRecentProjects'])->name('api.recent_projects');
 Route::post('/recent_projects/store', [UserController::class, 'storeUserRecentProjects'])->name('api.store.recent_projects');
+Route::delete('/recent_projects/destroy', [UserController::class, 'destroyUserRecentProjects'])->name('api.destroy.recent_projects');
 
 // Route::apiResource('/login', App\Http\Controllers\Api\Auth\LoginController::class);
