@@ -1,5 +1,10 @@
 <!-- Sidenav Menu -->
 <style>
+    .menu-item.active .menu-link {
+        color: #007bff;
+    }
+
+
     .toggle-button {
         padding: 15px 30px;
         width: 100%;
@@ -80,17 +85,23 @@
                             }
 
                             $.each(data.data, function(index, project) {
+                                var projectUrl = "{{ route('kanban.show', '') }}/" + project.id;
+                                var currentUrl = window.location.href;
+
+                                var activeClass = (currentUrl === projectUrl) ? 'active' : '';
+
                                 $('#lastRecentResult').append(`
-                    <li class="menu-item">
-                        <a href="{{ route('kanban.show', '') }}/${project.id}" class="menu-link">
-                            <span class="menu-icon">
-                                <i class="ri-file-line"></i>
-                            </span>
-                            <span class="menu-text">${project.name}</span>
-                        </a>
-                    </li>
-                `);
+                                    <li class="menu-item ${activeClass}">
+                                        <a href="${projectUrl}" class="menu-link ${activeClass}">
+                                            <span class="menu-icon">
+                                                <i class="ri-file-line"></i>
+                                            </span>
+                                            <span class="menu-text">${project.name}</span>
+                                        </a>
+                                    </li>
+                                `);
                             });
+
                         }
                     });
                 });
@@ -173,15 +184,15 @@
 
 
             {{-- <li class="menu-item">
-                <a href="javascript:void(0)" class="menu-link">
-                    <span class="menu-icon">
-                        <i class="ri-flag-2-line"></i>
-                    </span>
-                    <span class="menu-text"> Badge Items </span>
-                    <span class="badge bg-danger rounded-md">Hot</span>
-                </a>
-            </li>
-        </ul> --}}
+                    <a href="javascript:void(0)" class="menu-link">
+                        <span class="menu-icon">
+                            <i class="ri-flag-2-line"></i>
+                        </span>
+                        <span class="menu-text"> Badge Items </span>
+                        <span class="badge bg-danger rounded-md">Hot</span>
+                    </a>
+                </li>
+            </ul> --}}
 
     </div>
 </div>
