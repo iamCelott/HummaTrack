@@ -65,21 +65,17 @@
 
                         {{-- modal  --}}
                         <div id="addTask"
-                            class="w-full h-full fixed top-0 left-0 z-50 transition-all duration-500 hidden overflow-y-auto flex items-center justify-center">
+                            class="w-full h-full fixed top-0 left-0 z-50 transition-all duration-500 hidden overflow-y-auto items-center justify-center">
                             <div
-                                class="-translate-y-5 fc-modal-open:translate-y-0 fc-modal-open:opacity-100 opacity-0 duration-300 ease-in-out transition-all sm:max-w-2xl sm:w-full m-3 sm:mx-auto flex flex-col bg-white shadow-sm rounded-xl">
-                                <div class="px-12 overflow-y-auto rounded-xl relative">
+                            class="-translate-y-5 text-black fc-modal-open:translate-y-0 fc-modal-open:opacity-100 opacity-0 duration-300 ease-in-out transition-all sm:max-w-2xl sm:w-full m-3 sm:mx-auto flex flex-col bg-white shadow-sm rounded-xl relative">
+                            
 
-                                    <div class="flex items-center justify-between mb-10 px-2 mt-5">
+                                    <div class="relative flex justify-between p-6">
                                         <img src="{{ asset('assets/images/elements/wave-right.png') }}"
-
                                             class="absolute top-0 left-0 sm:h-20" alt="">
-                                        <h2 class="text-lg font-semibold text-black">Tambah
-                                            Tugas Baru</h2>
-                                        <button id="closeModal" data-fc-dismiss
-                                            class="text-gray-500 hover:text-gray-700">
-                                            <!-- Ikon X menggunakan SVG -->
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                        <h1 class="text-2xl font-bold">Tambah Proyek</h1>
+                                        <button id="closeModal" data-fc-dismiss class="text-black hover:text-gray-700">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none"
                                                 viewBox="0 0 24 24" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                     d="M6 18L18 6M6 6l12 12" />
@@ -94,9 +90,9 @@
 
                                             <!-- Select for Task Category -->
                                             <div class="space-y-1 mb-6 sm:w-full">
-                                                <label for="department_id" class="font-semibold text-gray-500">Kategori
+                                                <label for="department_id" class="font-semibold text-black">Kategori
                                                     Tugas</label>
-                                                <select class="form-select" id="department_id" name="department_id">
+                                                <select class="form-select" id="depatment_id" name="department_id"style="border: 2px solid #cacaca">
                                                     <option value="">Pilih Divisi</option>
                                                     @forelse ($departments as $department)
                                                         <option value="{{ $department->id }}"
@@ -110,26 +106,26 @@
                                             </div>
 
                                             <div class="space-y-1 mb-6 sm:w-full">
-                                                <label for="name" class="font-semibold text-gray-500">Judul
+                                                <label for="name" class="font-semibold text-black">Judul
                                                     Tugas</label>
                                                 <input class="form-input" type="text" id="name" name="name"
-                                                    placeholder="Masukkan judul tugas" value="{{ old('name') }}">
+                                                    placeholder="Masukkan judul tugas" value="{{ old('name') }}" style="border: 2px solid #cacaca">
                                             </div>
 
                                             <div class="space-y-1 mb-6">
                                                 <label for="kanban_id"
-                                                    class="font-semibold text-gray-500">Proyek</label>
+                                                    class="font-semibold text-black">Proyek</label>
                                                 <input class="form-input" type="hidden" name="kanban_id"
                                                     value="{{ $kanban->id }}">
                                                 <input class="form-input" type="text"
                                                     placeholder="{{ $kanban->name }}" value="{{ $kanban->name }}"
-                                                    disabled>
+                                                    disabled style="border: 2px solid #cacaca">
                                             </div>
 
                                             <div class="space-y-1 mb-6">
-                                                <label for="user_id" class="font-semibold text-gray-500">Nama
+                                                <label for="user_id" class="font-semibold text-black">Nama
                                                     Pengguna</label>
-                                                <select class="form-select" id="user_id" name="user_id">
+                                                <select class="form-select" id="user_id" name="user_id" style="border: 2px solid #cacaca">
                                                     <option value="">Pilih Nama Pengguna</option>
                                                     @forelse($users as $user)
                                                         <option value="{{ $user->id }}"
@@ -143,10 +139,10 @@
                                             </div>
 
                                             <div class="space-y-1 mb-6">
-                                                <label for="description" class="font-semibold text-gray-500">Deskripsi
+                                                <label for="description" class="font-semibold text-black">Deskripsi
                                                     Tugas</label>
                                                 <textarea class="form-input" id="description" name="description" rows="4" placeholder="Deskripsi tugas"
-                                                    value="{{ old('name') }}"></textarea>
+                                                    value="{{ old('name') }}" style="border: 2px solid #cacaca"></textarea>
                                             </div>
 
                                             <div class="mb-6 flex justify-end">
@@ -157,7 +153,7 @@
                                     </form>
 
                                 </div>
-                            </div>
+
                         </div>
 
 
