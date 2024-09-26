@@ -149,7 +149,7 @@
                 </li>
                 <li class="menu-item">
                     {{-- href="javascript:void(0)" data-fc-type="collapse" --}}
-                    <a href="{{ route('departements.index') }}" class="menu-link">
+                    <a href="{{ route('admin.department.index') }}" class="menu-link">
                         <span class="menu-icon">
                             <i class="ri-list-check-3"></i>
                         </span>
