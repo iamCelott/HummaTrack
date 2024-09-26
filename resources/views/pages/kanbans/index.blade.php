@@ -67,92 +67,93 @@
                         <div id="addTask"
                             class="w-full h-full fixed top-0 left-0 z-50 transition-all duration-500 hidden overflow-y-auto items-center justify-center">
                             <div
-                            class="-translate-y-5 text-black fc-modal-open:translate-y-0 fc-modal-open:opacity-100 opacity-0 duration-300 ease-in-out transition-all sm:max-w-2xl sm:w-full m-3 sm:mx-auto flex flex-col bg-white shadow-sm rounded-xl relative">
-                            
-
-                                    <div class="relative flex justify-between p-6">
-                                        <img src="{{ asset('assets/images/elements/wave-right.png') }}"
-                                            class="absolute top-0 left-0 sm:h-20" alt="">
-                                        <h1 class="text-2xl font-bold">Tambah Proyek</h1>
-                                        <button id="closeModal" data-fc-dismiss class="text-black hover:text-gray-700">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none"
-                                                viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M6 18L18 6M6 6l12 12" />
-                                            </svg>
-                                        </button>
-                                    </div>
+                                class="-translate-y-5 text-black fc-modal-open:translate-y-0 fc-modal-open:opacity-100 opacity-0 duration-300 ease-in-out transition-all sm:max-w-2xl sm:w-full m-3 sm:mx-auto flex flex-col bg-white shadow-sm rounded-xl relative">
 
 
-                                    <form class="px-6" action="{{ route('tasks.store') }}" method="POST">
-                                        @csrf
-                                        <div class="space-y-6 mb-6">
-
-                                            <!-- Select for Task Category -->
-                                            <div class="space-y-1 mb-6 sm:w-full">
-                                                <label for="department_id" class="font-semibold text-black">Kategori
-                                                    Tugas</label>
-                                                <select class="form-select" id="depatment_id" name="department_id"style="border: 2px solid #cacaca">
-                                                    <option value="">Pilih Divisi</option>
-                                                    @forelse ($departments as $department)
-                                                        <option value="{{ $department->id }}"
-                                                            {{ old('department_id') == $department->id ? 'selected' : '' }}>
-                                                            {{ $department->name }}
-                                                        </option>
-                                                    @empty
-                                                        <option value="">Divisi Tidak Ditemukan</option>
-                                                    @endforelse
-                                                </select>
-                                            </div>
-
-                                            <div class="space-y-1 mb-6 sm:w-full">
-                                                <label for="name" class="font-semibold text-black">Judul
-                                                    Tugas</label>
-                                                <input class="form-input" type="text" id="name" name="name"
-                                                    placeholder="Masukkan judul tugas" value="{{ old('name') }}" style="border: 2px solid #cacaca">
-                                            </div>
-
-                                            <div class="space-y-1 mb-6">
-                                                <label for="kanban_id"
-                                                    class="font-semibold text-black">Proyek</label>
-                                                <input class="form-input" type="hidden" name="kanban_id"
-                                                    value="{{ $kanban->id }}">
-                                                <input class="form-input" type="text"
-                                                    placeholder="{{ $kanban->name }}" value="{{ $kanban->name }}"
-                                                    disabled style="border: 2px solid #cacaca">
-                                            </div>
-
-                                            <div class="space-y-1 mb-6">
-                                                <label for="user_id" class="font-semibold text-black">Nama
-                                                    Pengguna</label>
-                                                <select class="form-select" id="user_id" name="user_id" style="border: 2px solid #cacaca">
-                                                    <option value="">Pilih Nama Pengguna</option>
-                                                    @forelse($users as $user)
-                                                        <option value="{{ $user->id }}"
-                                                            {{ old('user_id') == $user->id ? 'selected' : '' }}>
-                                                            {{ $user->name }}
-                                                        </option>
-                                                    @empty
-                                                        <option value="">Tidak ada pengguna tersedia</option>
-                                                    @endforelse
-                                                </select>
-                                            </div>
-
-                                            <div class="space-y-1 mb-6">
-                                                <label for="description" class="font-semibold text-black">Deskripsi
-                                                    Tugas</label>
-                                                <textarea class="form-input" id="description" name="description" rows="4" placeholder="Deskripsi tugas"
-                                                    value="{{ old('name') }}" style="border: 2px solid #cacaca"></textarea>
-                                            </div>
-
-                                            <div class="mb-6 flex justify-end">
-                                                <button class="btn bg-info rounded-lg text-white"
-                                                    type="submit">Konfirmasi</button>
-                                            </div>
-                                        </div>
-                                    </form>
-
+                                <div class="relative flex justify-between p-6">
+                                    <img src="{{ asset('assets/images/elements/wave-right.png') }}"
+                                        class="absolute top-0 left-0 sm:h-20" alt="">
+                                    <h1 class="text-2xl font-bold">Tambah Proyek</h1>
+                                    <button id="closeModal" data-fc-dismiss class="text-black hover:text-gray-700">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none"
+                                            viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M6 18L18 6M6 6l12 12" />
+                                        </svg>
+                                    </button>
                                 </div>
+
+
+                                <form class="px-6" action="{{ route('tasks.store') }}" method="POST">
+                                    @csrf
+                                    <div class="space-y-6 mb-6">
+
+                                        <!-- Select for Task Category -->
+                                        <div class="space-y-1 mb-6 sm:w-full">
+                                            <label for="department_id" class="font-semibold text-black">Kategori
+                                                Tugas</label>
+                                            <select class="form-select" id="depatment_id"
+                                                name="department_id"style="border: 2px solid #cacaca">
+                                                <option value="">Pilih Divisi</option>
+                                                @forelse ($departments as $department)
+                                                    <option value="{{ $department->id }}"
+                                                        {{ old('department_id') == $department->id ? 'selected' : '' }}>
+                                                        {{ $department->name }}
+                                                    </option>
+                                                @empty
+                                                    <option value="">Divisi Tidak Ditemukan</option>
+                                                @endforelse
+                                            </select>
+                                        </div>
+
+                                        <div class="space-y-1 mb-6 sm:w-full">
+                                            <label for="name" class="font-semibold text-black">Judul
+                                                Tugas</label>
+                                            <input class="form-input" type="text" id="name" name="name"
+                                                placeholder="Masukkan judul tugas" value="{{ old('name') }}"
+                                                style="border: 2px solid #cacaca">
+                                        </div>
+
+                                        <div class="space-y-1 mb-6">
+                                            <label for="kanban_id" class="font-semibold text-black">Proyek</label>
+                                            <input class="form-input" type="hidden" name="kanban_id"
+                                                value="{{ $kanban->id }}">
+                                            <input class="form-input" type="text" placeholder="{{ $kanban->name }}"
+                                                value="{{ $kanban->name }}" disabled style="border: 2px solid #cacaca">
+                                        </div>
+
+                                        <div class="space-y-1 mb-6">
+                                            <label for="user_id" class="font-semibold text-black">Nama
+                                                Pengguna</label>
+                                            <select class="form-select" id="user_id" name="user_id"
+                                                style="border: 2px solid #cacaca">
+                                                <option value="">Pilih Nama Pengguna</option>
+                                                @forelse($users as $user)
+                                                    <option value="{{ $user->id }}"
+                                                        {{ old('user_id') == $user->id ? 'selected' : '' }}>
+                                                        {{ $user->name }}
+                                                    </option>
+                                                @empty
+                                                    <option value="">Tidak ada pengguna tersedia</option>
+                                                @endforelse
+                                            </select>
+                                        </div>
+
+                                        <div class="space-y-1 mb-6">
+                                            <label for="description" class="font-semibold text-black">Deskripsi
+                                                Tugas</label>
+                                            <textarea class="form-input" id="description" name="description" rows="4" placeholder="Deskripsi tugas"
+                                                value="{{ old('name') }}" style="border: 2px solid #cacaca"></textarea>
+                                        </div>
+
+                                        <div class="mb-6 flex justify-end">
+                                            <button class="btn bg-info rounded-lg text-white"
+                                                type="submit">Konfirmasi</button>
+                                        </div>
+                                    </div>
+                                </form>
+
+                            </div>
 
                         </div>
 
@@ -175,32 +176,32 @@
                         id="to_do">
 
                         @foreach ($to_do as $task)
-                            <div class="card" data-id="{{ $task->id }}" style="border-radius: 18px">
+                            <div class="card rounded-xl" data-id="{{ $task->id }}">
                                 <div class="grid grid-rows-[auto,1fr]">
                                     <div class="card-header flex justify-between items-center">
                                         <h5>
                                             <a href="#" data-fc-type="modal" data-fc-target="task-detail-modal"
-                                                class="font-semibold text-lg text-black capitalize">
+                                                class="font-bold text-xl text-black capitalize">
                                                 {{ $task->department->name }}
                                         </h5>
                                         <span
                                             class="inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-medium bg-danger/10 text-danger">Todo</span>
                                     </div>
 
-                                    <div class="card-body p-6">
+                                    <div class="card-body px-6 py-3">
                                         <p>
-                                        <h5>
+                                        <h5 class="mb-1">
                                             <a href="#" data-fc-type="modal" data-fc-target="task-detail-modal"
-                                                class="font-semibold text-lg text-black">
+                                                class="font-bold text-lg text-black">
                                                 {{ $task->name }}
                                             </a>
                                         </h5>
-                                        <h5 class="text-gray-500">
+                                        <h5 class="text-gray-500 mb-3">
                                             {{ Str::limit($task->description, 100, '...') }}
                                         </h5>
                                         </p>
 
-                                        <div class="mt-5">
+                                        <div class="">
                                             <div class="grid items-center">
                                                 <div
                                                     class="flex items-center gap-2 hover:-translate-y-0.5 transition-all duration-200">
@@ -213,18 +214,19 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="card-footer grid items-center gap-4 p-6">
+                                    <div class="card-footer grid items-center gap-4 px-6 py-3 border-t-2">
                                         <div class="flex justify-start gap-4">
-                                            <div class="">
-                                                <i class="ri-calendar-line" style="margin-right: 8px"></i>
+                                            <div class="flex gap-1.5 items-center">
+                                                <i>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                                        width="24" height="24" fill="rgb(96 165 250)">
+                                                        <path
+                                                            d="M9 1V3H15V1H17V3H21C21.5523 3 22 3.44772 22 4V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3H7V1H9ZM20 11H4V19H20V11ZM7 5H4V9H20V5H17V7H15V5H9V7H7V5Z">
+                                                        </path>
+                                                    </svg>
+                                                </i>
                                                 <span class="text-gray-500">
                                                     {{ \Carbon\Carbon::parse($task->created_at)->translatedFormat('d F Y') }}
-                                                </span>
-                                            </div>
-                                            <div class="">
-                                                <i class="ri-file-line" style="margin-right: 8px"></i>
-                                                <span class="text-gray-500">
-                                                    1 / 10 Selesai
                                                 </span>
                                             </div>
                                         </div>
@@ -245,33 +247,33 @@
                         id="in_progress">
 
                         @foreach ($in_progress as $task)
-                            <div class="card" data-id="{{ $task->id }}" style="border-radius: 18px">
+                            <div class="card rounded-xl" data-id="{{ $task->id }}">
                                 <div class="grid grid-rows-[auto,1fr]">
                                     <div class="card-header flex justify-between items-center">
                                         <h5>
                                             <a href="#" data-fc-type="modal" data-fc-target="task-detail-modal"
-                                                class="font-semibold text-lg text-black capitalize">
+                                                class="font-bold text-xl text-black capitalize">
                                                 {{ $task->department->name }}
-                                            </a>
                                         </h5>
                                         <span
                                             class="inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-medium bg-warning/10 text-warning">In
                                             Progress</span>
                                     </div>
 
-                                    <div class="card-body p-6">
+                                    <div class="card-body px-6 py-3">
                                         <p>
-                                        <h5>
+                                        <h5 class="mb-1">
                                             <a href="#" data-fc-type="modal" data-fc-target="task-detail-modal"
-                                                class="font-semibold text-lg text-black">
+                                                class="font-bold text-lg text-black">
                                                 {{ $task->name }}
                                             </a>
                                         </h5>
-                                        <h5 class="text-gray-500">
+                                        <h5 class="text-gray-500 mb-3">
                                             {{ Str::limit($task->description, 100, '...') }}
                                         </h5>
                                         </p>
-                                        <div class="mt-5">
+
+                                        <div class="">
                                             <div class="grid items-center">
                                                 <div
                                                     class="flex items-center gap-2 hover:-translate-y-0.5 transition-all duration-200">
@@ -284,18 +286,19 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="card-footer grid items-center gap-4 p-6">
+                                    <div class="card-footer grid items-center gap-4 px-6 py-3 border-t-2">
                                         <div class="flex justify-start gap-4">
-                                            <div class="">
-                                                <i class="ri-calendar-line" style="margin-right: 8px"></i>
+                                            <div class="flex gap-1.5 items-center">
+                                                <i>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                                        width="24" height="24" fill="rgb(96 165 250)">
+                                                        <path
+                                                            d="M9 1V3H15V1H17V3H21C21.5523 3 22 3.44772 22 4V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3H7V1H9ZM20 11H4V19H20V11ZM7 5H4V9H20V5H17V7H15V5H9V7H7V5Z">
+                                                        </path>
+                                                    </svg>
+                                                </i>
                                                 <span class="text-gray-500">
                                                     {{ \Carbon\Carbon::parse($task->created_at)->translatedFormat('d F Y') }}
-                                                </span>
-                                            </div>
-                                            <div class="">
-                                                <i class="ri-file-line" style="margin-right: 8px"></i>
-                                                <span class="text-gray-500">
-                                                    1 / 10 Selesai
                                                 </span>
                                             </div>
                                         </div>
@@ -316,33 +319,32 @@
                         id="review">
 
                         @foreach ($review as $task)
-                            <div class="card" data-id="{{ $task->id }}" style="border-radius: 18px">
+                            <div class="card rounded-xl" data-id="{{ $task->id }}">
                                 <div class="grid grid-rows-[auto,1fr]">
                                     <div class="card-header flex justify-between items-center">
                                         <h5>
                                             <a href="#" data-fc-type="modal" data-fc-target="task-detail-modal"
-                                                class="font-semibold text-lg text-black capitalize">
+                                                class="font-bold text-xl text-black capitalize">
                                                 {{ $task->department->name }}
-                                            </a>
                                         </h5>
                                         <span
                                             class="inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-medium bg-info/10 text-info">Review</span>
                                     </div>
 
-                                    <div class="card-body p-6">
+                                    <div class="card-body px-6 py-3">
                                         <p>
-                                        <h5>
+                                        <h5 class="mb-1">
                                             <a href="#" data-fc-type="modal" data-fc-target="task-detail-modal"
-                                                class="font-semibold text-lg text-black">
+                                                class="font-bold text-lg text-black">
                                                 {{ $task->name }}
                                             </a>
                                         </h5>
-                                        <h5 class="text-gray-500">
+                                        <h5 class="text-gray-500 mb-3">
                                             {{ Str::limit($task->description, 100, '...') }}
                                         </h5>
                                         </p>
 
-                                        <div class="mt-5">
+                                        <div class="">
                                             <div class="grid items-center">
                                                 <div
                                                     class="flex items-center gap-2 hover:-translate-y-0.5 transition-all duration-200">
@@ -355,25 +357,25 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="card-footer grid items-center gap-4 p-6">
+                                    <div class="card-footer grid items-center gap-4 px-6 py-3 border-t-2">
                                         <div class="flex justify-start gap-4">
-                                            <div class="">
-                                                <i class="ri-calendar-line" style="margin-right: 8px"></i>
+                                            <div class="flex gap-1.5 items-center">
+                                                <i>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                                        width="24" height="24" fill="rgb(96 165 250)">
+                                                        <path
+                                                            d="M9 1V3H15V1H17V3H21C21.5523 3 22 3.44772 22 4V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3H7V1H9ZM20 11H4V19H20V11ZM7 5H4V9H20V5H17V7H15V5H9V7H7V5Z">
+                                                        </path>
+                                                    </svg>
+                                                </i>
                                                 <span class="text-gray-500">
                                                     {{ \Carbon\Carbon::parse($task->created_at)->translatedFormat('d F Y') }}
-                                                </span>
-                                            </div>
-                                            <div class="">
-                                                <i class="ri-file-line" style="margin-right: 8px"></i>
-                                                <span class="text-gray-500">
-                                                    1 / 10 Selesai
                                                 </span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            {{-- {{ dd($todo) }} --}}
                         @endforeach
 
                     </div> <!-- end company-list-1-->
@@ -389,33 +391,32 @@
                         id="done">
 
                         @foreach ($done as $task)
-                            <div class="card" data-id="{{ $task->id }}" style="border-radius: 18px">
+                            <div class="card rounded-xl" data-id="{{ $task->id }}">
                                 <div class="grid grid-rows-[auto,1fr]">
                                     <div class="card-header flex justify-between items-center">
                                         <h5>
                                             <a href="#" data-fc-type="modal" data-fc-target="task-detail-modal"
-                                                class="font-semibold text-lg text-black capitalize">
+                                                class="font-bold text-xl text-black capitalize">
                                                 {{ $task->department->name }}
-                                            </a>
                                         </h5>
                                         <span
                                             class="inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-medium bg-success/10 text-success">Completed</span>
                                     </div>
 
-                                    <div class="card-body p-6">
+                                    <div class="card-body px-6 py-3">
                                         <p>
-                                        <h5>
+                                        <h5 class="mb-1">
                                             <a href="#" data-fc-type="modal" data-fc-target="task-detail-modal"
-                                                class="font-semibold text-lg text-black">
+                                                class="font-bold text-lg text-black">
                                                 {{ $task->name }}
                                             </a>
                                         </h5>
-                                        <h5 class="text-gray-500">
+                                        <h5 class="text-gray-500 mb-3">
                                             {{ Str::limit($task->description, 100, '...') }}
                                         </h5>
                                         </p>
 
-                                        <div class="mt-5">
+                                        <div class="">
                                             <div class="grid items-center">
                                                 <div
                                                     class="flex items-center gap-2 hover:-translate-y-0.5 transition-all duration-200">
@@ -428,18 +429,19 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="card-footer grid items-center gap-4 p-6">
+                                    <div class="card-footer grid items-center gap-4 px-6 py-3 border-t-2">
                                         <div class="flex justify-start gap-4">
-                                            <div class="">
-                                                <i class="ri-calendar-line" style="margin-right: 8px"></i>
+                                            <div class="flex gap-1.5 items-center">
+                                                <i>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                                        width="24" height="24" fill="rgb(96 165 250)">
+                                                        <path
+                                                            d="M9 1V3H15V1H17V3H21C21.5523 3 22 3.44772 22 4V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3H7V1H9ZM20 11H4V19H20V11ZM7 5H4V9H20V5H17V7H15V5H9V7H7V5Z">
+                                                        </path>
+                                                    </svg>
+                                                </i>
                                                 <span class="text-gray-500">
                                                     {{ \Carbon\Carbon::parse($task->created_at)->translatedFormat('d F Y') }}
-                                                </span>
-                                            </div>
-                                            <div class="">
-                                                <i class="ri-file-line" style="margin-right: 8px"></i>
-                                                <span class="text-gray-500">
-                                                    1 / 10 Selesai
                                                 </span>
                                             </div>
                                         </div>
