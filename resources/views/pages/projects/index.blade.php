@@ -159,12 +159,12 @@
                                                 }
                                             }
                                         @endphp
-                                        <span>Project Selesai {{ $doneCount }}/{{ $project->kanban && $project->kanban->task ? $project->kanban->task->count() : "0" }}</span>
+                                        <span>Project Selesai
+                                            {{ $doneCount }}/{{ $project->kanban && $project->kanban->task ? $project->kanban->task->count() : '0' }}</span>
                                     </div>
 
-                                    {{-- data-fc-target="editProject" type="button" data-fc-type="modal" --}}
                                     <a href="{{ route('kanban.show', $project->id) }}"
-                                        class="btn bg-info text-white rounded-lg">
+                                        data-project-id="{{ $project->id }}" class="openKanbanBtn btn bg-info text-white rounded-lg">
                                         Kanban
                                     </a>
                                 </div>
@@ -174,6 +174,26 @@
                     @empty
                         <h1 class="font-bold text-lg">Project {{ request('search') }} tidak ditemukan.</h1>
                     @endforelse
+
+                    <script>
+                        $(document).ready(function() {
+                            $(document).on('click', '.openKanbanBtn', function() {
+                                var projectId = $(this).data('project-id');
+
+                                $.ajax({
+                                    url: "{{ route('api.store.recent_projects') }}",
+                                    type: 'POST',
+                                    data: {
+                                        user_id: {{ Auth::user()->id }},
+                                        project_id: projectId
+                                    },
+                                    error: function(xhr) {
+                                        alert('Error: ' + xhr.responseJSON.message);
+                                    }
+                                })
+                            });
+                        });
+                    </script>
                 </div>
             </div>
         @else

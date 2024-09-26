@@ -46,6 +46,8 @@ class Project extends Model
 
     public function recent_projects()
     {
-        return $this->belongsToMany(User::class, 'project_id', 'user_id', 'recent_projects');
+        return $this->belongsToMany(Project::class, 'recent_projects', 'project_id', 'user_id')
+            ->withPivot('opened_at')
+            ->orderBy('opened_at', 'desc');
     }
 }

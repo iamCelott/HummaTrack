@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('recent_projects', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('restrict')->onUpdate('cascade');
-            $table->foreignId('project_id')->constrained()->onDelete('restrict')->onUpdate('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('project_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->timestamp('opened_at');
             $table->timestamps();
         });
