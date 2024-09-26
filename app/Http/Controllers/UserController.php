@@ -24,11 +24,18 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-
-
         $users =  $this->user->search($request);
-
         return view('pages.users.index', compact('users'));
+    }
+
+    public function getUserRecentProjects(Request $request)
+    {
+        $userId = $request->id;
+        $recent_projects = $this->service->getUserRecentProject($userId);
+        return response()->json([
+            'status' => true,
+            'data' => $recent_projects,
+        ]);
     }
 
     /**

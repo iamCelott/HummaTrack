@@ -55,5 +55,11 @@ class User extends Authenticatable
         return $this->belongsToMany(Team::class, 'team_users', 'user_id', 'team_id')
             ->withTimestamps();
     }
-    
+
+    public function recent_projects()
+    {
+        return $this->belongsToMany(Project::class, 'recent_projects', 'user_id', 'project_id')
+            ->withPivot('created_at')
+            ->orderBy('pivot_created_at', 'desc');
+    }
 }

@@ -3,6 +3,7 @@
 use App\Http\Controllers\Prefix\Admin\TeamController as AdminTeamController;
 use App\Http\Controllers\Prefix\Member\TeamController as MemberTeamController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\RecentProjectController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth')->group(function () {

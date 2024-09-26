@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
     {{-- <style>
         .description {
             display: -webkit-box;
@@ -150,13 +151,15 @@
 
                                         @php
                                             $doneCount = 0;
-                                            foreach ($project->kanban->task as $task) {
-                                                if ($task->status === 'done') {
-                                                    $doneCount++;
+                                            if ($project->kanban && $project->kanban->task) {
+                                                foreach ($project->kanban->task as $task) {
+                                                    if ($task->status === 'done') {
+                                                        $doneCount++;
+                                                    }
                                                 }
                                             }
                                         @endphp
-                                        <span>Project Selesai {{ $doneCount }}/{{ $project->kanban->task->count() }}</span>
+                                        <span>Project Selesai {{ $doneCount }}/{{ $project->kanban && $project->kanban->task ? $project->kanban->task->count() : "0" }}</span>
                                     </div>
 
                                     {{-- data-fc-target="editProject" type="button" data-fc-type="modal" --}}
