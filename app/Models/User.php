@@ -59,7 +59,7 @@ class User extends Authenticatable
     public function recent_projects()
     {
         return $this->belongsToMany(Project::class, 'recent_projects', 'user_id', 'project_id')
-            ->withPivot('created_at')
-            ->orderBy('pivot_created_at', 'desc');
-    }
+            ->withPivot('opened_at')
+            ->orderBy('opened_at', 'desc');
+    }   
 }
