@@ -25,16 +25,14 @@ class DepartmentRequest extends FormRequest
     {
             return [
                 'name' => ['required', 'string', Rule::unique('departments', 'name')->ignore($this->route('department'))],
-                'description' => 'nullable|string',
             ];
     }
 
     public function messages()
     {
         return [
-            'name.required' => 'Nama divisi wajib diisi.',
-            'name.unique' => 'Nama divisi sudah digunakan, silakan pilih nama lain.',
-            'description.string' => 'Deskripsi harus berupa teks.',
+            'name.required' => 'Judul kategori tugas wajib diisi.',
+            'name.unique' => 'Judul kategori tugas sudah digunakan, silakan pilih nama lain.',
         ];
     }
 }

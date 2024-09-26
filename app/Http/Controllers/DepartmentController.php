@@ -27,7 +27,7 @@ class DepartmentController extends Controller
     public function index(Request $request): View
     {
         $departments = $this->department->search($request);
-        return view('pages.department.index',compact('departments'));
+        return view('pages.department.index', compact('departments'));
     }
 
     /**
@@ -41,10 +41,12 @@ class DepartmentController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(DepartmentRequest  $request)
     {
-        $this->department->store($request->all());
-        return redirect()->route('admin.department.index')->with('success', 'Berhasil menambah divisi baru.');
+        $this->department->store([
+            'name' => ucwords($request->name),
+        ]);
+        return redirect()->route('admin.department.index')->with('success', 'Berhasil menambah kategori tugas baru.');
     }
 
     /**
@@ -69,7 +71,7 @@ class DepartmentController extends Controller
     public function update(DepartmentRequest $request, Department $department)
     {
         $this->department->update($department->id, $request->validated());
-        return redirect()->route('admin.department.index')->with('success', 'Berhasil mengupdate divisi baru.');
+        return redirect()->route('admin.department.index')->with('success', 'Berhasil mengupdate kategori tugas baru.');
         //
     }
 
@@ -78,7 +80,11 @@ class DepartmentController extends Controller
      */
     public function destroy(Department $department)
     {
-        $this->department->delete($department->id);
-        return redirect()->back()->with('success', 'Berhasil menghapus divisi.');
+        try {
+            $this->department->delete($department->id);
+            return back()->with('success', 'Berhasil menghapus kategori tugas.');
+        } catch (\Exception $e) {
+            return back()->with("error", 'Kateogori ini tidak dapat dihapus karena masih terpakai');
+        }
     }
 }
