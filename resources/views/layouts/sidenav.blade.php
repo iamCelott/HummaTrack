@@ -171,17 +171,16 @@
                         <span class="menu-text">Kelompok</span>
                     </a>
                 </li>
+                <li class="menu-item">
+                    {{-- href="javascript:void(0)" data-fc-type="collapse" --}}
+                    <a href="{{ route('admin.department.index') }}" class="menu-link">
+                        <span class="menu-icon">
+                            <i class="ri-list-check-3"></i>
+                        </span>
+                        <span class="menu-text">Kategori Tugas</span>
+                    </a>
+                </li>
             @endhasrole
-
-            <li class="menu-item">
-                {{-- href="javascript:void(0)" data-fc-type="collapse" --}}
-                <a href="{{ route('departements.index') }}" class="menu-link">
-                    <span class="menu-icon">
-                        <i class="ri-home-office-line"></i>
-                    </span>
-                    <span class="menu-text">Divisi</span>
-                </a>
-            </li>
 
             @hasrole('member')
                 <li class="menu-item">
