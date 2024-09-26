@@ -15,19 +15,15 @@ class DepartmentSeeder extends Seeder
     {
         Department::create([
             'name' => 'Website',
-            'description'=>'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut, sunt?',
         ]);
         Department::create([
             'name' => 'UI/UX',
-            'description'=>'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut, sunt? Lorem ipsum dolor sit amet consectetur adipisicing elit. In, dolore?',
         ]);
         Department::create([
             'name' => 'Digmar',
-            'description'=>'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut, sunt?amet consectetur adipisicing elit. Ut, sunt?amet consectetur adipisicing elit. Ut, sunt?',
         ]);
         Department::create([
             'name' => 'Mobile',
-            'description'=>'Lorem ipsum dolor,Lorem ipsum dolor,Lorem ipsum dolor,Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut, sunt?amet consectetur adipisicing elit. Ut, sunt?amet consectetur adipisicing elit. Ut, sunt?',
         ]);
     }
 }

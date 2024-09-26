@@ -36,7 +36,7 @@ class DepartmentRepository extends BaseRepository implements DepartmentInterface
         $search = $request->search;
         return $this->model->query()->when($search, function ($query) use ($search) {
             $query->whereLike('name', '%' . $search . '%');
-        })->latest()->paginate(10);
+        })->orderBy('name','ASC')->paginate(6);
     }
 
     /**
@@ -55,16 +55,6 @@ class DepartmentRepository extends BaseRepository implements DepartmentInterface
     {
         return $this->model->query()->get();
     }
-    public function project_search_team(Request $request): mixed
-    {
-        $search = $request->search;
-
-        return $this->model->with(['users', 'create_by', 'leader'])
-            ->when($search, function ($query) use ($search) {
-                $query->where('name', 'like', '%' . $search . '%');
-            })->where('created_by', $request->id)->latest()->get();
-    }
-
     /**
      * Method show
      *
@@ -97,6 +87,7 @@ class DepartmentRepository extends BaseRepository implements DepartmentInterface
      */
     public function delete(mixed $id): mixed
     {
-        return $this->model->query()->findOrFail($id)->delete();
+         return $this->model->query()->findOrFail($id)->delete();
+
     }
 }

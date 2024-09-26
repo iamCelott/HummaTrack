@@ -23,7 +23,7 @@
             color: "light",
         },
         sidenav: {
-            view: "default"  
+            view: "default"
         },
     };
 
@@ -32,12 +32,12 @@
     config = Object.assign(JSON.parse(JSON.stringify(defaultConfig)), {});
 
     config.direction = html.getAttribute("dir") || defaultConfig.direction;
-    config.theme = html.getAttribute("data-mode") || defaultConfig.theme;
+    config.theme =  defaultConfig.theme;
     config.layout.width = html.getAttribute("data-layout-width") || defaultConfig.layout.width;
     config.layout.position = html.getAttribute("data-layout-position") || defaultConfig.layout.position;
-    config.topbar.color = html.getAttribute("data-topbar-color") || defaultConfig.topbar.color;
-    config.menu.color = html.getAttribute("data-menu-color") || defaultConfig.menu.color;
-    config.sidenav.view = html.getAttribute("data-sidenav-view") || defaultConfig.sidenav.view;
+    config.topbar.color =  defaultConfig.topbar.color;
+    config.menu.color = "light";
+    config.sidenav.view = defaultConfig.sidenav.view;
 
     window.defaultConfig = JSON.parse(JSON.stringify(config));
 

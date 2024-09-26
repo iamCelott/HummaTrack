@@ -383,6 +383,19 @@
             @endif
 
         });
+
+        @if ($errors->any())
+            @foreach ($errors->all() as $error)
+                Toastify({
+                    text: "{{ $error }}",
+                    duration: 4000,
+                    close: true,
+                    gravity: "top",
+                    position: "right",
+                    backgroundColor: "#F44336",
+                }).showToast();
+            @endforeach
+        @endif
     </script>
 
 </body>
