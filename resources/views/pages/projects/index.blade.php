@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
     {{-- <style>
         .description {
             display: -webkit-box;
@@ -72,7 +73,7 @@
                             </div>
 
 
-                            <div class="relative card-body p-6 py-3 flex-grow bg-white w-3/4 leading-1 ">
+                            <div class="relative card-body p-6   py-3 flex-grow bg-white w-3/4 leading-1 ">
                                 <h5 class="text-slate-900 text-xl dark:black lg:text-2xl font-semibold mb-2">
                                     {{ $project->subtitle }}
                                 </h5>
@@ -124,7 +125,7 @@
                                 </div>
                             </div>
 
-                            <div class="flex items-center p-6 pt-2">
+                            <div class="flex items-center px-6 py-3 pt-2">
                                 @forelse ($project->teams->flatMap->users as $user)
                                     <div class="-me-2">
                                         <img src="{{ ImageProfileHelper::getPhotoProfile($user->photo_profile) }}"
@@ -134,7 +135,7 @@
                                 @endforelse
                             </div>
 
-                            <div class="card-footer p-4 py-3 border-t border-[#cacaca] bg-white rounded-b-xl">
+                            <div class="card-footer p-3 border-t border-[#cacaca] bg-white rounded-b-xl">
                                 <div class="flex items-center justify-between w-full px-2">
                                     <div class="flex items-center gap-1">
                                         <i class="ri-calendar-line text-info text-lg me-2"></i>
@@ -150,13 +151,15 @@
 
                                         @php
                                             $doneCount = 0;
-                                            foreach ($project->kanban->task as $task) {
-                                                if ($task->status === 'done') {
-                                                    $doneCount++;
+                                            if ($project->kanban && $project->kanban->task) {
+                                                foreach ($project->kanban->task as $task) {
+                                                    if ($task->status === 'done') {
+                                                        $doneCount++;
+                                                    }
                                                 }
                                             }
                                         @endphp
-                                        <span>Project Selesai {{ $doneCount }}/{{ $project->kanban->task->count() }}</span>
+                                        <span>Project Selesai {{ $doneCount }}/{{ $project->kanban && $project->kanban->task ? $project->kanban->task->count() : "0" }}</span>
                                     </div>
 
                                     {{-- data-fc-target="editProject" type="button" data-fc-type="modal" --}}

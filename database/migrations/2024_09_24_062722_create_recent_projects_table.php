@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('teams', function (Blueprint $table) {
+        Schema::create('recent_projects', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->foreignId('created_by')->constrained('users')->onDelete('restrict')->onUpdate('cascade');
-            $table->string('unique_code')->unique();
+            $table->foreignId('user_id')->constrained()->onDelete('restrict')->onUpdate('cascade');
+            $table->foreignId('project_id')->constrained()->onDelete('restrict')->onUpdate('cascade');
+            $table->timestamp('opened_at');
             $table->timestamps();
         });
     }
@@ -24,7 +24,7 @@ return new class extends Migration
      * Reverse the migrations.
      */
     public function down(): void
-    {   
-        Schema::dropIfExists('teams');
+    {
+        Schema::dropIfExists('recent_projects');
     }
 };

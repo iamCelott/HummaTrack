@@ -1,5 +1,4 @@
 <!-- Sidenav Menu -->
-
 <style>
     .toggle-button {
         padding: 15px 30px;
@@ -63,25 +62,36 @@
         <ul class="menu" data-fc-type="accordion">
             <li class="menu-title mt-4">Terakhir Dibuka</li>
 
-            <li class="menu-item">
-                {{-- href="javascript:void(0)" data-fc-type="collapse" --}}
-                <a href="{{ route('dashboard') }}" class="menu-link">
-                    <span class="menu-icon">
-                        <i class="ri-file-line"></i>
-                    </span>
-                    <span class="menu-text"> Android </span>
-                </a>
-            </li>
+            <div class="menu" id="lastRecentResult"></div>
 
-            <li class="menu-item mb-8">
-                {{-- href="javascript:void(0)" data-fc-type="collapse" --}}
-                <a href="{{ route('dashboard') }}" class="menu-link">
-                    <span class="menu-icon">
-                        <i class="ri-file-line"></i>
-                    </span>
-                    <span class="menu-text"> Web Design </span>
-                </a>
-            </li>
+            <script>
+                $(document).ready(function() {
+                    $.ajax({
+                        url: "{{ route('api.recent_projects') }}",
+                        type: "POST",
+                        data: {
+                            id: {{ Auth::user()->id }},
+                        },
+                        success: function(data) {
+                            $('#lastRecentResult').empty();
+
+                            $.each(data.data, function(index, project) {
+                                console.log(project);
+                                $('#lastRecentResult').append(`
+                    <li class="menu-item">
+                        <a href="{{ route('projects.show', '') }}/${project.id}" class="menu-link">
+                            <span class="menu-icon">
+                                <i class="ri-file-line"></i>
+                            </span>
+                            <span class="menu-text">${project.name}</span>
+                        </a>
+                    </li>
+                `);
+                            });
+                        }
+                    });
+                });
+            </script>
 
             @hasrole('admin')
                 <li class="menu-title">Manajemen Umum</li>
@@ -179,7 +189,6 @@
     class="w-full h-full fixed top-0 left-0 z-50 transition-all duration-500 hidden overflow-y-auto items-center justify-center">
     <div
         class="-translate-y-5 text-black fc-modal-open:translate-y-0 fc-modal-open:opacity-100 opacity-0 duration-300 ease-in-out transition-all sm:max-w-2xl sm:w-full m-3 sm:mx-auto flex flex-col bg-white shadow-sm rounded-xl relative">
-
         <div class="relative flex justify-between p-6">
             <img src="{{ asset('assets/images/elements/wave-right.png') }}" class="absolute top-0 left-0 sm:h-20"
                 alt="">
@@ -551,4 +560,3 @@
 
 
 <!-- Sidenav Menu End  -->
-    

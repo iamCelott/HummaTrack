@@ -97,8 +97,8 @@
 
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body>
@@ -106,7 +106,7 @@
     <div class="flex wrapper">
 
         <!-- Sidenav Menu -->
-        @include('layouts.sidenav')
+        @include('layouts.sidenav') {{-- Gunakan operator null coalescing untuk mencegah error --}}
         <!-- Sidenav Menu End  -->
 
         <!-- ============================================================== -->
@@ -119,7 +119,7 @@
             @include('layouts.topbar')
             <!-- Topbar End -->
 
-           @yield('banner')
+            @yield('banner')
             <main class="p-3 sm:p-6 md:px-12 md:py-6">
                 @yield('content')
             </main>
@@ -356,34 +356,34 @@
 
     {{-- solid toast --}}
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-    
+
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-    
-            @if(session('success'))
-            Toastify({
-                text: "{{ session('success') }}", 
-                duration: 2000,
-                close: true,
-                gravity: "top",
-                position: "right",
-                backgroundColor: "#4CAF50", 
-            }).showToast();
+        document.addEventListener("DOMContentLoaded", function() {
+
+            @if (session('success'))
+                Toastify({
+                    text: "{{ session('success') }}",
+                    duration: 2000,
+                    close: true,
+                    gravity: "top",
+                    position: "right",
+                    backgroundColor: "#4CAF50",
+                }).showToast();
             @endif
-    
-            @if(session('error'))
-            Toastify({
-                text: "{{ session('error') }}", 
-                duration: 2000,
-                close: true,
-                gravity: "top",
-                position: "right",
-                backgroundColor: "#F44336", 
-            }).showToast();
+
+            @if (session('error'))
+                Toastify({
+                    text: "{{ session('error') }}",
+                    duration: 2000,
+                    close: true,
+                    gravity: "top",
+                    position: "right",
+                    backgroundColor: "#F44336",
+                }).showToast();
             @endif
-    
+
         });
-    </script>    
+    </script>
 
 </body>
 
