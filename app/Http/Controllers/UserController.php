@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Contracts\Interfaces\UserInterface;
 use App\Http\Requests\UserRequest;
 use App\Models\User;
+use App\Services\RecentProjectService;
 use App\Services\UserService;
 use Illuminate\Http\Request;
 
@@ -13,11 +14,13 @@ class UserController extends Controller
     private UserInterface $user;
     protected $userRepository;
     private UserService $service;
+    private RecentProjectService $recent_project_service;
 
-    public function __construct(UserInterface $user, UserService $service)
+    public function __construct(UserInterface $user, UserService $service, RecentProjectService $recent_project_service)
     {
         $this->user = $user;
         $this->service = $service;
+        $this->recent_project_service = $recent_project_service;
     }
     /**
      * Display a listing of the resource.
@@ -31,7 +34,18 @@ class UserController extends Controller
     public function getUserRecentProjects(Request $request)
     {
         $userId = $request->id;
-        $recent_projects = $this->service->getUserRecentProject($userId);
+        $recent_projects = $this->recent_project_service->getUserRecentProject($userId);
+        return response()->json([
+            'status' => true,
+            'data' => $recent_projects,
+        ]);
+    }
+
+    public function storeUserRecentProjects(Request $request)
+    {
+        $projectId = $request->project_id;
+        $userId = $request->user_id;
+        $recent_projects = $this->recent_project_service->storeUserRecentProject($userId, $projectId);
         return response()->json([
             'status' => true,
             'data' => $recent_projects,

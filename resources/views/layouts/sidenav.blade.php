@@ -60,7 +60,7 @@
     <!--- Menu -->
     <div class="scrollbar" data-simplebar>
         <ul class="menu" data-fc-type="accordion">
-            <li class="menu-title mt-4">Terakhir Dibuka</li>
+            <li class="menu-title mt-4 hidden" id="lastRecentLabel">Terakhir Dibuka</li>
 
             <div class="menu" id="lastRecentResult"></div>
 
@@ -75,11 +75,14 @@
                         success: function(data) {
                             $('#lastRecentResult').empty();
 
+                            if (data.data.length > 0) {
+                                $('#lastRecentLabel').removeClass('hidden');
+                            }
+
                             $.each(data.data, function(index, project) {
-                                console.log(project);
                                 $('#lastRecentResult').append(`
                     <li class="menu-item">
-                        <a href="{{ route('projects.show', '') }}/${project.id}" class="menu-link">
+                        <a href="{{ route('kanban.show', '') }}/${project.id}" class="menu-link">
                             <span class="menu-icon">
                                 <i class="ri-file-line"></i>
                             </span>
