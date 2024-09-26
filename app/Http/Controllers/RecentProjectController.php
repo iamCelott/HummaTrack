@@ -2,17 +2,34 @@
 
 namespace App\Http\Controllers;
 
+use App\Contracts\Interfaces\RecentProjectInterface;
 use App\Models\RecentProject;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RecentProjectController extends Controller
 {
+
+    private RecentProjectInterface $project;
+
+    public function __construct(RecentProjectInterface $project)
+    {
+        $this->project = $project;
+    }
+
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request): JsonResponse
     {
-        //
+        $request->merge(['user_id' => $request->id]);
+        $recent_projects = $this->project->search($request);
+        return response()->json([
+            'status' => true,
+            'data' => $recent_projects,
+        ]);
     }
 
     /**

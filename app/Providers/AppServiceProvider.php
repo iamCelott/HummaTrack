@@ -15,9 +15,11 @@ use App\Contracts\Repositories\TeamRepository;
 use App\Contracts\Repositories\UserRepository;
 use App\Contracts\Repositories\KanbanRepository;
 use App\Contracts\Interfaces\DepartmentInterface;
+use App\Contracts\Interfaces\RecentProjectInterface;
 use App\Contracts\Interfaces\TaskDetailInterface;
 use App\Contracts\Repositories\ProjectRepository;
 use App\Contracts\Repositories\DepartmentRepository;
+use App\Contracts\Repositories\RecentProjectRepository;
 use App\Contracts\Repositories\TaskDetailRepository;
 
 class AppServiceProvider extends ServiceProvider
@@ -29,7 +31,8 @@ class AppServiceProvider extends ServiceProvider
         TaskInterface::class => TaskRepository::class,
         TaskDetailInterface::class => TaskDetailRepository::class,
         TeamInterface::class => TeamRepository::class,
-        DepartmentInterface::class => DepartmentRepository::class
+        DepartmentInterface::class => DepartmentRepository::class,
+        RecentProjectInterface::class => RecentProjectRepository::class,
     ];
     /**
      * Register any application services.

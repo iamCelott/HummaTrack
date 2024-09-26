@@ -79,8 +79,10 @@
         </div>
         <div class="grid md:px-12 md:grid-cols-1 lg:px-0 lg:grid-cols-2 2xl:grid-cols-3 gap-6">
             @forelse ($teams as $team)
-            <div class="w-full pb-6 px-6 rounded-lg text-black overflow-hidden" style="background-color: white; position: relative;">
-                    <img class="absolute -top-6 -left-12" width="120px" src="{{ asset('assets/images/kotak.png') }}" alt="" >
+                <div class="w-full pb-6 px-6 rounded-lg text-black overflow-hidden"
+                    style="background-color: white; position: relative;">
+                    <img class="absolute -top-6 -left-12" width="120px" src="{{ asset('assets/images/kotak.png') }}"
+                        alt="">
                     <div class="flex py-3 justify-between">
                         <h1 style="padding-bottom: 20px" class="font-bold text-2xl">{{ $team->name }}</h1>
                     </div>

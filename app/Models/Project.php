@@ -43,4 +43,9 @@ class Project extends Model
     {
         return $this->belongsTo(User::class, 'created_by');
     }
+
+    public function recent_projects()
+    {
+        return $this->belongsToMany(User::class, 'project_id', 'user_id', 'recent_projects');
+    }
 }
