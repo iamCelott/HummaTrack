@@ -104,8 +104,29 @@
 
                         }
                     });
+
+                    $(document).on('click', '.recentDeleteBtn', function() {
+                        var recent_project_id = $(this).data('project-id');
+                        var parentLi = $(this).closest('li');
+
+                        $.ajax({
+                            url: "{{ route('api.destroy.recent_projects') }}",
+                            type: "DELETE",
+                            data: {
+                                user_id: {{ Auth::user()->id }},
+                                project_id: recent_project_id,
+                            },
+                            success: function(response) {
+                                parentLi.remove();
+                            },
+                            error: function(xhr) {
+                                alert('Error: ' + xhr.responseJSON.message);
+                            }
+                        });
+                    });
                 });
             </script>
+
 
             @hasrole('admin')
                 <li class="menu-title">Manajemen Umum</li>
@@ -158,17 +179,16 @@
                         <span class="menu-text">Kelompok</span>
                     </a>
                 </li>
+                <li class="menu-item">
+                    {{-- href="javascript:void(0)" data-fc-type="collapse" --}}
+                    <a href="{{ route('admin.department.index') }}" class="menu-link">
+                        <span class="menu-icon">
+                            <i class="ri-list-check-3"></i>
+                        </span>
+                        <span class="menu-text">Kategori Tugas</span>
+                    </a>
+                </li>
             @endhasrole
-
-            <li class="menu-item">
-                {{-- href="javascript:void(0)" data-fc-type="collapse" --}}
-                <a href="{{ route('departements.index') }}" class="menu-link">
-                    <span class="menu-icon">
-                        <i class="ri-home-office-line"></i>
-                    </span>
-                    <span class="menu-text">Divisi</span>
-                </a>
-            </li>
 
             @hasrole('member')
                 <li class="menu-item">

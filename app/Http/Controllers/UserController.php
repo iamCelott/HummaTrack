@@ -52,6 +52,17 @@ class UserController extends Controller
         ]);
     }
 
+    public function destroyUserRecentProjects(Request $request)
+    {
+        $projectId = $request->project_id;
+        $userId = $request->user_id;
+        $recent_projects = $this->recent_project_service->destroyUserRecentProjects($userId, $projectId);
+        return response()->json([
+            'status' => true,
+            'data' => $recent_projects,
+        ]);
+    }
+
     /**
      * Show the form for creating a new resource.
      */

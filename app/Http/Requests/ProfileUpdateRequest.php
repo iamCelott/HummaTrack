@@ -16,6 +16,12 @@ class ProfileUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'photo_profile' => [
+                'required',
+                'digits_between:10,15', // Aturan ini untuk memvalidasi panjangnya (misal 10-15 digit)
+                Rule::unique(User::class)->ignore($this->user()->id),
+            ],
+            'phone_number' => ['required', Rule::unique(User::class)->ignore($this->user()->id)],
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', Rule::unique(User::class)->ignore($this->user()->id)],
         ];
