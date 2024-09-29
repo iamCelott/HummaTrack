@@ -107,12 +107,12 @@
                                 <div class="flex gap-2">
                                     @if ($project->type === 'team')
                                         <span
-                                            class="text-[#39b1e6] inline-flex items-center gap-1.5 py-0.5 px-6 rounded-lg text-md font-medium border bg-[#aee6ff] text-success">
+                                            class="text-[#39b1e6] inline-flex items-center gap-1.5 py-0.5 px-6 rounded-lg text-md font-medium border bg-[#caebfa] text-success">
                                             Tim
                                         </span>
                                     @else
                                         <span
-                                            class="text-[#65bb6a] inline-flex items-center gap-1.5 py-0.5 px-6 rounded-lg text-md font-medium border bg-[#a9ffae] text-info">
+                                            class="text-[#60d265] inline-flex items-center gap-1.5 py-0.5 px-6 rounded-lg text-md font-medium border bg-[#d9f7db] text-info">
                                             Individual
                                         </span>
                                     @endif

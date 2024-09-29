@@ -282,17 +282,17 @@
     </div> --}}
 
     <!-- Theme Setting Button -->
-    <div class="flex">
+    {{-- <div class="flex">
         <button data-fc-type="offcanvas" data-fc-target="theme-customization" type="button" class="nav-link p-2">
             <span class="sr-only">Customization</span>
             <span class="flex items-center justify-center">
                 <i class="ri-settings-3-line text-2xl"></i>
             </span>
         </button>
-    </div>
+    </div> --}}
 
     <!-- Light/Dark Toggle Button -->
-    <div class="lg:flex hidden">
+    {{-- <div class="lg:flex hidden">
         <button id="light-dark-mode" type="button" class="nav-link p-2">
             <span class="sr-only">Light/Dark Mode</span>
             <span class="flex items-center justify-center">
@@ -300,7 +300,7 @@
                 <i class="ri-sun-line text-2xl hidden dark:block"></i>
             </span>
         </button>
-    </div>
+    </div> --}}
 
     <!-- Fullscreen Toggle Button -->
     <div class="md:flex hidden">
